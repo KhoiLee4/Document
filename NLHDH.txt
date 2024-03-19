@@ -1,0 +1,4 @@
+có 10mb
+tiến trình 5mb 
+giả sử tài nguyên cần 6mb
+hệ điều hành cần nạp tiến trình hay ko, nạp đc ko

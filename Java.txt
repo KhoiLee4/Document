@@ -1,0 +1,382 @@
+#####-----JAVA-----#####
+
+*** JAVA là gì? 
+    - Java là một ngôn ngữ lập lập trình, được phát triển bởi Sun Microsystem vào năm 1995, là ngôn ngữ kế thừa trực tiếp từ C/C++ và là một ngôn ngữ lập trình hướng đối tượng.
+
+*** JVM là gì?
+    - JVM ( Java Virtual Machine- Máy ảo Java) là một máy ảo cho phép máy tính chạy chương trình Java.
+    [chạy chương trình Java => biên dịch Java code thành bytecode => JVM dịch bytecode thành ngôn ngữ máy]
+
+*** JRE là gì?
+    - JRE ( Java Runtime Environment) là gói phần mềm cung cấp các thư viện lớp Java, cùng với Máy ảo Java (JVM), và các thành phần khác để chạy các ứng dụng được viết bằng lập 
+    trình Java. JRE là một bộ của JVM.
+
+*** JDK là gì?
+    - JDK (Java Development Kit- Bộ công cụ phát triển Java) là một bộ công cụ phát triển phần mềm để phát triển các ứng dụng trong Java. Khi bạn tải JDK, JRE cũng được tải xuống 
+    và không cần phải tải xuống riêng. Ngoài JRE, JDK cũng chứa một lượng công cụ phát triển (trình biên dịch, JavaDoc, Trình gỡ lỗi Java, v.v.).
+
+!!! Những điều cần lưu ý 
+    - Mỗi ứng dụng Java hợp lệ phải có định nghĩa lớp (khớp với tên file).
+    - Hàm main phải nằm trong định nghĩa lớp.
+    - Trình biên dịch thực hiện các câu lệnh bắt đầu từ hàm main.
+
+### Quy tắc đặt tên biến trong Java
+    - Bộ quy tắc và quy ước riêng để đặt tên biến:
+        + Các biến trong Java phân biệt chữ hoa và chữ thường.
+        + Tên của biến là một chuỗi các chữ cái và chữ số trong Unicode. Nó có thể bắt đầu bằng một chữ cái, $ hoặc _ . Tuy nhiên, người ta hay quy ước: tên biến bắt đầu bằng một 
+        chữ cái. Ngoài ra, trong Java, tên biến không được chứa khoảng trắng.
+        + Khi tạo các biến, nên chọn một tên có ý nghĩa. Ví dụ: các tên biến như score , number , level có ý nghĩa hơn tên biến như s , n và l.
+        + Nếu bạn chọn một tên biến chỉ có một từ thì nên sử dụng tất cả các chữ cái viết thường. Ví dụ: nên sử dụng speed thay vì SPEED hoặc sPEED.
+        + Nếu bạn chọn tên biến có nhiều hơn một từ thì hãy sử dụng tất cả các chữ cái viết thường cho từ đầu tiên và viết hoa chữ cái đầu tiên của mỗi từ tiếp theo. Ví dụ: speedLimit.
+
+    - Có 4 loại biến trong ngôn ngữ lập trình Java:
+        + Biến instance  (Trường không tĩnh).
+        + Biến của class (Trường tĩnh).
+        + Biến cục bộ.
+        + Tham số.
+
+### 8 kiểu dữ liệu cơ bản trong java
+    - Kiểu boolean
+        + Kiểu dữ liệu boolean có hai giá trị,  true hoặc false.
+        + Chúng thường được sử dụng cho các điều kiện đúng/sai.
+        + Giá trị mặc định : false.
+
+    - Kiểu byte
+        + Kiểu dữ liệu byte có thể có các giá trị từ -128 đến 127 (số nguyên bù 2 8 bit có dấu).
+        + Nó được sử dụng thay cho kiểu int hoặc các kiểu dữ liệu số nguyên khác để tiết kiệm bộ nhớ nếu giá trị của biến chắc chắn nằm trong khoảng [-128, 127].
+        + Giá trị mặc định: 0.
+
+    - Kiểu short
+        + Kiểu dữ liệu short có thể có các giá trị từ -32768 đến 32767 (số nguyên bù 2 16 bit có dấu).
+        + Nó được sử dụng thay cho các loại dữ liệu số nguyên khác để tiết kiệm bộ nhớ nếu giá trị của biến chắc chắn nằm trong khoảng [-32768, 32767].
+        + Giá trị mặc định: 0.
+
+    - Kiểu int
+        + Kiểu dữ liệu int có thể có các giá trị từ -(2^31) đến (2^31) - 1 (số nguyên bù 2 32 bit có dấu).
+        + Nếu bạn đang sử dụng Java 8 trở lên, bạn có thể sử dụng số nguyên 32 bit không dấu với giá trị tối thiểu là 0 và giá trị tối đa là 2^32 - 1.
+        + Giá trị mặc định: 0.
+
+    - Kiểu long
+        + Kiểu dữ liệu long có thể có các giá trị từ -(2^63) đến (2^63) - 1 (số nguyên bù 2 64 bit có dấu).
+        + Nếu bạn đang sử dụng Java 8 trở lên, bạn có thể sử dụng số nguyên 64 bit không dấu với giá trị tối thiểu là 0 và giá trị tối đa là 2^64 - 1.
+        + Giá trị mặc định: 0.
+
+    - Kiểu double
+        + Kiểu dữ liệu double là dấu phẩy động 64 bit chính xác kép.
+        + Không nên dùng kiểu dữ liệu này cho các giá trị chính xác như tiền tệ.
+        + Giá trị mặc định: 0,0 (0,0d).
+
+    - Kiểu float
+        + Kiểu dữ liệu float là dấu phẩy động 32 bit chính xác đơn.
+        + Không nên được sử dụng kiểu này cho các giá trị chính xác như tiền tệ.
+        + Giá trị mặc định: 0,0 (0,0f).
+
+    - Kiểu char
+        + Là ký tự Unicode 16 bit.
+        + Giá trị tối thiểu của kiểu dữ liệu char là ‘\u0000′(0). Giá trị tối đa của kiểu dữ liệu char là ‘\uffff’.
+        + Giá trị mặc định: ‘\u0000’.
+
+### Literals trong Java
+    - Literal là một chữ nằm trong code và có một giá trị cố định nào đó.
+    - Integer literals
+        + Integer literals được sử dụng để khởi tạo các biến thuộc kiểu dữ liệu nguyên như byte, short, int và long.
+        + Integer literals có thể được biểu diễn trong các hệ thống số thập phân, thập lục phân và số nhị phân.
+        + Các số bắt đầu bằng tiền tố 0x đại diện cho hệ thập lục phân. Tương tự, các số bắt đầu bằng tiền tố 0b đại diện cho hệ nhị phân.
+
+                        // Error! literal 42332200000 of type int is out of range
+                        long myVariable1 = 42332200000;
+
+                        // 42332200000L is of type long, and it's not out of range
+                        long myVariable2 = 42332200000L;
+
+                        // decimal
+                        int decNumber = 34;
+
+                        // 0x represents hexadecimal
+                        int hexNumber = 0x2F;
+
+                        // 0b represents binary
+                        int binNumber = 0b10010;
+
+    - Literals số thực
+        + Literals số thực được sử dụng để khởi tạo các biến của kiểu dữ liệu float và double.
+        + Nếu một literal số thực kết thúc bằng f hoặc F, nó thuộc kiểu float. Còn không thì nó thuộc kiểu double. Kiểu double có thể kết thúc bằng D hoặc d. Tuy nhiên, điều này 
+        là không cần thiết.
+        + Chúng cũng có thể được thể hiện bằng ký hiệu khoa học bằng E hoặc e.
+
+                        double myDouble = 3.4;
+                        float myFloat = 3.4F;
+                        
+                        // 3.445*10^2
+                        double myDoubleScientific = 3.445e2;
+
+    - Kí tự literals và chuỗi literals
+        + Có chứa các ký tự Unicode (UTF-16).
+        + Đối với kí tự literals, sử dụng dấu nháy đơn. Ví dụ ‘a’, ‘\u0111’v.v.
+        + Đối với chuỗi literals, sử dụng dấu nháy kép. Ví dụ , “programming”.”Java 8″
+        + Java cũng hỗ trợ một vài chuỗi thoát đặc biệt. Ví dụ: \b (xóa lùi), \t (tab), \n (xuống dòng), \f (ngắt trang), \r (dấu enter), \” (nháy kép), \’ (nháy đơn) và \\ (dấu gạch chéo).
+
+### Toán tử (Operator)
+    - Toán tử  gán
+
+    - Toán tử số học
+        | + | Toán tử cộng (cũng được sử dụng để nối chuỗi) |  
+        | – | Toán tử trừ                                   |  
+        | * | Toán tử nhân                                  |  
+        | / | Toán tử chia                                  |  
+        | % | Toán tử lấy phần dư                           |   
+
+    - Toán tử  một ngôi
+        | +  |  Cộng một ngôi (toán tử này là không cần thiết vì kể cả khi không sử dụng toán tử này, các số vẫn luôn dương) | 
+        | –  |  Trừ một ngôi; đảo dấu của một biểu thức                                                                      | 
+        | ++ |  Toán tử gia tăng; tăng giá trị lên 1                                                                         | 
+        | -- |  Toán tử giảm; giảm giá trị đi 1                                                                              | 
+        | !  |  Toán tử bổ sung logic, đảo ngược giá trị boolean                                                             |    
+
+    - Toán tử quan hệ và toán tử bằng
+        | == | 	Bằng 5 == 3 được cho kết quả là false        | 
+        | != |	Không bằng 5 != 3 cho kết quả là true        |  
+        | >  |	Lớn hơn	5 > 3 cho kết quả là true            |  
+        | <  |	Bé hơn 5 < 3 cho kết quả là false            |   
+        | >= |	Lớn hơn hoặc bằng 5 >= 5 cho kết quả là true |    
+        | <= |	Bé hơn hoặc bằng 5 <= 5 cho kết quả là true  |    
+
+    - Toán tử logic
+        | || | 	Điều kiện-OR; true nếu một trong các biểu thức boolean là true	false || true trả về kết quả là true |
+        | && | 	Có điều kiện-AND; true nếu tất cả các biểu thức boolean là true	false && true trả về kết quả false   |
+
+    - Toán tử Ternary
+        + Toán tử điều kiện hoặc toán tử ternary ?: là viết tắt của câu lệnh  if-then-else. Cú pháp của toán tử điều kiện là: 
+            variable = Expression ? expression1 : expression2
+
+    - Toán tử Bitwise và Bitshift
+        | ~	  |  Phủ định NOT         |    
+        | <<  |  Dịch trái            |  
+        | >>  |  Dịch phải            |  
+        | >>> |  Bỏ dịch phải         |  
+        | &	  |  Toán tử AND          |  
+        | ^	  |  Toán tử exclusive OR |  
+        | |	  |  Toán tử OR           |  
+
+### Nhập xuất
+    - Output : System.out.print("Nội dung");
+        + print() : in chuỗi bên trong dấu ngoặc kép.
+        + println() : in chuỗi bên trong dấu ngoặc kép giống như hàm print(). Sau đó con trỏ di chuyển đến đầu dòng tiếp theo.
+        + printf() : cung cấp định dạng chuỗi (tương tự như printf trong lập trình C / C ++ ).
+
+    - Input
+        + Cần nhập class Scanner bằng cách sử dụng câu lệnh: import java.util.Scanner;
+        + Tạo đối tượng scanner: Scanner input = new Scanner(System.in);
+        + Lấy giá trị của người dùng vào: int number = input.nextInt();
+            * nextInt() : lấy input kiểu int
+            * nextLong() : lấy input kiểu long
+            * nextFloat() : lấy input kiểu float
+            * nextDouble() : lấy input kiểu double
+            * next() : lấy input kiểu String
+
+### If Else If (tương tự với C/C++)
+
+### Switch
+    !!! Lưu ý rằng câu lệnh switch trong Java chỉ hoạt động với:
+        - Các kiểu dữ liệu cơ bản: byte, short, char và int
+        - Các kiểu liệt kê (liệt kê trong Java)
+        - String class
+        - Một vài class bao gồm các kiểu cơ bản: Character, Byte, Short, và Integer. 
+
+### Vòng lặp For, For-each, While, Do-while (tương tự với C/C++)
+
+### Câu lệnh continue, break (tương tự với C/C++)
+    !!! break label; : câu lệnh break sẽ chấm dứt câu lệnh có label. Sau đó, luồng của chương trình sẽ nhảy đến câu lệnh sau câu lệnh có label.
+    !!! continue label; : câu lệnh continue khác là dạng được dán nhãn, có thể sử dụng để bỏ qua (các) câu lệnh nằm ở vòng lặp bên ngoài. (KHÔNG NÊN DÙNG)
+
+### Mảng (tương tự C/C++)
+    - Java sẽ tự quản lý vùng nhớ nên chỉ cần khai báo
+        int[] array = new int[số lượng];
+        int[][] array = new int[sl][sl];
+        int[][][] array = new int[sl][sl][sl];
+    !!! Khác với mảng đa chiều trong C/C++, các hàng trong mảng ở Java có thể có kích thước khác nhau
+
+    *** Có 2 loại copy là: 
+        shallow copy: sao chép đường liên kết đến đối tượng của mảng cũ (mảng cũ thay đổi => mảng mới thay đổi) 
+        deep copy: sao chép giá trị của mảng cũ để tạo đối tượng mới (mảng cũ thay đổi => mảng mới không thay đổi)
+
+    - Sao chép mảng
+        + Toán tử gán (shallow copy)
+        + Vòng lặp (deep copy)
+        + Hàm System.arraycopy(Object src, int srcPos, Object dest, int destPos, int length) có trong lớp System, cụ thể và tiện hơn pp vòng lặp
+        + Hàm Array.copyOfRange(Object src, int srcPos, int length) có trong lớp java.util.Arrays, tương tự với arraycopy() nhưng không cần tạo mảng đích trước
+
+### Đối tượng và lớp (tương tự C/C++)
+    *** Class là bản thiết kế cho vật thể.
+    
+    - Phương thức 
+        + Có 2 loại phương thức
+            * Phương thức của thư viện chuẩn
+            * Phương thức do người dùng định nghĩa
+
+        + Cấu trúc 1 lớp:
+            [public]                | lớp được truy xuất chung cho các package khác
+            [abstract]              | lớp trừu tượng
+            [final]                 | lớp hằng
+            class ClassName         | tên lớp
+            [extends SuperClass]    | lớp kế thừa
+            [implements Interfaces] | giao diện được cài đặt
+            { ... }                 | phần thân
+
+        + Cấu trúc 1 phương thức
+            [modifier]                | phạm vi truy cập
+            [static/final]            | phương thức tĩnh, phương thức cuối cùng (không đc overrite)
+            [returnType]              | kiểu trả về
+            nameOfMethod (parameters) | tên phương thức và tham số
+            {}                        | phần thân
+
+    - Hàm tạo Constructor (tương tự với C/C++)
+
+    - Từ khóa this
+        + Sử dụng this để định hướng các tham chiếu biến
+        + Sử dụng từ khóa this trong nạp chồng hàm tạo
+        + Truyền this giống một đối số
+
+    - Từ khóa static
+        + Để sử dụng các thành viên, phương thức trong class mà không tạo ra đối tượng cụ thể thì dùng "static"
+        + Tính là liên kết với class chứ không phải với đối tượng
+        + Tất cả các đối tượng của lớp đều có chung một biến tĩnh, thường không dùng biến tĩnh mà dùng hằng tĩnh
+        + Các khối tĩnh được sử dụng để khởi tạo các biến tĩnh. Khối tĩnh chỉ được thực hiện một lần khi lớp được tải trong bộ nhớ. Lớp được tải nếu đối tượng của 
+        lớp được yêu cầu trong mã hoặc các thành viên tĩnh được yêu cầu trong code.
+
+    - Biểu thức lambda
+        + functional interface là một interface trong Java chứa một và chỉ một phương thức trừu tượng
+        + Biểu thức lamda là một phương thức không có tên hay phương thức nặc danh. Biểu thức lambda không tự thực thi mà thay vào đó được sử dụng để thực thi một 
+        phương thức được định nghĩa một functional interface. 
+        + Khai báo
+                // Phần thân với một biểu thức đơn.
+                () -> System.out.println("Lambdas are great");
+
+                // Phần thân chứa một khối code.
+                () -> {
+                    double pi = 3.1415;
+                    return pi;
+                };
+        + sử dụng kết hợp với 1 functional interfaces (mục đích tương tự với template trong C/C++)
+    
+    - Toán tử instanceof
+        + Instanceof là một toán tử nhị phân. Nó được sử dụng để kiểm tra xem một đối tượng có phải là một instance của một class cụ thể hay không.
+        + Class object: tất cả các class được kế thừa từ class Object. Từ khóa extends không được sử dụng trong quá trình kế thừa của class Object. Đây là một ngoại lệ trong Java.
+        + Upcasting là một đối tượng của một subclass có thể được coi là một đối tượng của superclass (tự động)
+        + Downcasting là một đối tượng của superclass được coi là một đối tượng của subclass (chỉ rõ)
+
+### Hướng đối tượng
+    - Quyền truy cập Access Modifier / Visibility Modifier
+        *** Một package đơn giản chỉ là một chiếc thùng chứa các loại liên quan (class, giao diện, các enum và annotation).
+        
+        | Private	| Chỉ được try cập trong class                                 | 
+        | Default	| Chỉ được truy cập bên trong package (package cá nhân)        | 
+        | Protected	| Được truy cập bên trong package hoặc/và tất cá các class phụ | 
+        | Public	| Có thể truy cập từ bất cứ đâu                                | 
+
+    - Kế thừa (inheritanse)
+        + Kiểu đơn kế thừa (Single inheritance) – Class b chỉ mở rộng từ class a
+        + Kiểu kế thừa nhiều cấp (Multilevel inheritance) – Class b mở rộng từ class a, sau đó class c mở rộng từ class b
+        + Kiểu kế thừa thứ bậc (Hierachical inheritance) – Class a là superclass cho các class b, c, và d.
+        + Kiểu đa kế thừa (Multiple inheritance) – Class c mở rộng từ giao diện a và b
+        + Kiểu kế thừa lai (Hybrid inheritance) – Kết hợp hai hay hiều kiểu kế thừa
+
+        !!! Java không hỗ trợ kiểu đa kế thừa và kiểu kế thừa lai thông qua các class. Tuy nhiên, chúng ta vẫn có thể đạt được tính đa kế thừa trong Java thông qua các interface
+
+    - Ghi đè (Overriding)
+        + Cả superclass và subclass phải có cùng tên phương thức, cùng kiểu trả về và cùng danh sách tham số
+        + Chúng ta không thể ghi đè phương thức được khai báo là final và static
+        + Chúng ta luôn luôn nên ghi đè các phương thức trừu tượng của superclass
+
+        !!! Chúng ta chỉ có thể sử dụng các access specifier trong subclass mà cung cấp quyền truy cập rộng hơn access specifier của superclass
+
+    - Super
+        + Dùng để truy cập các thuộc tính (dữ liệu) của superclass nếu cả superclass và subclass có các thuộc tính cùng tên với nhau.
+        + Để gọi hàm tạo no-arg (default) hoặc hàm tạo được tham số hóa của superclass từ hàm tạo của subclass
+        + Truy cập các phương thức bị ghi đè, các thuộc tính của supperclass
+        
+    - Trừu tượng (abstract)
+        *** Một class trừu tượng trong Java không thể được khởi tạo (chúng ta không thể tạo ra các đối tượng cho một class trừu tượng). Trong Java, chúng ta chỉ sử dụng từ khóa abstract 
+        để khai báo một class trừu tượng
+
+        *** Chúng ta đều sử dụng từ khóa abstract để tạo các phương thức trừu tượng. Một phương thức trừu tượng được khai báo mà không cần triển khai
+
+        !!! Điều quan trong cần ghi nhớ là một class không trừu tượng chỉ có thể chứa các phương thức không trừu tượng. Nếu một class không phải là class trừu tượng chứa các phương thức 
+        trừu tượng, khi đó sẽ có lỗi biên dịch. Một class trừu tượng có thể chứa cả phương thức trừu tượng và các phương thức không trừu tượng
+
+        + Trong Java, ghi đè các phương thức trừu tượng của superclass trong subclass là điều bắt buộc. Nếu subclass cũng được khai báo là trừu tượng, thì không bắt buộc phải ghi đè các 
+        phương thức trừu tượng.
+
+    - Giao diện (Interface)
+        *** Trong Java, một interface định nghĩa một tập các đặc tả mà các class khác phải thực hiện, một giao diện tương tự như một lớp trừu tượng. Tuy nhiên, giao diện không có bất kỳ 
+        phương thức không trừu tượng nào cả
+
+        + Một interface có thể bao gồm các phương thức và hằng số trừu tượng
+        + Chúng ta sử dụng từ khóa implements để thực thi các interface
+        + Tương tự như các class, interface có thể mở rộng các interface khác. Các từ khóa extends được sử dụng để mở rộng interface
+        + Để khai báo các phương thức default bên trong các interface, chúng tôi sử dụng từ khóa default. Các phương thức default được kế thừa như các phương thức thông thường và nó sẽ 
+        không bắt buộc phải kể thừa (từ java 8)
+
+        !!! Điều quan trọng cần lưu ý là, tất cả các phương thức bên trong một interface đều được ngầm định là public và tất cả các thuộc tính đều được ngầm định là public static final. 
+        Do đó, không cần thiết phải chỉ định access specifier bên trong các interface
+        
+        !!! Lưu ý rằng một interface có thể mở rộng nhiều interface tương tự như một class triển khai nhiều interface.
+
+    - Đa hình
+        *** Tính đa hình là một khái niệm quan trọng của lập trình hướng đối tượng. Nó đơn giản có nghĩa là nhiều hơn một hình thức. Đó là cùng một thực thể (phương thức, toán tử hoặc 
+        đối tượng) nhưng sẽ hoạt động khác nhau trong các tình huống khác nhau.
+
+        + Đa hình lúc runtime: Trong Java, tính đa hình lúc runtime có thể đạt được thông qua việc ghi đè phương thức.
+        + Đa hình lúc compiler-time: Đa hình lúc compiler-time có thể đạt được thông qua việc nạp chồng phương thức và nạp chồng toán tử trong Java.
+            * Nạp chồng phương thức: Trong Java đối với một class, chúng ta có thể tạo các phương thức có cùng tên nếu chúng khác nhau về các tham số.
+            * Nạp chồng toán tử: Java không hỗ trợ nạp chồng toán tử do người dùng định nghĩa.
+
+    - Đóng gói
+        *** Tính đóng gói là một trong những tính năng chính của lập trình hướng đối tượng. Đóng gói đề cập đến việc đóng gói các thuộc tính và phương thức trong một lớp duy nhất. Đóng 
+        gói các thuộc tính và phương thức giống nhau trong một lớp cũng giúp ẩn bớt dữ liệu.
+
+        + Đóng gói là một quá trình gói code giống nhau ở cùng 1 chỗ. Trong Java, chúng ta có thể gói các thuộc tính và phương thức hoạt động cùng nhau trong cùng một lớp.
+        + Điều này cho phép chúng ta ẩn dữ liệu. Đóng gói trong chính nó không phải là ẩn dữ liệu.
+
+    - Lớp trong lớp
+        + Lớp lồng không tĩnh (Lớp trong): Một lớp lồng không tĩnh là một lớp trong một lớp khác. Nó có quyền truy cập vào các thành viên của lớp kèm theo (lớp ngoài). Nó thường được gọi 
+        là inner class.
+
+        !!! Chúng ta sử dụng . toán tử dot để tạo một thể hiện của lớp bên trong bằng cách sử dụng lớp bên ngoài.
+
+        + Lớp lồng tĩnh: Trong Java, chúng ta cũng có thể định nghĩa một lớp static bên trong một lớp khác. Lớp như vậy được gọi là static nested class. Các lớp lồng nhau tĩnh không được 
+        gọi là các lớp bên trong tĩnh.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

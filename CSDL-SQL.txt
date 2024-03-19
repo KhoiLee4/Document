@@ -1,0 +1,108 @@
+### Các mô hình dữ liệu
+    - Mô hình mạng (Network Data Model)
+    - Mô hình phân cấp (Hierachical Data Model)
+        + Ưu điểm:
+            * Thể hiện dễ dàng quan hệ 1-N.
+            * Việc phân chia dữ liệu dễ thể hiện, đảm bảo an toàn dữ liệu
+            * Tính độc lập của chương trình và các dữ liệu được đảm bảo
+        + Nhược điểm:
+            * Không thể hiện được mối quan hệ M-N
+            * Trong một hệ thống phân cấp, dữ liệu được tổ chức như trên dẫn đến khó sửa đổi dữ liệu.
+
+    - Mô hình quan hệ (Relational Data Model)
+    - Mô hình thực thể - liên kết (Entity - Relationship Model)
+    - Mô hình hướng đối tượng (Object Oriented Data Model)
+
+### Mô hình thực thể - liên kết ER (Entity - Relationship Model)
+    - Một thực thể là một đối tượng của thế giới thực
+    - Tập hợp các thực thể giống nhau tạo thành 1 tập thực thể 
+        kí hiệu: hình chữ nhật, 1 đường
+    - Thực thể yếu: là thực thể phụ thuộc vào sự tồn tại của thực thể khác
+        kí hiệu: hình chữ nhật, 2 đường
+
+    - Thuộc thính là những đặc tính riêng biệt của tập thực thể, là những giá trị nguyên tố
+        kí hiệu: hình tròn hoặc eclip, 1 đường
+    - Thuộc tính đơn (simple)/đơn trị (single-value)/nguyên tử (Atomic): chỉ có một giá trị trong một thuộc tính của một thực thể
+    - Thuộc tính tổ hợp (Composite): được kết hợp của một số thành phần
+    - Thuộc tính đa trị (multi-valued): có thể có nhiều giá trị tại một thời điểm.
+        kí hiệu: hình tròn hoặc eclip, 2 đường
+    - Thuộc tính suy diễn (derived attribute) là giá trị của nó có thể suy ra từ giá trị của những thuộc tính khác
+        kí hiệu: hình tròn hoặc eclip, nét đứt
+    - Giá trị rỗng của thuộc tính (Null Values): là thuộc tính có thể có giá trị hoặc không
+
+    - Khoá (key) hay Thuộc tính định danh: là một hoặc một tập các thuộc tính xác định duy nhất một bản ghi trong một thực thể. Thuộc tính khoá hay 
+    còn gọi là thuộc tính định danh luôn được gạch chân để phân biệt
+        kí hiệu: hình tròn hoặc eclip, 1 đường, gạch chân tên thuộc tính
+
+    - Mối liên kết (Entity Relationship) là sự liên kết giữa 2 hay nhiều tập thực thể
+        kí hiệu: hình thoi
+    - Bậc của kiểu liên kết: Là số lượng các thực thể tham gia vào liên kết.
+        + Kiểu liên kết bậc 1 (đệ quy) là mối quan hệ giữa cùng 1 kiểu thực thể.
+        + Kiểu liên kết bậc 2 là mối liên kết giữa hai kiểu thực thể
+        + Kiểu liên kết bậc 3 là mối liên kết giữa 3 kiểu thực thể
+    - Ràng buộc liên kết gồm:
+        + Liên kết/quan hệ 1-1: là mối quan hệ mà mỗi bản ghi trong thực thể E1 chỉ có nhiều nhất một bản ghi được liên kết trong thực thể E2.
+        + Liên kết/quan hệ 1-N: là mối quan hệ mà một bản ghi trong thực thể E1 có thể không liên kết hoặc liên kết với một hay nhiều bản ghi trong 
+        thực thể E2, nhưng một bản ghi trong thực thể E2 chỉ liên kết với duy nhất một bản ghi trong thực thể E1.
+        + Liên kết/quan hệ N-M: là mối quan hệ mà một bản ghi trong thực thể có thể liên kết với nhiều bản thể trong thực thể khác và ngược lại.
+        + Lực lượng của mối liên kết: Là số bản ghi lớn nhất và nhỏ nhất của thực thể tham gia vào liên kết đó.
+            * (0,1) – không hoặc 1
+            * (1,1) – duy nhất 1
+            * (0,n) – không hoặc nhiều
+            * (1,n) – một hoặc nhiều
+        + Thuộc tính của Liên kết/quan hệ: Mỗi mối liên kêt cũng có thể có những thuộc tính riêng của chúng.
+
+### Mô hình quan hệ (Relational Data Model)
+    - Các thông tin lưu trữ trong CSDL được tổ chức thành bảng (table) 2 chiều gọi là quan hệ
+    - Quan hệ gồm:
+        + Tên
+        + Tập hợp các cột
+            * Cố định
+            * Được đặt tên
+            * Có kiểu dữ liệu
+        + Tập hợp các dòng
+            * Thay đổi theo thời gian
+    - Một dòng ~ Một thực thể
+    - Quan hệ ~ Tập thực thể
+    - Thuộc tính là tên các cột của quan hệ. Mô tả ý nghĩa cho các giá trị tại cột đó. Tất cả các dữ liệu trong cùng 1 một cột đều có chung kiểu dữ liệu
+    - Bộ là các dòng của quan hệ (trừ dòng tiêu đề - tên của các thuộc tính). Thể hiện dữ liệu cụ thể của các thuộc tính trong quan hệ
+    - Lược đồ quan hệ:
+        + Tên của quan hệ
+        + Tên của tập thuộc tính
+            Cho A1, A2, ..., An là các thuộc tính 
+            Có các miền giá trị D1, D2, ..., Dn tương ứng
+            Ký hiệu R(A1:D1, A2:D2, ..., An:Dn) là một lược đồ quan hệ
+        + Bậc của lược đồ quan hệ là số lượng thuộc tính trong lược đồ
+    - Lược đồ CSDL gồm nhiều lược đồ quan hệ
+    - Các đặc trưng
+        + Thứ tự các bộ trong quan hệ là không quan trọng
+        + Thứ tự giữa các giá trị trong một bộ là quan trọng
+        + Mỗi giá trị trong một bộ
+            * Hoặc là một giá trị nguyên tố
+            * Hoặc là một giá trị rỗng (null)
+        + Không có bộ nào trùng nhau trong 1 quan hệ
+        + Một quan hệ có một tên phân biệt với các quan hệ khác
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
