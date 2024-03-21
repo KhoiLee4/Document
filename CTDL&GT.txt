@@ -210,11 +210,20 @@ cấu trúc dữ liệu nâng cao, ví dụ như Fibonacci Heap.
     - Trả lại giá trị cho hàm (return)
 
 
+#####-----Giải Thuật-----#####
 
+### Brute-force (vét cạn - vũ phu)
+    - Selection Sort (sắp xếp chọn) : ý tưởng là chọn ra phần tử nhỏ nhất trong phần chưa xếp và đảo lên phần sắp xếp. chạy i từ 0 - (n-2) chọn ra min từ (i+1) - (n-1) và đổi chỗ min với i
 
-
-
-
+    ALGORITHM SelectionSort(A[0..n − 1])
+        //Sorts a given array by selection sort
+        //Input: An array A[0..n − 1] of orderable elements
+        //Output: Array A[0..n − 1] sorted in nondecreasing order
+        for i ← 0 to n − 2 do
+        min ← i
+        for j ← i + 1 to n − 1 do
+            if A[j ] < A[min] min ← j
+        swap A[i] and A[min]
 
 
 

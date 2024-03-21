@@ -347,12 +347,46 @@
         + Lớp lồng tĩnh: Trong Java, chúng ta cũng có thể định nghĩa một lớp static bên trong một lớp khác. Lớp như vậy được gọi là static nested class. Các lớp lồng nhau tĩnh không được 
         gọi là các lớp bên trong tĩnh.
 
+### Design pattern singleton 
+    - Đây là cách chúng ta có thể sử dụng singletons trong Java.
+        + Tạo một hàm tạo private để tạo giới hạn một đối tượng từ bên ngoài lớp
+        + Tạo một thuộc tính private để chỉ truy cập đến đối tượng singleton tại một nơi.
+        + Tạo một phương thức public staticcho phép chúng ta tạo và truy cập vào đối tượng chúng ta đã tạo. Bên trong phương thức, chúng ta sẽ tạo một điều kiện hạn chế chúng ta tạo nhiều 
+        hơn một đối tượng.
 
+            class SingletonExample {
 
+                // private field that refers to the object
+                private static SingletonExample singleObject;
 
+                private SingletonExample() {
+                    // constructor of the SingletonExample class
+                }
 
+                public static SingletonExample getInstance() {
+                    // write code that allows us to create only one object
+                    // access the object as per our need
+                }
+            }
 
+        + Singletons có thể được sử dụng trong khi làm việc với cơ sở dữ liệu. Chúng có thể được sử dụng để tạo một nhóm kết nối để truy cập cơ sở dữ liệu trong khi sử dụng lại cùng một kết nối 
+        cho tất cả các máy khách.
 
+    !!! Nên tránh sử dụng singletons nếu không chắc chắn có nên sử dụng nó hay không.
+
+### Enum
+    - Trong Java, một enum (viết tắt của liệt kê(enumeration)) là một kiểu tập hợp cố định các giá trị.
+    - Trong Java, các kiểu enum được coi là một kiểu lớp đặc biệt. Nó được giới thiệu với việc phát hành Java 5. Một lớp enum có thể bao gồm các phương thức và các trường giống như các lớp thông 
+    thường.Các hằng số enum luôn mặc định sẽ public static final. Khi một lớp enum được tạo, trình biên dịch cũng sẽ tạo các thể hiện (đối tượng) của từng hằng số enum.
+    - Phương thức của lớp enum:
+        + Phương thức ordinal() : là phương thức trả về vị trí của một hằng số enum.
+        + Phương thức compareTo() : so sánh hằng enum dựa trên giá trị thứ tự của họ.
+        + Phương thức toString() : trả về chuỗi đại diện của hằng enum.
+        + Phương thức name() : trả về tên xác định một hằng số enum ở dạng chuỗi. Giá trị trả về từ phương thứcname() là final
+        + Phương thức valueOf() : nhận một chuỗi và trả về một hằng số enum có tên chuỗi tương tự.
+        + Phương thức values() : trả về một mảng của kiểu enum chứa tất cả các hằng số enum.
+    
+    !!! Các hằng số enum thường được biểu thị bằng chữ hoa.
 
 
 

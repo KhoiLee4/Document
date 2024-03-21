@@ -1,4 +1,4 @@
-#####-----GIT _ GITHUP-----#####
+#####-----GIT _ GITHUB-----#####
 
 ### Trạng thái file
 
@@ -38,6 +38,66 @@
 	- Unmodified: không có sửa đổi gì
 	- Modified: có sự thay đổi so với dữ liệu đã lưu
 	- Staged: đánh dấu để chuẩn bị lưu
+
+### Quy trình hoạt động
+	- Làm chủ của repository (chủ, leader)
+		+ B1: khởi tạo 
+			* khởi tạo repository trên github trước xong clone về 
+			* Hoặc tạo trên máy bằng git init rồi thêm remote từ github (hay dùng)
+
+		+ B2: Checkout new branch 
+			* Đứng từ branch chính (master/main) rồi checkout sang nhánh làm việc mới
+			* Ttạo nhánh mới để thực hiện công việc tránh đụng vào nhánh chính
+
+		+ B3: Change & commit code
+			* Thay đổi code theo tính năng mới
+			* Add tất cả code mới (git add . )
+			* Tạo một commit code (git commit -m )
+
+		+ B4: Push code lên github
+			* Đối với repo mà bạn là chủ: đơn giản cứ push thẳng commit vừa tạo theo remote chính
+			* Tạo pull request (để yêu cầu gộp code vào branch chính)
+
+		+ B5: Review & Update commit
+			* Trường hợp sau khi đã tạo pull request mà cần sửa code tiếp
+			* git commit --amend để đảm bảo giữ cho một pull request chỉ nên có tối đa 1 commit (cho sạch, cho clean)
+			* Từ lần púh code thứ 2 trên cừng 1 pull thì thêm thuộc tính -f vào (git pull <url> <branch> -f)
+
+		+ B6: Merge pull request 
+			* Merge pull request vào branch chính (người có quyền mới merge code được)
+			* Quay về máy local checkout + pull code (cập nhật code ở branch chính)
+			* Xóa branch cả ở trên Github + local (lành sạch code để làm task mới)
+			* Quay lại B2 để tiếp tục làm tính năng mới 
+
+	- Lấy từ repository của người khác (nhân viên, thành viên)
+		+ B1: khởi tạo 
+			* Folk project về github cá nhân (làm trên github)
+			* Clone project vừa folk về máy local
+			* Add thêm remote chính từ repo của project chính (1 remote tới github cá nhân, 1 remote đến github gốc)
+
+		+ B2: Checkout new branch (giống phía trên)
+			* Đứng từ branch chính (master/main) rồi checkout sang nhánh làm việc mới
+			* Ttạo nhánh mới để thực hiện công việc tránh đụng vào nhánh chính
+
+		+ B3: Change & commit code (giống phía trên)
+			* Thay đổi code theo tính năng mới
+			* Add tất cả code mới (git add . )
+			* Tạo một commit code (git commit -m )
+
+		+ B4: Push code lên github
+			* Đối với repo ngoài mà bạn folk về: push commit lên theo remote cá nhân
+			* Mở repo gốc rồi tạo pull request
+
+		+ B5: Review & Update commit (giống phía trên)
+			* Trường hợp sau khi đã tạo pull request mà cần sửa code tiếp
+			* git commit --amend để đảm bảo giữ cho một pull request chỉ nên có tối đa 1 commit (cho sạch, cho clean)
+			* Từ lần púh code thứ 2 trên cừng 1 pull thì thêm thuộc tính -f vào (git pull <url> <branch> -f)
+
+		+ B6: Merge pull request (giống phía trên)
+			* Merge pull request vào branch chính (người có quyền mới merge code được)
+			* Quay về máy local checkout + pull code (cập nhật code ở branch chính)
+			* Xóa branch cả ở trên Github + local (lành sạch code để làm task mới)
+			* Quay lại B2 để tiếp tục làm tính năng mới 
 
 ### Git version
 	- Kiểm tra phiên bản của Git
@@ -169,6 +229,8 @@
 		$ git branch -c branch_mane 
 		or
 		$ git checkout -b branch_mane (Tạo và chuyển luôn sang nhánh mới) 
+	- Khôi phục lại nhánh đã xóa
+		$ git checkout -b branch_mane <commit_id>
 
 	- Xóa một nhánh tại local có tên: "branch_mane" (branch đã được hợp nhất (push) vào remote repository)
 		$ git branch -d branch_mane 
@@ -277,8 +339,9 @@
 		+ Nhấn phím mũi tên chỉ xuống để đọc tiếp nội dung bị che khuất phía dưới.
 		+ Nhấn phím chữ 'q' để thoát khỏi chế độ xem, đưa bạn về dấu nhắc lệnh branch hiện tại.
 
-### Git cherry pick
-	- 
+### Git cherry pick (cập nhật sau)
+
+### Deploy web bằng github (cập nhật sau)
 
 
 
@@ -315,8 +378,8 @@
 		+ Nếu đã push lên remote server thì dùng:
 			$ git push -f 
 
-
-### Githup profile
+### Githup profile (tạo profile trên github cho đẹp cho nghệ)
+(chờ cập nhật)
 	- Tạo 1 repsitory trùng với tên user
 	- Dùng file README.md để trang trí
 
