@@ -342,10 +342,24 @@
         + Lớp lồng không tĩnh (Lớp trong): Một lớp lồng không tĩnh là một lớp trong một lớp khác. Nó có quyền truy cập vào các thành viên của lớp kèm theo (lớp ngoài). Nó thường được gọi 
         là inner class.
 
-        !!! Chúng ta sử dụng . toán tử dot để tạo một thể hiện của lớp bên trong bằng cách sử dụng lớp bên ngoài.
+        !!! Chúng ta sử dụng . (toán tử dot) để tạo một thể hiện của lớp bên trong bằng cách sử dụng lớp bên ngoài.
 
         + Lớp lồng tĩnh: Trong Java, chúng ta cũng có thể định nghĩa một lớp static bên trong một lớp khác. Lớp như vậy được gọi là static nested class. Các lớp lồng nhau tĩnh không được 
         gọi là các lớp bên trong tĩnh.
+
+        !!! Trong Java, chỉ các lớp lồng nhau mới được phép làm tĩnh
+        !!! Java không cho phép lớp cha tĩnh
+
+        + Lớp ẩn danh: Một lớp lồng nhau không có bất kỳ tên nào được gọi là lớp ẩn danh. Loại có thể có:
+            * một lớp cha mà một lớp ẩn danh mở rộng
+            * một giao diện(interface) mà một lớp ẩn danh triển khai
+        class outerClass {
+            // defining anonymous class
+            object1 = new Type(parameterList) {
+                // body of the anonymous class
+            };
+        }
+            * Trong các lớp ẩn danh, các đối tượng được tạo bất cứ khi nào chúng được yêu cầu. Đó là, các đối tượng được tạo ra để thực hiện một số nhiệm vụ cụ thể. Các lớp ẩn danh cũng giúp chúng ta làm cho mã của mình ngắn gọn.
 
 ### Design pattern singleton 
     - Đây là cách chúng ta có thể sử dụng singletons trong Java.
@@ -381,17 +395,40 @@
     - Phương thức của lớp enum:
         + Phương thức ordinal() : là phương thức trả về vị trí của một hằng số enum.
         + Phương thức compareTo() : so sánh hằng enum dựa trên giá trị thứ tự của họ.
-        + Phương thức toString() : trả về chuỗi đại diện của hằng enum.
+        + Phương thức toString() : trả về chuỗi đại diện của hằng enum. (có thể ghi đè)
         + Phương thức name() : trả về tên xác định một hằng số enum ở dạng chuỗi. Giá trị trả về từ phương thứcname() là final
         + Phương thức valueOf() : nhận một chuỗi và trả về một hằng số enum có tên chuỗi tương tự.
         + Phương thức values() : trả về một mảng của kiểu enum chứa tất cả các hằng số enum.
     
     !!! Các hằng số enum thường được biểu thị bằng chữ hoa.
+    !!! Chúng ta không thể ghi đè phương thức name(). Đó là bởi vì name() là phương thức final.
 
+### String
+    | length()      | trả về tổng số kí tự                                       |    
+    | concat()      | nối 2 chuỗi                                                | // toán tử +
+    | equals()      | so sánh 2 chuỗi                                            | // toán tử == (có chút khác)
+    | substring()	| trả về chuỗi con của chuỗi                                 |  
+    | replace()	    | thay thế ký tự cũ được chỉ định bằng ký tự mới đã chỉ định |  
+    | charAt()	    | trả về ký tự hiện diện ở vị trí đã chỉ định                |  
+    | getBytes()	| chuyển đổi chuỗi thành một mảng byte                       |  
+    | indexOf()	    | trả về vị trí của ký tự được chỉ định trong chuỗi          |       
+    | compareTo()	| so sánh hai chuỗi theo thứ tự từ điển                      |   
+    | trim()	    | xóa mọi khoảng trắng ở đầu và cuối                         |   
+    | format()	    | trả về một chuỗi được định dạng                            |   
+    | split()	    | ngắt chuỗi thành một mảng chuỗi                            |     
+    | toLowerCase()	| chuyển đổi chuỗi thành chữ thường                          |      
+    | toUpperCase()	| chuyển đổi chuỗi thành chữ hoa                             |     
+    | valueOf()	    | trả về biểu diễn chuỗi của đối số được chỉ định            |     
+    | toCharArray()	| chuyển đổi chuỗi thành một mảng char                       |     
 
+    !!! Trong Java, các chuỗi là bất biến . Điều này có nghĩa là, khi chúng ta tạo một chuỗi, chúng ta không thể thay đổi chuỗi đó.
 
+### Final
+    - biến final không thể được khởi động lại bằng một giá trị khác
+    - phương thức final không thể được ghi đè
+    - lớp học final không thể được mở rộng
 
-
+    !!! Nên sử dụng chữ hoa để khai báo các biến final trong Java.
 
 
 

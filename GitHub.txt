@@ -75,11 +75,11 @@
 			* Clone project vừa folk về máy local
 			* Add thêm remote chính từ repo của project chính (1 remote tới github cá nhân, 1 remote đến github gốc)
 
-		+ B2: Checkout new branch (giống phía trên)
+		+ B2: Checkout new branch
 			* Đứng từ branch chính (master/main) rồi checkout sang nhánh làm việc mới
 			* Ttạo nhánh mới để thực hiện công việc tránh đụng vào nhánh chính
 
-		+ B3: Change & commit code (giống phía trên)
+		+ B3: Change & commit code
 			* Thay đổi code theo tính năng mới
 			* Add tất cả code mới (git add . )
 			* Tạo một commit code (git commit -m )
@@ -88,12 +88,12 @@
 			* Đối với repo ngoài mà bạn folk về: push commit lên theo remote cá nhân
 			* Mở repo gốc rồi tạo pull request
 
-		+ B5: Review & Update commit (giống phía trên)
+		+ B5: Review & Update commit
 			* Trường hợp sau khi đã tạo pull request mà cần sửa code tiếp
 			* git commit --amend để đảm bảo giữ cho một pull request chỉ nên có tối đa 1 commit (cho sạch, cho clean)
 			* Từ lần púh code thứ 2 trên cừng 1 pull thì thêm thuộc tính -f vào (git pull <url> <branch> -f)
 
-		+ B6: Merge pull request (giống phía trên)
+		+ B6: Merge pull request
 			* Merge pull request vào branch chính (người có quyền mới merge code được)
 			* Quay về máy local checkout + pull code (cập nhật code ở branch chính)
 			* Xóa branch cả ở trên Github + local (lành sạch code để làm task mới)
