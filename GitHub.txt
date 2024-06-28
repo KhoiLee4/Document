@@ -47,7 +47,7 @@
 
 		+ B2: Checkout new branch 
 			* Đứng từ branch chính (master/main) rồi checkout sang nhánh làm việc mới
-			* Ttạo nhánh mới để thực hiện công việc tránh đụng vào nhánh chính
+			* Tạo nhánh mới để thực hiện công việc tránh đụng vào nhánh chính
 
 		+ B3: Change & commit code
 			* Thay đổi code theo tính năng mới
@@ -182,7 +182,7 @@
 		$ git commit -m "Thông điệp của bạn"
 
 	- Cập nhật commit mới vào commit cuối cùng gần nhất
-		$ git commit -amend -m "Thông điệp của bạn"
+		$ git commit --amend -m "Thông điệp của bạn"
 
 	!!! Cách đặt tên branch hay commit nên rõ ràng, thể hiện branch đó, commit đó thực hiện feature gì hay là fix bug gì... (thường thì sẽ theo quy định của công ty)
 
@@ -229,6 +229,7 @@
 		$ git branch -c branch_mane 
 		or
 		$ git checkout -b branch_mane (Tạo và chuyển luôn sang nhánh mới) 
+		
 	- Khôi phục lại nhánh đã xóa
 		$ git checkout -b branch_mane <commit_id>
 
@@ -344,6 +345,11 @@
 ### Deploy web bằng github (cập nhật sau)
 
 
+### Thay đổi tài khoản trong Git ở local
+	- Vào Credential Manager
+	- Remove kết nối cũ
+	- Đăng nhập lại vào Git
+	- Kiểm tra và thay đổi lại user.name, user.email
 
 ### Đổi Git commit author
 	- Chưa commit code
