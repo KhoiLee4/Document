@@ -136,15 +136,21 @@
     
     - Thuộc tính suy diễn (derived attribute) là giá trị của nó có thể suy ra từ giá trị của những thuộc tính khác
         kí hiệu: hình tròn hoặc eclip, nét đứt
-    
+
     - Giá trị rỗng của thuộc tính (Null Values): là thuộc tính có thể có giá trị hoặc không
     
     - Khoá (key) hay Thuộc tính định danh: là một hoặc một tập các thuộc tính xác định duy nhất một bản ghi trong một thực thể. Thuộc tính khoá hay 
     còn gọi là thuộc tính định danh luôn được gạch chân để phân biệt
         kí hiệu: hình tròn hoặc eclip, 1 đường, gạch chân tên thuộc tính
     
+    - Thuộc tính khóa ngoại (Foreign Key) là một thuộc tính hoặc tập hợp các thuộc tính trong một bảng, được sử dụng để tạo liên kết giữa dữ liệu trong bảng này với dữ liệu trong một bảng khác.
+        kí hiệu: hình tròn hoặc eclip, 1 đường, gạch chân nét đứt tên thuộc tính
+    
     - Mối liên kết (Entity Relationship) là sự liên kết giữa 2 hay nhiều tập thực thể
-        kí hiệu: hình thoi
+        kí hiệu: hình thoi, 1 đường
+
+    - Mối liên kết xác định (Identifying Relationship) là sự liên kết xác định giữa thực thể mạnh và thực thể yếu, thể hiện sự phụ thuộc
+        kí hiệu: hình thoi, 2 đường 
     
     - Bậc của kiểu liên kết: Là số lượng các thực thể tham gia vào liên kết.
         + Kiểu liên kết bậc 1 (đệ quy) là mối quan hệ giữa cùng 1 kiểu thực thể.
@@ -164,6 +170,8 @@
             * (1,1) – duy nhất 1
             * (0,n) – không hoặc nhiều
             * (1,n) – một hoặc nhiều
+
+            !!! Làm rõ hơn số lượng, tăng độ chính xác cho các ràng buộc liên kết khác
         
         + Thuộc tính của Liên kết/quan hệ: Mỗi mối liên kêt cũng có thể có những thuộc tính riêng của chúng.
 
@@ -236,7 +244,7 @@
         
         !!! Hiểu đơn giản thì Khóa là tập hợp Siêu khóa nhỏ nhất 
             VD: Kếtquả (MaSV, MaMH, LANTHI, DIEM)
-                K = {MaSV, MaMH) -> K là siêu khóa
+                K = {MaSV, MaMH} -> K là siêu khóa
                 K' = {MaSV} -> K' không là siêu khóa
                 => K là Khóa
 
@@ -268,7 +276,7 @@
             * Thêm vào quan hệ đầu nhiều thuộc tính khóa của quan hệ đầu một
 
         + Một - Một 
-            * Thêm vào quan hệ này thuộc tính khóa của quan hệ kia hoặc ngược lại
+            * Thêm vào quan hệ này thuộc tính khóa của quan hệ kia hoặc ngược lại (chỉ thêm 1 bên)
 
         + Với mối liên kết n ngôi, n>2
             * Tạo một quan hệ mới có
@@ -770,11 +778,11 @@
             * Gọi F và G là các tập PTH. Ta nói rằng F và G là tương đương nếu F+ = G+.
             * Nếu F và G tương đương, đôi khi còn nói F phủ G(hay G phủ F).
 
-        + PTH có vế trái dư thừa 
+        + PTH có vế trái dư thừa, vế phải dư thừa
             * Hiểu đơn giản 
             AB -> C, A -> C thì A -> C là PTH đầy đủ còn AB -> C là PTH không đầy đủ (dư trái)
             nếu vế phải có hơn 2 thuộc tính gọi là dư phải => dùng luật tách để xử lý
-    
+
         + Phủ tối thiểu
             * F là PTH tối thiểu (phủ tối thiểu) nếu 
                 \ F là tập PTH có vế phải một thuộc tính (không dư phải)

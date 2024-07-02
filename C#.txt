@@ -1,0 +1,128 @@
+#####-----C#-----#####
+
+*** C# là gì?
+    - Nó là một phần của .NET
+
+    - C# được thiết kế cho Common Language Infrastructure (CLI), mà gồm Executable Code và Runtime Environment, cho phép chúng ta sử dụng các ngôn ngữ high-level đa dạng trên các nền tảng và 
+    cấu trúc máy tính khác nhau.
+
+    - Cấu trúc C# khá gần với các ngôn ngữ high-level truyền thống, C và C++, và là một ngôn ngữ lập trình hướng đối tượng. Nó có sự giống nhau mạnh mẽ với Java, nó có nhiều đặc điểm lập trình 
+    mạnh mẽ mà làm cho nó trở nên ưa thích với các lập trình viên trên toàn thế giới:
+        + Điều kiện Boolean
+        + Tự động dọn rác bởi Garbage-Collector (GC)
+        + Thư viện chuẩn (Standard Library)
+        + Assembly
+        + Property và sự kiện (Event)
+        + Delegate Quản lý sự kiện
+        + Dễ dàng để sử dụng Generic
+        + Indexer
+        + Biên dịch có điều kiện (Conditional Compilation)
+        + Đa luồng dễ dàng (Multithreading)
+        + LINQ và Lambda Expression
+        + Tích hợp với Windows
+
+*** .NET là gì?
+    - .Net Framework là một nền tảng mang tính cách mạng giúp bạn viết các kiểu ứng dụng: Windows application, Web application, Dịch vụ Web.
+    - Các ứng dụng .Net Framework là các ứng dụng đa nền tảng.
+    - .Net Framework gồm một thư viện code khổng lồ được sử dụng bởi các ngôn ngữ client
+    - Một số thành phần của .Net Framework:
+        + Common Language Runtime (CLR)
+        + .Net Framework Class Library
+        + Common Language Specification
+        + Common Type System
+        + Metadata và Assembly
+        + Windows Form
+        + ASP.Net và ASP.Net AJAX
+        + ADO.Net
+        + Windows Workflow Foundation (WF)
+        + Windows Presentation Foundation
+        + Windows Communication Foundation (WCF)
+        + LINQ
+
+    // sẽ có bài tìm hiểu kĩ hơn về .NET
+
+!!! Những điều cần lưu ý
+    - C# là phân biệt kiểu chữ (case sensitive).
+    - Tất cả lệnh và biểu thức phải kết thúc với một dấu chấm phảy (;).
+    - Sự thực thi chương trình bắt đầu tại phương thức Main.
+    - Không giống Java, tên file chương trình có thể khác tên lớp.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
