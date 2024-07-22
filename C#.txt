@@ -1252,7 +1252,7 @@
         => các đối tượng string sẽ có thêm phương thức Print
 
 ### Exception (ngoại lệ)
-    - goại lệ (exception) là vấn đề - lỗi phát sinh trong quá trình thực thi chương trình. Thường khi chương trình đang chạy mà phát sinh ngoại lệ (lỗi) thì dẫn đến chương trình kết thúc ngay lập tức.
+    - Ngoại lệ (exception) là vấn đề - lỗi phát sinh trong quá trình thực thi chương trình. Thường khi chương trình đang chạy mà phát sinh ngoại lệ (lỗi) thì dẫn đến chương trình kết thúc ngay lập tức.
     
     - Có vô số nguyên nhân để chương trình đang chạy mà phát sinh ngoại lệ:
         + Dữ liệu người dùng nhập sai, mà chương trình không kiểm soát được
@@ -1261,42 +1261,284 @@
         + Thiếu bộ nhớ
         + ...
 
-    - 
+    - Khi có một lỗi phát sinh hầu hết các lỗi đều có thể quản lý bởi thư viện C# thì nó sẽ phát sinh ra một đối tượng lớp Exeption (System.System) hoặc đối tượng lớp nào đó kế thừa từ Exception
+
+    - Khi một đối tượng lớp Exception sinh ra - mà chương trình không chủ động xử lý đối tượng này thì chương trình sẽ kết thúc
+
+    - Đối tượng lớp Exception chứa trong nó các thông tin về lỗi (dòng thông báo, nguyên nhân lỗi, nơi phát sinh lỗi ...)
+    
+    - Xử lý ngoại lệ
+        + xử lý ngoại lệ thì ta cần bắt lấy nó và điều hướng chương trình một cách thích hợp. Để bắt ngoại lệ ta sử dụng câu lệnh try catch: 
+            try {
+                // Các khối code được giám sát để bắt lỗi nếu có
+                // nếu có lỗi sẽ phát sinh ngoại lệ Exception
+                // Ngoại lệ này bắt lại được ở khối catch
+            }
+            catch (Exception loi)
+            {
+                // Khối này thực thi khi có lỗi - đối tượng Exception bắt được lưu ở biến loi
+            }
+
+        + Đoạn code nào muốn giám sát để bắt ngoại lệ - thì đưa vào khối try
+
+        + Nếu ngoại lệ xảy ra do code trong khối đó thì sẽ bắt được - chương trình sẽ không kết thúc mà lập tức chuyển sang khối catch
+
+        + Tại catch có ngay đối tượng lớp Exception - cần xử lý theo logic ứng dụng điều hướng chương trình một cách thích hợp ở đây
+
+            static void Main(string[] args)
+            {
+                try {
+                    // khối này được giám sát để bắt lỗi - khi nó phát sinh
+                    int[] mynumbers = new int[] {1,2,3};
+                    int i = mynumbers[10];                  // dòng này phát sinh lỗi
+                    Console.WriteLine(i);                   // dòng này không được thực thi vì lỗi trên
+                }
+                catch (Exception loi)
+                {
+                    // khối này thực thi khi bắt được lỗi
+                    Console.WriteLine("Có lỗi rồi");
+                    Console.WriteLine(loi.Message);
+                }
+            }
+
+            => Có lỗi rồi
+            => Index was outside the bounds of the array.
+
+        + Trong .NET từ lớp cơ sở Exception nó xây dựng nên rất nhiều loại ngoại lệ khác phục vụ chi tiết cho từng loại lỗi phát sinh khác nhau. Có thể bắt nhiều ngoại lệ.
+
+        + Để bắt cụ thể một loại ngoại lệ nào đó chỉ việc thêm một khối catch tương ứng với ngoại lệ đó
+
+        + Trong lệnh try ... catch, có thể thêm một tùy chọn là khối finally, code trong khối này được thực thi ngay cả khi có phát sinh ngoại lệ hay không.
+            int x = 10;
+            int y = 0;
+            int z = 0;
+            try {
+                z = x / y;
+            }
+            catch (DivideByZeroException e1) {
+                Console.WriteLine(e1.Message);
+            }
+            finally {
+                // Luôn được thi hành dù có phát sinh ngoại lệ hay không
+                Console.WriteLine(z);
+            }
+        
+        !!! Khối finally cơ bản để giải phóng các tài nguyên chiếm giữ.
+
+    - Thuộc tính (hay dùng)
+        + Message : chuỗi chứa nội dung thông báo lỗi
+        + StackTrace : chuỗi chứa các bước thực thi chương trình cho đến khi bị lỗi (có chứa các phương thức, hàm khi thực thi gây lỗi, vị trí file lỗi ...)
+        + Source : chứa tên ứng dụng hoặc đối tượng bị lỗi   
+
+    - Phát sinh ngoại lệ 
+        + Nếu muốn phát sinh ngoại lệ cho biết có một lỗi nào đó vừa xảy ra thì cần tạo ra một đối tượng lớp Exception hoặc đối tượng thuộc lớp nào đó kế thừa từ Exception, sau đó phát sinh bằng lệnh throw
+            public static double Thuong(double x, double y) {
+                if (y == 0) {
+                    // Khởi tạo ngoại lệ, tham số là thông báo lỗi
+                    Exception myexception = new Exception("Số chia không được bằng 0");
+
+                    // phát sinh ngoại lệ, code phía sau throw không được thực thi
+                    throw myexception;
+                }
+                return x / y;
+            }
+            static void Main(string[] args) {
+                try {
+                    double z = Thuong(100,0);
+                }
+                catch (Exception e) {
+                    Console.WriteLine(e.Message);
+                }
+            }
+
+    - Lớp Exeption riêng
+        + Nếu muốn tạo ra các lớp để quẳng ra các lỗi khi cần thiết, thì chỉ việc kế thừa lớp Exception. Lợi ích việc tạo ra lớp riêng, nó giúp cho việc quản lý lỗi - gỡ rối tốt hơn.
+            public class DataTooLongExeption : Exception {
+                const string erroMessage = "Dữ liệu quá dài";
+                public DataTooLongExeption() : base(erroMessage) {
+                }
+            }
+
+### Collection
+    - Một collection (bộ, tập hợp) là một nhóm các đối tượng có sự liên quan đến nhau. Số đối tượng trong collect có thể thay đổi tăng giảm.
+
+    - Có nhiều loại collection, chúng được tập hợp vào namespace System.Collections. Thường thì một lớp collection có các phương thức để thêm, bớt, lấy tổng phần tử.
+
+    - Các lớp collection kiểu Generic như: List<T>, Dictionary<TKey, TValue>, Stack<T> ... những lớp generic này ở namespace System.Collections.Generic
+
+    - Các lớp collection mà không sử dụng generic như: ArrayList, Stack, Queue ...
+
+    - Interface về collect
+        | IEnumerable<T>	                | Triển khai nó nếu muốn duyệt phần tử bằng foreach, nó định nghĩa phương thức GetEnumerator trả về một enumerator.                              |
+        | ICollection<T>	                | Giao diện này được triển khai bở các generic collection. Với nó lấy tổng phần tử bằng thuộc tính Count, copy các phần tử vào mảng bằng CopyTo, |
+        |                                   | thêm bớt phần tử với Add, Remove, Clear                                                                                                        |
+        | IList<T>	                        | Giao diện này kế thừa ICollection<T> là một danh sách các phần tử truy cập được theo vị trí của nó. Nó có indexer, phương thức để chèn phần tử |
+        |                                   | xóa phần tử Insert RemoveAt.                                                                                                                   |
+        | ISet<T>	                        | Giao diện triển khai bởi các tập hợp                                                                                                           |
+        | IDictionary<TKey,TValue>	        | Giao diện để triển khai loại dữ liệu lưu trữ theo cặp key, value.                                                                              |
+        | ILookup<TKey,TValue>	            | Giao diện để triển khai loại dữ liệu lưu trữ theo cặp key, value. Nhưng cho phép một key có nhiều giá trị                                      |
+        | IComparer<TKey,TValue>	        | Giao diện để triển khai cho phép so sánh để sắp xếp Collection                                                                                 |
+        | IEqualityComparer<TKey,TValue>	| Giao diện để triển khai cho phép so sánh bằng                                                                                                  |
+
+### List<T>
+    - Lớp collection List là lớp triển khai các giao diện IList, ICollection, IEnumerable nó quản lý danh sách các đối tượng cùng kiểu.
+  
+    - Ví dụ, xây dựng danh sách các sản phẩm, sản phẩm có kiểu Product tự định nghĩa như sau - lớp sản phẩm hỗ trợ so sánh với sản phẩm khác nên triển khai IComparable, cho phép hiện lấy một chuỗi thông tin bằng ToString với định dạng nào đó nên triển khai giao diện IFormattable
+        using System;
+        namespace CS017_Generic
+        {
+            public class Product : IComparable<Product>, IFormattable
+            {
+                public int ID {set; get;}
+                public string Name {set; get;}        // tên
+                public double Price {set; get;}       // giá
+                public string Origin {set; get;}      // xuất xứ
+
+                public Product(int id, string name, double price, string origin) {
+                    ID = id; Name = name; Price = price; Origin = origin;
+                }
+
+                //Triển khai IComparable, cho biết vị trí sắp xếp so với đối tượng khác
+                // trả về 0 - cùng vị trí; trả về > 0 đứng sau other; < 0 đứng trước trong danh sách
+                public int CompareTo(Product other)
+                {
+                    // sắp xếp về giá
+                    double delta = this.Price - other.Price;
+                    if (delta > 0)      // giá lớn hơn xếp trước
+                        return -1;
+                    else if (delta < 0) // xếp sau, giá nhỏ hơn
+                        return 1;
+                    return 0;
+
+                }
+
+                // Triển khai IFormattable, lấy chuỗi thông tin của đối tượng theo định dạng
+                // format hỗ trợ "O" và "N"
+                public string ToString(string format, IFormatProvider formatProvider)
+                {
+                    if (format == null) format = "O";
+                    switch (format.ToUpper()) {
+                        case "O": // Xuất xứ trước
+                            return $"Xuất xứ: {Origin} - Tên: {Name} - Giá: {Price} - ID: {ID}";
+                        case "N": // Tên xứ trước
+                            return $"Tên: {Name} - Xuất xứ: {Origin} - Giá: {Price} - ID: {ID}";
+                        default: // Quăng lỗi nếu format sai
+                            throw new FormatException("Không hỗ trợ format này");
+                    }
+                }
+
+                // Nạp chồng ToString
+                override public string ToString() => $"{Name} - {Price}";
+
+                // Quá tải thêm ToString - lấy chỗi thông tin sản phẩm theo định dạng
+                public string ToString(string format) => this.ToString(format, null);
+            }
+        }
+
+    - Khởi tạo 
+        + Để khởi tạo một danh sách rỗng, dùng toán tử new
+            var numbers  = new List<int>();           // danh sách số nguyên
+            var products = new List<Product>();       // danh sách Product
+
+        + Khởi tạo danh sách có sẵn một số phần tử, thì các phần tử liệt kê sau {}
+            var numbers  = new List<int>() {1,2,3,4};     // khởi tạo 4 phần tử
+            var products = new List<Product>()            // khởi tạo 1 phần tử
+            {
+                 new Product(1, "Iphone 6", 100, "Trung Quốc")
+            };
+
+    - Thêm (thêm vào cuối)
+        + Thêm 1 phần tử, dùng Add
+            var p = new Product(2, "IPhone 7", 200, "Trung Quốc");
+            products.Add(p);                                                // Thêm p vào cuối List
+            products.Add(new Product(3, "IPhone 8", 400, "Trung Quốc"));    // thêm đối tượng mới vào cuối List
+
+        + Thêm nhiều phần tử một lúc (mảng các phần tử), dùng AddRange
+            var arrayProducts = new Product[]                  // Mảng 2 phần tử
+            {
+                new Product(4, "Glaxy 7", 500, "Việt Nam"),
+                new Product(5, "Glaxy 8", 700, "Việt Nam"),
+            };
+            products.AddRange(arrayProducts);                   // Nối các phần tử của mảng vào danh sách
+
+    - Chèn 
+        + Chèn thêm 1 hoặc nhiều phần tử vào vị trí bất kì, dùng Insert(index, object) hoặc InsertRange(index, arrayObject)
+            products.Insert(3, new Product(6, "Macbook Pro", 1000, "Mỹ"));     // chèn phần tử vào vị trí index 3, (thứ 4)
+
+    - Đọc
+        + Đọc 1 phần tử, dùng indexer
+            var pro = products[2];                                             // đọc phần tử có index = 2
+            Console.WriteLine(pro.ToString());  
+
+        + Đọc nhiều phần tử (duyệt danh sách), dùng for - foreach
+            // products.Count = lấy tổng phần tử trong List
+            for (int i = 1; i < products.Count; i++)
+            {
+                var pi = products[i - 1];
+                Console.WriteLine(pi.ToString());
+            }
+
+            // Duyệt qua các phần tử bằng foreach
+            foreach (var pi in products)
+            {
+                Console.WriteLine(pi.ToString());
+            }
+
+    - Xóa
+        | Remove(index)             | Xóa 1 phần tử                                      |
+        | RemoveRange(index, count) | Xóa nhiều phần tử                                  |
+        | RemoveAll() hoặc Clear()  | Xóa toàn bộ danh sách                              |
+        | Remove(object)            | Xóa 1 phần tử có tham chiếu cụ thể trong danh sách |
+
+    - Tìm kiếm
+        | IndexOf(obj)	     | Tìm index của đối tượng trong List                             |
+        | LastIndexOf(obj)	 | Tìm index của phần tử cuối cùng có giá trị bằng obj trong List |
+        | FindIndex	         | Tìm kiếm trả về Index                                          |
+        | FindLastIndex	     | Tìm kiếm trả về Index cuối                                     |
+        | Find(Predicate)	 | Tìm kiếm trả về phần tử                                        |
+        | FindAll(Predicate) | Tìm kiếm trả về danh sách phần tử                              |
+        | FindLast	         | Tìm kiếm trả về phần tử cuối tìm thấy                          |
+    
+        + Tham số Predicate truyền vào Find, FindAll là delegate bool Predicate<in T>(T obj) trả về true là phần tử phù hợp trả về
+            // Delegate trả về true khi tên bằng "Glaxy 8"
+            (Product ob) => {
+                return (ob.Name == "Glaxy 8");
+            }
+
+            Product foundpr1 = products.Find(
+                (Product ob) => { return (ob.Name == "Glaxy 8");}
+            );
+            if (foundpr1 != null)
+                Console.WriteLine("(found) " + foundpr1.ToString("O"));
+            // (found) Xuất xứ: Việt Nam - Tên: Glaxy 8 - Giá: 700 - ID: 5
+
+            // tìm index của đối tượng có xuất xứ là "Trung Quốc"
+            var ifound = products.FindIndex(x => x.Origin == "Trung Quốc");
+
+            // tìm các sản phẩm có giá trên 100
+            List<Product> p_100 = products.FindAll(product => product.Price > 100)
+
+        + Muốn tùy biến cao hơn Delegate, để tìm kiếm theo tham số tùy chọn, có thể để Delegate trên vào lớp chức năng
+            public class SearchNameProduct {
+                string namesearch;
+                public SearchNameProduct(string name) {
+                    namesearch = name;
+                }
+                // Hàm gán cho delegage
+                public bool search(Product p) {
+                    return p.Name == namesearch;
+                }
+            }
+
+            // Sử dụng
+            Product pr1 = products.Find( (new SearchNameProduct("Glaxy 8")).search);        // Tìm sản phẩm có tên Glaxy 8
+            Product pr2 = products.Find( (new SearchNameProduct("IPhone 6")).search);       // Tìm sản phẩm có tên IPhone 6
+
+    - Sắp xếp
+    
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-### Tổng kết (1 số lưu ý rút gọn)
+### Tổng kết (ý hiểu cá nhân)
     - Các tính chất OOP
         + Inheritance (kế thừa) : Các đọan code trùng lặp về tính năng, chức năng được tái sử lại thông qua việc kế thừa giữa các lớp. Tính kế thừa giúp giảm số lượng code trùng lặp, dễ thực 
         hiện việc quản lý, bảo trì, phát triển và sửa đổi. (Kế thừa giữa các lớp)

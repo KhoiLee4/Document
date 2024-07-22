@@ -344,7 +344,6 @@
 
 ### Deploy web bằng github (cập nhật sau)
 
-
 ### Thay đổi tài khoản trong Git ở local
 	- Vào Credential Manager
 	- Remove kết nối cũ
@@ -389,4 +388,4 @@
 	- Tạo 1 repsitory trùng với tên user
 	- Dùng file README.md để trang trí
 
-
+### Git ignore
