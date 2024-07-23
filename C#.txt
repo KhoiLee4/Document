@@ -48,6 +48,82 @@
     - Sự thực thi chương trình bắt đầu tại phương thức Main.
     - Không giống Java, tên file chương trình có thể khác tên lớp.
 
+### Assembly
+    - Trong C#, một assembly là một đơn vị logic của ứng dụng .NET và là khối xây dựng cơ bản của ứng dụng .NET
+
+    - Assembly bao gồm các tệp thực thi (EXE) hoặc thư viện (DLL) và chứa mã, tài nguyên, và metadata cần thiết để chạy chương trình
+
+    - Có 2 loại 
+        + Executable Assembly (EXE): Đây là các tệp thực thi được sử dụng để chạy các ứng dụng độc lập.
+        
+        + Library Assembly (DLL): Đây là các thư viện chứa mã dùng chung mà các ứng dụng khác có thể tham chiếu và sử dụng.
+
+    - Thành phần
+        + Metadata: Metadata cung cấp thông tin về các kiểu dữ liệu, thành viên, tham số, và các thông tin khác trong assembly. Metadata cho phép kiểm tra kiểu thời gian chạy, 
+        ánh xạ, và nhiều tính năng khác.
+        
+        + Intermediate Language (IL): IL là mã trung gian mà mã nguồn C# được biên dịch thành. Khi chương trình được thực thi, IL được biên dịch thành mã máy cụ thể của nền tảng.
+        
+        + Manifest: Manifest là một phần của metadata chứa thông tin về assembly, như tên, phiên bản, văn hóa (culture), và danh sách các tệp khác (nếu có).
+        
+        + Resources: Các tài nguyên như hình ảnh, chuỗi văn bản, và các tệp khác có thể được đóng gói trong assembly
+
+    - Tác dụng
+        + Isolation and Versioning: Assembly giúp cô lập mã và tài nguyên, giúp quản lý phiên bản dễ dàng hơn.
+        
+        + Deployment: Assembly giúp đơn giản hóa quá trình triển khai bằng cách đóng gói tất cả các thành phần của ứng dụng vào một đơn vị duy nhất.
+        
+        + Security: Assembly có thể được ký số để đảm bảo tính toàn vẹn và tính xác thực của mã.
+        
+        + Reusability: Các thư viện trong dạng assembly (DLL) có thể được tái sử dụng bởi các ứng dụng khác, giúp giảm thiểu việc viết lại mã.
+
+    - Ví dụ
+        + Giả sử chúng ta có một thư viện toán học được biên dịch thành một assembly (MathLibrary.dll)
+            // File: MathLibrary.cs
+            namespace MathLibrary
+            {
+                public class Calculator
+                {
+                    public int Add(int a, int b)
+                    {
+                        return a + b;
+                    }
+
+                    internal int Subtract(int a, int b)
+                    {
+                        return a - b;
+                    }
+                }
+            }
+
+        + Assembly này có thể được sử dụng trong một ứng dụng khác
+            // File: Program.cs
+            using MathLibrary;
+
+            class Program
+            {
+                static void Main()
+                {
+                    Calculator calc = new Calculator();
+                    int sum = calc.Add(3, 4);
+                    Console.WriteLine("Sum: " + sum);
+
+                    // The following line would cause a compile error because Subtract is internal
+                    // int difference = calc.Subtract(10, 5);
+                }
+            }
+
+        + phương thức Add của lớp Calculator có thể được truy cập từ bất kỳ ứng dụng nào tham chiếu đến MathLibrary.dll
+
+        + phương thức Subtract chỉ có thể được truy cập từ bên trong cùng một assembly (MathLibrary.dll) do nó được khai báo là internal
+
+        // phạm vi truy cập internal sẽ được nhắc đến sau
+
+    !!! Phân biệt assembly, namespace, file .cs
+        + Một assembly không tương ứng trực tiếp với một namespace hay một file .cs duy nhất.
+        + Một assembly có thể chứa nhiều namespaces và nhiều file .cs, và mỗi namespace cũng có thể trải dài qua nhiều file .cs và nhiều assembly. 
+        + Assembly là một đơn vị triển khai, trong khi namespace là một cách tổ chức mã nguồn logic.
+
 ### Namespace 
     - Namespace là cách tổ chức nhóm code (các lớp, giao diện, cấu trúc ...) thành những nhóm, tạo ra phạm vi hoạt động của các thành phần trong nhóm. 
         namespace mynamespace {
@@ -526,6 +602,8 @@
             * internal : chỉ truy cập được trong cùng assembly (dll, exe)
             * protected internal: truy cập được khi cùng assembly hoặc lớp kế thừa
             * private protected: truy cập từ lớp chứa nó, lớp kế thừa nhưng phải cùng assembly
+
+        // Đọc thêm mục assembly
 
     - Khai báo và khởi tạo
         var ob1 = new ClassName();
@@ -1252,7 +1330,8 @@
         => các đối tượng string sẽ có thêm phương thức Print
 
 ### Exception (ngoại lệ)
-    - Ngoại lệ (exception) là vấn đề - lỗi phát sinh trong quá trình thực thi chương trình. Thường khi chương trình đang chạy mà phát sinh ngoại lệ (lỗi) thì dẫn đến chương trình kết thúc ngay lập tức.
+    - Ngoại lệ (exception) là vấn đề - lỗi phát sinh trong quá trình thực thi chương trình. Thường khi chương trình đang chạy mà phát sinh ngoại lệ (lỗi) thì dẫn đến chương trình 
+    kết thúc ngay lập tức.
     
     - Có vô số nguyên nhân để chương trình đang chạy mà phát sinh ngoại lệ:
         + Dữ liệu người dùng nhập sai, mà chương trình không kiểm soát được
@@ -1261,7 +1340,8 @@
         + Thiếu bộ nhớ
         + ...
 
-    - Khi có một lỗi phát sinh hầu hết các lỗi đều có thể quản lý bởi thư viện C# thì nó sẽ phát sinh ra một đối tượng lớp Exeption (System.System) hoặc đối tượng lớp nào đó kế thừa từ Exception
+    - Khi có một lỗi phát sinh hầu hết các lỗi đều có thể quản lý bởi thư viện C# thì nó sẽ phát sinh ra một đối tượng lớp Exeption (System.System) hoặc đối tượng lớp nào đó 
+    kế thừa từ Exception
 
     - Khi một đối tượng lớp Exception sinh ra - mà chương trình không chủ động xử lý đối tượng này thì chương trình sẽ kết thúc
 
@@ -1331,7 +1411,8 @@
         + Source : chứa tên ứng dụng hoặc đối tượng bị lỗi   
 
     - Phát sinh ngoại lệ 
-        + Nếu muốn phát sinh ngoại lệ cho biết có một lỗi nào đó vừa xảy ra thì cần tạo ra một đối tượng lớp Exception hoặc đối tượng thuộc lớp nào đó kế thừa từ Exception, sau đó phát sinh bằng lệnh throw
+        + Nếu muốn phát sinh ngoại lệ cho biết có một lỗi nào đó vừa xảy ra thì cần tạo ra một đối tượng lớp Exception hoặc đối tượng thuộc lớp nào đó kế thừa từ Exception, 
+        sau đó phát sinh bằng lệnh throw
             public static double Thuong(double x, double y) {
                 if (y == 0) {
                     // Khởi tạo ngoại lệ, tham số là thông báo lỗi
@@ -1383,7 +1464,8 @@
 ### List<T>
     - Lớp collection List là lớp triển khai các giao diện IList, ICollection, IEnumerable nó quản lý danh sách các đối tượng cùng kiểu.
   
-    - Ví dụ, xây dựng danh sách các sản phẩm, sản phẩm có kiểu Product tự định nghĩa như sau - lớp sản phẩm hỗ trợ so sánh với sản phẩm khác nên triển khai IComparable, cho phép hiện lấy một chuỗi thông tin bằng ToString với định dạng nào đó nên triển khai giao diện IFormattable
+    - Ví dụ, xây dựng danh sách các sản phẩm, sản phẩm có kiểu Product tự định nghĩa như sau - lớp sản phẩm hỗ trợ so sánh với sản phẩm khác nên triển khai IComparable, 
+    cho phép hiện lấy một chuỗi thông tin bằng ToString với định dạng nào đó nên triển khai giao diện IFormattable
         using System;
         namespace CS017_Generic
         {
@@ -1535,7 +1617,537 @@
             Product pr2 = products.Find( (new SearchNameProduct("IPhone 6")).search);       // Tìm sản phẩm có tên IPhone 6
 
     - Sắp xếp
+        + Để sắp xếp các phần tử trong danh sách, nếu phần tử đó có triển khai giao diện IComparable thì chỉ việc gọi Sort() để có danh sách theo thứ tự.
+            products.Sort();
+
+        + Có thể tùy biến cách thức sắp xếp bằng cách cung cấp hàm callback dạng deleage hai tham số kiểu cùng với kiểu phần tử cho Search
+            products.Sort(
+                (p1, p2) => {
+                    if (p1.ID > p2.ID)
+                        return 1;
+                    else if (p1.ID == p2.ID)
+                        return  0;
+                    return   -1;
+                }
+            );
+
+        !!! Trả về > 0 thì phần tử hiện tại xếp sau phần tử tham số
+
+    - 1 số thuộc tính khác
+        | Contains(obj) | kiểm tra có chứa phần tử obj |
+        | Reverse()     | đảo thứ tự danh sách         |
+        | ToArray()     | copy các phần tử ra mảng     |
+
+### SortedList
+    - Lớp SortedList<TKey, TValue> sắp xếp dữ liệu dựa trên một key, kiểu đề làm key là bất kỳ.
+
+    - SortedList được định nghĩa ở namespace: System.Collections. Để sử dụng cần nạp
+        using System.Collections;
+        using System.Collections.Generic;
+
+    - Một đối tượng dữ liệu lưu vào SortedList dưới dạng cặp key/value, truy cập đến phần tử thông qua key hoặc thông qua vị trí (index) của dữ liệu trong danh sách
+
+    - Thuộc tính, phương thức
+        | Count	                | Thuộc tính cho biết số phần tử                          |
+        | [key]	                | Indexer truy cập đến phần tử có key                     |
+        | Keys	                | Thuộc tính là danh sách các key trong danh sách sắp xếp |
+        | Values	            | Thuộc tính lấy danh sách các giá trị trong danh sách    |
+        | Add(key, value)	    | Thêm một phần tử vào danh sách                          |
+        | Remove(key)	        | Xóa phần tử bằng key của nó                             |
+        | Clear()	            | Loại bỏ tất cả các phần tử khỏi danh sách               |
+        | ContainKey(key)	    | Kiểm tra có phần tử nào có khóa là key                  |
+        | ContainValue(value)	| Kiểm tra có phần tử nào có giá trị là value             |
+        | IndexOfKey(key)	    | Lấy chỉ số của phần tử có khóa là key                   |
+        | IndexOfValue(value)	| Lấy chỉ số của phần tử có giá trị là value              |
+
+        // Khởi tạo SortedList
+        var products = new SortedList<string, string> ();
+        products.Add ("Iphone 6", "P-IPHONE-6"); // Thêm vào phần tử mới (key, value)
+        products.Add ("Laptop Abc", "P-LAP");
+        products["Điện thoại Z"] = "P-DIENTHOAI"; // Thêm vào phần tử bằng Indexer
+        products["Tai nghe XXX"] = "P-TAI";       // Thêm vào phần tử bằng Indexer
+
+        // Duyệt qua các phần tử, mỗi phần tử lấy key/value lưu trong biến
+        // kiểu KeyValuePair
+        foreach (KeyValuePair<string, string> p in products) {
+            Console.WriteLine ($"    {p.Key} - {p.Value}");
+        } 
+        
+        // Đọc value khi biết key
+        string productName = "Tai nghe XXX";
+        Console.WriteLine ($"{productName} có mã là {products[productName]}");
+        
+        // Cập nhật giá trị vào phần tử theo key
+        products[productName] = "P-TAI-UPDATED";
+
+        // Duyệt qua các giá trị
+        foreach (var product_code in products.Values) {
+            Console.WriteLine ($"--- {product_code}");
+        } 
+
+        // Duyệt qua các key
+        foreach (var product_name in products.Keys) {
+            Console.WriteLine ($"... {product_name}");
+        } 
+
+### Queue
+    - Hàng đợi là mô hình FIFO (first in, first out - vào trước, ra trước hay đến trước được phục vụ trước)
+
+    - .NET cung cấp lớp Queue<T> để giả quyết giải thuật hàng đợi
+
+    - Thuộc tính, phương thức
+        | Count	    | Thuộc tính lấy tổng số phần tử trong hàng                                         |
+        | Enqueue	| vào xếp hàng - đưa phần tử vào cuối hàng đợi                                      |
+        | Dequeue	| đọc - và loại ngay phần tử ở đầu hàng đợi - lỗi nếu hàng đợi không có phần tử nào |
+        | Peek	    | đọc phần tử đầu hàng đợi                                                          |
+
+        Queue<string> hoso_canxuly = new Queue<string> ();
+
+        hoso_canxuly.Enqueue ("Hồ sơ A"); // Hồ sơ xếp thứ nhất trong hàng đợi
+        hoso_canxuly.Enqueue ("Hồ sơ B"); // Hồ sơ xếp thứ hai
+        hoso_canxuly.Enqueue ("Hồ sơ C");
+
+        // Lấy hồ sơ xếp trước xử lý  trước, cho đến hết
+        while (hoso_canxuly.Count > 0) {
+            var hs = hoso_canxuly.Dequeue();
+            Console.WriteLine($"Xử lý {hs}, còn lại {hoso_canxuly.Count}");
+        }
+
+        // Xử lý Hồ sơ A, còn lại 2
+        // Xử lý Hồ sơ B, còn lại 1
+        // Xử lý Hồ sơ C, còn lại 0
+
+### Stack
+    - Ngăn xếp là mô hình LIFO (last in, first out - vào sau thì ra trước)
+
+    - .NET nó cung cấp lớp Stack<T> để thực hiện giải thuật ngăn xếp
+
+    - Thuộc tính, phương thức
+        | Count	    | Thuộc tính lấy tổng số phần tử trong hàng     |
+        | Push	    | đẩy (thêm) một phần tử vào đỉnh stack         |
+        | Pop	    | đọc - xóa phần tử đỉnh stack                  |
+        | Peek	    | đọc phần tử đỉnh stack                        |
+        | Contains	| kiểm tra một phần tử có trong stack hay không |
+
+        Queue<string> hoso_canxuly = new Queue<string> ();
+
+        hoso_canxuly.Enqueue ("Hồ sơ A"); // Hồ sơ xếp thứ nhất trong hàng đợi
+        hoso_canxuly.Enqueue ("Hồ sơ B"); // Hồ sơ xếp thứ hai
+        hoso_canxuly.Enqueue ("Hồ sơ C");
+
+        // Lấy hồ sơ xếp trước xử lý  trước, cho đến hết
+        while (hoso_canxuly.Count > 0) {
+            var hs = hoso_canxuly.Dequeue();
+            Console.WriteLine($"Xử lý {hs}, còn lại {hoso_canxuly.Count}");
+        }
+
+        // Bốc dỡ Sản phẩm C / còn lại 2
+        // Bốc dỡ Sản phẩm B / còn lại 1
+        // Bốc dỡ Sản phẩm A / còn lại 0
+
+### LinkedList
+    - .NET cung cấp lớp LinkedList<T> là loại danh sách liên kết kép (từ đây gọi tắt là danh sách liên kết)
+
+    - Danh sách liên kết là một danh sách chứa các phần tử, mỗi phần tử trong loại danh sách này được gọi là một nút (Node). Mỗi nút ngoài dữ liệu của nút đó, nó sẽ gồm 
+    hai biến - một biến tham chiếu đến Node phía trước, một nút tham chiếu đến nút phía sau.
+
+    !!! Danh sách liên kết .NET sử dụng là loại danh sách liên kết đôi
+
+    - Thuộc tính, phương thức
+        | List	             | Thuộc tính - tham chiếu (trỏ) đến LinkedList                                         |
+        | Value	             | Thuộc tính - là dữ liệu của Node                                                     |
+        | Next	             | Thuộc tính - tham chiếu (trỏ) đến NÚT tiếp theo (phía sau) - null thì nó là nút cuối |
+        | Previous	         | Thuộc tính - tham chiếu (trỏ) đến NÚT phía trước - null thì nó là nút đầu tiên       |
+        | Count	             | Số nút trong danh sách                                                               |
+        | First	             | Nút đầu tiên của danh sách                                                           |
+        | Last	             | Nút đầu tiên của danh sách                                                           |
+        | AddFirst(T)	     | Chèn một nút có dữ liệu T vào đầu danh sách                                          |
+        | AddLast(T)	     | Chèn một nút có dữ liệu T vào cuối danh sách                                         |
+        | AddAfter(Node, T)	 | Chèn nút với dữ liệu T, vào sau nút Node (kiểu LinkedListNode)                       |
+        | AddBefore(Node, T) | Chèn nút với dữ liệu T, vào trước nút Node (kiểu LinkedListNode)                     |
+        | Clear()	         | Xóa toàn bộ danh sách                                                                |
+        | Contains(T)	     | Kiểm tra xem có nút với giá trị dữ liệu bằng T                                       |
+        | Remove(T)	         | Xóa nút có dữ liệu bằng T                                                            |
+        | RemoveFirst()	     | Xóa nút đầu tiên                                                                     |
+        | RemoveLast()	     | Xóa nút cuối cùng                                                                    |
+        | Find(T)	         | Tìm một nút                                                                          |
+
+        LinkedList<string> cacbaihoc = new  LinkedList<string>();
+
+        cacbaihoc.AddFirst("Bài học 3");   // thêm vào đầu danh sach
+        cacbaihoc.AddLast("Bài học 4");    // thêm vào cuối
+        cacbaihoc.AddFirst("Bài học 2");
+        cacbaihoc.AddFirst("Bài học 1");
+
+        // Lấy phần tử đầu tiên, sau đó duyệt đến cuối
+        LinkedListNode<string> node = cacbaihoc.First;
+        while (node != null) {
+            Console.WriteLine(node.Value);
+            node = node.Next;   // node gán bằng nút sau nó
+        }
+
+        // Lấy phần tử cuối cùng, sau đó duyệt về phần tử đầu  tiên
+        node = cacbaihoc.Last;
+        while (node != null) {
+            Console.WriteLine(node.Value);
+            node = node.Previous;   // node gán bằng nút phía trước nó
+        }
+
+### Dictionary - SortedDictionary
+    - Lớp Dictionary<Tkey,TValue> khá giống SortedList, Dictionary được thiết kế với mục đích tăng hiệu quả với tập dữ liệu lớn, phức tạp.
+
+    - Một đối tượng dữ liệu lưu vào Dictionary dưới dạng cặp key/value, truy cập đến phần tử thông qua key hoặc thông qua vị trí (index) của dữ liệu trong danh sách
+
+    - Thuộc tính, phương thức 
+        | Count	              | Thuộc tính cho biết số phần tử              |
+        | [key]	              | Indexer truy cập đến phần tử có key         |
+        | Keys	              | Thuộc tính là danh sách các key             |
+        | Values	          | Thuộc tính lấy danh sách các giá trị        |
+        | Add(key, value)	  | Thêm một phần tử vào Dictionary             |
+        | Remove(key)	      | Xóa phần tử bằng key của nó                 |
+        | Clear()	          | Loại bỏ tất cả các phần tử                  |
+        | ContainKey(key)	  | Kiểm tra có phần tử nào có khóa là key      |
+        | ContainValue(value) | Kiểm tra có phần tử nào có giá trị là value |
+
+        // Khởi tạo với 2 phần tử
+        Dictionary<string, int> sodem = new Dictionary<string, int>()
+        {
+            ["one"] = 1,
+            ["tow"] = 2,
+        };
+        // Thêm hoặc cập nhật
+        sodem["three"] = 3;
+
+        var keys = sodem.Keys;
+        foreach (var k in keys)
+        {
+            var value = sodem[k];
+            Console.WriteLine($"{k} = {value}");
+        }
+
+    - SortedDictionary
+        + Lớp SortedDictionary<Tkey,TValue> sử dụng, khai báo và khởi tạo ... giống như lớp Dictionary<Tkey,TValue>.
+        
+        + Nếu dùng SortedDictionary thì các các phần tử được lưu và sắp xếp theo key, thích hợp khi tăng tốc chèn, xóa, tìm kiếm theo key.
+
+### HashSet
+    - HashSet là tập hợp danh sách không cho phép trùng giá trị
+
+    - HashSet<T> khác với các collection khác là nó cung cấp cơ chế đơn giản nhất để lưu các giá trị, nó không chỉ mục thứ tự và các phần tử không sắp xếp theo thứ tự nào
+
+    - HashSet<T> cung cấp hiệu năng cao cho các tác vụ tìm kiếm, thêm vào, xóa bỏ ...
+
+    - Thuộc tính, phương thức
+        | Count	            | Thuộc tính cho biết số phần tử           |
+        | Add(T)	        | Thêm phần tử vào HashSet                 |
+        | Remove(T)	        | Xóa phần tử khỏi HashSet                 |
+        | Clear()	        | Xóa tất cả các phần tử                   |
+        | Contains(T)	    | Kiểm tra xem có phần tử trong HashSet    |
+        | IsSubsetOf(c)	    | Kiểm tra xem có là tập con của HashSet c |
+        | IsSupersetOf(c)	| Kiểm tra xem có chứa tập HashSet c       |
+        | UnionWith(c)	    | Hợp với tập HashSet c                    |
+        | IntersectWith(c)	| Giao với tập HashSet c                   |
+        | ExceptWith(c)	    | Loại bỏ hết các phần tử chung với c      |
+
+        HashSet>int< hashset1 = new HashSet>int<() {5,2,3,4};
+
+        Console.WriteLine($"Phần tử trong hashset1 {hashset1.Count}");
+        foreach (var v in hashset1)
+        {
+            Console.Write(v + " ");
+        }
+
+        HashSet>int< hashset2 = new HashSet>int<();
+        hashset2.Add(3);
+        hashset2.Add(4);
+        if (hashset1.IsSupersetOf(hashset2))
+            Console.WriteLine($"hashset1 là tập chứa hashset2");
+
+### ObservableCollection
+    - Lớp Generic ObservableCollection<T> là một tập hợp tương tự như List<T> ..., tức là nó mô tả một tập hợp dữ liệu có thể thay đổi số lượng bằng các phương thức quen thuộc như 
+    Add(), Remove(), Clear() ...
+
+    - ObservableCollection<T> cung cấp thêm sự kiện thông báo nhi số lượng phần tử thay đổi như thêm, bớt ...(nghĩa là giám sát được biến động phần tử).
+
+    - Các sự kiện event này có tên là CollectionChanged, trong tham số mà sự kiện gửi đến, e.Action có cho biết hành động thay đổi trên tập hợp là gì
+        using System;
+        using System.Collections;
+        using System.Collections.Generic;
+        using System.Collections.ObjectModel;
+        using System.Collections.Specialized;
+        namespace CS019_ObserableCollection
+        {
+            class Program
+            {
+                static void Main(string[] args)
+                {
+                    //Tạo tập hợp chứa các chuỗis
+                    ObservableCollection obs = new ObservableCollection();
+
+                    // Bắt sự kiện thi thay đổi obs
+                    obs.CollectionChanged += change;
+
+                    //Thay các phần tử tập hợp
+                    obs.Add("ZTest1");
+                    obs.Add("DTest2");
+                    obs.Add("ATest3");
+                    obs[2] = "AAAAA";
+
+                    obs.RemoveAt(1);
+                    obs.Clear();
+
+                }
+
+                // Phương thức nhận sự kiện CollectionChanged
+                private static void change(object sender, NotifyCollectionChangedEventArgs e)
+                {
+                    switch (e.Action)
+                    {
+                        case NotifyCollectionChangedAction.Add:
+                            foreach (String s in e.NewItems)
+                                Console.WriteLine($"Thêm :  {s}");
+                            break;
+
+                        case NotifyCollectionChangedAction.Reset:
+                            Console.WriteLine("Clear");
+                            break;
+
+                        case NotifyCollectionChangedAction.Remove:
+                            foreach (String s in e.OldItems)
+                                Console.WriteLine($"Remove :  {s}");
+                            break;
+                        case NotifyCollectionChangedAction.Replace:
+                            Console.WriteLine("Repaced - " + e.NewItems[0]);
+                        break;
+                    }
+                }
+            }
+        }
+
+    - Ứng dụng của ObservableCollection trong WPF rất phổ biến khi binding với một controller như TreeView, ListView, DataGrid ... Khi đó việc thay đổi số phần tử trong tập hợp, 
+    thì hiện thị trong các controller cũng tự thêm / bớt ... theo
+
+    - Khi kết hợp dùng INotifyPropertyChanged để xây dựng phần tử trong tập hợp, thì thay đổi thuộc tính của phần tử cũng tự động cập nhật vào các controller
+
+    !!! Khi dùng ObservableCollection làm ItemSource cho các Controller trong WPF như TreeView, DataGrid ... thì nó đã tự động bắt các sự kiện CollectionChanged, PropertyChanged
+
+    // WPF sẽ được nói tới sau
+
+### IDisposable
+    - Trong thư viện .NET đưa ra một giao diện interface có tên là IDisposable (System.IDisposable). Giao diện này chỉ có định nghĩa một phương thức:
+        public void Dispose ();
+
+    - Trong .NET hầu hết các loại tài nguyên là được quản lý bởi CLR của hệ thống .NET, nên các tài nguyên, đối tượng không còn tham chiếu đến nó sẽ tự động được CLR thu hồi (GC)
+
+    - Vẫn có những loại tài nguyên mà CLR .NET không quản lý được như:
+        + Mở file - stream
+        + Các kết nối mạng, kết nối đến CSDL ...
+        + Những vùng bộ nhớ không quản lý được, các font chữ ...
+
+    - Với những loại tài nguyên này, .NET không biết tự giải phóng nó thế nào, nên phải có một cơ chế chủ động làm việc này khi không còn dùng đến nữa.
+
+    - Mục đich code viết trong phương thức Dispose() là các thao tác để giải phóng các tài nguyên chiếm giữ - khi đối tượng bị hủy (cụ thể là các dữ liệu không được CLT quản lý)
+
+    - Khi một lớp nào đó, triển khai giao diện IDisposable thì có thể dùng với using
+        using (obj_1, obj_2 ... obj_n) {
+            //các câu lệnh trong Using
+        }
+
+        + các obj_1, obj_2 ... là các đối tượng của những lớp triển khai giao diện IDisposabe
+            class A : IDisposable {
+                bool resource = true;
+                public void Dispose() {
+                    Console.WriteLine("Phương thức này gọi tự động khi hết using");
+                    resource = false; // giải phóng tài nguyên
+                }
+            }
+            
+            // Sử dụng Using với lớp trên
+            using (var a = new A()) {
+                Console.WriteLine("Do something ...");
+            }
+
+            // Kết quả
+            Do something ...
+            Phương thức này gọi tự động khi hết using
+
+    !!! phương thức Dispose() sẽ tự động chạy khi hết using
+
+    - Khi sử dụng đối tượng triển khai IDisposable mà không dùng using, thì phải chủ động gọi thủ công Dispose khi tài nguyên không dùng đến
+
+    - Khi một lớp vừa có hàm hủy vừa có Dispose() - tức triển khai IDisposable là: thao tác giải phóng tài nguyên có thể thực hiện hai lần - một lần khi ra khỏi 
+    using - một lần đối tượng mất tham chiếu. Hoặc khi đối tượng chủ động gọi Dispose nhiều lần. Điều này có thể dẫn đến lỗi.
+
+    - Cách giải quyết là cần có biến lưu lại trạng thái cho biết Dispose đã được thi hành hay chưa.
+        public class WriteData : IDisposable {
+            // trường lưu trạng thái Dispose
+            private bool m_Disposed = false;
+
+            private StreamWriter stream;
+
+            public WriteData (string filename) {
+                stream = new StreamWriter (filename, true);
+            }
+
+            // Phương thức triển khai từ giao diện
+            public void Dispose () {
+                Dispose (true);
+                GC.SuppressFinalize (this);
+            }
+
+            // Nếu disposing = true -> Được thi hành do gọi trực tiếp (do Dispose gọi) tài nguyên managed, unmanaged được giải phóng
+            // nếu disposing = fale -> Được thi hành bởi phương thức hủy, chỉ cần giải phóng các tài nguyên unmanaged.
+            protected virtual void Dispose (bool disposing) {
+                if (!m_Disposed) {
+                    if (disposing) {
+                        // các đối tượng có Dispose gọi ở đây
+                        stream.Dispose();
+                    }
+
+                    // giải phóng các tài nguyên không quản lý được cửa lớp (unmanaged)
+                    m_Disposed = true;
+                }
+            }
+
+            ~WriteData () {
+                Dispose(false);
+            }
+        }
+
+### File
+    - DriveInfo (đọc thông tin ổ đĩa)
+        + Thư viện .NET cung cấp lớp DriveInfo tại namespace System.IO giúp đọc thông tin các ổ đĩa có trong hệ thống
+        
+        + Phương thức DriveInfo.GetDrives() trả về mảng gồm các đối tượng DriveInfo, mỗi đối tượng chứa thông tin về một ổ đĩa
+
+        + Thuộc tính 
+            | IsReady	         | true ổ đĩa ở trạng thái sẵn sàng (hoạt động) - ví dụ ổ đĩa CD nếu không có đĩa thì không sẵn sàng false |
+            | DriveType	         | kiểu ổ đĩa (System.IO.DriveType) : CDRom, Fixed, Network, NoRootDirectory, Ram, Removable, Unknown      |
+            | VolumeLabel	     | Nhãn đĩa                                                                                                |
+            | DriveFormat	     | Chuỗi cho biết định dạng đĩa: NTFS, FAT32, FAT, devfs ...                                               |
+            | AvailableFreeSpace | Số byte có hiệu lực còn trống (theo hạn ngạch người dùng)                                               |
+            | TotalFreeSpace	 | Số byte còn trống                                                                                       |
+            | TotalSize	         | Tổng số byte trên đĩa                                                                                   |
+
+    - Path (hỗ trợ làm việc với đường dẫn)
+        + Hỗ trợ quản lý, tạo các đường dẫn đến file, thư mục - nhất là hỗ trợ cross-platform (đa nền tảng) thì lớp tĩnh System.IO.Path chứa các phương thức (tĩnh) với mục đích đó
+
+        + Thuộc tính, phương thức
+            | Path.DirectorySeparatorChar | Thuộc tính chứa ký tự phân cách đường dẫn thư mục (\ trên Windows, / trên *nix)                                                  |
+            | Path.PathSeparator	      | Thuộc tính chứa ký tự phân chia thư mục trong biến môi trường                                                                    |
+            | Combine	                  | Kết hợp các chuỗi thành dường dẫn : var path = Path.Combine("home", "ReadMe.txt");    // "home/ReadMe.txt"                       |
+            | ChangeExtension	          | Thay đổi phần mở rộng của đường dẫn : var path = Path.ChangeExtension("/home/abc/ReadMe.txt", "md");    // "/home/abc/ReadMe.md" |
+            | GetDirectoryName	          | Lấy đường dẫn đến file (thư mục) : var path = Path.GetDirectoryName("/home/abc/zyz/ReadMe.txt");    // "/home/abc/zyz"           |
+            | GetExtension	              | Lấy phần mở rộng : var path = Path.GetExtension("/home/ReadMe.txt");    // ".txt"                                                |
+            | GetFileName	              | Lấy tên file : var path = Path.GetFileName("/home/abc/ReadMe.txt");    // "ReadMe.txt"                                           |
+            | GetFileNameWithoutExtension | Lấy tên file : var path = Path.GetFileNameWithoutExtension("/home/ReadMe.txt");    // "ReadMe"                                   |
+            | GetFullPath	              | Lấy đường dẫn đầy đủ - từ đường dẫn tương đối : var path = Path.GetFullPath("ReadMe.txt");                                       |
+            | GetPathRoot	              | Lấy gốc của đường dẫn                                                                                                            |
+            | GetRandomFileName	          | Tạo tên file ngẫu nhiên : var path = Path.GetRandomFileName();                                                                   |
+            | GetTempFileName	          | Tạo file duy nhất, rỗng : var path = Path.GetTempFileName();                                                                     |
+        
+        + Lấy đường dẫn đến một số thư mục đặc biệt của hệ thống dùng Environment.GetFolderPath
+            var path_mydoc = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+
+    - File
+        + Lớp System.IO.File cung cấp cho bạn cách thức đơn giản để làm việc với các tệp
+
+        + File.WriteAllText
+            * Tạo ra file mới (nếu đã có file thì bị ghi đè), ghi vào nó một nội dung text, rồi đóng file luôn
+                static void testWriteAllText () {
+                    var filename = "test.txt";
+                    string contentfile = "Xin chào! xuanthulab.net";
+
+                    // Lấy thư mục Document của User trên hệ thống
+                    var directory_mydoc = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+                    var fullpath = Path.Combine(directory_mydoc, filename);
+
+                    File.WriteAllText (filename, contentfile);
+                }
+
+        + File.AppendAllText
+            * Nối thêm nội dung vào nội dung có sẵn trong file thay vì ghi đè
+                static void testAppendAllText() {
+                    var filename = "test.txt";
+                    string contentfile = "\nXin chào! xuanthulab.net - " + DateTime.Now.ToString ();
+
+                    var directory_mydoc = Environment.GetFolderPath (Environment.SpecialFolder.MyDocuments);
+                    var fullpath = Path.Combine (directory_mydoc, filename);
+
+                    if (File.Exists (fullpath)) {
+                        // File đã tồn tại - nối thêm nội dung
+                        File.AppendAllText (fullpath, contentfile);
+                    } else {
+                        // tạo mới vì chưa tồn tại file
+                        File.WriteAllText (fullpath, contentfile);
+                    }
+                }
+
+        + File.ReadAllText : Đọc nội dung trong file
+        + File.Create(filename) : tạo file
+        + File.Delete(filename) : xóa file
+        + File.Exists(filename) : kiểm tra file có tồn tại
+        + File.Copy(path_src, path_des) : copy file
+        + File.Move(path_src, path_des) : di chuyển file
+
+    - Directory
+        + Lớp System.IO.Directory cung cấp các phương thức chuyên tương tác với các thư mục
+
+        + Phương thức
+            | Exists(path)	        | Kiểm tra xem thư mục có tồn tại (true) hay không (false)                      |
+            | CreateDirectory(path) | Tạo thư mục, trả về đối tượng System.IO.DirectoryInfo chứa thông tin thư mục. |
+            | Delete(path)	        | Xóa thư mục.                                                                  |
+            | GetFiles(path)	    | Lấy các file trong thư mục.                                                   |
+            | GetDirectories(path)  | Lấy các thư mục trong thư mục.                                                |
+            | Move(src, des)	    | Di chuyển thư mục.                                                            |
+
+        + Ví dụ đệ quy liệt kê tất cả các file, thư mục con trong một thư mục
+            static void ListFileDirectory(string path)
+            {
+                String[] directories = System.IO.Directory.GetDirectories(path);
+                String[] files = System.IO.Directory.GetFiles(path);
+                foreach (var file in files)
+                {
+                    Console.WriteLine(file);
+                }
+                foreach (var directory in directories)
+                {
+                    Console.WriteLine(directory);
+                    ListFileDirectory(directory); // Đệ quy
+                }
+            }
+
+### Stream
+    - Một luồng (stream) là một đối tượng được sử dụng để truyền dữ liệu
     
+    - Khi dữ liệu truyền từ các nguồn bên ngoài vào ứng dụng ta gọi đó là đọc stream
+    
+    - Khi dữ liệu truyền từ chương trình ra nguồn bên ngoài ta gọi nó là ghi stream
+
+    - Nguồn bên ngoài thường là các file, tuy nhiên tổng quát thì nó có thể từ nhiều loại như đọc/ghi dữ liệu thông qua một giao thức mạng để trao đổi dữ liệu với một máy remote khác
+
+    - Một số stream chỉ cho đọc, một số chỉ cho ghi, một số lại cho phép truy cập nhẫu nhiên chứ không chỉ truy cập tuần tự (cho phép thay đổi vị trí con trỏ đọc dữ liệu trong luồng)
+
+    - Lấy thông tin về stream - khi có đối tượng lớp System.IO.Stream có một số thuộc tính để tra cứu thông tin về stream
+
+    - Thuộc tính 
+        | CanRead	   | Cho biết stream hỗ trợ việc đọc hay không                                                      |
+        | CanWrite	   | Cho biết stream hỗ trợ việc ghi hay không                                                      |
+        | CanSeek	   | Cho biết stream hỗ trợ dịch chuyển con trỏ hay không                                           |
+        | CanTimeout   | Cho biết stream có đặt được time out                                                           |
+        | Length	   | Cho biết kích thước (byte) của stream                                                          |
+        | Position	   | Đọc hoặc thiết lập vị trí đọc (thiết lập thì stream phải hỗ trợ Seek)                          |
+        | ReadTimeout  | Đọc hoặc thiết lập giá trị (mili giây) danh cho tác vụ đọc stream trước khi time out phát sinh |
+        | WriteTimeout | Đọc hoặc thiết lập giá trị (mili giây) danh cho tác vụ ghi stream trước khi time out phát sinh |
+
+    - Phương thức
+        | ReadByte  | Đọc từng byte, trả về int (cast 1 byte) hoặc -1 nếu cuối file.                                                      |
+        | Read	    | Đọc một số byte, từ vị trí nào đó, kết quả đọc lưu vào mảng byte. Trả về số lượng byte đọc được, 0 nếu cuối stream. |
+        | WriteByte | Lưu 1 byte vào stream                                                                                               |
+        | Write	    | Lưu mảng bytes vào stream                                                                                           |
+        | Seek	    | Thiết lập vị trí trong stream                                                                                       |
+        | Flush	    | Giải phóng các bộ đêm                                                                                               |
+
 
 
 ### Tổng kết (ý hiểu cá nhân)
