@@ -2148,6 +2148,350 @@
         | Seek	    | Thiết lập vị trí trong stream                                                                                       |
         | Flush	    | Giải phóng các bộ đêm                                                                                               |
 
+### FileStream
+    - Lớp FileStream tạo ra các đối tượng để đọc và ghi dữ liệu ra file.
+
+    - Để tạo ra một stream file, để trao đổi dữ liệu cần 4 thông tin:
+        + path đường dẫn đến file
+
+        + mode kiểu liệt kê FileMode, nó cho biết bạn muốn mở file như thế nào, như:
+            FileMode.CreateNew : tạo file mới
+            FileMode.Create : tạo mới, nếu file đang có bị ghi đè
+            FileMode.Open : mở file đang tồn tại
+            FileMode.OpenOrCreate : mở file đang tồn tại, tạo mới nếu không có
+            FileMode.Truncate : mở file đang tồn tại và làm rỗng file
+            FileMode.Append : mở file đang tồn tại và tới cuối file, hoặc tạo mới
+        
+        + access kiểu liệt kê FileAccess, cho biết muốn truy cập file như thế nào
+            FileAccess.Read : chỉ đọc
+            FileAccess.Write : chỉ ghi
+            FileAccess.ReadWrite : đọc và ghi
+        
+        + share kiểu liệt kê FileShare, cho phép thiết lập chia sẻ truy cập file
+            FileShare.None : không chia sẻ - tiến trình khác truy cập file sẽ lỗi cho đến khi tiến trình mở file đóng nó lại.
+            FileShare.Read : cho tiến trình khác mở đọc file.
+            FileShare.Write : cho tiến trình khác mở ghi file.
+            FileShare.ReadWrite : cho tiến trình khác mở đọc ghi file.
+            FileShare.Delete : cho tiến trình khác xóa file.
+
+    - Lớp File hỗ trợ tạo FileStream. File.OpenRead(filename) tạo stream để đọc, File.OpenWrite(filename) tạo stream để ghi.
+
+    - Lấy thông tin về stream
+        + khi có đối tượng lớp System.IO.Stream có một số thuộc tính để tra cứu thông tin về stream
+            | Name          | Trả về đường dẫn của stream                                                                                                             |
+            | Length        | Khi được ghi đè trong lớp dẫn xuất, lấy chiều dài của dòng tính bằng byte                                                               |
+            | Position      | Khi được ghi đè trong lớp dẫn xuất, lấy hoặc đặt vị trí hiện tại trong dòng                                                             |
+            | CanRead       | Cho biết liệu dòng có hỗ trợ đọc hay không                                                                                              |
+            | CanWrite      | Cho biết liệu dòng có hỗ trợ ghi hay không                                                                                              |
+            | CanSeek       | Cho biết liệu dòng có hỗ trợ tìm kiếm (seeking) hay không, tức là liệu có thể đặt vị trí hiện tại trong dòng hay không                  |
+            | CanTimeout    | Cho biết liệu dòng có hỗ trợ timeout khi đọc và ghi hay không                                                                           |
+            | ReadTimeout   | Khi được ghi đè trong lớp dẫn xuất, lấy hoặc đặt khoảng thời gian (tính bằng mili giây) mà dòng sẽ cố gắng đọc trước khi timeout xảy ra |
+            | WriteTimeout  | Khi được ghi đè trong lớp dẫn xuất, lấy hoặc đặt khoảng thời gian (tính bằng mili giây) mà dòng sẽ cố gắng ghi trước khi timeout xảy ra |
+
+    - Encodeing file text (mã hóa file text)
+        + Khi đọc các file text (không phải file nhị phân), đầu tiên cần xác định encoding của nó (UTF8, Unicode, UTF32 ...)
+
+        + Thông tin về encoding được lưu ở vài byte đầu tiên của file nó gọi là BOM - Preamble
+        // BOM (byte order mark) sẽ được tìm hiểu trong ExpandedKnowledge.txt
+
+        + Tùy thuộc vào giá trị của khoảng 5 byte đầu tiên này mà xác định được encoding.
+            public static Encoding GetEncoding (Stream stream) {
+                byte[] BOMBytes = new byte[4]; // mảng chứa 4 byte để làm bộ nhớ lưu byte đọc được
+                int offset = 0; // vị trí (index) trong buffer - nơi ghi byte đầu tiên đọc được
+                int count = 4; // đọc 4 byte
+                int numberbyte = stream.Read (BOMBytes, offset, count); // bắt đầu đọc 4 đầu tiên lưu vào buffer
+
+                if (BOMBytes[0] == 0xfe && BOMBytes[1] == 0xff) {
+                    stream.Seek (2, SeekOrigin.Begin); // Di chuyển về vị trí bắt đầu của dữ liệu (đã trừ BOM)
+                    return Encoding.BigEndianUnicode;
+                }
+                if (BOMBytes[0] == 0xff && BOMBytes[1] == 0xfe) {
+                    stream.Seek (2, SeekOrigin.Begin); // Di chuyển về vị trí bắt đầu của dữ liệu (đã trừ BOM)
+                    return Encoding.Unicode;
+                }
+
+                if (BOMBytes[0] == 0xef && BOMBytes[1] == 0xbb && BOMBytes[2] == 0xbf) {
+                    stream.Seek (3, SeekOrigin.Begin);
+                    return Encoding.UTF8;
+                }
+                if (BOMBytes[0] == 0x2b && BOMBytes[1] == 0x2f && BOMBytes[2] == 0x76) {
+                    stream.Seek (3, SeekOrigin.Begin);
+                    return Encoding.UTF7;
+                }
+                if (BOMBytes[0] == 0xff && BOMBytes[1] == 0xfe && BOMBytes[2] == 0 && BOMBytes[3] == 0) {
+                    stream.Seek (4, SeekOrigin.Begin);
+                    return Encoding.UTF32;
+                }
+                if (BOMBytes[0] == 0 && BOMBytes[1] == 0 && BOMBytes[2] == 0xfe && BOMBytes[3] == 0xff) {
+                    stream.Seek (4, SeekOrigin.Begin);
+                    return Encoding.GetEncoding (12001);
+                }
+
+                stream.Seek (0, SeekOrigin.Begin);
+                return Encoding.Default;
+            }           
+
+        + ASCII dùng 7 bit biểu diễn các ký tự - đủ biểu diễn bảng chữ cái tiếng Anh (in hoa, thường, số ký tự đặc biệt) - 1 byte biểu diễn 1 ký tự
+
+        + UTF-16 dùng 2 byte biểu diễn 1 ký tự
+
+        + UTF-32 dùng 4 byte biểu diễn 1 ký tự
+
+        + UTF-8 (dùng nhiều ngày nay) - dùng biến để xác định bao nhiêu byte cho mỗi ký tự cụ thể - mỗi ký tự có thể từ 1 - 6 byte
+
+    - Ghi file text
+        + Ghi file text (tạo mới, ghi đè) - chọn file có Encoding UTF8
+
+        + Đầu tiên phải ghi các bytes BOM, lấy mảng bytes DOM bằng cách gọi encoding.GetPreamble()
+
+        + Sau đó chuyển chuỗi thành mảng bytes (đã encoding) - rồi lưu ra stream bằng Write
+            using (var stream = new FileStream( path:filepath, mode: FileMode.Create, access: FileAccess.Write, share: FileShare.None))
+            {
+                //Write BOM - UTF8
+                Encoding encoding = Encoding.UTF8;
+                byte[] bom = encoding.GetPreamble();
+                stream.Write(bom, 0, bom.Length);
+
+                string s1 = "Xin chào các bạn! \n";
+                string s2 = "Ví dụ - ghi file text bằng stream";
+
+                // Encode chuỗi - lưu vào mảng bytes
+                byte[] buffer = encoding.GetBytes(s1);
+                stream.Write(buffer, 0, buffer.Length);  // lưu vào stream
+
+                buffer = encoding.GetBytes(s2);
+                stream.Write(buffer, 0, buffer.Length);  // lưu vào stream
+            }
+
+    - Đọc file text
+        + Đầu tiên xác định Encoding của file text
+
+        + Sau đó đọc từng khối byte vào buffer (mảng byte), rồi thực hiện Encoding để xác định chuỗi
+            int SIZEBUFFER = 256;
+            using (var stream = new FileStream( path:filepath, mode: FileMode.Open, access: FileAccess.ReadWrite, share: FileShare.Read))
+            {
+                Encoding encoding = GetEncoding(stream);
+                Console.WriteLine(encoding.ToString());
+                byte[] buffer = new byte[SIZEBUFFER];
+                bool endread = false;
+                do
+                {
+                    int numberRead = stream.Read(buffer, 0, SIZEBUFFER);
+                    if (numberRead == 0) endread = true;
+                    if (numberRead < SIZEBUFFER)
+                    {
+                        Array.Clear(buffer, numberRead, SIZEBUFFER - numberRead);
+                    }
+                    string s = encoding.GetString(buffer, 0, numberRead);
+                    Console.WriteLine(s);
+                } while (!endread);
+            }
+
+    - Copy file text 
+        + Tạo 2 stream, một để đọc - một để lưu
+            int SIZEBUFFER = 5;   // tăng lên đọc sẽ nhanh
+            using (var streamwrite = File.OpenWrite(filepath_des))
+            using (var streamread = File.OpenRead(filepath_src))
+            {
+                byte[] buffer = new byte[SIZEBUFFER];
+                bool endread = false;
+                do
+                {
+                    int numberRead = streamread.Read(buffer, 0, SIZEBUFFER);
+                    if (numberRead == 0) endread = true;
+                    else {
+                        streamwrite.Write(buffer, 0, numberRead);
+                    }
+                } while (!endread);
+            }
+
+### LINQ (ngôn ngữ truy vấn tích hợp)
+    - LINQ (Language Integrated Query) - ngôn ngữ truy vấn tích hợp - tích hợp cú pháp truy vấn (gần giống các câu lệnh SQL) vào bên trong ngôn ngữ lập trình C#, 
+    cho C# khả năng truy cập các nguồn dữ liệu khác nhau (SQL Db, XML, List ...) với cùng cú pháp.
+
+    - LINQ hoạt động trên những kiểu tập hợp có khả năng duyệt qua
+
+    - Nguồn dữ liệu phục vụ cho LINQ, phải là các đối tượng lớp triển khai giao diện (interface) IEnumerable và IEnumerable<T> tức là các mảng, danh sách thuộc Collection
+
+    - Câu truy vấn LINQ thường bắt đầu bằng mệnh đề from và kết thúc bằng mệnh đề select hoặc group, giữa chúng là những mệnh đề where, orderby, join, let
+
+    - from in
+        + Mệnh đề from để xác định nguồn dữ liệu mà truy vấn sẽ thực hiện
+
+        + Nguồn dữ liệu là tập hợp những phần tử lưu trong đối tượng có kiểu lớp triển khai giao diện IEnumerable như mảng Array, List ...
+            from [biến chứa] in [nguồn dữ liệu]
+
+    - select
+        + Mệnh đề select chỉ ra các dữ liệu được lấy ra (xuất ra) của câu lệnh LINQ
+            var ketqua = from product in products
+            // trả về collection gồm các phần tử Product
+            select product;
+
+            // trả về một collection gồm các phần tử chuỗi
+            select product.Name;
+
+            // trả về những đối tượng phức tạp mà dữ liệu được trích xuất ra from ... in ... hay những dữ liệu do tính toán ...
+            select new {
+                ten = product.Name.ToUpper(),
+                mausac = string.Join(',', product.Colors)
+             };
+
+    - where
+        + Mệnh đề where để lọc dữ liệu, sau từ khóa where là biểu thức logic xác định các phần tử lọc ra
+            where product.Price == 500
+
+            where (product.Price >= 600 && product.Price < 700) || product.Name.StartsWith("Bàn")
+
+        + Trong một truy vấn có thể viết nhiều mệnh đề where
+            var ketqua = from product in products
+                where product.Price >= 500
+                where product.Name.StartsWith("Giường")
+                select product;
+
+    - from kết hợp
+        + Để lọc dữ liệu phức tạp hơn, có thể dùng From kết hợp để lọc phức tạp và chi tiết hơn
+            var ketqua = from product in products
+                from color in product.Colors   // product.Colors là 1 thuộc tính danh sách các màu sắc của 1 phần tử
+                where product.Price < 500
+                where color == "Vàng"
+                select product;
+
+    - orderby
+        + Mệnh đề orderby viết sau mệnh đề where nếu có, dùng để sắp xếp kết quả
+            orderby thuoctinh  // sắp xếp tăng dần
+            orderby thuoctinh descending  // sắp xếp giảm dần
+        
+        + Cũng có thể sắp xếp theo nhiều dữ liệu, viết cách nhau bởi ,
+            orderby thuoctinh1 descending, thuoctinh2, thuoctinh3 descending ...
+
+    - group by
+        + Mệnh đề group được dngf thay cho mệnh đề select
+        
+        + Trả về theo từng nhóm (nhóm lại theo trường dữ liệu nào đó), mỗi phần tử của cấu truy vấn trả về là kiểu IGrouping<TKey,TElement>, chứa các phần tử thuộc một nhóm
+            var ketqua = from product in products
+                where product.Price >=400 && product.Price <= 500
+                group product by product.Price;
+
+            // 400
+            //     Bàn trà - 400
+            //     Tranh treo - 400
+            // 500
+            //     Đèn trùm - 500
+            //     Giường ngủ - 500
+
+        + Sử dụng into để lưu tạm group trong truy vấn vào một biến, sau đó thi hành các mệnh đề khác trên biến tạm và dùng mệnh đề select để trả về kết quả
+            var ketqua = from product in products
+                where product.Price >=400 && product.Price <= 500
+                group product by product.Price into gr
+                orderby gr.Key descending
+                select gr;
+
+    - let
+        + let dùng để thêm biến vào LINQ, lưu kết quả của một biểu thức tính toán nào đó
+            let tenvien = biểu_thức
+
+            var ketqua = from product in products                  // các sản phẩm trong products
+             group product by product.Price into gr    // nhóm thành gr theo giá
+             let count = gr.Count()                    // số phần tử trong nhóm
+             select new {                              // trả về giá và số sản phầm có giá này
+                price = gr.Key,
+                number_product = count
+             };
+
+    - join
+        + join là thực hiện kết hợp hai nguồn dữ liệu lại với nhau để truy vấn thông tin
+
+        + Để kết nối, dùng mệnh đề join để chỉ ra nguồn (nguồn bên phải join) sẽ kết nối với nguồn của from (nguồn bên trái join), tiếp theo chỉ ra sự dàng buộc các phần tử bằng từ khóa on
+            var ketqua = from product in products
+                join brand in brands on product.Brand equals brand.ID
+                select new {
+                    name  = product.Name,
+                    brand = brand.Name,
+                    price = product.Price
+                };
+
+        !!! join trong C# là kiểu inner join (tức giá trị liên kết có ở cả 2 nguồn)
+        // Đọc thêm về join trong CTDL-SQL.txt
+
+        + Nếu muốn sử dụng join như kiểu left join có nghĩa nguồn bên trái lấy không phụ thuộc vào bên phải thì lấy thêm DefaultIfEmpty() của nguồn bên trái
+            var ketqua = from product in products
+                join brand in brands on product.Brand equals brand.ID into t
+                from brand in t.DefaultIfEmpty()
+                select new {
+                    name  = product.Name,
+                    brand = (brand == null) ? "NO-BRAND" : brand.Name,
+                    price = product.Price
+                };
+
+### Asynchronous
+    - Lập trình bất đồng bộ (asynchronous) là một cách thức mà khi gọi nó chạy ở chế độ nền (liên quan đến một tiến trình, task), trong khi đó tiến trình gọi nó không bị khóa - block
+
+    - Trong .NET có triển khai một số mô hình lập trình bất đồng bộ như Asynchronous pattern, mẫu bất đồng bộ theo sự kiện và theo tác vụ (TAP - task-based asynchronous pattern)
+    
+    - .NET có thư viện tên Task Parallel Library (TPL) - TPL giúp lập trình chạy song song (đa luồng) dễ dàng hơn. Trong C# đồng thời có thêm vào hai từ khóa là async và await, đây là hai từ khóa chính để sử dụng trong lập trình bất đồng bộ.
+
+    - synchronous 
+        + Bình thường, khi lập trình gọi một phương thức nào đó thì phương thức đó chạy và kết thúc thì các dòng code tiếp theo sau lời gọi phương thức đó mới được thực thi, đó là chạy đồng bộ, có nghĩa là thread gọi phương thức bị khóa lại cho đến khi phương thức kết thúc
+
+        + Việc khóa thread thực hiện hàm làm cho các dòng code tiếp theo phải chờ, nếu hàm đó thi hành mất nhiều thời gian (đặc biệt là các thao tác đọc stream - đọc file, kết nối web, kết nối CSDL ...) - trong khi tài nguyên vẫn đủ để làm các việc khác - thì chương trình vẫn cứ phải chờ phương thức trên kết thúc thì mới thi hành được tác vụ khác - đặt biệt là khi gọi phương thức trong các tiến trình UI, giao diện người dùng không tương tác được.
+
+        + Để giải quyết vấn đề này, chương trình vẫn thi hành được các tác vụ khác thì cần đến kỹ thuật lập trình bất đồng bộ (trước đây gọi là lập trình đa tiến trình, đa luồng)
+
+    - Task
+        + Lớp Task nó biểu thị tác vụ bất đồng bộ, từ đó ta chạy được code bất đồng bộ
+
+        + Nếu tác vụ bất đồng bộ đó thi hành xong có kiểu trả về thì dùng Task<T> với T là kiểu trả về
+            using System.Threading;
+            using System.Threading.Tasks;
+
+        + Để tạo ra một Task cần tham số là một hàm delegate ( Func hoặc Action)
+            // Nếu myfunc trả về kiểu T (tức là một Func)
+            Func<T> myfunc = () => {
+                // code ...
+                return ...;
+            };
+            Task<T> task = new  Task<T>(myfunc);
+
+            // object là đối tượng tham số truyền cho myfunc
+            Func<object, T> myfunc = (object thamso) => {
+                // code ...
+                return ...;
+            };
+            Task<T> task = new  Task<T>(myfunc, thamso);
+
+            // Nếu myfunc không trả về giá trị (tức là Action)
+            Action myfunc = () => {
+                // code ...
+            };
+            Task task = new  Task(myfunc);
+
+        + Start() : phương thức để chạy Task của đối tượng
+
+        + Result : thuộc tính kết quả trả về 
+
+        + Wait() : chờ cho task hoàn thành 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 ### Tổng kết (ý hiểu cá nhân)
