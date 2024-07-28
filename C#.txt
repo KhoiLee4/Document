@@ -2428,12 +2428,16 @@
 
     - Trong .NET có triển khai một số mô hình lập trình bất đồng bộ như Asynchronous pattern, mẫu bất đồng bộ theo sự kiện và theo tác vụ (TAP - task-based asynchronous pattern)
     
-    - .NET có thư viện tên Task Parallel Library (TPL) - TPL giúp lập trình chạy song song (đa luồng) dễ dàng hơn. Trong C# đồng thời có thêm vào hai từ khóa là async và await, đây là hai từ khóa chính để sử dụng trong lập trình bất đồng bộ.
+    - .NET có thư viện tên Task Parallel Library (TPL) - TPL giúp lập trình chạy song song (đa luồng) dễ dàng hơn. Trong C# đồng thời có thêm vào hai từ khóa là async và await, đây 
+    là hai từ khóa chính để sử dụng trong lập trình bất đồng bộ.
 
     - synchronous 
-        + Bình thường, khi lập trình gọi một phương thức nào đó thì phương thức đó chạy và kết thúc thì các dòng code tiếp theo sau lời gọi phương thức đó mới được thực thi, đó là chạy đồng bộ, có nghĩa là thread gọi phương thức bị khóa lại cho đến khi phương thức kết thúc
+        + Bình thường, khi lập trình gọi một phương thức nào đó thì phương thức đó chạy và kết thúc thì các dòng code tiếp theo sau lời gọi phương thức đó mới được thực thi, đó là 
+        chạy đồng bộ, có nghĩa là thread gọi phương thức bị khóa lại cho đến khi phương thức kết thúc
 
-        + Việc khóa thread thực hiện hàm làm cho các dòng code tiếp theo phải chờ, nếu hàm đó thi hành mất nhiều thời gian (đặc biệt là các thao tác đọc stream - đọc file, kết nối web, kết nối CSDL ...) - trong khi tài nguyên vẫn đủ để làm các việc khác - thì chương trình vẫn cứ phải chờ phương thức trên kết thúc thì mới thi hành được tác vụ khác - đặt biệt là khi gọi phương thức trong các tiến trình UI, giao diện người dùng không tương tác được.
+        + Việc khóa thread thực hiện hàm làm cho các dòng code tiếp theo phải chờ, nếu hàm đó thi hành mất nhiều thời gian (đặc biệt là các thao tác đọc stream - đọc file, kết nối 
+        web, kết nối CSDL ...) - trong khi tài nguyên vẫn đủ để làm các việc khác - thì chương trình vẫn cứ phải chờ phương thức trên kết thúc thì mới thi hành được tác vụ khác, 
+        đặt biệt là khi gọi phương thức trong các tiến trình UI, giao diện người dùng không tương tác được.
 
         + Để giải quyết vấn đề này, chương trình vẫn thi hành được các tác vụ khác thì cần đến kỹ thuật lập trình bất đồng bộ (trước đây gọi là lập trình đa tiến trình, đa luồng)
 
@@ -2471,25 +2475,35 @@
 
         + Wait() : chờ cho task hoàn thành 
 
+    - async, await
+        + Khi muốn lấy kết quả của Task, thì trả về thuộc tính Result. Nhưng điều này làm cho thread chạy Task bị khóa lại vì Result sẽ trả về khi Task hoàn thành. 
+        Điều này làm mất đi lợi ích đa luồng và bất đồng bộ
 
+        + Để có thể trả về ngay lập tức mà không khóa thread của Task đó lại thì dùng đến cặp từ khóa async và await
 
+        + Thêm vào khai báo tên hàm từ khóa async, nó cho trình biên dịch biết đây là hàm bất đồng bộ - khi gọi nó - nó trả về ngay lập tức
+            
+        + Trong thân của hàm, phải có đoạn code chờ task hoàn thành
+            public static async Task<T> async (thamso){
+                // code ...
+                await task;
+                // code ...
+            }
 
+        + code phía sau await chỉ được chạy khi Task chạy xong
 
+        !!! await phải dùng với Task và chỉ được viết trong hàm có khai báo async
 
+        !!! Có thể hình dung khi hàm được gọi để thực thi thì nó sẽ tạo ra thread (luồng) để thực thi các Task (hàm, công việc trong hàm), hàm main cũng có thread để chạy 
+        và đó là thread chính của chương trình. Trong chương trình đồng bộ thì các hàm cùng chạy trên 1 thread chính của hàm main (nói đúng hơn là thread chính bị chuyển 
+        hướng sang chạy thread của hàm được gọi), còn trong chương trình bất đồng bộ thì hàm nào chạy thread hàm đó.
 
+        + Khi khai báo hàm với async nến tránh dùng kiểu trả về void (dù được phép, không await được) mà hãy dùng Task nếu không có kiểu trả về hoặc Task<T> khi có kiểu trả về T
 
+        + Do 1 phương thức cũng là 1 task, nên có thể await ở 1 phương thức async khác thì phương thức đó cũng phải là async
 
-
-
-
-
-
-
-
-
-
-
-
+    - CancellationToken 
+        // bổ sung sau
 
 
 
