@@ -2578,6 +2578,49 @@
     - CancellationToken 
         // bổ sung sau
 
+### Multi thread sử dụng Parallel chạy song song
+    - Parallel
+        + Lớp Parallel thuộc namespace System.Threading.Tasks, nó trừu tượng hóa các thread, lớp này có phương thức tĩnh Parallel.For, Parallel.ForEach để thực hiện 
+        vòng lặp for và foreach để chạy song song các tác vụ
+
+        + Parallel.Invoke để thực hiện một Action có khả năng chạy song song
+
+    - Parallel.For 
+        + Parallel.For có nhiều quá tải
+            ParallelLoopResult result = Parallel.For(i1, i2, task);
+
+        + Vòng lặp chạy (biến chạy) từ số nguyên i1 đến i2, mỗi lần lặp nó sẽ thực hiện Action task, task là một delegate, kiểu Action<int> có nghĩa nó làm phương thức 
+        trả về void, có một tham số kiểu int, tham số này là biến chạy
+            Action<int> action = (int x) => {
+                // Doing somthing here ...
+            };
+
+        + result đối tượng lớp ParallelLoopResult trả về từ Paralell.For, thuộc tính ParallelLoopResult.IsCompleted cho biết vòng lặp đã được duyệt qua hết, tất cả các task đã khởi chạy.
+
+        + Lệnh Parallel.For khởi chạy song song nhiều tác vụ (thời điểm bắt đầu của mỗi tác vụ không giống nhau, có những tác vụ đã kết thúc thì tác vụ sau mới chạy, nó có thể 
+        phụ thuộc vào tài nguyên hệ thống RAM, CPU ...)
+
+        + Một task nó có chạy trên một thread nào đó (chứ không phải mỗi task một thread), một thread có thể sử dụng bởi nhiều task
+
+        + Bản thân vòng lặp Parallel.For, khi các Action chạy, mặc dù chúng chạy trên những Task và Thread, nhưng khi tất cả các Action hoàn hành thì vòng lặp mới hoàn thành. 
+        Dẫn đến Parallel.For khóa(block) thread gọi nó. Để không bị khóa, có thể chuyển các Action là async
+
+    - Parallel.ForEach
+        + Cũng giống với Parallel.For nhưng duyệt qua các Collection tương tự như vòng lặp foreach
+            ParallelLoopResult result = Parallel.ForEach(source, RunTask);
+
+        + Trong đó source là một Collection như mảng, List. RunTask là Action, có 1 tham số có kiểu giống kiểu phần tử trong source, giá trị tham số này là giá trị phần tử 
+        trong source trong mỗi vòng lặp
+
+    - Parallel.Invoke
+        + Với For và ForEach, thì các tác vụ định nghĩa trọng một Action, nhưng nếu muốn chạy song song nhiều loại Action (phương thức) một lúc thì dùng Paralell.Invoke
+            Parallel.Invoke(action1, action2, action3);
+
+    !!! Tóm lại Parallel là để chạy đa luồng nhiều action 
+        + For là duyệt các kiểu nguyên thủy truyền vào action
+        + ForEach là duyệt các kiểu collection truyền vào action
+        + Invoke là dùng cho danh sách các action khác nhau
+
 ### Type
     - Lớp Type dùng để biểu thị sự khai báo của: định nghĩa của lớp, mảng, enum, interface ...
         ob = new ...
@@ -3041,12 +3084,6 @@
 
     !!! Kỹ thuật DI với thư viện DependencyInjection ở trên là kiến thức rất quan trọng cần nắm vững, nó là cơ sở để học các các mô hình lập trình hiện đại, nhất là sau này 
     áp dụng với Asp.Net Core
-
-### Multi thread sử dụng parallel chạy song song
-    - Parallel
-        + Lớp Parallel thuộc namespace System.Threading.Tasks, nó trừu tượng hóa các thread, lớp này có phương thức tĩnh Parallel.For, Parallel.ForEach để thực hiện vòng lặp for và foreach để chạy song song các tác vụ
-
-        + Parallel.Invoke để thực hiện một Action có khả năng chạy song song
 
 
 
