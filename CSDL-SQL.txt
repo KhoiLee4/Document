@@ -377,220 +377,6 @@
                 \ Kết nối bằng (equi join) khi C là điều kiện so sánh bằng
                 \ Kết nối tự nhiên (natural join) kết quả của phép kết nối bằng bỏ bớt đi 1 cột giống nhau
 
-### Ngôn ngữ dữ liệu SQL (truy vấn dữ liệu)
-    - Bảng ~ quan hệ
-    
-    - Cột ~ thuộc tính
-    
-    - Dòng ~ bộ
-
-    !!! SQL không phân biệt chữ hoa hay chữ thường
-
-    - Kiểu dữ liệu
-        + Số (numeric): INTEGER, SMALLINT, NUMERIC, NUMERIC(p), NUMERIC(p,s), DECIMAL, DECIMAL(p), DECIMAL(p,s), REAL, DOUBLE PRECISION, FLOAT, FLOAT(p)
-        + Chuỗi ký tự (character string): CHARACTER, CHARACTER(n), CHARACTER VARYING(x)
-        + Chuỗi bit (bit string): BIT, BIT(x), BIT VARYING(x)
-        + Ngày giờ (datetime)
-            * DATE gồm ngày, tháng và năm
-            * TIME gồm giờ, phút và giây
-            * TIMESTAMP gồm ngày và giờ
-
-    - Toán tử 
-        + Các toán tử số học:
-            ^ (luỹ thừa),*(nhân),/ (chia), mod (phần dư), +(cộng), - (trừ)
-       
-        + Các toán tử luận lý:
-            not (phủ định), and (phép hội), or (phép tuyển)
-
-        + Các toán tử tập hợp:
-            * In (danh sách các giá trị),
-            * LIKE, NOT LIKE,
-            * union (phép hợp), intersect (phép giao), minus (phép trừ)
-
-        + Các toán tử so sánh :
-            =, <>, >, <, >=, <=
-
-    - SELECT
-        + SELECT distinct /*/ danh sách thuộc tính / <biểu thức>,... : Tên các cột cần được hiển thị trong kết quả truy vấn
-       
-        + Phát biểu Select với AS: Đặt lại tên Field khi hiển thị kết quả
-            <Tên cột của bảng> AS <tên mới>
-            !!! Nếu tên có chứa các ký tự đặc biệt và/hoặc khoảng trắng thì viết tên đó trong cặp dấu ngoặc vuông
-
-        + Phát biểu Select với TOP N: Cho phép lấy ra chỉ một số mẫu tin nào đó theo 1 tiêu chuẩn nhất định.
-            SELECT TOP 10 *
-
-        + Có thể dùng các phép toán số học +,-,*,/, ^,%, các hàm tính toán đối với các cột kiểu số trong mệnh đề SELECT
-            SELECT MaH, Slton*10
-
-    - FROM 
-        + FROM <danh sách các quan hệ>
-        !!! khi mệnh đề From chỉ ra từ hai quan hệ trở lên, nếu có một thuộc tính ở mệnh đề select là thuộc tính của nhiều hơn một quan hệ thì cần phải chỉ rõ thuộc tính đó thuộc về quan hệ nào 
-        theo cú pháp
-            tênquanhệ.tênthuộctính
-
-    - WHERE
-        + WHERE <biểu thức điều kiện>
-        + Biểu thức boolean xác định dòng nào sẽ được rút trích
-        + Nối các biểu thức: AND, OR, và NOT
-        + Phép toán: <, >, <=, >=, !=, =, LIKE và BETWEEN,...
-       
-        !!! Nếu điều kiện này chỉ liên quan đến một quan hệ thì gọi là điều kiện chọn, nếu điều kiện liên quan đến từ hai quan hệ trở lên thì gọi là điều kiện kết.
-
-        + Toán tử BETWEEN: nắm trong 1 miền
-            WHERE Slton Between 50 and 100
-
-        + Toán tử LIKE: phép toán so sánh gần giống, sử dụng dấu các ký tự đại diện như _ (1 ký tự), % (1 chuỗi bất kỳ)
-            WHERE diachi like ‘H%’
-
-        + Toán tử IN: phép toán so sánh trong 1 tập hợp, 1 danh sách
-            WHERE Diachi IN (‘Cần Thơ’, ‘An Giang’, ‘Kiên Giang’)
-
-    - ORDER BY
-        + ORDER BY <danh sách các cột> [ASC/DESC]
-        + Dùng để hiển thị kết quả câu truy vấn theo một thứ tự nào đó
-        + ASC: tăng (mặc định); DESC: giảm
-            ORDER BY MA_NVIEN DESC, SODA
-
-    - GROUP BY
-        + GROUP BY <tên cột 1>,<tên cột 2>,...
-    
-        + Dùng để nhóm các bản ghi có giá trị giống nhau trên các cột được liệt kê sau từ khóa GROUP BY.
-            Group By Sohd
-
-        + Một số hàm thông dụng tính toán trên nhóm bản ghi
-            * COUNT (*| <tên cột>): đếm số bản ghi có giá trị xác định tại cột được cho bởi <tên cột>
-            * SUM (<biểu thức>): tìm tổng giá trị các biểu thức
-            * MIN (<biểu thức>): tìm giá trị nhỏ nhất
-            * MAX (<biểu thức>): tìm giá trị lớn nhất
-            * AVG (<biểu thức>): tính giá trị trung bình của biểu thức dựa trên các bản ghi của các nhóm.
-
-    - HAVING 
-        + HAVING theo sau GROUP BY dùng để kiểm tra điều kiện nhóm. Nhóm nào thoả mãn điều kiện sau HAVING thì mới được hiển thị
-            Having count(MaKH) > 15
-
-        + Chỉ kiểm tra điều kiện trên nhóm, không là điều kiện lọc trên từng bộ
-        
-        + Dữ liệu được nhóm trước rồi mới kiểm tra điều kiện sau HAVING.
-            
-    !!! Thứ tự thực hiện câu truy vấn
-        FROM -> WHERE -> GROUP BY -> HAVING -> SELECT -> ORDER BY
-
-    - Truy vấn nhiều bảng
-        + Khi thông tin cần lấy ra có từ nhiều bảng khác nhau, cần thực hiện truy vấn từ nhiều bảng
-
-        !!! Lưu ý:
-            + Cần kết nối các bảng lại với nhau. Với n bảng cần có n-1 điều kiện liên kết.
-            + Các tên cột cùng có ở nhiều bảng cần ghi rõ theo dạng: [Tên Bảng].[Tên cột]
-
-        + Các bảng được liên kết với nhau qua phép kết nối của từ khóa FROM hoặc thông qua điều kiện của từ khóa WHERE của câu lệnh SELECT
-            * WHERE
-                \ WHERE Tenquanhe1.TTKN = Tenquanhe2.TTKN
-                    Where (KHACH.MaKH = HOADON.MaKH) and (year(NgayHD) = 2019)
-            
-            * FROM
-                \ Liên kết bảng với nhau qua phép kết nối của từ khóa FROM sử dụng phép kết nối nội Inner join:
-                \ Quanhe1 Inner join Quanhe2 On Quanhe1.TT1 = Quanhe2.TT2
-                    From KHACH Inner Join HOADON On KHACH.MaKH = HOADON.MaKH
-
-    - Truy vấn lồng
-        + Là những câu lệnh mà trong mệnh đề WHERE hoặc HAVING (thường là trong mệnh đề WHERE) có chứa thêm một câu lệnh Select khác nữa. 
-        
-        + Câu lệnh này thường gặp khi cần sử dụng kết quả của 1 câu truy vấn để làm điều kiện cho 1 câu truy vấn khác
-            
-            SELECT <danh sách các cột>
-            FROM <danh sách các bảng>
-            WHERE <so sánh tập hợp> (
-                SELECT <danh sách các cột>
-                FROM <danh sách các bảng>
-                WHERE <điều kiện>)
-
-        + Khi thực hiện, truy vấn con sẽ được thực hiện trước, rồi lấy kết quả để thực hiện truy vấn cha
-
-        + Câu truy vấn con thường trả về một tập các giá trị. Các câu lệnh SELECT có thể lồng nhau ở nhiều mức
-        
-        + Các câu truy vấn con trong cùng một mệnh đề WHERE được kết hợp bằng phép nối logic
-
-        + Mệnh đề WHERE của câu truy vấn cha
-            * <biểu thức> <so sánh tập hợp> <truy vấn con>
-
-            * So sánh tập hợp thường đi cùng với một số toán tử
-                \ IN, NOT IN
-                \ ALL
-                \ ANY hoặc SOME
-
-            * Kiểm tra sự tồn tại
-                \ EXISTS
-                \ NOT EXISTS
-
-    - Lệnh cập nhật
-        + INSERT (bổ sung bộ mới)
-            * Dùng để thêm 1 hay nhiều dòng vào bảng
-                INSERT INTO <tên bảng>(<danh sách các thuộc tính>)
-                VALUES (<danh sách các giá trị>)
-
-            !!! Nhận xét 
-                + Thứ tự các giá trị phải trùng với thứ tự các cột
-                + Có thể thêm giá trị NULL ở những thuộc tính không là khóa chính và NOT NULL
-        
-            * Dùng để thêm 1 danh sách vào bảng
-                INSERT INTO <tên bảng> [(<danh sách các thuộc tính>)]
-                    <câu truy vấn con>
-
-        + DELETE (xóa bộ)
-            * Dùng để xóa các dòng
-                DELETE FROM <tên bảng>
-                [WHERE <điều kiện>]
-
-            !!! Nhận xét 
-                + Số lượng số dòng bị xóa phụ thuộc vào điều kiện ở mệnh đề WHERE
-                + Nếu không chỉ định điều kiện ở mệnh đề WHERE, tất cả các dòng trong bảng sẽ bị xóa
-
-        + UPDATE
-            * Dùng để thay đổi giá trị của thuộc tính cho các dòng của bảng 
-                UPDATE <tên bảng>
-                SET <tên thuộc tính>=<giá trị mới>,
-                    <tên thuộc tính>=<giá trị mới>,
-                    ...
-                [WHERE <điều kiện>]
-
-            !!! Nhận xét
-                + Những dòng thỏa điều kiện tại mệnh đề WHERE sẽ được cập nhật giá trị mới
-                + Nếu không chỉ định điều kiện ở mệnh đề WHERE, tất cả các dòng trong bảng sẽ bị cập nhật
-
-    - Lệnh cấu trúc
-        + CREATE TABLE (tạo bảng)
-            * Cần có: Tên bảng, Tên thuộc tính, Kiểu dữ liệu, Các RBTV trên thuộc tính
-
-                CREATE TABLE <Tên_bảng> (
-                    <Tên_cột 1> <Kiểu_dữ_liệu> [<RBTV>],
-                    <Tên_cột 2> <Kiểu_dữ_liệu> [<RBTV>],
-                    ...
-                    [<RBTV>]
-                )
-            
-            * Ràng buộc toàn vẹn: NOT NULL, NULL, UNIQUE, DEFAULT, PRIMARY KEY, FOREIGN KEY / REFERENCES, CHECK
-                CONSTRAINT <Ten_RBTV> <RBTV> 
-                (đọc thêm trong mục ràng buộc toàn vẹn)
-            
-        + DROP TABLE (xóa bảng)
-            * Được dùng để xóa cấu trúc bảng, tất cả dữ liệu của bảng cũng bị xóa.
-                DROP TABLE <Tên_bảng>
-
-        + ALTER TABLE (sửa bảng)
-            * ADD (thêm cột) : cột chưa có trong bảng
-                ALTER TABLE <Tên_bảng> ADD <Tên_cột> <Kiểu_dữ_liệu> [<RBTV>]
-
-            * DROP (xóa cột)
-                ALTER TABLE <Tên_bảng> DROP COLUMN <Tên_cột>
-
-            * COLUMN (mở rộng cột) : cột đã có sẵn trong bảng
-                ALTER TABLE <Tên_bảng> ALTER COLUMN <Tên_cột> <Kiểu_dữ_liệu_mới>
-        
-        + CREATE DOMAIN (tạo miền giá trị)
-
-        + CREATE DATABASE 
-
 ### Ràng buộc toàn vẹn
     - Khái niệm
         + RBTV (Integrety Constraints) xuất phát từ những qui định hay điều kiện: Trong thực tế, Trong mô hình dữ liệu. Các thao tác làm thay đổi dữ liệu không nên được thực hiện một cách tùy tiện vì 
@@ -883,6 +669,219 @@
     - Dạng chuẩn Boyce–codd (BCNF)
 // bổ sung dạng chuẩn
 
+### Ngôn ngữ dữ liệu SQL (truy vấn dữ liệu)
+    - Bảng ~ quan hệ
+    
+    - Cột ~ thuộc tính
+    
+    - Dòng ~ bộ
+
+    !!! SQL không phân biệt chữ hoa hay chữ thường
+
+    - Kiểu dữ liệu
+        + Số (numeric): INTEGER, SMALLINT, NUMERIC, NUMERIC(p), NUMERIC(p,s), DECIMAL, DECIMAL(p), DECIMAL(p,s), REAL, DOUBLE PRECISION, FLOAT, FLOAT(p)
+        + Chuỗi ký tự (character string): CHARACTER, CHARACTER(n), CHARACTER VARYING(x)
+        + Chuỗi bit (bit string): BIT, BIT(x), BIT VARYING(x)
+        + Ngày giờ (datetime)
+            * DATE gồm ngày, tháng và năm
+            * TIME gồm giờ, phút và giây
+            * TIMESTAMP gồm ngày và giờ
+
+    - Toán tử 
+        + Các toán tử số học:
+            ^ (luỹ thừa),*(nhân),/ (chia), mod (phần dư), +(cộng), - (trừ)
+       
+        + Các toán tử luận lý:
+            not (phủ định), and (phép hội), or (phép tuyển)
+
+        + Các toán tử tập hợp:
+            * In (danh sách các giá trị),
+            * LIKE, NOT LIKE,
+            * union (phép hợp), intersect (phép giao), minus (phép trừ)
+
+        + Các toán tử so sánh :
+            =, <>, >, <, >=, <=
+
+    - SELECT
+        + SELECT distinct /*/ danh sách thuộc tính / <biểu thức>,... : Tên các cột cần được hiển thị trong kết quả truy vấn
+       
+        + Phát biểu Select với AS: Đặt lại tên Field khi hiển thị kết quả
+            <Tên cột của bảng> AS <tên mới>
+            !!! Nếu tên có chứa các ký tự đặc biệt và/hoặc khoảng trắng thì viết tên đó trong cặp dấu ngoặc vuông
+
+        + Phát biểu Select với TOP N: Cho phép lấy ra chỉ một số mẫu tin nào đó theo 1 tiêu chuẩn nhất định.
+            SELECT TOP 10 *
+
+        + Có thể dùng các phép toán số học +,-,*,/, ^,%, các hàm tính toán đối với các cột kiểu số trong mệnh đề SELECT
+            SELECT MaH, Slton*10
+
+    - FROM 
+        + FROM <danh sách các quan hệ>
+        !!! khi mệnh đề From chỉ ra từ hai quan hệ trở lên, nếu có một thuộc tính ở mệnh đề select là thuộc tính của nhiều hơn một quan hệ thì cần phải chỉ rõ thuộc tính đó thuộc về quan hệ nào 
+        theo cú pháp
+            tênquanhệ.tênthuộctính
+
+    - WHERE
+        + WHERE <biểu thức điều kiện>
+        + Biểu thức boolean xác định dòng nào sẽ được rút trích
+        + Nối các biểu thức: AND, OR, và NOT
+        + Phép toán: <, >, <=, >=, !=, =, LIKE và BETWEEN,...
+       
+        !!! Nếu điều kiện này chỉ liên quan đến một quan hệ thì gọi là điều kiện chọn, nếu điều kiện liên quan đến từ hai quan hệ trở lên thì gọi là điều kiện kết.
+
+        + Toán tử BETWEEN: nắm trong 1 miền
+            WHERE Slton Between 50 and 100
+
+        + Toán tử LIKE: phép toán so sánh gần giống, sử dụng dấu các ký tự đại diện như _ (1 ký tự), % (1 chuỗi bất kỳ)
+            WHERE diachi like ‘H%’
+
+        + Toán tử IN: phép toán so sánh trong 1 tập hợp, 1 danh sách
+            WHERE Diachi IN (‘Cần Thơ’, ‘An Giang’, ‘Kiên Giang’)
+
+    - ORDER BY
+        + ORDER BY <danh sách các cột> [ASC/DESC]
+        + Dùng để hiển thị kết quả câu truy vấn theo một thứ tự nào đó
+        + ASC: tăng (mặc định); DESC: giảm
+            ORDER BY MA_NVIEN DESC, SODA
+
+    - GROUP BY
+        + GROUP BY <tên cột 1>,<tên cột 2>,...
+    
+        + Dùng để nhóm các bản ghi có giá trị giống nhau trên các cột được liệt kê sau từ khóa GROUP BY.
+            Group By Sohd
+
+        + Một số hàm thông dụng tính toán trên nhóm bản ghi
+            * COUNT (*| <tên cột>): đếm số bản ghi có giá trị xác định tại cột được cho bởi <tên cột>
+            * SUM (<biểu thức>): tìm tổng giá trị các biểu thức
+            * MIN (<biểu thức>): tìm giá trị nhỏ nhất
+            * MAX (<biểu thức>): tìm giá trị lớn nhất
+            * AVG (<biểu thức>): tính giá trị trung bình của biểu thức dựa trên các bản ghi của các nhóm.
+
+    - HAVING 
+        + HAVING theo sau GROUP BY dùng để kiểm tra điều kiện nhóm. Nhóm nào thoả mãn điều kiện sau HAVING thì mới được hiển thị
+            Having count(MaKH) > 15
+
+        + Chỉ kiểm tra điều kiện trên nhóm, không là điều kiện lọc trên từng bộ
+        
+        + Dữ liệu được nhóm trước rồi mới kiểm tra điều kiện sau HAVING.
+            
+    !!! Thứ tự thực hiện câu truy vấn
+        FROM -> WHERE -> GROUP BY -> HAVING -> SELECT -> ORDER BY
+
+    - Truy vấn nhiều bảng
+        + Khi thông tin cần lấy ra có từ nhiều bảng khác nhau, cần thực hiện truy vấn từ nhiều bảng
+
+        !!! Lưu ý:
+            + Cần kết nối các bảng lại với nhau. Với n bảng cần có n-1 điều kiện liên kết.
+            + Các tên cột cùng có ở nhiều bảng cần ghi rõ theo dạng: [Tên Bảng].[Tên cột]
+
+        + Các bảng được liên kết với nhau qua phép kết nối của từ khóa FROM hoặc thông qua điều kiện của từ khóa WHERE của câu lệnh SELECT
+            * WHERE
+                \ WHERE Tenquanhe1.TTKN = Tenquanhe2.TTKN
+                    Where (KHACH.MaKH = HOADON.MaKH) and (year(NgayHD) = 2019)
+            
+            * FROM
+                \ Liên kết bảng với nhau qua phép kết nối của từ khóa FROM sử dụng phép kết nối nội Inner join:
+                \ Quanhe1 Inner join Quanhe2 On Quanhe1.TT1 = Quanhe2.TT2
+                    From KHACH Inner Join HOADON On KHACH.MaKH = HOADON.MaKH
+
+    - Truy vấn lồng
+        + Là những câu lệnh mà trong mệnh đề WHERE hoặc HAVING (thường là trong mệnh đề WHERE) có chứa thêm một câu lệnh Select khác nữa. 
+        
+        + Câu lệnh này thường gặp khi cần sử dụng kết quả của 1 câu truy vấn để làm điều kiện cho 1 câu truy vấn khác
+            
+            SELECT <danh sách các cột>
+            FROM <danh sách các bảng>
+            WHERE <so sánh tập hợp> (
+                SELECT <danh sách các cột>
+                FROM <danh sách các bảng>
+                WHERE <điều kiện>)
+
+        + Khi thực hiện, truy vấn con sẽ được thực hiện trước, rồi lấy kết quả để thực hiện truy vấn cha
+
+        + Câu truy vấn con thường trả về một tập các giá trị. Các câu lệnh SELECT có thể lồng nhau ở nhiều mức
+        
+        + Các câu truy vấn con trong cùng một mệnh đề WHERE được kết hợp bằng phép nối logic
+
+        + Mệnh đề WHERE của câu truy vấn cha
+            * <biểu thức> <so sánh tập hợp> <truy vấn con>
+
+            * So sánh tập hợp thường đi cùng với một số toán tử
+                \ IN, NOT IN
+                \ ALL
+                \ ANY hoặc SOME
+
+            * Kiểm tra sự tồn tại
+                \ EXISTS
+                \ NOT EXISTS
+
+    - Lệnh cập nhật
+        + INSERT (bổ sung bộ mới)
+            * Dùng để thêm 1 hay nhiều dòng vào bảng
+                INSERT INTO <tên bảng>(<danh sách các thuộc tính>)
+                VALUES (<danh sách các giá trị>)
+
+            !!! Nhận xét 
+                + Thứ tự các giá trị phải trùng với thứ tự các cột
+                + Có thể thêm giá trị NULL ở những thuộc tính không là khóa chính và NOT NULL
+        
+            * Dùng để thêm 1 danh sách vào bảng
+                INSERT INTO <tên bảng> [(<danh sách các thuộc tính>)]
+                    <câu truy vấn con>
+
+        + DELETE (xóa bộ)
+            * Dùng để xóa các dòng
+                DELETE FROM <tên bảng>
+                [WHERE <điều kiện>]
+
+            !!! Nhận xét 
+                + Số lượng số dòng bị xóa phụ thuộc vào điều kiện ở mệnh đề WHERE
+                + Nếu không chỉ định điều kiện ở mệnh đề WHERE, tất cả các dòng trong bảng sẽ bị xóa
+
+        + UPDATE
+            * Dùng để thay đổi giá trị của thuộc tính cho các dòng của bảng 
+                UPDATE <tên bảng>
+                SET <tên thuộc tính>=<giá trị mới>,
+                    <tên thuộc tính>=<giá trị mới>,
+                    ...
+                [WHERE <điều kiện>]
+
+            !!! Nhận xét
+                + Những dòng thỏa điều kiện tại mệnh đề WHERE sẽ được cập nhật giá trị mới
+                + Nếu không chỉ định điều kiện ở mệnh đề WHERE, tất cả các dòng trong bảng sẽ bị cập nhật
+
+    - Lệnh cấu trúc
+        + CREATE TABLE (tạo bảng)
+            * Cần có: Tên bảng, Tên thuộc tính, Kiểu dữ liệu, Các RBTV trên thuộc tính
+
+                CREATE TABLE <Tên_bảng> (
+                    <Tên_cột 1> <Kiểu_dữ_liệu> [<RBTV>],
+                    <Tên_cột 2> <Kiểu_dữ_liệu> [<RBTV>],
+                    ...
+                    [<RBTV>]
+                )
+            
+            * Ràng buộc toàn vẹn: NOT NULL, NULL, UNIQUE, DEFAULT, PRIMARY KEY, FOREIGN KEY / REFERENCES, CHECK
+                CONSTRAINT <Ten_RBTV> <RBTV> 
+                (đọc thêm trong mục ràng buộc toàn vẹn)
+            
+        + DROP TABLE (xóa bảng)
+            * Được dùng để xóa cấu trúc bảng, tất cả dữ liệu của bảng cũng bị xóa.
+                DROP TABLE <Tên_bảng>
+
+        + ALTER TABLE (sửa bảng)
+            * ADD (thêm cột) : cột chưa có trong bảng
+                ALTER TABLE <Tên_bảng> ADD <Tên_cột> <Kiểu_dữ_liệu> [<RBTV>]
+
+            * DROP (xóa cột)
+                ALTER TABLE <Tên_bảng> DROP COLUMN <Tên_cột>
+
+            * COLUMN (mở rộng cột) : cột đã có sẵn trong bảng
+                ALTER TABLE <Tên_bảng> ALTER COLUMN <Tên_cột> <Kiểu_dữ_liệu_mới>
+        
+        + CREATE DOMAIN (tạo miền giá trị)
+
+        + CREATE DATABASE 
 
 
 

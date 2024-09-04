@@ -124,7 +124,139 @@
         + Một assembly có thể chứa nhiều namespaces và nhiều file .cs, và mỗi namespace cũng có thể trải dài qua nhiều file .cs và nhiều assembly. 
         + Assembly là một đơn vị triển khai, trong khi namespace là một cách tổ chức mã nguồn logic.
 
-### File .csproj (file cấu hình dự án) // bổ sung sau
+### File .csproj (file cấu hình dự án)
+    - Tệp .csproj của một dự án C# sử dụng định dạng XML để định nghĩa cấu trúc và thiết lập của dự án
+
+    - Ví dụ
+        <Project Sdk="Microsoft.NET.Sdk">
+
+            <!-- 1. PropertyGroup: Cấu hình chung -->
+            <PropertyGroup>
+                <OutputType>Exe</OutputType>
+                <TargetFramework>net7.0</TargetFramework>
+                <RuntimeIdentifier>win-x64</RuntimeIdentifier>
+                <RuntimeIdentifiers>win-x64;linux-x64</RuntimeIdentifiers>
+                <AssemblyTitle>MyApplication</AssemblyTitle>
+                <AssemblyVersion>1.0.0.0</AssemblyVersion>
+                <MyCustomProperty>MyValue</MyCustomProperty>
+            </PropertyGroup>
+
+            <!-- 2. PropertyGroup: Cấu hình riêng cho chế độ Debug -->
+            <PropertyGroup Condition="'$(Configuration)' == 'Debug'">
+                <DefineConstants>DEBUG;TRACE</DefineConstants>
+                <OutputPath>bin\Debug\</OutputPath>
+            </PropertyGroup>
+
+            <!-- 3. PropertyGroup: Cấu hình riêng cho chế độ Release -->
+            <PropertyGroup Condition="'$(Configuration)' == 'Release'">
+                <DefineConstants>RELEASE</DefineConstants>
+                <Optimize>true</Optimize>
+                <OutputPath>bin\Release\</OutputPath>
+            </PropertyGroup>
+
+            <!-- 4. ItemGroup: Tham chiếu đến các gói NuGet -->
+            <ItemGroup>
+                <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+            </ItemGroup>
+
+            <!-- 5. ItemGroup: Tham chiếu đến dự án khác trong giải pháp -->
+            <ItemGroup>
+                <ProjectReference Include="..\OtherProject\OtherProject.csproj" />
+            </ItemGroup>
+
+            <!-- 6. ItemGroup: Tham chiếu đến thư viện DLL cụ thể -->
+            <ItemGroup>
+                <Reference Include="System.Data">
+                <HintPath>..\libs\System.Data.dll</HintPath>
+                </Reference>
+            </ItemGroup>
+
+            <!-- 7. ItemGroup: Bao gồm tài nguyên -->
+            <ItemGroup>
+                <EmbeddedResource Include="Resources\Strings.resx" />
+            </ItemGroup>
+
+            <!-- 8. ItemGroup: Bao gồm các tệp nội dung -->
+            <ItemGroup>
+                <Content Include="index.html" CopyToOutputDirectory="PreserveNewest" />
+            </ItemGroup>
+
+            <!-- 9. ItemGroup: Bao gồm các tệp không thuộc về quá trình xây dựng -->
+            <ItemGroup>
+                <None Include="README.md" />
+            </ItemGroup>
+
+            <!-- 10. Target: Thực hiện tác vụ tùy chỉnh sau khi xây dựng -->
+            <Target Name="CustomTask" AfterTargets="Build">
+                <Exec Command="echo Building the project..." />
+            </Target>
+
+            <!-- 11. Import: Nhập tệp targets -->
+            <Import Project="..\common.targets" />
+
+            <!-- 12. ItemDefinitionGroup: Định nghĩa mặc định cho Compile -->
+            <ItemDefinitionGroup>
+                <Compile>
+                <WarningLevel>4</WarningLevel>
+                </Compile>
+            </ItemDefinitionGroup>
+
+        </Project>
+
+    - <Project> : Đây là phần gốc của tệp, bao quanh tất cả các thành phần khác và chỉ ra SDK được sử dụng.
+
+    - <PropertyGroup> : Nhóm này chứa các thuộc tính cấu hình của dự án.
+        + <OutputType> : Xác định loại đầu ra của dự án, ví dụ như Exe cho ứng dụng console hoặc Library cho thư viện.
+        
+        + <TargetFramework> : Xác định phiên bản .NET mà dự án sẽ chạy.
+        
+        + <RootNamespace> : Xác định namespace gốc cho dự án.
+        
+        + <AssemblyName> : Tên của assembly được tạo ra.
+        
+        + <LangVersion> : Phiên bản ngôn ngữ C# được sử dụng, latest sử dụng phiên bản mới nhất.
+
+    - <ItemGroup> : Nhóm này chứa các phần tử tham chiếu, như các gói NuGet.
+        + <PackageReference> : Tham chiếu đến một gói NuGet.
+        
+        + <ProjectReference> : Tham chiếu đến một dự án C# khác trong cùng solution.
+        
+        + <Reference> : Thêm một tham chiếu đến một tệp DLL cụ thể
+
+        + <Compile> : Bao gồm các tệp mã nguồn cần biên dịch, trong ví dụ trên là tất cả các tệp .cs trong thư mục Models.
+        
+        + <Content> : Bao gồm các tệp tĩnh (static files), ví dụ tất cả các tệp trong thư mục wwwroot.
+        
+        + <None> : Tham chiếu đến các tệp không biên dịch, nhưng có thể cần sao chép đến thư mục đầu ra (output directory), ví dụ appsettings.json.
+
+        + <DotNetCliToolReference> : Tham chiếu đến các công cụ dòng lệnh .NET CLI
+        
+        + <FrameworkReference>: Tham chiếu đến các framework assemblies cụ thể, ví dụ Microsoft.AspNetCore.App.
+        
+        + <EmbeddedResource>: Bao gồm các tài nguyên nhúng trong assembly.
+        
+        + <AdditionalProbingPath>: Xác định các đường dẫn bổ sung để tìm kiếm các gói NuGet.
+
+    - Có thể định nghĩa các cấu hình khác nhau (ví dụ: Debug, Release) trong tệp .csproj bằng cách sử dụng các nhóm 
+        <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+
+        <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+            <DefineConstants>DEBUG;TRACE</DefineConstants>
+            <DebugType>full</DebugType>
+            <Optimization>false</Optimization>
+        </PropertyGroup>
+
+        <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+            <DefineConstants>TRACE</DefineConstants>
+            <DebugType>pdbonly</DebugType>
+            <Optimization>true</Optimization>
+        </PropertyGroup>
+
+
+
+
+
+
 
 ### Namespace 
     - Namespace là cách tổ chức nhóm code (các lớp, giao diện, cấu trúc ...) thành những nhóm, tạo ra phạm vi hoạt động của các thành phần trong nhóm. 
@@ -1074,7 +1206,7 @@
     
     !!! khác với kiểu ngầm định var kiểu xác định ngay thời điểm biên dịch (không cần khởi tạo giá trị từ trước)
 
-### Null - Nullable
+    ### Null - Nullable
     - null là một giá trị cố định nó biểu thị không có đối tượng nào cả, có nghĩa là biến có giá trị null không có tham chiếu (trỏ) đến đối tượng nào (không có gì).
 
     - null chỉ có thể gán được cho các biến kiểu tham chiếu (biến có kiểu dữ liệu là các lớp), không thể gán null cho những biến có kiểu dữ liệu dạng tham trị
@@ -1096,6 +1228,15 @@
     !!! dạng khai báo đầy đủ của int? là Nullable<int>
 
     - Nullable rất tiện dụng khi lập trình các truy vấn cơ sở dữ liệu, lập trình web ...
+
+    !!! 1 số tác dụng của toán tử ? và ??
+        + sử dụng như một phần của toán tử điều kiện null (null-conditional operator), giúp tránh lỗi NullReferenceException khi truy cập vào thành viên của một đối tượng có thể null
+            Person person = null;
+            int? age = person?.Age; // age sẽ là null nếu person là null
+
+        + Toán tử ?? là toán tử gộp null (null-coalescing operator), cho phép bạn cung cấp một giá trị thay thế nếu giá trị hiện tại là null
+            string name = nullableString ?? "Default Name";
+            // sẽ nhận giá trị của nullableString nếu nó không phải là null, ngược lại sẽ nhận giá trị "Default Name"
 
 ### Đa hình
     - Tính đa hình của nghĩa là có nhiều dạng, tính đa hình sẽ thể hiện rõ khi xây dựng các lớp kế thừa. Một phương thức được gọi, nó sẽ là phương thức cụ thể nào tùy thuộc vào đối tượng 
@@ -3023,6 +3164,8 @@
             using Microsoft.Extensions.Configuration;
             using Microsoft.Extensions.Configuration.Json;
 
+            // đọc thêm các file định dạng như XML, INI, JSON trong ExPandendKnowledge.txt
+
         + ConfigurationBuilder
             * Lớp ConfigurationBuilder, giúp nạp các cấu hình lưu trong file config, từ đó build ra đối tượng ConfigurationRoot, đối tượng này truy cập đến các cấu hình 
             bằng chỉ toán tử chỉ số [key]
@@ -3084,6 +3227,38 @@
 
     !!! Kỹ thuật DI với thư viện DependencyInjection ở trên là kiến thức rất quan trọng cần nắm vững, nó là cơ sở để học các các mô hình lập trình hiện đại, nhất là sau này 
     áp dụng với Asp.Net Core
+
+### Nuget (thư viện lớp) // bổ sung sau
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
