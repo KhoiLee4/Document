@@ -40,7 +40,7 @@
         + Windows Communication Foundation (WCF)
         + LINQ
 
-    // sẽ có bài tìm hiểu kĩ hơn về .NET
+    /// đọc thêm file DOTNET.txt
 
 !!! Những điều cần lưu ý
     - C# là phân biệt kiểu chữ (case sensitive).
@@ -251,11 +251,6 @@
             <DebugType>pdbonly</DebugType>
             <Optimization>true</Optimization>
         </PropertyGroup>
-
-
-
-
-
 
 
 ### Namespace 
@@ -3230,22 +3225,50 @@
 
 ### Nuget (thư viện lớp) // bổ sung sau
 
+### Uri, Dns, Ping
+    - Lớp Uri
+        + System.Uri là lớp biểu diễn về địa chỉ URI (URL) (xem thêm Tìm hiểu URI, URL), nó giúp cho nhanh chóng lấy thông tin các thành phần của URL như host, path, query ...
+        
+        + Đối tượng Uri còn sử dụng trong tham số để thực hiện các truy vấn HTTP Request ở các phần sau.
+            string url = "https://www.youtube.com/watch?v=2w97mmTYR68";
+            var uri = new Uri(url);
+            var uritype = typeof(Uri);
+            uritype.GetProperties().ToList().ForEach(property => {
+                Console.WriteLine($"{property.Name, 15} {property.GetValue(uri)}");
+            });
+            Console.WriteLine($"Segments: {string.Join(",", uri.Segments)}");
 
+    - Lớp Dns và lớp IPHostEntry
+        + Lớp Dns (System.Net.Dns) cung cấp các phương thức tính để lấy thông tin về host (địa chỉ website, server cung cấp các dịch vụ mạng) từ hệ thống phân giải tên miền (Dns)
 
+        + Các thông tin truy vấn được nó trả về một đối tượng giao diện IPHostEntry
+            string url = "https://www.bootstrapcdn.com/";
+            var uri = new Uri(url);
+            var hostEntry = Dns.GetHostEntry(uri.Host);
+            Console.WriteLine($"Host {uri.Host} có các IP");
+            hostEntry.AddressList.ToList().ForEach(ip => Console.WriteLine(ip));
 
+        + Phương thức lớp Dns   
+            | GetHostName()	           | Lấy hostname của máy local                                    |
+            | GetHostEntry(String)     | Phân giải host hoặc IP thành đối tượng IPHostEntry.           |
+            | GetHostEntry(IPAddress)  | Đối tượng kiểu IPHostEntry nó chứa thông tin địa chỉ về host. |                                                                                                                 |
 
+        + Thuộc tính IPHostEntry
+            | HostName	    | Chuỗi chứa hostname của Server                      |
+            | AddressList	| Mảng các phần tử kiểu IPAddress chứa các địa chỉ IP |
 
+    - Lớp Ping
+        + Lớp Ping (System.Net.NetworkInformation.Ping), lớp này cho phép ứng dụng xác định một máy từ xa (như server, máy trong mạng ...) có phản hồi không.
+            var ping = new Ping();
+            var pingReply = ping.Send("google.com.vn");
+            Console.WriteLine(pingReply.Status);
+            if (pingReply.Status == IPStatus.Success)
+            {
+                Console.WriteLine(pingReply.RoundtripTime);
+                Console.WriteLine(pingReply.Address);
+            }
 
-
-
-
-
-
-
-
-
-
-
+### HttpClient
 
 
 

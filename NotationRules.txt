@@ -5,6 +5,7 @@ Các đầu mục lớn:
     *** Định nghĩa, câu hỏi
     !!! Chú ý, lưu ý, quan trọng
     ### Mục lớn
+    /// Ghi chú 
     
 Các ý trong mục (giảm dần):
     - 
