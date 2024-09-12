@@ -1,143 +1,148 @@
 # C#
 
-## C# là gì?
+## 🤔 C# là gì?
 
 C# là một ngôn ngữ lập trình hướng đối tượng rất tường minh, rõ ràng. C# được dùng để phát triển nhiều loại ứng dụng (Ứng dụng Windows, Linux, macOS, Web ...)
-  có hiệu năng cao và bảo mật thi hành trên nền tảng .NET
+có hiệu năng cao và bảo mật thi hành trên nền tảng .NET
 
 C# được thiết kế cho **Common Language Infrastructure (CLI)**, mà gồm **Executable Code** và **Runtime Environment**, cho phép chúng ta sử dụng các ngôn ngữ high-level đa
-  dạng trên các nền tảng và cấu trúc máy tính khác nhau.
+dạng trên các nền tảng và cấu trúc máy tính khác nhau.
 
 Cấu trúc C# khá gần với các ngôn ngữ high-level truyền thống, C và C++, và là một ngôn ngữ lập trình hướng đối tượng. Nó có sự giống nhau mạnh mẽ với Java, nó
-  có nhiều đặc điểm lập trình mạnh mẽ mà làm cho nó trở nên ưa thích với các lập trình viên trên toàn thế giới:
-  - Điều kiện Boolean
-  - Tự động dọn rác bởi Garbage-Collector (GC)
-  - Thư viện chuẩn (Standard Library)
-  - Assembly
-  - Property và sự kiện (Event)
-  - Delegate Quản lý sự kiện
-  - Dễ dàng để sử dụng Generic
-  - Indexer
-  - Biên dịch có điều kiện (Conditional Compilation)
-  - Đa luồng dễ dàng (Multithreading)
-  - LINQ và Lambda Expression
-  - Tích hợp với Windows
+có nhiều đặc điểm lập trình mạnh mẽ mà làm cho nó trở nên ưa thích với các lập trình viên trên toàn thế giới:
+
+- Điều kiện Boolean
+- Tự động dọn rác bởi Garbage-Collector (GC)
+- Thư viện chuẩn (Standard Library)
+- Assembly
+- Property và sự kiện (Event)
+- Delegate Quản lý sự kiện
+- Dễ dàng để sử dụng Generic
+- Indexer
+- Biên dịch có điều kiện (Conditional Compilation)
+- Đa luồng dễ dàng (Multithreading)
+- LINQ và Lambda Expression
+- Tích hợp với Windows
 
 ---
 
-## .NET là gì?
+## 🤔 .NET là gì?
 
-.Net Framework là một nền tảng mang tính cách mạng giúp bạn viết các kiểu ứng dụng:
-  - Windows application
-  - Web application
-  - Dịch vụ Web
+ - .Net Framework là một nền tảng mang tính cách mạng giúp bạn viết các kiểu ứng dụng:
 
-Các ứng dụng .Net Framework là các ứng dụng đa nền tảng.
+    - Windows application
+    - Web application
+    - Dịch vụ Web
 
-.Net Framework gồm một thư viện code khổng lồ được sử dụng bởi các ngôn ngữ client
+ - Các ứng dụng .Net Framework là các ứng dụng đa nền tảng.
 
-Một số thành phần của .Net Framework:
+ - .Net Framework gồm một thư viện code khổng lồ được sử dụng bởi các ngôn ngữ client
 
-  - Common Language Runtime (CLR)
-  - .Net Framework Class Library
-  - Common Language Specification
-  - Common Type System
-  - Metadata và Assembly
-  - Windows Form
-  - ASP.Net và ASP.Net AJAX
-  - ADO.Net
-  - Windows Workflow Foundation (WF)
-  - Windows Presentation Foundation
-  - Windows Communication Foundation (WCF)
-  - LINQ
+ - Một số thành phần của .Net Framework:
 
-  đọc thêm file DOTNET.txt
+    - Common Language Runtime (CLR)
+    - .Net Framework Class Library
+    - Common Language Specification
+    - Common Type System
+    - Metadata và Assembly
+    - Windows Form
+    - ASP.Net và ASP.Net AJAX
+    - ADO.Net
+    - Windows Workflow Foundation (WF)
+    - Windows Presentation Foundation
+    - Windows Communication Foundation (WCF)
+    - LINQ
+
+**_đọc thêm file DOTNET.txt_**
 
 ---
 
 ## Những điều cần lưu ý
 
-- C# là phân biệt kiểu chữ (case sensitive).
-- Tất cả lệnh và biểu thức phải kết thúc với một dấu chấm phảy (;).
-- Sự thực thi chương trình bắt đầu tại phương thức Main.
-- Không giống Java, tên file chương trình có thể khác tên lớp.
+C# là phân biệt kiểu chữ (case sensitive).
+
+Tất cả lệnh và biểu thức phải kết thúc với một dấu chấm phảy (;).
+
+Sự thực thi chương trình bắt đầu tại phương thức Main.
+
+Không giống Java, tên file chương trình có thể khác tên lớp.
+
+---
 
 ## Assembly
 
-    - Trong C#, một assembly là một đơn vị logic của ứng dụng .NET và là khối xây dựng cơ bản của ứng dụng .NET
+Trong C#, một assembly là một đơn vị logic của ứng dụng .NET và là khối xây dựng cơ bản của ứng dụng .NET
 
-    - Assembly bao gồm các tệp thực thi (EXE) hoặc thư viện (DLL) và chứa mã, tài nguyên, và metadata cần thiết để chạy chương trình
+Assembly bao gồm các tệp thực thi (EXE) hoặc thư viện (DLL) và chứa mã, tài nguyên, và metadata cần thiết để chạy chương trình
 
-    - Có 2 loại
-        + Executable Assembly (EXE): Đây là các tệp thực thi được sử dụng để chạy các ứng dụng độc lập.
+Có 2 loại
 
-        + Library Assembly (DLL): Đây là các thư viện chứa mã dùng chung mà các ứng dụng khác có thể tham chiếu và sử dụng.
+- Executable Assembly (EXE): Đây là các tệp thực thi được sử dụng để chạy các ứng dụng độc lập.
 
-    - Thành phần
-        + Metadata: Metadata cung cấp thông tin về các kiểu dữ liệu, thành viên, tham số, và các thông tin khác trong assembly. Metadata cho phép kiểm tra kiểu thời gian chạy,
-        ánh xạ, và nhiều tính năng khác.
+- Library Assembly (DLL): Đây là các thư viện chứa mã dùng chung mà các ứng dụng khác có thể tham chiếu và sử dụng.
 
-        + Intermediate Language (IL): IL là mã trung gian mà mã nguồn C# được biên dịch thành. Khi chương trình được thực thi, IL được biên dịch thành mã máy cụ thể của nền tảng.
+Thành phần + Metadata: Metadata cung cấp thông tin về các kiểu dữ liệu, thành viên, tham số, và các thông tin khác trong assembly. Metadata cho phép kiểm tra kiểu thời gian chạy,
+ánh xạ, và nhiều tính năng khác.
 
-        + Manifest: Manifest là một phần của metadata chứa thông tin về assembly, như tên, phiên bản, văn hóa (culture), và danh sách các tệp khác (nếu có).
+    + Intermediate Language (IL): IL là mã trung gian mà mã nguồn C# được biên dịch thành. Khi chương trình được thực thi, IL được biên dịch thành mã máy cụ thể của nền tảng.
 
-        + Resources: Các tài nguyên như hình ảnh, chuỗi văn bản, và các tệp khác có thể được đóng gói trong assembly
+    + Manifest: Manifest là một phần của metadata chứa thông tin về assembly, như tên, phiên bản, văn hóa (culture), và danh sách các tệp khác (nếu có).
 
-    - Tác dụng
-        + Isolation and Versioning: Assembly giúp cô lập mã và tài nguyên, giúp quản lý phiên bản dễ dàng hơn.
+    + Resources: Các tài nguyên như hình ảnh, chuỗi văn bản, và các tệp khác có thể được đóng gói trong assembly
 
-        + Deployment: Assembly giúp đơn giản hóa quá trình triển khai bằng cách đóng gói tất cả các thành phần của ứng dụng vào một đơn vị duy nhất.
+Tác dụng + Isolation and Versioning: Assembly giúp cô lập mã và tài nguyên, giúp quản lý phiên bản dễ dàng hơn.
 
-        + Security: Assembly có thể được ký số để đảm bảo tính toàn vẹn và tính xác thực của mã.
+    + Deployment: Assembly giúp đơn giản hóa quá trình triển khai bằng cách đóng gói tất cả các thành phần của ứng dụng vào một đơn vị duy nhất.
 
-        + Reusability: Các thư viện trong dạng assembly (DLL) có thể được tái sử dụng bởi các ứng dụng khác, giúp giảm thiểu việc viết lại mã.
+    + Security: Assembly có thể được ký số để đảm bảo tính toàn vẹn và tính xác thực của mã.
 
-    - Ví dụ
-        + Giả sử chúng ta có một thư viện toán học được biên dịch thành một assembly (MathLibrary.dll)
-            // File: MathLibrary.cs
-            namespace MathLibrary
+    + Reusability: Các thư viện trong dạng assembly (DLL) có thể được tái sử dụng bởi các ứng dụng khác, giúp giảm thiểu việc viết lại mã.
+
+Ví dụ + Giả sử chúng ta có một thư viện toán học được biên dịch thành một assembly (MathLibrary.dll)
+
+```C#
+// File: MathLibrary.cs
+namespace MathLibrary
+{
+    public class Calculator
+    {
+        public int Add(int a, int b)
+        {
+            return a + b;
+        }
+
+        internal int Subtract(int a, int b)
+        {
+            return a - b;
+        }
+    }
+}
+```
+
+    + Assembly này có thể được sử dụng trong một ứng dụng khác
+        // File: Program.cs
+        using MathLibrary;
+
+        class Program
+        {
+            static void Main()
             {
-                public class Calculator
-                {
-                    public int Add(int a, int b)
-                    {
-                        return a + b;
-                    }
+                Calculator calc = new Calculator();
+                int sum = calc.Add(3, 4);
+                Console.WriteLine("Sum: " + sum);
 
-                    internal int Subtract(int a, int b)
-                    {
-                        return a - b;
-                    }
-                }
+                // The following line would cause a compile error because Subtract is internal
+                // int difference = calc.Subtract(10, 5);
             }
+        }
 
-        + Assembly này có thể được sử dụng trong một ứng dụng khác
-            // File: Program.cs
-            using MathLibrary;
+    + phương thức Add của lớp Calculator có thể được truy cập từ bất kỳ ứng dụng nào tham chiếu đến MathLibrary.dll
 
-            class Program
-            {
-                static void Main()
-                {
-                    Calculator calc = new Calculator();
-                    int sum = calc.Add(3, 4);
-                    Console.WriteLine("Sum: " + sum);
+    + phương thức Subtract chỉ có thể được truy cập từ bên trong cùng một assembly (MathLibrary.dll) do nó được khai báo là internal
 
-                    // The following line would cause a compile error because Subtract is internal
-                    // int difference = calc.Subtract(10, 5);
-                }
-            }
+    // phạm vi truy cập internal sẽ được nhắc đến sau
 
-        + phương thức Add của lớp Calculator có thể được truy cập từ bất kỳ ứng dụng nào tham chiếu đến MathLibrary.dll
-
-        + phương thức Subtract chỉ có thể được truy cập từ bên trong cùng một assembly (MathLibrary.dll) do nó được khai báo là internal
-
-        // phạm vi truy cập internal sẽ được nhắc đến sau
-
-    !!! Phân biệt assembly, namespace, file .cs
-        + Một assembly không tương ứng trực tiếp với một namespace hay một file .cs duy nhất.
-        + Một assembly có thể chứa nhiều namespaces và nhiều file .cs, và mỗi namespace cũng có thể trải dài qua nhiều file .cs và nhiều assembly.
-        + Assembly là một đơn vị triển khai, trong khi namespace là một cách tổ chức mã nguồn logic.
+!!! Phân biệt assembly, namespace, file .cs + Một assembly không tương ứng trực tiếp với một namespace hay một file .cs duy nhất. + Một assembly có thể chứa nhiều namespaces và nhiều file .cs, và mỗi namespace cũng có thể trải dài qua nhiều file .cs và nhiều assembly. + Assembly là một đơn vị triển khai, trong khi namespace là một cách tổ chức mã nguồn logic.
 
 ## File .csproj (file cấu hình dự án)
 
