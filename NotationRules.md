@@ -102,7 +102,7 @@ Sử dụng dấu > ở đầu dòng để tạo trích dẫn.
 
 ```markdown
 ---
----
+***
 ```
 
 ## Bảng (Tables)
