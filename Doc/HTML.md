@@ -1872,236 +1872,249 @@ Dùng để định dạng thêm chữ trong `text`
 
 Sử dụng thêm công cụ để vẽ nhanh SVG: [công cụ](https://inkscape.org/en/)
 
----
+## Thẻ `<canvas>`
 
----
+Phần tử `<canvas>` sử dụng để vẽ các thành phần đồ họa từ đơn giản như các đường đến các đồ họa phức tạp.
 
-## Thẻ `<a>`
+```html
+<canvas id="canvas1" width="200" height="100"> </canvas>
+```
 
-- text-decoration: none; : bỏ dấu gạch chân
+_❗Phần tử `<canvas>` chỉ có chức năng chứa các đối tượng đồ họa. Bạn bắt buộc phải sử dụng JavaScript để vẽ._
 
-## thẻ <buttom>
+```html
+<canvas id="canvas1" width="400" height="300"></canvas>
 
-- background-color: transparent; : màu trong suốt
-- border: none; : loại bỏ viền nút
-- outline: none; : loại bỏ outline
-- border-radius: kich thước; : tạo bo góc
-- cursor: pointer; : thay đổi trỏ chuột khi di vào
+<script>
+  var can = document.getElementById("canvas1");
+  //Lấy context của canvas1
+  var ctx = can.getContext("2d");
+</script>
+```
 
-## Attribute (thuộc tính)
+Canvas sử dụng lưới tọa độ 2 chiều, với góc trái phía trên là tọa độ gốc `(0,0)`
 
-## CSS trong HTML
+- `X` : tọa độ theo phương ngang, tăng từ trái sang phải
+- `Y` : tọa độ theo phương đứng, tăng từ trên xuống dưới
 
-- Internal: tạo css nằm trong thẻ <head> và các thuộc tính được đặt trong thẻ <style>
-<head>
-	<title>Khoi ne!</title>
-   	<meta charset="UTF-8">
-	<style>
-		CSS
-	</style>
-</head>
+![alt text](../Image/toadocanvas.jpg)
 
-- External: tạo 1 file .css và link vào file .html thông qua thẻ link
-<link rel="stylesheet" href="file.css">
+### Hình chữ nhật
 
-- Inline: viết trực tiếp vào thẻ mở bằng thuộc tính style
-<h1 style="color: red; font-size: 20px"> nội dung </h1>
+Hàm `fillRect(x, y, w, h)` tô một hình chữ nhật từ rộng `w` cao `h` với tọa độ góc trái - trên là `(x, y)`
 
-## ID và CLASS
+Để thay đổi màu tô, mẫu tô sử dụng thuộc tính `fillStyle` của `context` để thiết lập trước khi vẽ
 
-- ID: không được đặt trùng nhau (dùng # để CSS cho ID)
-- CLASS: có thể đặt trùng nhau (dùng . để CSS cho CLASS)
+```html
+<canvas
+  id="canvasexample1"
+  width="300"
+  height="200"
+  style="background: whitesmoke;"
+>
+</canvas>
 
-## mức độ ưu tiên
+<script>
+  var c = document.getElementById("canvasexample1");
 
-- Internal, External
+  var ctx = c.getContext("2d");
+  ctx.fillStyle = "#4CAF50";
+  ctx.fillRect(20, 20, 100, 100);
+</script>
+```
 
-  - độ ưu tiên ngan nhau, ai được CSS sau (mới nhất) thì được ưu tiên
+<canvas id="canvasexample1" width="300" height="200"
+        style="background: whitesmoke;">
+</canvas>
 
-- Inline(1000) > #ID(100) > .CLASS(10) > tag(1) > us&i(0)
-- Equal specificty: được hiểu là cùng mức độ ưu tiên thì lệnh sau (mới nhất) sẽ được ưu tiên
-- Universal selector and inherited (0): CSS chung cho tất cả các thành phần trong file .html
+<script>
+    var c=document.getElementById("canvasexample1");
+
+    var ctx=c.getContext("2d");
+    ctx.fillStyle ="#4CAF50";
+    ctx.fillRect(20,20,100,100);
+</script>
+
+Cũng có thể sử dụng `createLinearGradient`, `createRadialGradient` để tạo `Gradient` cho màu tô, hay `createPattern` tạo mẫu tô từ ảnh rồi gán cho `fillStyle`
 
-!! có thể cộng dồn điểm ưu tiên
-tag#id.class(111) > #id.class(110)
-!! những giá trị CSS có !important thì có độ ưu tiên cao nhất (>1000)
-color: red !important;
+### Đường thẳng
 
-## biến
+Thường để vẽ các đường đầu tiên gọi `beginPath()` để khởi tạo một path mới (nó chứa tập hợp các lệnh đường cần vẽ). Cuối cùng để thực hiện vẽ tập đó gọi hàm `stroke()`
 
-- khơi tạo biến:
-  :root {
-  --text-color: violet; (biến global)
-  }
-  h1 {
-  --my-color: red; (biến local)
-  }
+- `moveTo(x1,y1)` : Di chuyển tới điểm (x1,y1)
+- `lineTo(x2,y2)` : Kẻ đường tới điểm (x2,y2)
 
-- lây giá trị biến: dùng hàm var(tên biến)
-  h1 {
-  color: var(--text-color); (violet)
-  }
+```html
+<canvas id="linecanvas" width="500" height="200"></canvas>
 
-## CSS units (các đơn vị)
+<script>
+  var canvas = document.getElementById("linecanvas");
+  var ctx = canvas.getContext("2d");
 
-- Absolute units (các đơn vị tuyệt đối)
-  - px (pixel): điểm ảnh, không bị tác động làm thay đổi
-- Relative units (các đơn vị tương đối)
-  - %: phụ thuộc vào thẻ chứa nó
-  - rem: phụ thuộc vào thẻ <html>
-  - em: phụ thuộc vào thẻ gần nhất
-  - vw: phụ thuộc chiều rộng màn hình (1vw = 1%)
-  - vh: phụ thuộc chiều cao màn hình
+  // Đường thứ nhất
+  ctx.beginPath();
+  ctx.strokeStyle = "blue";
+  ctx.moveTo(20, 20);
+  ctx.lineTo(200, 20);
+  ctx.stroke();
+
+  // Đường thứ 2
+  ctx.beginPath();
+  ctx.strokeStyle = "green"; //Đặt màu đường
+  ctx.lineWidth = 5; //Độ rộng
 
-## Padding (lớp đệm giữa chữ và viền)
+  ctx.moveTo(20, 20);
+  ctx.lineTo(120, 120);
+  ctx.stroke();
+</script>
+```
 
-- làm dày đối tượng lên (tính vào kích thước đối tượng)
-- cách viết:
-  - padding-left, padding-right, padding-bottom, padding-top : cho từng hướng
-  - padding: 10px; : cho cả 4 hướng
-  - padding: 10px 5px; : top & bottom (10px), left & right (5px)
-  - padding: 10px 5px 20px; : top (10px), left & right (5px), bottom (20px)
-  - padding: 20px 15px 10px 5px; : top(20px), left(15px), right(10px), bottom(5px)
+<canvas id="linecanvas" width="500" height="200"></canvas>
 
-## Border (lớp viền)
-
-- viền bao quanh đối tượng, làm dày đối tượng lên (tính vào kích thước đối tượng)
-- cách viết:
-  - border-width: 10px; : độ dày của viền (10px)
-  - border-"hướng"-width: "kích thước"; : độ dày của viền theo tường hướng
-  - border-style: solib; : kiểu viền (solib: nét liền)
-  - border-color: black; : màu của viền (black)
-  - border: 10px solid black; cho cả 4 hướng
-  - border-hướng: 10px solid black; cho hướng cụ thể
-
-## Margin (lớp đệm bên ngoài viền)
-
-- tạo khoảng các giữa các đối tượng, không làm dày đối tượng (không tính vào kích thước đối tượng)
-- cách viết: (tương tự với padding)
-  - margin: 20px;
-
-## Box-sizing
-
-- border-box: đảm bảo kích thước của đối tượng giống ban đầu, tự động tính toán content để tổng kích thước được giữ nguyên. Khi các phần thêm vào quá lớn thì content bị đẩy ra.
-  box-sizing: border-box;
-- inherit: cho phép phần tử kế thừa giá trị của box-sizing từ phần tử cha của nó
-  box-sizing: inherit;
-- unset: hủy box-sizing
-  box-sizing: unset;
-
-## Background-clip
-
-- quyết định màu sẽ được đỗ màu từ đâu.
-  - border-box: từ lớp border
-  - padding-box: từ lớp padding
-  - content-box: từ lớp content
-
-## Background-image
-
-- url("đường dẫn ảnh"); : đặt ảnh làm background
-- linear-gradient(180deg, black, white); : tạo dãy màu chuyển làm bac ground
-  - 180deg: góc độ của dãy màu
-  - chuyển dần từ black tới white
-- background-size: kích thước của background
-  - contain: lấy cạnh dài nhất, đảm bảo hình không bị che khuất
-  - cover: lấy cạnh dài nhất, đảm bảo hình đủ màn hình (ngược lại với contain)
-- background-repeat: lặp lại hình
-  - repeat: lặp lại (mặc định)
-  - no-repeat: không lặp lại
-
-## Background-origin (đi kèm với background-image)
-
-- giống với background-clip nhưng áp dụng với ảnh. Mặc định là padding-box
-
-## Background-position
-
-- di chuyển background (góc tọa độ tính từ góc trái trên)
-  -cách viết: + background-position: 10px; : 1 tham số thì tham số còn lại mặc định là center + background-position: 10px 5px; + background-position: top right; : dính vào góc phải trên + background-position: top 10px right 5px;
-
-## Cách viết tắt cảu background
-
-    background: color/image repeat/no-repeat position / size;
-
-## Hàm
-
-- var(): lấy giá trị
-- linear-gradient(): tạo dãy mày chuyển
-- rgba(): màu có độ trong suốt
-- rgb(): màu không có độ trong suốt
-- calc(): tính toán
-- attr(): lấy giá trị thuộc tính của thẻ chứa nó
-
-## CSS pseudo-classes (lớp giả)
-
-- :root : tham chiếu đến phần tử góc là thẻ html
-- :hover : thay đổi CSS của đối tượng khi di chuột vào
-- :active : thay đổi CSS của đối tượng khi bấm/giữ chuột vào
-- :first-child : tham chiếu đến đối tượng con đầu tiên
-- :last-child : tham chiếu đến đối tượng con cuối cùng
-
-## CSS pseudo-element (phần tử giả)
-
-- ::before : luôn là đối tượng đầu tiên
-- ::after : luôn là đối tượng cuối cùng
-- ::first-letter : luôn là kí tự đầu tiên
-- ::firrst-line : luôn là dòng đầu tiên
-- ::selection : luôn là lựa chọn (bôi đen) đầu tiên
-
-## Position
-
-- relative: vị trí tương đối. Lấy vị trí đang đứng làm góc tọa độ
-- absolute: vị trí tuyệt đối. Lấy thẻ cha gần nhất có thuộc tính position làm góc
-- fixed: phụ thuộc vào vị trí trình duyệt.
-- sticky
-
-## Flex-box
-
-// FLEX CONTAINER //
-
-- felx-direction: tác động lên trục main axis
-
-  - row (mặc định): main axis nằm ngan
-  - row-reverse: giống row nhưng đảo main start - end
-  - column: main axis nằm dọc
-  - column-reverse: giống column nhưng đảo main start - end
-
-- flex-wrap: tác động lên trục sross axis
-
-  - nowrap (mặc định): không xuống dòng
-  - wrap: xuống hàng khi hết
-  - wrap-reverse: giống wrap nhưng đảo main start - end
-
-- flex-items: tác động lên vị trí của "các" flex item nhưng theo trục cross axis
-
-  - flex-start: dồn flex item về cross start
-  - flex-end: dồn flex item về cross end
-  - center: ở giữa cross axis
-  - báeline: mép dưới của content trong flex item nằm trên đường trung trực của cross axis
-  - stretch: dãn hết các item ra bám hết vào start - end
-
-- justify-content: tác động lên vị trí của flex item nhưng theo trục main axis
-
-  - flex-start: dồn flex item về main start
-  - flex-end: dồn flex item về main end
-  - space-between: cách đều các item ra xa nhau nhất có thể
-  - center: ở giữa main axis
-  - space-around: tạo khoảng không cách đều cho mỗi item và các item (2 bên của 1 item có thêm khoảng trắng)
-
-- align-content: giống tính năng của justify-content nhưng theo trục cross axis
-
-// FLEX ITEM //
-
-- align-self: giống alignnhunngw chỉ riêng từng flex item đuoccwj chỉ định
-- flex-grow: làm tăng main size
-- flex-shrink: làm giảm main size
-- order: thay đổi thú tự của từng flex item
-
-## BEM
-
-- cú pháp
-  - .block
-  - .block\_\_element
-  - .block--modifier
-  - .block\_\_element--modifier
-
-####-----CSS-----#####
+<script>
+    var canvas = document.getElementById('linecanvas');
+    var ctx = canvas.getContext('2d');
+
+    // Đường thứ nhất
+    ctx.beginPath();
+    ctx.strokeStyle = 'blue';
+    ctx.moveTo(20,20);
+    ctx.lineTo(200,20);
+    ctx.stroke();
+
+    // Đường thứ 2
+    ctx.beginPath();
+    ctx.strokeStyle = 'green';//Đặt màu đường
+    ctx.lineWidth = 5; //Độ rộng
+
+    ctx.moveTo(20,20);
+    ctx.lineTo(120, 120);
+    ctx.stroke();
+</script>
+
+### Cung tròn, hình tròn
+
+Lệnh vẽ cung tròn, hình tròn: `arc(x,y,r,start,stop)`
+
+- `x`, `y` : tọa độ tâm
+- `r`: bán kính
+- `start`: góc bắt đầu vẽ
+- `stop`: góc kết thúc vẽ
+
+```html
+<canvas
+  id="arcexmaple"
+  width="600"
+  height="110"
+  style="background: whitesmoke;"
+>
+</canvas>
+
+<script>
+  var canvas = document.getElementById("arcexmaple");
+  var ctx = canvas.getContext("2d");
+
+  ctx.beginPath();
+  ctx.arc(100, 55, 50, 0, 2 * Math.PI);
+  ctx.stroke();
+
+  ctx.beginPath();
+  ctx.arc(210, 55, 50, 0, Math.PI);
+  ctx.strokeStyle = "green";
+  ctx.lineWidth = 5; //Độ rộng
+  ctx.stroke();
+
+  ctx.beginPath();
+  ctx.arc(320, 55, 50, Math.PI, 0);
+  ctx.strokeStyle = "green";
+  ctx.lineWidth = 5; //Độ rộng
+  ctx.stroke();
+</script>
+```
+
+<canvas id="arcexmaple" 
+    width="600" height="110" 
+    style="background: whitesmoke;">
+
+</canvas>
+
+<script>
+    var canvas = document.getElementById('arcexmaple');
+    var ctx = canvas.getContext('2d');
+
+    ctx.beginPath();
+    ctx.arc(100, 55, 50, 0, 2*Math.PI);
+    ctx.stroke();
+
+
+    ctx.beginPath();
+    ctx.arc(210, 55, 50, 0, Math.PI);
+    ctx.strokeStyle = 'green';
+    ctx.lineWidth = 5; //Độ rộng
+    ctx.stroke();
+
+    ctx.beginPath();
+    ctx.arc(320, 55, 50, Math.PI, 0);
+    ctx.strokeStyle = 'green';
+    ctx.lineWidth = 5; //Độ rộng
+    ctx.stroke();
+</script>
+
+### Vẽ chữ
+
+`context.font` : thiết lập font chữ
+
+`fillText(text,x,y)` : tô chữ từ tọa độ x,y
+
+`strokeText(text,x,y)` : vẽ chữ (không tô đặc)
+
+```html
+<canvas
+  id="textcanvas"
+  width="600"
+  height="110"
+  style="background: whitesmoke;"
+></canvas>
+
+<script>
+  var ctx = document.getElementById("textcanvas").getContext("2d");
+
+  ctx.font = "48px serif";
+
+  ctx.fillStyle = "red";
+  ctx.fillText("Hello world", 100, 50);
+
+  ctx.strokeStyle = "green";
+  ctx.strokeText("Hello world", 100, 100);
+</script>
+```
+
+### Thay đổi tọa độ
+
+Trong canvas bạn có thể dịch chuyển tọa độ để vẽ theo tọa độ tương đối bằng các hàm: `translate`, `rotate`, `scale`
+
+- `context.translate(x, y)` : dịch chuyển gốc tọa độ đến điểm x, y
+- `context.rotate(ang)` : quay hệ tọa độ một góc ang quanh gốc
+- `context.scale(sx, sy)` : thu phóng tọa độ chiều x và chiều y
+
+```html
+<canvas
+  id="canvascoor"
+  width="600"
+  height="110"
+  style="background: whitesmoke;"
+></canvas>
+<script>
+  var ctx = document.getElementById("canvascoor").getContext("2d");
+
+  ctx.font = "48px serif";
+  ctx.fillStyle = "red";
+  ctx.fillText("Hello world", 20, 50);
+
+  ctx.translate(300, 100);
+  ctx.rotate(-Math.PI / 4);
+  ctx.scale(0.5, 0.3);
+
+  ctx.fillText("Hello world", 0, 0);
+</script>
+```
