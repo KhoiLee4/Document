@@ -2,12 +2,62 @@
 
 ## CSS là gì?
 
-CSS (Cascading Style Sheets) là một ngôn ngữ dùng để trình bày hình thức thể hiện của các phần tử HTML. Như định dạng các phần tử văn bản (cơ chữ, font chữ, màu sắc ...), bố cục, dàn trang ... 
+CSS (Cascading Style Sheets) là một ngôn ngữ dùng để trình bày hình thức thể hiện của các phần tử HTML. Như định dạng các phần tử văn bản (cơ chữ, font chữ, màu sắc ...), bố cục, dàn trang ...
 
-*❗CSS không phải là ngôn ngữ lập trình*
+_❗CSS không phải là ngôn ngữ lập trình_
 
+## Nhúng CSS
 
+- **Inline**: mã CSS viết tại thuộc tính `style` của phần tử HTML. Mã CSS chỉ tác động nên chính phần tử đó.
 
+```html
+<p style="color:white; background-color:red;">
+  Đây là ví dụ về CSS dạng inline
+</p>
+```
+
+- **Internal**: mã CSS trong chính văn bản HTML, nằm trong khối thẻ `<style>`
+
+```html
+<html>
+  <head>
+    <style>
+      /*style mở ra một khu vực để viết mã CSS*/
+      p {
+        color: white;
+        background-color: red;
+      }
+    </style>
+  </head>
+  <body>
+    <p>Đoạn văn 1.</p>
+    <p>Đoạn văn 2.</p>
+  </body>
+</html>
+```
+
+- **External**: mã CSS ở một file riêng biệt (thường là file.css) sau đó nạp vào HTML bằng phần tử html `<link>` (liên kết css với html)
+
+```html
+<html>
+  <head>
+    <link rel="stylesheet" href="demo.css" />
+  </head>
+  <body>
+    <p>Đoạn văn 1.</p>
+    <p>Đoạn văn 2.</p>
+  </body>
+</html>
+```
+*file.css*
+```css
+p {
+  color: white;
+  background-color: red;
+}
+```
+
+*❗Thuộc tính href chứ đường dẫn đến CSS nên có thể là đường dẫn đến thư mục hoặc đường link*
 
 
 
@@ -254,5 +304,3 @@ color: red !important;
   - .block\_\_element
   - .block--modifier
   - .block\_\_element--modifier
-
-
