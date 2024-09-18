@@ -3818,7 +3818,7 @@ ServiceLifetime
 
 - Trong ServiceDescriptor có thuộc tính Lifetime để xác định dịch vụ tạo ra tồn tại trog bao lâu. Lifetime có kiểu ServiceLifetime (kiểu enum) có các giá trị cụ thể:
 
-| Tên       | Ý nghĩa |
+| Tên       | Giá trị | Ý nghĩa                                                                                                                                              |
 | --------- | ------- | ------------------------------------------------------------------------------------------------------------------------------------------------ |
 | Scoped    | 1       | Một bản thực thi (instance) của dịch vụ (Class) được tạo ra cho mỗi phạm vi, tức tồn tại cùng với sự tồn tại của một đối tượng kiểu ServiceScope |
 |           |         | (đối tượng này tạo bằng cách gọi ServiceProvider.CreateScope, đối tượng này hủy thì dịch vụ cũng bị hủy).                                        |
@@ -4164,10 +4164,10 @@ hostEntry.AddressList.ToList().ForEach(ip => Console.WriteLine(ip));
 Phương thức lớp Dns
 
 | Tên                     | Ý nghĩa                                                       |
-| ----------------------- | ------------------------------------------------------------- | --- |
+| ----------------------- | ------------------------------------------------------------- |
 | GetHostName()           | Lấy hostname của máy local                                    |
 | GetHostEntry(String)    | Phân giải host hoặc IP thành đối tượng IPHostEntry.           |
-| GetHostEntry(IPAddress) | Đối tượng kiểu IPHostEntry nó chứa thông tin địa chỉ về host. |     |
+| GetHostEntry(IPAddress) | Đối tượng kiểu IPHostEntry nó chứa thông tin địa chỉ về host. |
 
 Thuộc tính IPHostEntry
 
