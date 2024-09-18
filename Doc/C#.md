@@ -2,14 +2,11 @@
 
 ## 🤔 C# là gì?
 
-C# là một ngôn ngữ lập trình hướng đối tượng rất tường minh, rõ ràng. C# được dùng để phát triển nhiều loại ứng dụng (Ứng dụng Windows, Linux, macOS, Web ...)
-có hiệu năng cao và bảo mật thi hành trên nền tảng .NET
+C# là một ngôn ngữ lập trình hướng đối tượng rất tường minh, rõ ràng. C# được dùng để phát triển nhiều loại ứng dụng (Ứng dụng Windows, Linux, macOS, Web ...) có hiệu năng cao và bảo mật thi hành trên nền tảng .NET
 
-C# được thiết kế cho **Common Language Infrastructure (CLI)**, mà gồm **Executable Code** và **Runtime Environment**, cho phép chúng ta sử dụng các ngôn ngữ high-level đa
-dạng trên các nền tảng và cấu trúc máy tính khác nhau.
+C# được thiết kế cho **Common Language Infrastructure (CLI)**, mà gồm **Executable Code** và **Runtime Environment**, cho phép chúng ta sử dụng các ngôn ngữ high-level đa dạng trên các nền tảng và cấu trúc máy tính khác nhau.
 
-Cấu trúc C# khá gần với các ngôn ngữ high-level truyền thống, C và C++, và là một ngôn ngữ lập trình hướng đối tượng. Nó có sự giống nhau mạnh mẽ với Java, nó
-có nhiều đặc điểm lập trình mạnh mẽ mà làm cho nó trở nên ưa thích với các lập trình viên trên toàn thế giới:
+Cấu trúc C# khá gần với các ngôn ngữ high-level truyền thống, C và C++, và là một ngôn ngữ lập trình hướng đối tượng. Nó có sự giống nhau mạnh mẽ với Java, nó có nhiều đặc điểm lập trình mạnh mẽ mà làm cho nó trở nên ưa thích với các lập trình viên trên toàn thế giới:
 
 - Điều kiện Boolean
 - Tự động dọn rác bởi Garbage-Collector (GC)
@@ -77,8 +74,7 @@ Có 2 loại
 
 Thành phần
 
-- Metadata: Metadata cung cấp thông tin về các kiểu dữ liệu, thành viên, tham số, và các thông tin khác trong assembly. Metadata cho phép kiểm tra kiểu thời gian chạy,
-  ánh xạ, và nhiều tính năng khác.
+- Metadata: Metadata cung cấp thông tin về các kiểu dữ liệu, thành viên, tham số, và các thông tin khác trong assembly. Metadata cho phép kiểm tra kiểu thời gian chạy, ánh xạ, và nhiều tính năng khác.
 
 - Intermediate Language (IL): IL là mã trung gian mà mã nguồn C# được biên dịch thành. Khi chương trình được thực thi, IL được biên dịch thành mã máy cụ thể của nền tảng.
 
@@ -125,15 +121,15 @@ using MathLibrary;
 
 class Program
 {
-  static void Main()
-  {
-      Calculator calc = new Calculator();
-      int sum = calc.Add(3, 4);
-      Console.WriteLine("Sum: " + sum);
+    static void Main()
+    {
+        Calculator calc = new Calculator();
+        int sum = calc.Add(3, 4);
+        Console.WriteLine("Sum: " + sum);
 
-      // The following line would cause a compile error because Subtract is internal
-      // int difference = calc.Subtract(10, 5);
-  }
+        // The following line would cause a compile error because Subtract is internal
+        // int difference = calc.Subtract(10, 5);
+    }
 }
 ```
 
@@ -153,133 +149,138 @@ _❗Phạm vi truy cập internal sẽ được nhắc đến sau_
 
 Tệp .csproj của một dự án C# sử dụng định dạng XML để định nghĩa cấu trúc và thiết lập của dự án
 
-```xml
+```XML
 <Project Sdk="Microsoft.NET.Sdk">
 
-    <!-- 1. PropertyGroup: Cấu hình chung -->
-    <PropertyGroup>
-        <OutputType>Exe</OutputType>
-        <TargetFramework>net7.0</TargetFramework>
-        <RuntimeIdentifier>win-x64</RuntimeIdentifier>
-        <RuntimeIdentifiers>win-x64;linux-x64</RuntimeIdentifiers>
-        <AssemblyTitle>MyApplication</AssemblyTitle>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-        <MyCustomProperty>MyValue</MyCustomProperty>
-    </PropertyGroup>
+  <!-- 1. PropertyGroup: Cấu hình chung -->
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net7.0</TargetFramework>
+    <RuntimeIdentifier>win-x64</RuntimeIdentifier>
+    <RuntimeIdentifiers>win-x64;linux-x64</RuntimeIdentifiers>
+    <AssemblyTitle>MyApplication</AssemblyTitle>
+    <AssemblyVersion>1.0.0.0</AssemblyVersion>
+    <MyCustomProperty>MyValue</MyCustomProperty>
+  </PropertyGroup>
 
-    <!-- 2. PropertyGroup: Cấu hình riêng cho chế độ Debug -->
-    <PropertyGroup Condition="'$(Configuration)' == 'Debug'">
-        <DefineConstants>DEBUG;TRACE</DefineConstants>
-        <OutputPath>bin\Debug\</OutputPath>
-    </PropertyGroup>
+  <!-- 2. PropertyGroup: Cấu hình riêng cho chế độ Debug -->
+  <PropertyGroup Condition="'$(Configuration)' == 'Debug'">
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <OutputPath>bin\Debug\</OutputPath>
+  </PropertyGroup>
 
-    <!-- 3. PropertyGroup: Cấu hình riêng cho chế độ Release -->
-    <PropertyGroup Condition="'$(Configuration)' == 'Release'">
-        <DefineConstants>RELEASE</DefineConstants>
-        <Optimize>true</Optimize>
-        <OutputPath>bin\Release\</OutputPath>
-    </PropertyGroup>
+  <!-- 3. PropertyGroup: Cấu hình riêng cho chế độ Release -->
+  <PropertyGroup Condition="'$(Configuration)' == 'Release'">
+    <DefineConstants>RELEASE</DefineConstants>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+  </PropertyGroup>
 
-    <!-- 4. ItemGroup: Tham chiếu đến các gói NuGet -->
-    <ItemGroup>
-        <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
-    </ItemGroup>
+  <!-- 4. ItemGroup: Tham chiếu đến các gói NuGet -->
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+  </ItemGroup>
 
-    <!-- 5. ItemGroup: Tham chiếu đến dự án khác trong giải pháp -->
-    <ItemGroup>
-        <ProjectReference Include="..\OtherProject\OtherProject.csproj" />
-    </ItemGroup>
+  <!-- 5. ItemGroup: Tham chiếu đến dự án khác trong giải pháp -->
+  <ItemGroup>
+    <ProjectReference Include="..\OtherProject\OtherProject.csproj" />
+  </ItemGroup>
 
-    <!-- 6. ItemGroup: Tham chiếu đến thư viện DLL cụ thể -->
-    <ItemGroup>
-        <Reference Include="System.Data">
-        <HintPath>..\libs\System.Data.dll</HintPath>
-        </Reference>
-    </ItemGroup>
+  <!-- 6. ItemGroup: Tham chiếu đến thư viện DLL cụ thể -->
+  <ItemGroup>
+    <Reference Include="System.Data">
+    <HintPath>..\libs\System.Data.dll</HintPath>
+    </Reference>
+  </ItemGroup>
 
-    <!-- 7. ItemGroup: Bao gồm tài nguyên -->
-    <ItemGroup>
-        <EmbeddedResource Include="Resources\Strings.resx" />
-    </ItemGroup>
+  <!-- 7. ItemGroup: Bao gồm tài nguyên -->
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Strings.resx" />
+  </ItemGroup>
 
-    <!-- 8. ItemGroup: Bao gồm các tệp nội dung -->
-    <ItemGroup>
-        <Content Include="index.html" CopyToOutputDirectory="PreserveNewest" />
-    </ItemGroup>
+  <!-- 8. ItemGroup: Bao gồm các tệp nội dung -->
+  <ItemGroup>
+    <Content Include="index.html" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
 
-    <!-- 9. ItemGroup: Bao gồm các tệp không thuộc về quá trình xây dựng -->
-    <ItemGroup>
-        <None Include="README.md" />
-    </ItemGroup>
+  <!-- 9. ItemGroup: Bao gồm các tệp không thuộc về quá trình xây dựng -->
+  <ItemGroup>
+    <None Include="README.md" />
+  </ItemGroup>
 
-    <!-- 10. Target: Thực hiện tác vụ tùy chỉnh sau khi xây dựng -->
-    <Target Name="CustomTask" AfterTargets="Build">
-        <Exec Command="echo Building the project..." />
-    </Target>
+  <!-- 10. Target: Thực hiện tác vụ tùy chỉnh sau khi xây dựng -->
+  <Target Name="CustomTask" AfterTargets="Build">
+    <Exec Command="echo Building the project..." />
+  </Target>
 
-    <!-- 11. Import: Nhập tệp targets -->
-    <Import Project="..\common.targets" />
+  <!-- 11. Import: Nhập tệp targets -->
+  <Import Project="..\common.targets" />
 
-    <!-- 12. ItemDefinitionGroup: Định nghĩa mặc định cho Compile -->
-    <ItemDefinitionGroup>
-        <Compile>
-        <WarningLevel>4</WarningLevel>
-        </Compile>
-    </ItemDefinitionGroup>
+  <!-- 12. ItemDefinitionGroup: Định nghĩa mặc định cho Compile -->
+  <ItemDefinitionGroup>
+    <Compile>
+    <WarningLevel>4</WarningLevel>
+    </Compile>
+  </ItemDefinitionGroup>
 
 </Project>
 ```
 
 > chỉnh sửa sau
 
-    - <Project> : Đây là phần gốc của tệp, bao quanh tất cả các thành phần khác và chỉ ra SDK được sử dụng.
+- <Project> : Đây là phần gốc của tệp, bao quanh tất cả các thành phần khác và chỉ ra SDK được sử dụng.
 
-    - <PropertyGroup> : Nhóm này chứa các thuộc tính cấu hình của dự án.
-        + <OutputType> : Xác định loại đầu ra của dự án, ví dụ như Exe cho ứng dụng console hoặc Library cho thư viện.
+- <PropertyGroup> : Nhóm này chứa các thuộc tính cấu hình của dự án.
 
-        + <TargetFramework> : Xác định phiên bản .NET mà dự án sẽ chạy.
+  - <OutputType> : Xác định loại đầu ra của dự án, ví dụ như Exe cho ứng dụng console hoặc Library cho thư viện.
 
-        + <RootNamespace> : Xác định namespace gốc cho dự án.
+  - <TargetFramework> : Xác định phiên bản .NET mà dự án sẽ chạy.
 
-        + <AssemblyName> : Tên của assembly được tạo ra.
+  - <RootNamespace> : Xác định namespace gốc cho dự án.
 
-        + <LangVersion> : Phiên bản ngôn ngữ C# được sử dụng, latest sử dụng phiên bản mới nhất.
+  - <AssemblyName> : Tên của assembly được tạo ra.
 
-    - <ItemGroup> : Nhóm này chứa các phần tử tham chiếu, như các gói NuGet.
-        + <PackageReference> : Tham chiếu đến một gói NuGet.
+  - <LangVersion> : Phiên bản ngôn ngữ C# được sử dụng, latest sử dụng phiên bản mới nhất.
 
-        + <ProjectReference> : Tham chiếu đến một dự án C# khác trong cùng solution.
+- <ItemGroup> : Nhóm này chứa các phần tử tham chiếu, như các gói NuGet.
 
-        + <Reference> : Thêm một tham chiếu đến một tệp DLL cụ thể
+  - <PackageReference> : Tham chiếu đến một gói NuGet.
 
-        + <Compile> : Bao gồm các tệp mã nguồn cần biên dịch, trong ví dụ trên là tất cả các tệp .cs trong thư mục Models.
+  - <ProjectReference> : Tham chiếu đến một dự án C# khác trong cùng solution.
 
-        + <Content> : Bao gồm các tệp tĩnh (static files), ví dụ tất cả các tệp trong thư mục wwwroot.
+  - <Reference> : Thêm một tham chiếu đến một tệp DLL cụ thể
 
-        + <None> : Tham chiếu đến các tệp không biên dịch, nhưng có thể cần sao chép đến thư mục đầu ra (output directory), ví dụ appsettings.json.
+  - <Compile> : Bao gồm các tệp mã nguồn cần biên dịch, trong ví dụ trên là tất cả các tệp .cs trong thư mục Models.
 
-        + <DotNetCliToolReference> : Tham chiếu đến các công cụ dòng lệnh .NET CLI
+  - <Content> : Bao gồm các tệp tĩnh (static files), ví dụ tất cả các tệp trong thư mục wwwroot.
 
-        + <FrameworkReference>: Tham chiếu đến các framework assemblies cụ thể, ví dụ Microsoft.AspNetCore.App.
+  - <None> : Tham chiếu đến các tệp không biên dịch, nhưng có thể cần sao chép đến thư mục đầu ra (output directory), ví dụ appsettings.json.
 
-        + <EmbeddedResource>: Bao gồm các tài nguyên nhúng trong assembly.
+  - <DotNetCliToolReference> : Tham chiếu đến các công cụ dòng lệnh .NET CLI
 
-        + <AdditionalProbingPath>: Xác định các đường dẫn bổ sung để tìm kiếm các gói NuGet.
+  - <FrameworkReference>: Tham chiếu đến các framework assemblies cụ thể, ví dụ Microsoft.AspNetCore.App.
 
-    - Có thể định nghĩa các cấu hình khác nhau (ví dụ: Debug, Release) trong tệp .csproj bằng cách sử dụng các nhóm
-        <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+  - <EmbeddedResource>: Bao gồm các tài nguyên nhúng trong assembly.
 
-        <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
-            <DefineConstants>DEBUG;TRACE</DefineConstants>
-            <DebugType>full</DebugType>
-            <Optimization>false</Optimization>
-        </PropertyGroup>
+  - <AdditionalProbingPath>: Xác định các đường dẫn bổ sung để tìm kiếm các gói NuGet.
 
-        <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
-            <DefineConstants>TRACE</DefineConstants>
-            <DebugType>pdbonly</DebugType>
-            <Optimization>true</Optimization>
-        </PropertyGroup>
+- Có thể định nghĩa các cấu hình khác nhau (ví dụ: Debug, Release) trong tệp .csproj bằng cách sử dụng các nhóm
+
+  ```XML
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+      <DefineConstants>DEBUG;TRACE</DefineConstants>
+      <DebugType>full</DebugType>
+      <Optimization>false</Optimization>
+  </PropertyGroup>
+
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+      <DefineConstants>TRACE</DefineConstants>
+      <DebugType>pdbonly</DebugType>
+      <Optimization>true</Optimization>
+  </PropertyGroup>
+  ```
 
 ## Namespace
 
@@ -287,7 +288,7 @@ Namespace là cách tổ chức nhóm code (các lớp, giao diện, cấu trúc
 
 ```C#
 namespace mynamespace {
-    // Định nghĩa các lớp, cấu trúc ...
+  // Định nghĩa các lớp, cấu trúc ...
 }
 ```
 
@@ -315,7 +316,7 @@ Sử dụng using chỉ thị truy cập trực tiếp các phương thức tĩn
 
 ```C#
 using static System.Console;  // cho biết sử dụng trực tiếp các phương thức tĩnh
-WriteLine ("Xin chào C# NET CORE!");
+WriteLine("Xin chào C# NET CORE!");
 ```
 
 ### Namespace lồng nhau, nhiều cấp
@@ -323,13 +324,15 @@ WriteLine ("Xin chào C# NET CORE!");
 Các namespace cũng có thể khai báo lồng nhau, nhiều cấp sau đó dùng ký hiệu . để truy cập đến namepace mong muốn
 
 ```C#
-namespace A {
+namespace A
+{
     // Định nghĩa các lớp, cấu trúc ...
-    namespace B {
+    namespace B
+    {
         // Định nghĩa các lớp, cấu trúc ...
     }
 }
-///
+
 using A.B;
 ```
 
@@ -338,15 +341,15 @@ Tạo ra namespace nhiều cấp còn có thể khai báo một cách riêng r�
 ```C#
 namespace A
 {
-    public struct StructInA {};
+    public struct StructInA { };
 }
 namespace A.B
 {
-    public struct StructInB {};
+    public struct StructInB { };
 }
 namespace A.B.C
 {
-    public struct StructInC {};
+    public struct StructInC { };
 }
 ```
 
@@ -424,12 +427,13 @@ _❗value có thể là số có thể là chuỗi_
 Có thể dùng format string để tạo ra chuỗi in ra nhằm giảm thiểu dòng code
 
 ```C#
-string.Format("Xin chao {0}", ten) => String
-// áp dụng
+string.Format("Xin chao {0}", ten) // String
+
+// Áp dụng
 Console.writeline("Bien A = {0}, bien B = {1}, tong A + B = {2}", a, b, a + b);
 ```
 
-Dùng $ ở đầu để chèn biểu thức vào chuỗi in ra (coi thêm ở mục chuỗi ký tự)
+Dùng `$` ở đầu để chèn biểu thức vào chuỗi in ra (coi thêm ở mục chuỗi ký tự)
 
 ```C#
 Console.writeline($"Bien A = {a}, bien B = {b}, tong A + B = {a + b}");
@@ -520,14 +524,14 @@ Toán tử điều kiện (toán tử 3 ngôi) `(điều khiện) ? biểu thứ
 ### if else
 
 ```C#
-if(điểu kiện) {
-    các câu lệnh
+if (điểu kiện) {
+    // các câu lệnh
 }
-else if(điều kiện) {
-    các câu lệnh
+else if (điều kiện) {
+    // các câu lệnh
 }
 else {
-    các câu lệnh
+    // các câu lệnh
 }
 ```
 
@@ -541,18 +545,18 @@ _❗nếu chỉ có 1 câu lệnh thì không cần ngoặc_
 switch (expr)
 {
     case expr1:
-        //Cách lệnh thi  hành nếu expr == expr1
-    break;
+        //Cách lệnh thi hành nếu expr == expr1
+        break;
 
     case expr2:
-        //Cách lệnh thi  hành nếu expr == expr2
-    break;
+        //Cách lệnh thi hành nếu expr == expr2
+        break;
 
-        // ...
+    // ...
 
     default:
         //..
-    break;
+        break;
 }
 ```
 
@@ -567,7 +571,8 @@ _❗Sử dụng switch rõ ràng, dễ đọc hơn khi số lượng else if nhi
 - B3 : cập nhật lại biến kiểm tra vè quay lại B2
 
 ```C#
-for ( khởi_tạo; điều_kiện; cập_nhật ) {
+for (khởi_tạo; điều_kiện; cập_nhật)
+{
     //Các câu lệnh trong khối
 }
 ```
@@ -575,9 +580,9 @@ for ( khởi_tạo; điều_kiện; cập_nhật ) {
 Có thể viết thiếu thành phần vẫn được
 
 ```C#
-for (; ;) {}
+for (; ; ) { }
 // Hoặc
-for (; ;);
+for (; ; );
 ```
 
 _❗Thiếu điều kiện có thể dẫn đến vòng lặp vô tận_
@@ -587,7 +592,8 @@ _❗Thiếu điều kiện có thể dẫn đến vòng lặp vô tận_
 foreach duyệt tuần tự qua các phần tử từ đầu cho đến hết, cung cấp cách thức gọn hơn để duyệt qua các phần tử mảng
 
 ```C#
-foreach (var e in vararry) {
+foreach (var e in vararry)
+{
     // ...
 }
 ```
@@ -599,7 +605,8 @@ Cách hoạt động: kiểm tra điều kiện, nếu true thì thực hiện k
 Biến kiểm tra được khởi tạo trước đó và cập nhật trong khối lệnh của vòng lặp
 
 ```C#
-while (điều_kiện) {
+while (điều_kiện)
+{
     //Lặp nếu điều_kiện bằng true
 }
 ```
@@ -693,14 +700,14 @@ khai báo
 
 ```C#
 // type[, , … ,] varname = new type[size1, size2, …, sizeN];
-int[,] myvar = new int[3,4];
+int[,] myvar = new int[3, 4];
 ```
 
 truy cập
 
 ```C#
-myvar[0,0] =  1;    // hàng 1, cột 1
-myvar[2,3] =  3;    // hàng 3, cột 4
+myvar[0, 0] = 1;    // hàng 1, cột 1
+myvar[2, 3] = 3;    // hàng 3, cột 4
 ```
 
 ### Mảng trong mảng
@@ -709,11 +716,11 @@ khai báo dùng thêm [] để cho biết các phần tử trong mảng là nh�
 
 ```C#
 int[][] myArray = new int[][] {
-                    new int[] {1,2},
-                    new int[] {2,5,6},
-                    new int[] {2,3},
-                    new int[] {2,3,4,5,5}
-                   };
+new int[] {1,2},
+new int[] {2,5,6},
+new int[] {2,3},
+new int[] {2,3,4,5,5}
+};
 ```
 
 ## Chuỗi ký tự (string)
@@ -769,19 +776,18 @@ Khi viết chuỗi có ký tự $ phía trước, thì trong chuỗi đó có th
 ```C#
 int a = 10;
 int b = 2;
-string s = $"Kết quả {a}/{b} là {a/b}"; // "Kết quả 10/2 là 5"
+string s = $"Kết quả {a}/{b} là {a / b}"; // "Kết quả 10/2 là 5"
 ```
 
 Ngoài ra có thể căn lề, định dạng số, ngày tháng ... tương tự như chuỗi định dạng
 
 ```C#
-Console.WriteLine($"{"VòngLặp",10} {"Chẵn/Lẻ", -5}");
-      for (int i = 8; i < 15; i++)
-      {
-          string chanle = (i%2 == 0) ? "Chẵn" : "Lẻ";
-          Console.WriteLine($"{i,10} {chanle, -5}");
+Console.WriteLine($"{"VòngLặp",10} {"Chẵn/Lẻ",-5}");
+for (int i = 8; i < 15; i++)
+{
+    string chanle = (i % 2 == 0) ? "Chẵn" : "Lẻ";
+    Console.WriteLine($"{i,10} {chanle,-5}");
 }
-
 ```
 
 _❗số dương là căn lề phải, số âm là căn lề trái_
@@ -858,10 +864,13 @@ Kiểm tra xem đối tượng có thể được ép kiểu sang kiểu đích 
 
 ```C#
 object obj = "This is a string";
-if (obj is string str) {
-Console.WriteLine("The string is: " + str);
-} else {
-Console.WriteLine("The object is not a string.");
+if (obj is string str)
+{
+    Console.WriteLine("The string is: " + str);
+}
+else
+{
+    Console.WriteLine("The object is not a string.");
 }
 ```
 
@@ -882,24 +891,27 @@ double d = Convert.ToDouble(strDouble); // d = 123.45
 Có thể tạo các phương thức ép kiểu tùy chỉnh trong các lớp của mình bằng cách sử dụng các toán tử `implicit` và `explicit`.
 
 ```C#
-public class Fahrenheit {
-public double Degrees { get; set; }
+public class Fahrenheit
+{
+    public double Degrees { get; set; }
 
-      public static explicit operator Celsius(Fahrenheit f) {
-          return new Celsius { Degrees = (f.Degrees - 32) * 5 / 9 };
-      }
-
-}
-
-public class Celsius {
-public double Degrees { get; set; }
-
-      public static implicit operator Fahrenheit(Celsius c) {
-          return new Fahrenheit { Degrees = (c.Degrees * 9 / 5) + 32 };
-      }
+    public static explicit operator Celsius(Fahrenheit f)
+    {
+        return new Celsius { Degrees = (f.Degrees - 32) * 5 / 9 };
+    }
 
 }
 
+public class Celsius
+{
+    public double Degrees { get; set; }
+
+    public static implicit operator Fahrenheit(Celsius c)
+    {
+        return new Fahrenheit { Degrees = (c.Degrees * 9 / 5) + 32 };
+    }
+
+}
 ```
 
 Sử dụng các phương thức ép kiểu tùy chỉnh
@@ -921,11 +933,11 @@ int i = int.Parse(str); // i = 123
 string strDouble = "123.45";
 if (double.TryParse(strDouble, out double d))
 {
-Console.WriteLine("The double is: " + d); // d = 123.45
+    Console.WriteLine("The double is: " + d); // d = 123.45
 }
 else
 {
-Console.WriteLine("The string could not be parsed.");
+    Console.WriteLine("The string could not be parsed.");
 }
 ```
 
@@ -934,8 +946,8 @@ Console.WriteLine("The string could not be parsed.");
 ### Cấu trúc
 
 ```C#
-<Access Modifiers> <return type> <name_method>(<parameters>) {
-// Các câu lệnh trong phương thức
+<Access Modifiers> <return type> <name_method> (<parameters>) {
+    // Các câu lệnh trong phương thức
 }
 ```
 
@@ -975,8 +987,7 @@ loại tham số
   - Kiểu liệt kê enum
   - Kiểu Tuple
 
-- **Tham chiếu** thì bản thân biến ở tham số sẽ được hàm sử dụng trực tiếp (tham chiếu) chứ không tạo ra một biến cục bộ trong hàm, nên nó có tác động trực tiếp đến biến này bên ngoài.
-  Để sử dụng được tham chiếu thì khai báo tham số ở phương thức, cũng như khi gọi cần cho thêm từ khóa `ref`. Những kiểu dữ liệu là tham chiếu:
+- **Tham chiếu** thì bản thân biến ở tham số sẽ được hàm sử dụng trực tiếp (tham chiếu) chứ không tạo ra một biến cục bộ trong hàm, nên nó có tác động trực tiếp đến biến này bên ngoài. Để sử dụng được tham chiếu thì khai báo tham số ở phương thức, cũng như khi gọi cần cho thêm từ khóa `ref`. Những kiểu dữ liệu là tham chiếu:
   - Biến kiểu lớp (class), các lớp thư viện hoặc lớp do bạn định nghĩa
   - Biến kiểu delegate
   - Biến kiểu interface, các giao diện từ thư viện hoặc tự định nghĩa
@@ -991,12 +1002,14 @@ _❗Khai báo `ref` ở tham số phương thức, bắt buộc khi gọi phải
 - **Tham chiếu `out`**, thay vì dùng `ref` để tạo tham chiếu ta cũng có thể dùng `out`. điểm khác biệt là tham chiếu `out` không cần khởi tạo trước (không có giá trị lúc truyền vào)
 
 ```C#
-public static void OutExample(out int x) {
-x = 100;
+public static void OutExample(out int x)
+{
+    x = 100;
 }
-public static void Main(string[] agv) {
-int a; // biến a chưa khởi tạo
-OutExample(out a); // Giờ a = 100;
+public static void Main(string[] agv)
+{
+    int a; // biến a chưa khởi tạo
+    OutExample(out a); // Giờ a = 100;
 }
 ```
 
@@ -1023,8 +1036,8 @@ Từ lớp đó sinh ra các đối tượng (object), các đối tượng này
 
 ```C#
 <Access Modifiers> class Class_Name {
-// khai báo các thành viên dữ liệu (thuộc tính, biến trường dữ liệu)
-// khai báo các thành viên hàm (phương thức)
+    // khai báo các thành viên dữ liệu (thuộc tính, biến trường dữ liệu)
+    // khai báo các thành viên hàm (phương thức)
 }
 ```
 
@@ -1053,7 +1066,7 @@ _❗mặc định là internal nếu không khai báo_
 
 ```C#
 var ob1 = new ClassName();
-hoặc
+// hoặc
 ClassName ob2;
 ob2 = new ClassName();
 ```
@@ -1087,14 +1100,15 @@ Biến readonly có nghĩa là chỉ đọc, không sửa đổi được nữa.
 - Biến readonly có thể gán giá trị cho nó trong hàm khởi tạo (và giá trị gán theo kết quả của một biểu thức nào đó)
 
 ```C#
-class Student {
-// khai báo biến readonly
-public readonly string name;
-public Student(string name)
+class Student
 {
-// khởi tạo biến readonly ở hàm tạo (bắt buộc nếu biến khai báo mà chưa khởi tạo)
-this.name = name;
-}
+    // khai báo biến readonly
+    public readonly string name;
+    public Student(string name)
+    {
+        // khởi tạo biến readonly ở hàm tạo (bắt buộc nếu biến khai báo mà chưa khởi tạo)
+        this.name = name;
+    }
 }
 ```
 
@@ -1111,7 +1125,7 @@ Khi muốn sử dụng constructor có tham số của lớp cha thì ở lớp 
 ```C#
 public CategoryMobile(string nameofCategory, string mota) : base(nameofCategory)
 {
-description = mota;
+    description = mota;
 }
 ```
 
@@ -1131,11 +1145,12 @@ Không thể gọi phương thức hủy một cách chủ động được (do 
 Khai báo phương thức hủy: tên trùng tên lớp, phía trước code ký hiệu ~, phương thức không được có tham số.
 
 ```C#
-class MyClass {
-~MyClass()
+class MyClass
 {
-// Thân phương thức hủy
-}
+    ~MyClass()
+    {
+        // Thân phương thức hủy
+    }
 }
 ```
 
@@ -1154,17 +1169,17 @@ Kỹ thuật quá tải phương thức (Method Overloading) là cách thức tr
 Quá tải phương thức là các phương thức có cùng tên nhưng tham số khác nhau (hàm có thể trả về kiểu dữ liệu khác nhau)
 
 ```C#
-public class OverloadingExample {
-public static int Sum(int a, int b)
+public class OverloadingExample
 {
-return a + b;
-}
+    public static int Sum(int a, int b)
+    {
+        return a + b;
+    }
 
-      public static double Sum(double a, double b)
-      {
-          return a + b;
-      }
-
+    public static double Sum(double a, double b)
+    {
+        return a + b;
+    }
 }
 ```
 
@@ -1175,12 +1190,12 @@ _❗Khai báo hai hàm cùng tên, giống nhau hoàn toàn về tham số chỉ
 Quá tải toán tử (Operator Overloading), giúp bạn định nghĩa mới (hoặc định nghĩa lại) hoạt động của các toán tử trên những đối tượng lớp do bạn định nghĩa.
 
 ```C#
-public static MyVector operator+(MyVector a, MyVector b)
+public static MyVector operator +(MyVector a, MyVector b)
 {
-double sx = a.x + b.x;
-double sy = a.x + b.y;
-MyVector v = new MyVector(sx,sy);
-return v;
+    double sx = a.x + b.x;
+    double sy = a.x + b.y;
+    MyVector v = new MyVector(sx, sy);
+    return v;
 }
 ```
 
@@ -1204,24 +1219,24 @@ thuộc tính, bộ truy cập accessor setter/getter
 ```C#
 class Student
 {
-private string name; // Đây là trường dữ liệu
+    private string name; // Đây là trường dữ liệu
 
-      public string Name       // Đây là thuộc tính
-      {
-          // set thi hành khi gán, write
-          // dữ liệu gán là value
-          set
-          {
-              Console.WriteLine("Ghi dữ liệu <--" + value);
-              name = value;
-          }
+    public string Name       // Đây là thuộc tính
+    {
+        // set thi hành khi gán, write
+        // dữ liệu gán là value
+        set
+        {
+            Console.WriteLine("Ghi dữ liệu <--" + value);
+            name = value;
+        }
 
-          //get thi hành ghi đọc dữ liệu
-          get {
-              return "Tên là: " + name;
-          }
-      }
-
+        //get thi hành ghi đọc dữ liệu
+        get
+        {
+            return "Tên là: " + name;
+        }
+    }
 }
 ```
 
@@ -1230,7 +1245,7 @@ _❗Thuộc tính accessor có thể khai báo thiếu set hoặc get, nếu thi
 có thể khai báo 1 cách tự động set/get
 
 ```C#
-public string Name {set; get;}
+public string Name { set; get; }
 ```
 
 ### Bộ đánh chỉ mục (indexer)
@@ -1242,40 +1257,44 @@ Indexer là khả năng cho cho phép truy cập đến các thành viên của 
 ```C#
 public kiểu_trả_về this[kiểu_index index]
 {
-get {
-// thực hiện các tác vụ và trả về dữ liệu có kiểu_trả_về
-}
-set {
-// giá trị được truyền trong biến value, có thể lưu nó vào nơi thích hợp
-}
+    get
+    {
+        // thực hiện các tác vụ và trả về dữ liệu có kiểu_trả_về
+    }
+    set
+    {
+        // giá trị được truyền trong biến value, có thể lưu nó vào nơi thích hợp
+    }
 }
 ```
 
 Ví dụ
 
 ```C#
-class IndexerExam {
-string ho = "Nguyễn";
-string ten = "Nam";
+class IndexerExam
+{
+    string ho = "Nguyễn";
+    string ten = "Nam";
 
-      // Bộ chỉ mục số nguyên, chỉ mục là 0 hoặc 1 nếu khác sẽ phát sinh Exception
-      public string this[int index]
-      {
-          // Đọc dữ liệu theo chỉ mục
-          get {
-              if (index == 0) return ho;
-              else if (index == 1) return ten;
-              else throw new Exception("Chỉ số không tồn tại");
-          }
+    // Bộ chỉ mục số nguyên, chỉ mục là 0 hoặc 1 nếu khác sẽ phát sinh Exception
+    public string this[int index]
+    {
+        // Đọc dữ liệu theo chỉ mục
+        get
+        {
+            if (index == 0) return ho;
+            else if (index == 1) return ten;
+            else throw new Exception("Chỉ số không tồn tại");
+        }
 
-          // Gán dữ liệu theo chỉ mục
-          set {
-              if (index == 0)  ho = value;
-              else if (index == 1) ten = value;
-              else throw new Exception("Chỉ số không tồn tại");
-          }
-      }
-
+        // Gán dữ liệu theo chỉ mục
+        set
+        {
+            if (index == 0) ho = value;
+            else if (index == 1) ten = value;
+            else throw new Exception("Chỉ số không tồn tại");
+        }
+    }
 }
 ```
 
@@ -1290,24 +1309,25 @@ _❗Struct là kiểu dữ liệu tham trị không phải tham chiếu như cla
 _❗Phương thức khởi tạo bắt buộc phải khởi tạo toàn bộ thành viên dữ liệu (trường, thuộc tính) có trong struct._
 
 ```C#
-public struct Product {
-public Product(string \_name)
+public struct Product
 {
-name = \_name; // đồng nghĩa khởi tạo thuộc tính Name
-price = 100;
-Description = "Mô tả về sản phẩm {name}";
-}
+    public Product(string _name)
+    {
+        name = _name; // đồng nghĩa khởi tạo thuộc tính Name
+        price = 100;
+        Description = "Mô tả về sản phẩm {name}";
+    }
 
-      public string name;   // trường tên sản phẩm
-      public decimal price; // trường giá sản phẩm
+    public string name;   // trường tên sản phẩm
+    public decimal price; // trường giá sản phẩm
 
-      // Phương thức sinh ra chuỗi thông tin
-      public override string ToString() => $"{name} : {price}$";
+    // Phương thức sinh ra chuỗi thông tin
+    public override string ToString() => $"{name} : {price}$";
 
-      // Thuộc tính Name
-      public string Name {set => name = value; get => name;}
-      // Thuộc tính Description
-      public string Description {set; get;}
+    // Thuộc tính Name
+    public string Name { set => name = value; get => name; }
+    // Thuộc tính Description
+    public string Description { set; get; }
 
 }
 ```
@@ -1346,12 +1366,14 @@ Lớp niêm phong (sealed)
 - Trong kỹ thuật lập trình, bạn có thể đánh dấu một lớp nào đó không bao giờ trở thành lớp cơ sở để phái sinh ra lớp khác- lớp đó gọi là bị niêm phong.
 
 ```C#
-sealed class A {
-// ....
+sealed class A
+{
+    // ....
 }
 
-class B : A { // Chỗ này lỗi vì kế thừa lớp bị niêm phong
-// ....
+class B : A
+{ // Chỗ này lỗi vì kế thừa lớp bị niêm phong
+  // ....
 }
 ```
 
@@ -1363,20 +1385,25 @@ Phương thức khởi tạo và hủy
 
 - Đối với các phương thức hủy, khi đối tượng hủy nó sẽ thi hành phương thức hủy của lớp kế thừa trước, rồi mới đến phương thức hủy của lớp cơ sở (ngược với khởi tạo).
 
-- Khi phương thức khởi tạo lớp cơ sở có tham số, hoặc ấn định một phương thức khởi tạo của lớp cơ sở (nếu lớp cơ sở có quá tải nhiều phương thức khởi tạo), thì hàm tạo của lớp kế thừa
-  phải chỉ định sẽ khởi chạy phương thức khởi tạo (và truyền tham số) nào của lớp cơ sở.
-  class A {
-  public A(string mgs) {
-  Console.WriteLine("A Init" + mgs);
-  }
-  }
+- Khi phương thức khởi tạo lớp cơ sở có tham số, hoặc ấn định một phương thức khởi tạo của lớp cơ sở (nếu lớp cơ sở có quá tải nhiều phương thức khởi tạo), thì hàm tạo của lớp kế thừa phải chỉ định sẽ khởi chạy phương thức khởi tạo (và truyền tham số) nào của lớp cơ sở.
 
-        class B : A {
-            public B(string abc) : base(abc)
-            {
-                Console.WriteLine("B Init");
-            }
-        }
+```C#
+class A
+{
+    public A(string mgs)
+    {
+        Console.WriteLine("A Init" + mgs);
+    }
+}
+
+class B : A
+{
+    public B(string abc) : base(abc)
+    {
+        Console.WriteLine("B Init");
+    }
+}
+```
 
 Chuyển kiểu
 
@@ -1397,13 +1424,14 @@ using System;
 
 namespace CS007B_PARTIAL
 {
-    public partial class Product {
-    public string Name { set; get;}
-
-    public bool Order(int number = 0)
+    public partial class Product
     {
-        return true;
-    }
+        public string Name { set; get; }
+
+        public bool Order(int number = 0)
+        {
+            return true;
+        }
 
     }
 }
@@ -1415,7 +1443,8 @@ using System;
 
 namespace CS007B_PARTIAL
 {
-    public partial class Product {
+    public partial class Product
+    {
 
         public int numberBrought()
         {
@@ -1433,11 +1462,13 @@ Có thể dùng từ khóa partial trong khai báo các phương thức, tuy nhi
 ```C#
 // file1.cs
 partial void myMethod();
+```
 
+```C#
 // file2.cs
 partial void myMethod()
 {
-// code triển khai
+    // code triển khai
 }
 ```
 
@@ -1448,24 +1479,28 @@ Partial Method thường sinh ra bởi việc sinh mã nguồn tự động khi 
 kiểu lồng nhau (Nested Type) cho phép bạn khai báo một lớp (class), giao diện (interface), cấu trúc (struct) trong thân một lớp khác
 
 ```C#
-class MobileProduct {
-public Manufactory manufactory { set; get; }
+class MobileProduct
+{
+    public Manufactory manufactory { set; get; }
 
     // Lớp Manufactory nằm trong MobileProduct
-    public class Manufactory {
+    public class Manufactory
+    {
         string address;
-        public Manufactory (string address) {
+        public Manufactory(string address)
+        {
             this.address = address;
         }
-        public void ShowAddress () {
-            Console.WriteLine (address);
+        public void ShowAddress()
+        {
+            Console.WriteLine(address);
         }
     }
 
-    public void ProductInfo () {
-        manufactory.ShowAddress ();
+    public void ProductInfo()
+    {
+        manufactory.ShowAddress();
     }
-
 }
 ```
 
@@ -1488,9 +1523,9 @@ Phương thức generic
   tên những kiểu Generic mà bạn sẽ sử dụng cho hàm.
 
 ```C#
-X MyFunction<X, Y> (X x, Y y)
+X MyFunction<X, Y>(X x, Y y)
 {
-return x;
+    return x;
 }
 ```
 
@@ -1499,10 +1534,10 @@ Lớp generic
 - Tương tự như phương thức, cũng có thể khai báo lớp với Generic - bằng liệt tên các kiểu đại diện này sau khai báo tên lớp
 
 ```C#
-class MyClass<X, Y> {
-// ...
+class MyClass<X, Y>
+{
+    // ...
 }
-
 ```
 
 - Xây dựng lớp với kiểu Generic phổ biến để triển khai nhiều loại giải thuật
@@ -1512,9 +1547,10 @@ class MyClass<X, Y> {
 Kiểu vô danh là kiểu không có tên
 
 ```C#
-var obj = new {
-thuoctinh1 = giatri1,
-thuoctinh2 = giatri2
+var obj = new
+{
+    thuoctinh1 = giatri1,
+    thuoctinh2 = giatri2
 }
 ```
 
@@ -1533,8 +1569,9 @@ Biến kiểu động - ngầm định kiểu thực sự của biến đó đư
 ```C#
 dynamic myvar;
 // hoặc
-static void TestFunc(dynamic dvar) {
-Console.WriteLine(dvar.age); // ở thời điểm biên dịch - không biết dvar có thuộc tính age hay không, nhưng nó vẫn biên dịch
+static void TestFunc(dynamic dvar)
+{
+    Console.WriteLine(dvar.age); // ở thời điểm biên dịch - không biết dvar có thuộc tính age hay không, nhưng nó vẫn biên dịch
 }
 ```
 
@@ -1560,7 +1597,7 @@ bienkieuint = 10; // có thể gán giá trị cho biến
 
 if (bienkieuint != null)
 {
-int val = bienkieuint.Value; // đọc giá trị trong biến nullable
+    int val = bienkieuint.Value; // đọc giá trị trong biến nullable
 }
 ```
 
@@ -1584,2150 +1621,2586 @@ string name = nullableString ?? "Default Name";
 
 ## Đa hình
 
-- Tính đa hình của nghĩa là có nhiều dạng, tính đa hình sẽ thể hiện rõ khi xây dựng các lớp kế thừa. Một phương thức được gọi, nó sẽ là phương thức cụ thể nào tùy thuộc vào đối tượng
-  lúc nó thực thi.
+Tính đa hình của nghĩa là có nhiều dạng, tính đa hình sẽ thể hiện rõ khi xây dựng các lớp kế thừa. Một phương thức được gọi, nó sẽ là phương thức cụ thể nào tùy thuộc vào đối tượng lúc nó thực thi.
 
-- Phương thức ảo (virtual funtion)
+### Phương thức ảo (virtual funtion)
 
-  - Một phương thức ảo trong lớp - là phương thức có thể định nghĩa lại (bị nạp chồng - bị đè) bởi lớp kế thừa
-    class Product {
+Một phương thức ảo trong lớp - là phương thức có thể định nghĩa lại (bị nạp chồng - bị đè) bởi lớp kế thừa
+
+```C#
+class Product
+{
     protected double price = 0;
 
-          // Phương thức ảo ProductInfo
-          public virtual void ProductInfo() {
-              Console.WriteLine($"Giá sản phẩm {price}");
-          }
-
-          public void TestProduct()
-          {
-              this.ProductInfo();
-          }
-
+    // Phương thức ảo ProductInfo
+    public virtual void ProductInfo()
+    {
+        Console.WriteLine($"Giá sản phẩm {price}");
     }
 
-  - Hàm ảo có thể định nghĩa lại - kỹ thuật này gọi là nạp chồng (override)
-
-- Nạp chồng phương thức (Override)
-
-  - Ở lớp kế thừa, có thể định nghĩa lại phương thức ảo của lớp cơ sở, việc này là thực hiện nạp chồng, để nạp chồng chỉ việc khai báo lại phương thức thêm vào từ khóa override
-    class Iphone : Product {
-    public Iphone() {
-    price = 500;
+    public void TestProduct()
+    {
+        this.ProductInfo();
     }
-    public override void ProductInfo() {
-    Console.WriteLine($"Điện thoại Iphone");
-    base.ProductInfo();
+}
+```
+
+Hàm ảo có thể định nghĩa lại - kỹ thuật này gọi là nạp chồng (override)
+
+### Nạp chồng phương thức (Override)
+
+Ở lớp kế thừa, có thể định nghĩa lại phương thức ảo của lớp cơ sở, việc này là thực hiện nạp chồng, để nạp chồng chỉ việc khai báo lại phương thức thêm vào từ khóa override
+
+```C#
+class Iphone : Product
+{
+    public Iphone()
+    {
+        price = 500;
     }
+    public override void ProductInfo()
+    {
+        Console.WriteLine($"Điện thoại Iphone");
+        base.ProductInfo();
     }
+}
+```
 
-  - Để sử dụng lại hàm của lớp cơ sở dùng từ khóa base để gọi đến lớp cơ sở
+Để sử dụng lại hàm của lớp cơ sở dùng từ khóa base để gọi đến lớp cơ sở
 
-  - Đối tượng được khởi tạo thuộc kiểu nào thì sẽ gọi đến hàm và thuộc tính của kiểu đó
+Đối tượng được khởi tạo thuộc kiểu nào thì sẽ gọi đến hàm và thuộc tính của kiểu đó
 
-- Lớp / phương thức trừu tượng (abstract)
+### Lớp / phương thức trừu tượng (abstract)
 
-  - Lớp trừu tượng thì không được dùng để khởi tạo đối tượng trực tiếp mà chỉ làm lớp cơ sở kế thừa bởi lớp khác.
+Lớp trừu tượng thì không được dùng để khởi tạo đối tượng trực tiếp mà chỉ làm lớp cơ sở kế thừa bởi lớp khác.
 
-  - Trong lớp trừu tượng, còn có thể khai báo phương thức trừu tượng với từ khóa abstract, phương thức này không có thân (chỉ có tên - tham số), nó yêu cầu lớp kế thừa bắt buộc phải
-    nạp chồng (override)
-    abstract class Product {
+Trong lớp trừu tượng, còn có thể khai báo phương thức trừu tượng với từ khóa abstract, phương thức này không có thân (chỉ có tên - tham số), nó yêu cầu lớp kế thừa bắt buộc phải nạp chồng (override)
+
+```C#
+abstract class Product
+{
     protected double price = 0;
     public abstract void ProductInfo();
     public void TestProduct()
     {
-    this.ProductInfo();
+        this.ProductInfo();
     }
-    }
+}
+```
 
-- Giao diện (interface)
+### Giao diện (interface)
 
-  - Giao diện (interface) nó có ý nghĩa gần giống với lớp abstract
+Giao diện (interface) nó có ý nghĩa gần giống với lớp abstract
 
-  - Tất cả các phương thức đều khai báo không có thân (chỉ có tên - nghĩa là phương thức abstract)
+Tất cả các phương thức đều khai báo không có thân (chỉ có tên - nghĩa là phương thức abstract)
 
-  - Lớp triển khai giao diện (lớp kế thừa) bắt buộc phải định nghĩa lại (không cần từ khóa overrid) tất cả các phương thức này, cũng có một điều khác là lớp kế thừa có thể
-    kế thừa nhiều giao diện.
-    interface IProduct {
+Lớp triển khai giao diện (lớp kế thừa) bắt buộc phải định nghĩa lại (không cần từ khóa overrid) tất cả các phương thức này, cũng có một điều khác là lớp kế thừa có thể kế thừa nhiều giao diện.
+
+```C#
+interface IProduct
+{
     public void ShowPrice();
+}
+
+interface IOrder
+{
+    public void OrderAction(int numberProduct);
+}
+
+class Product : IProduct, IOrder
+{
+    double price;
+    public Product(double price)
+    {
+        this.price = price;
+    }
+    public void ShowPrice()
+    {
+        Console.WriteLine($"Price: {price}");
     }
 
-        interface IOrder {
-            public void OrderAction(int numberProduct);
-        }
+    public void OrderAction(int numberProduct)
+    {
+        Console.WriteLine($"Order: {numberProduct}");
+    }
+}
+```
 
-        class Product : IProduct, IOrder {
-            double price;
-            public Product(double price) {
-                this.price = price;
-            }
-            public void ShowPrice() {
-                Console.WriteLine($"Price: {price}");
-            }
-
-            public void OrderAction(int numberProduct) {
-                Console.WriteLine($"Order: {numberProduct}");
-            }
-        }
-
-  - Giao diện, giống như những mẫu - mà lớp triển khai bắt buộc phải có các phương thức giống nó.
+Giao diện, giống như những mẫu - mà lớp triển khai bắt buộc phải có các phương thức giống nó.
 
 ## Delegate
 
-- Delegate (hàm ủy quyền) là một kiểu dữ liệu, nó dùng để tham chiếu (trỏ đến) đến các hàm (phương thức) có tham số và kiểu trả về phù hợp với khai báo kiểu.
+Delegate (hàm ủy quyền) là một kiểu dữ liệu, nó dùng để tham chiếu (trỏ đến) đến các hàm (phương thức) có tham số và kiểu trả về phù hợp với khai báo kiểu.
 
-- Delegate có thể gán vào nó một, nhiều hàm (phương thức) có sự tương thích về tham số, kiểu trả về, sau đó dùng nó để gọi hàm (giống con trỏ trong C++)
+Delegate có thể gán vào nó một, nhiều hàm (phương thức) có sự tương thích về tham số, kiểu trả về, sau đó dùng nó để gọi hàm (giống con trỏ trong C++)
 
-- Delegate được dùng phổ biến khi gán các biểu thức lambda
+Delegate được dùng phổ biến khi gán các biểu thức lambda
 
-- Delegate thường được dùng để xây dựng các hàm callback, đặc biệt là các Event
+Delegate thường được dùng để xây dựng các hàm callback, đặc biệt là các Event
 
-- Ví dụ cách sử dụng
+Ví dụ cách sử dụng
 
-  - Khai báo một delegate giống như cách khai báo phương thức nhưng có thêm từ khóa delegate và không có thân phương thức.
-    public delegate void ShowLog(string message);
+- Khai báo một delegate giống như cách khai báo phương thức nhưng có thêm từ khóa delegate và không có thân phương thức.
 
-  - Khi đã có ShowLog, nó dùng như một kiểu dữ liệu để khai báo các biến, các biến này có thể gán vào nó các hàm có sự tương đồng về tham số và kiểu trả về với khai báo delegate
-    ShowLog showLog;
+```C#
+public delegate void ShowLog(string message);
+```
 
-  !!! Sau khi biến delegate được gán hàm vào, có thể dùng biến delegate để thi hành bằng cách gọi:
-  varDelegate.Invoke(các-tham-số) hoặc varDelegate(các-tham-số)
+- Khi đã có ShowLog, nó dùng như một kiểu dữ liệu để khai báo các biến, các biến này có thể gán vào nó các hàm có sự tương đồng về tham số và kiểu trả về với khai báo delegate
 
-  - Tạo hai phương thức Info và Warning có tham số giống với ShowLog, nghĩa là có một tham số kiểu string, trả về void:
-    static public void Info(string s)
-    {
+```C#
+ShowLog showLog;
+```
+
+_❗Sau khi biến delegate được gán hàm vào, có thể dùng biến delegate để thi hành bằng cách gọi: varDelegate.Invoke(các-tham-số) hoặc varDelegate(các-tham-số)_
+
+- Tạo hai phương thức Info và Warning có tham số giống với ShowLog, nghĩa là có một tham số kiểu string, trả về void:
+
+```C#
+static public void Info(string s)
+{
     // ...
-    }
+}
 
-    static public void Warning(string s)
-    {
+static public void Warning(string s)
+{
     // ...
-    }
+}
+```
 
-  - Do Info, Warning có tương đồng về tham số với delegate trên, nên hai hàm này có thể dùng để gán vào biến kiểu ShowLog
-    ShowLog showLog;
+- Do Info, Warning có tương đồng về tham số với delegate trên, nên hai hàm này có thể dùng để gán vào biến kiểu ShowLog
 
-    showLog = Info; // showLog gán bằng phương thức Info
-    showLog("Thông báo"); // Thi hành delegate chính là thi hành Info
+```C#
+ShowLog showLog;
 
-    showLog = Warning; // showLog gán bằng phương thức Warning
-    showLog("Thông báo"); // Thi hành delegate chính là thi hành Info
+showLog = Info; // showLog gán bằng phương thức Info
+showLog("Thông báo"); // Thi hành delegate chính là thi hành Info
 
-  - Khi chạy thì showLog sẽ thực hiện nội dung các hàm mà nó được gán (cần đảm bảo biến delegate đó đã được gán phương thức - biến khác null)
-    if (showLog != null) showLog("Mgs") hoặc gắn gọn hơn showLog?.Invoke("Mgs");
+showLog = Warning; // showLog gán bằng phương thức Warning
+showLog("Thông báo"); // Thi hành delegate chính là thi hành Info
+```
 
-  - Một delegate có thể đưa vào nó nhiều phương thức để một lần gọi thi hành tất cả các phương thức nó chứa
+- Khi chạy thì showLog sẽ thực hiện nội dung các hàm mà nó được gán (cần đảm bảo biến delegate đó đã được gán phương thức - biến khác null)
+  if (showLog != null) showLog("Mgs") hoặc gắn gọn hơn showLog?.Invoke("Mgs");
 
-    - Toán tử += : Nối thêm một phương thức vào delegate
-      delegatevar += method1
-    - Toán tử -= : Loại bỏ 1 phương ở cuối (nếu phương thức đó có trong delegate, tính từ cuối)
-      delegatevar -= method1
+- Một delegate có thể đưa vào nó nhiều phương thức để một lần gọi thi hành tất cả các phương thức nó chứa
 
-  - Ngoài cách gán cho delegate một hàm có tên cụ thể, cũng có thể gán một phương thức Anonymou
-    showLog += (x) => Console.WriteLine(string.Format("===>{0}<===", x));
+  - Toán tử += : Nối thêm một phương thức vào delegate
+    delegatevar += method1
+  - Toán tử -= : Loại bỏ 1 phương ở cuối (nếu phương thức đó có trong delegate, tính từ cuối)
+    delegatevar -= method1
 
-  - Các delegate cùng kiểu có thể kết hợp lại với nhau bằng toán tử +
-    ShowLog showLog1 = (x)=> {Console.WriteLine($"-----{x}-----");};
-    ShowLog showLog2 = Warning;
-    ShowLog showLog3 = Info;
+- Ngoài cách gán cho delegate một hàm có tên cụ thể, cũng có thể gán một phương thức Anonymou
 
-    var all = showLog1 + showLog2 + showLog3 + showLog1;
+```C#
+showLog += (x) => Console.WriteLine(string.Format("===>{0}<===", x));
+```
 
-!!! Hiểu đơn giản có thể hình dung delegate như 1 mảng chứa các con trỏ hàm. Khi Khi gọi đến 1 dekegate thì nó sẽ thực hiện các hàm mà nó chứa theo thứ tự từ đầu tới cuối (thứ tự được thêm vào)
-!!! Các hàm trong 1 delegate phải có cùng kiểu trả về, cùng số lượng và kiểu các tham số truyền vào hàm
+- Các delegate cùng kiểu có thể kết hợp lại với nhau bằng toán tử +
 
-- Có thể sử dụng delegate làm tham số của phương thức, nó có vai trò như những hàm callback linh hoạt.
-  // Sử dụng Delegate làm tham số phương thức, truyền callback
-  static void TinhTong(int a, int b, Action callback)
-  {
-  int c = a + b;
-  // Gọi callback
-  callback(c.ToString());
-  }
+```C#
+ShowLog showLog1 = (x) => { Console.WriteLine($"-----{x}-----"); };
+ShowLog showLog2 = Warning;
+ShowLog showLog3 = Info;
 
-  public static void TestTinhTong()
-  {
-  TinhTong(5,6, (x) => Console.WriteLine($"Tổng hai số là: {x}"));
-  TinhTong(1,3, Logs.Info);
-  }
+var all = showLog1 + showLog2 + showLog3 + showLog1;
+```
 
-- Func và Action
+_❗Hiểu đơn giản có thể hình dung delegate như 1 mảng chứa các con trỏ hàm. Khi Khi gọi đến 1 dekegate thì nó sẽ thực hiện các hàm mà nó chứa theo thứ tự từ đầu tới cuối (thứ tự được thêm vào)_
 
-  - Func và Action là hai mẫu delegate định nghĩa sẵn, giúp nhanh chóng tạo ra biến kiểu delegate mà không mất công khai báo
+_❗Các hàm trong 1 delegate phải có cùng kiểu trả về, cùng số lượng và kiểu các tham số truyền vào hàm_
 
-  - Func là mẫu delegate có kiểu trả về
-    Func<kiểu_tham_số_1, kiểu_tham_số_2, ..., kiểu_trả_về> var_delegate;
+Có thể sử dụng delegate làm tham số của phương thức, nó có vai trò như những hàm callback linh hoạt.
 
-    // Khai báo kiểu Func
-    Func<int, string, bool> bien1; => biến delegate tên bien1 tương đương với hàm có 2 tham số, tham số 1 kiểu int, tham số 2 kiểu string, và hàm trả về kiểu bool
+```C#
+// Sử dụng Delegate làm tham số phương thức, truyền callback
+static void TinhTong(int a, int b, Action callback)
+{
+    int c = a + b;
+    // Gọi callback
+    callback(c.ToString());
+}
 
-    // Khai báo delegate bình thường
-    delegate bool DelegateName(int a, string b);
-    DelegateName bien1;
+public static void TestTinhTong()
+{
+    TinhTong(5, 6, (x) => Console.WriteLine($"Tổng hai số là: {x}"));
+    TinhTong(1, 3, Logs.Info);
+}
+```
 
-  !!! Kiểu cuối cùng trong khai báo Func là kiểu trả về của hàm, có thể thiếu tham số nhưng không được thiếu kiểu trả về
+Func và Action
 
-  - Action là mẫu delegate không có kiểu trả về hay biến kiểu Action có thể gán bằng các hàm có kiểu trả về void
-    Action<kiểu_tham_số_1, kiểu_tham_số_2, ... > var_delegate;
+- Func và Action là hai mẫu delegate định nghĩa sẵn, giúp nhanh chóng tạo ra biến kiểu delegate mà không mất công khai báo
+
+- Func là mẫu delegate có kiểu trả về
+
+```C#
+Func<kiểu_tham_số_1, kiểu_tham_số_2, ..., kiểu_trả_về> var_delegate;
+
+// Khai báo kiểu Func
+Func<int, string, bool> bien1;
+// biến delegate tên bien1 tương đương với hàm có 2 tham số, tham số 1 kiểu int, tham số 2 kiểu string, và hàm trả về kiểu bool
+
+// Khai báo delegate bình thường
+delegate bool DelegateName(int a, string b);
+DelegateName bien1;
+```
+
+_❗Kiểu cuối cùng trong khai báo Func là kiểu trả về của hàm, có thể thiếu tham số nhưng không được thiếu kiểu trả về_
+
+- Action là mẫu delegate không có kiểu trả về hay biến kiểu Action có thể gán bằng các hàm có kiểu trả về void
+
+```C#
+Action<kiểu_tham_số_1, kiểu_tham_số_2, ...> var_delegate;
+```
 
 ## Biểu thức lambda (Anonymous)
 
-- Biểu thức lambda còn gọi là biểu thức hàm nặc danh (Anonymous), một biểu thức khai báo giống phương thức (hàm) nhưng thiếu tên
-  (các_tham_số) => biểu_thức;
-  // Hoặc
-  (các_tham_số) =>
-  {
-  // các câu lệnh
-  // Sử dụng return nếu có giá trị trả về
-  }
+Biểu thức lambda còn gọi là biểu thức hàm nặc danh (Anonymous), một biểu thức khai báo giống phương thức (hàm) nhưng thiếu tên
 
-- Các biểu thức lambda đều có thể chuyển đổi thành delegate, do vậy nó có thể gán cho các delegate phù hợp
-  public delegate int TinhToan (int a, int b);
+```C#
+(các_tham_số) => biểu_thức;
+// Hoặc
+(các_tham_số) =>
+{
+    // các câu lệnh
+    // Sử dụng return nếu có giá trị trả về
+}
+```
 
-  static void Main (string[] args) {
-  // Gán biểu thức lambda cho delegate
-  TinhToan tinhtong = (int x, int y) => {
-  return x + y;
-  };
+Các biểu thức lambda đều có thể chuyển đổi thành delegate, do vậy nó có thể gán cho các delegate phù hợp
 
-        int kq = tinhtong (5, 1); // kq = 6;
-        Console.WriteLine(kq);
+```C#
+public delegate int TinhToan(int a, int b);
 
-  }
+static void Main(string[] args)
+{
+    // Gán biểu thức lambda cho delegate
+    TinhToan tinhtong = (int x, int y) =>
+    {
+        return x + y;
+    };
 
-  !!! Thường kết hợp với Func hoặc Action để tạo chuỗi các hành động
+    int kq = tinhtong(5, 1); // kq = 6;
+    Console.WriteLine(kq);
+}
+```
 
-- Có thể sử dụng toán tử => sau khai báo tên phương thức (loại phương thức có kiểu trả về khác void), rồi đến ngay một biểu thức (biểu thức lambda) có kết quả trả về (không dùng {}), biểu thức
-  này như là định nghĩ thân của phương thức.
-  int Tong(int x, int y) => x + y;
-  // Tương đương
-  int Tong(int x, int y)
-  {
-  return x + y;
-  }
+_❗Thường kết hợp với Func hoặc Action để tạo chuỗi các hành động_
 
-      !!! Hiểu là dùng để rút gọn phương thức đối với các phương thức thực hiện 1 dòng lệnh, 1 công việc ngắn có kiểu trả về (khác void)
+Có thể sử dụng toán tử => sau khai báo tên phương thức (loại phương thức có kiểu trả về khác void), rồi đến ngay một biểu thức (biểu thức lambda) có kết quả trả về (không dùng {}), biểu thức
+này như là định nghĩ thân của phương thức.
+
+```C#
+int Tong(int x, int y) => x + y;
+// Tương đương
+int Tong(int x, int y)
+{
+    return x + y;
+}
+```
+
+_❗Hiểu là dùng để rút gọn phương thức đối với các phương thức thực hiện 1 dòng lệnh, 1 công việc ngắn có kiểu trả về (khác void)_
 
 ## Event
 
-- Các sự kiện (Event) là cơ chế để một đối tượng (đối tượng của lớp) này thông báo đến đối tượng khác có điều gì đó mà lớp khác quan tâm vừa xảy ra.
+Các sự kiện (Event) là cơ chế để một đối tượng (đối tượng của lớp) này thông báo đến đối tượng khác có điều gì đó mà lớp khác quan tâm vừa xảy ra.
 
-- Lớp mà từ đó gửi đi sự kiện gọi tên nó là publisher và các lớp nhận được sự kiện gọi là là các subsriber.
+Lớp mà từ đó gửi đi sự kiện gọi tên nó là publisher và các lớp nhận được sự kiện gọi là là các subsriber.
 
-- Các Event xây dựng với nền tảng chính là delegate
+Các Event xây dựng với nền tảng chính là delegate
 
-- Giả xử sử dụng delegate để nhận và phát sự kiện từ các lớp publisher và subsriber. Nhưng delegate có thể được gán lại bằng null làm cho các sự kiện đăng ký trước đó bị hủy. Điều này
-  là phá hỏng nguyên tắc hoạt động của mô hình lập trình sự kiện - phá vỡ sự đóng gói
+Giả xử sử dụng delegate để nhận và phát sự kiện từ các lớp publisher và subsriber. Nhưng delegate có thể được gán lại bằng null làm cho các sự kiện đăng ký trước đó bị hủy. Điều này là phá hỏng nguyên tắc hoạt động của mô hình lập trình sự kiện - phá vỡ sự đóng gói
 
-- Đối với Event thì không thể gán null cho kiểu dữ liệu này, giúp đảm bảo được nguyên tắc hoạt động của mô hình lập trình sự kiện
+Đối với Event thì không thể gán null cho kiểu dữ liệu này, giúp đảm bảo được nguyên tắc hoạt động của mô hình lập trình sự kiện
 
-!!! Event là Delegate nhưng khi khai báo thêm từ khóa event, dẫn tới chỉ có thể thực hiện toán tử += hoặc -= với Event
+_❗Event là Delegate nhưng khi khai báo thêm từ khóa event, dẫn tới chỉ có thể thực hiện toán tử += hoặc -= với Event_
 
-- Event trong thư viện .Net đều xây dựng từ một delegate có tên EventHandler, nó đã định nghĩa sẵn có trong thư viện .NET với dạng:
-  public delegate void EventHandler(object sender?, EventArgs e);
-  public delegate void EventHandler<TEventArgs>(object sender?, TEventArgs e);
+Event trong thư viện .Net đều xây dựng từ một delegate có tên EventHandler, nó đã định nghĩa sẵn có trong thư viện .NET với dạng:
 
-- Ta có thể sử dụng luôn delegate EventHandler để xây dựng các Event của riêng mình sử dụng cho các Publisher, chỉ cần xây dựng các lớp phái sinh từ EventArgs với mục đích thêm vào các
-  tham số riêng khi gửi sử kiện.
-  // Xây dựng lớp MyEventArgs kế thừa từ EventArgs
-  public class MyEventArgs : EventArgs {
-  public MyEventArgs (string data) {
-  this.data = data;
-  }
+```C#
+public delegate void EventHandler(object sender?, EventArgs e);
+public delegate void EventHandler<TEventArgs>(object sender?, TEventArgs e);
+```
 
-          // Lưu dữ liệu gửi đi từ publisher
-          private string data;
+Ta có thể sử dụng luôn delegate EventHandler để xây dựng các Event của riêng mình sử dụng cho các Publisher, chỉ cần xây dựng các lớp phái sinh từ EventArgs với mục đích thêm vào các tham số riêng khi gửi sử kiện.
 
-          public string Data {
-              get { return data; }
-          }
-      }
+```C#
+// Xây dựng lớp MyEventArgs kế thừa từ EventArgs
+public class MyEventArgs : EventArgs
+{
+    public MyEventArgs(string data)
+    {
+        this.data = data;
+    }
 
-      // Xây dựng lớp, phát đi sự kiện (data)
-      public class ClassA {
-          // Tạo Event với EventHandler
-          public event EventHandler event_news;
+    // Lưu dữ liệu gửi đi từ publisher
+    private string data;
 
-          public void Send () {
-              event_news?.Invoke (this, new MyEventArgs ("Có tin mới Abc ..."));
-          }
-      }
+    public string Data
+    {
+        get { return data; }
+    }
+}
 
-      public class ClassB {
-          public void Sub (ClassA p)
-          {
-              p.event_news += ReceiverFromPublisher;
-          }
+// Xây dựng lớp, phát đi sự kiện (data)
+public class ClassA
+{
+    // Tạo Event với EventHandler
+    public event EventHandler event_news;
 
-          private void ReceiverFromPublisher (object sender, MyEventArgs e)
-          {
-              Console.WriteLine ("ClassB: " + e.Data);
-          }
-      }
+    public void Send()
+    {
+        event_news?.Invoke(this, new MyEventArgs("Có tin mới Abc ..."));
+    }
+}
 
-      public class ClassC {
-          public void Sub (ClassA p)
-          {
-              p.event_news += ReceiverFromPublisher;
-          }
+public class ClassB
+{
+    public void Sub(ClassA p)
+    {
+        p.event_news += ReceiverFromPublisher;
+    }
 
-          private void ReceiverFromPublisher (object sender, MyEventArgs e)
-          {
-              Console.WriteLine ("ClassC: " + e.Data);
-          }
-      }
+    private void ReceiverFromPublisher(object sender, MyEventArgs e)
+    {
+        Console.WriteLine("ClassB: " + e.Data);
+    }
+}
 
-!!! Hiểu đơn giản Event là 1 delegate không thể null (không nullable). Event được dùng để nhận và thực hiện 1 chuỗi thao tác thông qua các lớp publisher (lớp phát) thực hiện Event,
-lớp subsriber (lớp đăng ký) thêm thao tác vào Event.
+public class ClassC
+{
+    public void Sub(ClassA p)
+    {
+        p.event_news += ReceiverFromPublisher;
+    }
+
+    private void ReceiverFromPublisher(object sender, MyEventArgs e)
+    {
+        Console.WriteLine("ClassC: " + e.Data);
+    }
+}
+```
+
+_❗Hiểu đơn giản Event là 1 delegate không thể null (không nullable). Event được dùng để nhận và thực hiện 1 chuỗi thao tác thông qua các lớp publisher (lớp phát) thực hiện Event, lớp subsriber (lớp đăng ký) thêm thao tác vào Event._
 
 ## Extension Method (Phương thức mở rộng)
 
-- Các phương thức mở rộng là các phương thức thêm vào lớp, cấu trúc, giao diện có sẵn mà không cần thiết phải kế thừa lớp để tạo ra các lớp mới, không cần biên dịch lại thư viện.
+Các phương thức mở rộng là các phương thức thêm vào lớp, cấu trúc, giao diện có sẵn mà không cần thiết phải kế thừa lớp để tạo ra các lớp mới, không cần biên dịch lại thư viện.
 
-- Các phương thức mở rộng khai báo là những phương thức tĩnh, nhưng lại được gọi thông qua đối tượng lớp mà phương thức mở rộng đó khai báo.
-  public static [kiểu trả về] [tên phương thức] (this [kiểu dũ liệu] tenbien, ...)
-  {
-  // ...
-  }
+Các phương thức mở rộng khai báo là những phương thức tĩnh, nhưng lại được gọi thông qua đối tượng lớp mà phương thức mở rộng đó khai báo.
 
-!!! kiểu dự kiệu của tham số đầu tiên là kiểu dự kiệu được mở rộng (có thêm hàm)
+```C#
+public static [kiểu trả về][tên phương thức] (this[kiểu dũ liệu] tenbien, ...)
+{
+// ...
+}
+```
 
-- Ví dụ
-  public static void Print(this string s, ConsoleColor color = ConsoleColor.Yellow)
-  {
-  ConsoleColor lastColor = Console.ForegroundColor;
-  Console.ForegroundColor = color;
-  Console.WriteLine(s);
-  Console.ForegroundColor = lastColor;
-  }
-  => các đối tượng string sẽ có thêm phương thức Print
+_❗kiểu dự kiệu của tham số đầu tiên là kiểu dự kiệu được mở rộng (có thêm hàm)_
+
+Ví dụ
+
+```C#
+public static void Print(this string s, ConsoleColor color = ConsoleColor.Yellow)
+{
+    ConsoleColor lastColor = Console.ForegroundColor;
+    Console.ForegroundColor = color;
+    Console.WriteLine(s);
+    Console.ForegroundColor = lastColor;
+}
+// các đối tượng string sẽ có thêm phương thức Print
+```
 
 ## Exception (ngoại lệ)
 
-- Ngoại lệ (exception) là vấn đề - lỗi phát sinh trong quá trình thực thi chương trình. Thường khi chương trình đang chạy mà phát sinh ngoại lệ (lỗi) thì dẫn đến chương trình
-  kết thúc ngay lập tức.
+Ngoại lệ (exception) là vấn đề - lỗi phát sinh trong quá trình thực thi chương trình. Thường khi chương trình đang chạy mà phát sinh ngoại lệ (lỗi) thì dẫn đến chương trình kết thúc ngay lập tức.
 
-- Có vô số nguyên nhân để chương trình đang chạy mà phát sinh ngoại lệ:
+Có vô số nguyên nhân để chương trình đang chạy mà phát sinh ngoại lệ:
 
-  - Dữ liệu người dùng nhập sai, mà chương trình không kiểm soát được
-  - Thực hiện các phép toán không được phép (như chia một số cho 0)
-  - Thao tác với tài nguyên không tồn tại (như mở file không có trên đĩa, kết nối đến CSDL không tồn tại ...)
-  - Thiếu bộ nhớ
-  - ...
+- Dữ liệu người dùng nhập sai, mà chương trình không kiểm soát được
+- Thực hiện các phép toán không được phép (như chia một số cho 0)
+- Thao tác với tài nguyên không tồn tại (như mở file không có trên đĩa, kết nối đến CSDL không tồn tại ...)
+- Thiếu bộ nhớ
+- ...
 
-- Khi có một lỗi phát sinh hầu hết các lỗi đều có thể quản lý bởi thư viện C# thì nó sẽ phát sinh ra một đối tượng lớp Exeption (System.System) hoặc đối tượng lớp nào đó
-  kế thừa từ Exception
+Khi có một lỗi phát sinh hầu hết các lỗi đều có thể quản lý bởi thư viện C# thì nó sẽ phát sinh ra một đối tượng lớp Exeption (System.System) hoặc đối tượng lớp nào đó kế thừa từ Exception
 
-- Khi một đối tượng lớp Exception sinh ra - mà chương trình không chủ động xử lý đối tượng này thì chương trình sẽ kết thúc
+Khi một đối tượng lớp Exception sinh ra - mà chương trình không chủ động xử lý đối tượng này thì chương trình sẽ kết thúc
 
-- Đối tượng lớp Exception chứa trong nó các thông tin về lỗi (dòng thông báo, nguyên nhân lỗi, nơi phát sinh lỗi ...)
+Đối tượng lớp Exception chứa trong nó các thông tin về lỗi (dòng thông báo, nguyên nhân lỗi, nơi phát sinh lỗi ...)
 
-- Xử lý ngoại lệ
+Xử lý ngoại lệ
 
-  - xử lý ngoại lệ thì ta cần bắt lấy nó và điều hướng chương trình một cách thích hợp. Để bắt ngoại lệ ta sử dụng câu lệnh try catch:
-    try {
+- xử lý ngoại lệ thì ta cần bắt lấy nó và điều hướng chương trình một cách thích hợp. Để bắt ngoại lệ ta sử dụng câu lệnh try catch:
+
+```C#
+try
+{
     // Các khối code được giám sát để bắt lỗi nếu có
     // nếu có lỗi sẽ phát sinh ngoại lệ Exception
     // Ngoại lệ này bắt lại được ở khối catch
-    }
-    catch (Exception loi)
-    {
+}
+catch (Exception loi)
+{
     // Khối này thực thi khi có lỗi - đối tượng Exception bắt được lưu ở biến loi
-    }
+}
+```
 
-  - Đoạn code nào muốn giám sát để bắt ngoại lệ - thì đưa vào khối try
+- Đoạn code nào muốn giám sát để bắt ngoại lệ - thì đưa vào khối try
 
-  - Nếu ngoại lệ xảy ra do code trong khối đó thì sẽ bắt được - chương trình sẽ không kết thúc mà lập tức chuyển sang khối catch
+- Nếu ngoại lệ xảy ra do code trong khối đó thì sẽ bắt được - chương trình sẽ không kết thúc mà lập tức chuyển sang khối catch
 
-  - Tại catch có ngay đối tượng lớp Exception - cần xử lý theo logic ứng dụng điều hướng chương trình một cách thích hợp ở đây
+- Tại catch có ngay đối tượng lớp Exception - cần xử lý theo logic ứng dụng điều hướng chương trình một cách thích hợp ở đây
 
-    static void Main(string[] args)
+```C#
+static void Main(string[] args)
+{
+    try
     {
-    try {
-    // khối này được giám sát để bắt lỗi - khi nó phát sinh
-    int[] mynumbers = new int[] {1,2,3};
-    int i = mynumbers[10]; // dòng này phát sinh lỗi
-    Console.WriteLine(i); // dòng này không được thực thi vì lỗi trên
+        // khối này được giám sát để bắt lỗi - khi nó phát sinh
+        int[] mynumbers = new int[] { 1, 2, 3 };
+        int i = mynumbers[10]; // dòng này phát sinh lỗi
+        Console.WriteLine(i); // dòng này không được thực thi vì lỗi trên
     }
     catch (Exception loi)
     {
-    // khối này thực thi khi bắt được lỗi
-    Console.WriteLine("Có lỗi rồi");
-    Console.WriteLine(loi.Message);
+        // khối này thực thi khi bắt được lỗi
+        Console.WriteLine("Có lỗi rồi");
+        Console.WriteLine(loi.Message);
     }
-    }
+}
 
-    => Có lỗi rồi
-    => Index was outside the bounds of the array.
+// Có lỗi rồi
+// Index was outside the bounds of the array.
+```
 
-  - Trong .NET từ lớp cơ sở Exception nó xây dựng nên rất nhiều loại ngoại lệ khác phục vụ chi tiết cho từng loại lỗi phát sinh khác nhau. Có thể bắt nhiều ngoại lệ.
+- Trong .NET từ lớp cơ sở Exception nó xây dựng nên rất nhiều loại ngoại lệ khác phục vụ chi tiết cho từng loại lỗi phát sinh khác nhau. Có thể bắt nhiều ngoại lệ.
 
-  - Để bắt cụ thể một loại ngoại lệ nào đó chỉ việc thêm một khối catch tương ứng với ngoại lệ đó
+- Để bắt cụ thể một loại ngoại lệ nào đó chỉ việc thêm một khối catch tương ứng với ngoại lệ đó
 
-  - Trong lệnh try ... catch, có thể thêm một tùy chọn là khối finally, code trong khối này được thực thi ngay cả khi có phát sinh ngoại lệ hay không.
-    int x = 10;
-    int y = 0;
-    int z = 0;
-    try {
+- Trong lệnh try ... catch, có thể thêm một tùy chọn là khối finally, code trong khối này được thực thi ngay cả khi có phát sinh ngoại lệ hay không.
+
+```C#
+int x = 10;
+int y = 0;
+int z = 0;
+try
+{
     z = x / y;
-    }
-    catch (DivideByZeroException e1) {
+}
+catch (DivideByZeroException e1)
+{
     Console.WriteLine(e1.Message);
-    }
-    finally {
+}
+finally
+{
     // Luôn được thi hành dù có phát sinh ngoại lệ hay không
     Console.WriteLine(z);
+}
+```
+
+_❗Khối finally cơ bản để giải phóng các tài nguyên chiếm giữ._
+
+Thuộc tính (hay dùng)
+
+- Message : chuỗi chứa nội dung thông báo lỗi
+- StackTrace : chuỗi chứa các bước thực thi chương trình cho đến khi bị lỗi (có chứa các phương thức, hàm khi thực thi gây lỗi, vị trí file lỗi ...)
+- Source : chứa tên ứng dụng hoặc đối tượng bị lỗi
+
+Phát sinh ngoại lệ
+
+- Nếu muốn phát sinh ngoại lệ cho biết có một lỗi nào đó vừa xảy ra thì cần tạo ra một đối tượng lớp Exception hoặc đối tượng thuộc lớp nào đó kế thừa từ Exception,
+  sau đó phát sinh bằng lệnh throw
+
+```C#
+public static double Thuong(double x, double y)
+{
+    if (y == 0)
+    {
+        // Khởi tạo ngoại lệ, tham số là thông báo lỗi
+        Exception myexception = new Exception("Số chia không được bằng 0");
+
+        // phát sinh ngoại lệ, code phía sau throw không được thực thi
+        throw myexception;
     }
+    return x / y;
+}
+static void Main(string[] args)
+{
+    try
+    {
+        double z = Thuong(100, 0);
+    }
+    catch (Exception e)
+    {
+        Console.WriteLine(e.Message);
+    }
+}
+```
 
-  !!! Khối finally cơ bản để giải phóng các tài nguyên chiếm giữ.
+Lớp Exeption riêng
 
-- Thuộc tính (hay dùng)
+- Nếu muốn tạo ra các lớp để quẳng ra các lỗi khi cần thiết, thì chỉ việc kế thừa lớp Exception. Lợi ích việc tạo ra lớp riêng, nó giúp cho việc quản lý lỗi - gỡ rối tốt hơn.
 
-  - Message : chuỗi chứa nội dung thông báo lỗi
-  - StackTrace : chuỗi chứa các bước thực thi chương trình cho đến khi bị lỗi (có chứa các phương thức, hàm khi thực thi gây lỗi, vị trí file lỗi ...)
-  - Source : chứa tên ứng dụng hoặc đối tượng bị lỗi
-
-- Phát sinh ngoại lệ
-
-  - Nếu muốn phát sinh ngoại lệ cho biết có một lỗi nào đó vừa xảy ra thì cần tạo ra một đối tượng lớp Exception hoặc đối tượng thuộc lớp nào đó kế thừa từ Exception,
-    sau đó phát sinh bằng lệnh throw
-    public static double Thuong(double x, double y) {
-    if (y == 0) {
-    // Khởi tạo ngoại lệ, tham số là thông báo lỗi
-    Exception myexception = new Exception("Số chia không được bằng 0");
-
-                // phát sinh ngoại lệ, code phía sau throw không được thực thi
-                throw myexception;
-            }
-            return x / y;
-        }
-        static void Main(string[] args) {
-            try {
-                double z = Thuong(100,0);
-            }
-            catch (Exception e) {
-                Console.WriteLine(e.Message);
-            }
-        }
-
-- Lớp Exeption riêng
-  - Nếu muốn tạo ra các lớp để quẳng ra các lỗi khi cần thiết, thì chỉ việc kế thừa lớp Exception. Lợi ích việc tạo ra lớp riêng, nó giúp cho việc quản lý lỗi - gỡ rối tốt hơn.
-    public class DataTooLongExeption : Exception {
+```C#
+public class DataTooLongExeption : Exception
+{
     const string erroMessage = "Dữ liệu quá dài";
-    public DataTooLongExeption() : base(erroMessage) {
+    public DataTooLongExeption() : base(erroMessage)
+    {
+
     }
-    }
+}
+```
 
 ## Collection
 
-- Một collection (bộ, tập hợp) là một nhóm các đối tượng có sự liên quan đến nhau. Số đối tượng trong collect có thể thay đổi tăng giảm.
+Một collection (bộ, tập hợp) là một nhóm các đối tượng có sự liên quan đến nhau. Số đối tượng trong collect có thể thay đổi tăng giảm.
 
-- Có nhiều loại collection, chúng được tập hợp vào namespace System.Collections. Thường thì một lớp collection có các phương thức để thêm, bớt, lấy tổng phần tử.
+Có nhiều loại collection, chúng được tập hợp vào namespace System.Collections. Thường thì một lớp collection có các phương thức để thêm, bớt, lấy tổng phần tử.
 
-- Các lớp collection kiểu Generic như: List<T>, Dictionary<TKey, TValue>, Stack<T> ... những lớp generic này ở namespace System.Collections.Generic
+Các lớp collection kiểu Generic như: List<T>, Dictionary<TKey, TValue>, Stack<T> ... những lớp generic này ở namespace System.Collections.Generic
 
-- Các lớp collection mà không sử dụng generic như: ArrayList, Stack, Queue ...
+Các lớp collection mà không sử dụng generic như: ArrayList, Stack, Queue ...
 
-- Interface về collect
-  | IEnumerable<T> | Triển khai nó nếu muốn duyệt phần tử bằng foreach, nó định nghĩa phương thức GetEnumerator trả về một enumerator. |
-  | ICollection<T> | Giao diện này được triển khai bở các generic collection. Với nó lấy tổng phần tử bằng thuộc tính Count, copy các phần tử vào mảng bằng CopyTo, |
-  | | thêm bớt phần tử với Add, Remove, Clear |
-  | IList<T> | Giao diện này kế thừa ICollection<T> là một danh sách các phần tử truy cập được theo vị trí của nó. Nó có indexer, phương thức để chèn phần tử |
-  | | xóa phần tử Insert RemoveAt. |
-  | ISet<T> | Giao diện triển khai bởi các tập hợp |
-  | IDictionary<TKey,TValue> | Giao diện để triển khai loại dữ liệu lưu trữ theo cặp key, value. |
-  | ILookup<TKey,TValue> | Giao diện để triển khai loại dữ liệu lưu trữ theo cặp key, value. Nhưng cho phép một key có nhiều giá trị |
-  | IComparer<TKey,TValue> | Giao diện để triển khai cho phép so sánh để sắp xếp Collection |
-  | IEqualityComparer<TKey,TValue> | Giao diện để triển khai cho phép so sánh bằng |
+Interface về collect
+
+| Tên                            | Ý nghĩa                                                                                                                                                                                |
+| ------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| IEnumerable<T>                 | Triển khai nó nếu muốn duyệt phần tử bằng foreach, nó định nghĩa phương thức GetEnumerator trả về một enumerator.                                                                      |
+| ICollection<T>                 | Giao diện này được triển khai bở các generic collection. Với nó lấy tổng phần tử bằng thuộc tính Count, copy các phần tử vào mảng bằng CopyTo, thêm bớt phần tử với Add, Remove, Clear |
+| IList<T>                       | Giao diện này kế thừa ICollection<T> là một danh sách các phần tử truy cập được theo vị trí của nó. Nó có indexer, phương thức để chèn phần tử xóa phần tử Insert RemoveAt.            |
+| ISet<T>                        | Giao diện triển khai bởi các tập hợp                                                                                                                                                   |
+| IDictionary<TKey,TValue>       | Giao diện để triển khai loại dữ liệu lưu trữ theo cặp key, value.                                                                                                                      |
+| ILookup<TKey,TValue>           | Giao diện để triển khai loại dữ liệu lưu trữ theo cặp key, value. Nhưng cho phép một key có nhiều giá trị                                                                              |
+| IComparer<TKey,TValue>         | Giao diện để triển khai cho phép so sánh để sắp xếp Collection                                                                                                                         |
+| IEqualityComparer<TKey,TValue> | Giao diện để triển khai cho phép so sánh bằng                                                                                                                                          |
 
 ## List<T>
 
-- Lớp collection List là lớp triển khai các giao diện IList, ICollection, IEnumerable nó quản lý danh sách các đối tượng cùng kiểu.
+Lớp collection List là lớp triển khai các giao diện IList, ICollection, IEnumerable nó quản lý danh sách các đối tượng cùng kiểu.
 
-- Ví dụ, xây dựng danh sách các sản phẩm, sản phẩm có kiểu Product tự định nghĩa như sau - lớp sản phẩm hỗ trợ so sánh với sản phẩm khác nên triển khai IComparable,
-  cho phép hiện lấy một chuỗi thông tin bằng ToString với định dạng nào đó nên triển khai giao diện IFormattable
-  using System;
-  namespace CS017_Generic
-  {
-  public class Product : IComparable<Product>, IFormattable
-  {
-  public int ID {set; get;}
-  public string Name {set; get;} // tên
-  public double Price {set; get;} // giá
-  public string Origin {set; get;} // xuất xứ
+Ví dụ, xây dựng danh sách các sản phẩm, sản phẩm có kiểu Product tự định nghĩa như sau - lớp sản phẩm hỗ trợ so sánh với sản phẩm khác nên triển khai IComparable, cho phép hiện lấy một chuỗi thông tin bằng ToString với định dạng nào đó nên triển khai giao diện IFormattable
 
-              public Product(int id, string name, double price, string origin) {
-                  ID = id; Name = name; Price = price; Origin = origin;
-              }
-
-              //Triển khai IComparable, cho biết vị trí sắp xếp so với đối tượng khác
-              // trả về 0 - cùng vị trí; trả về > 0 đứng sau other; < 0 đứng trước trong danh sách
-              public int CompareTo(Product other)
-              {
-                  // sắp xếp về giá
-                  double delta = this.Price - other.Price;
-                  if (delta > 0)      // giá lớn hơn xếp trước
-                      return -1;
-                  else if (delta < 0) // xếp sau, giá nhỏ hơn
-                      return 1;
-                  return 0;
-
-              }
-
-              // Triển khai IFormattable, lấy chuỗi thông tin của đối tượng theo định dạng
-              // format hỗ trợ "O" và "N"
-              public string ToString(string format, IFormatProvider formatProvider)
-              {
-                  if (format == null) format = "O";
-                  switch (format.ToUpper()) {
-                      case "O": // Xuất xứ trước
-                          return $"Xuất xứ: {Origin} - Tên: {Name} - Giá: {Price} - ID: {ID}";
-                      case "N": // Tên xứ trước
-                          return $"Tên: {Name} - Xuất xứ: {Origin} - Giá: {Price} - ID: {ID}";
-                      default: // Quăng lỗi nếu format sai
-                          throw new FormatException("Không hỗ trợ format này");
-                  }
-              }
-
-              // Nạp chồng ToString
-              override public string ToString() => $"{Name} - {Price}";
-
-              // Quá tải thêm ToString - lấy chỗi thông tin sản phẩm theo định dạng
-              public string ToString(string format) => this.ToString(format, null);
-          }
-      }
-
-- Khởi tạo
-
-  - Để khởi tạo một danh sách rỗng, dùng toán tử new
-    var numbers = new List<int>(); // danh sách số nguyên
-    var products = new List<Product>(); // danh sách Product
-
-  - Khởi tạo danh sách có sẵn một số phần tử, thì các phần tử liệt kê sau {}
-    var numbers = new List<int>() {1,2,3,4}; // khởi tạo 4 phần tử
-    var products = new List<Product>() // khởi tạo 1 phần tử
+```C#
+using System;
+namespace CS017_Generic
+{
+    public class Product : IComparable<Product>, IFormattable
     {
-    new Product(1, "Iphone 6", 100, "Trung Quốc")
-    };
+        public int ID { set; get; }
+        public string Name { set; get; } // tên
+        public double Price { set; get; } // giá
+        public string Origin { set; get; } // xuất xứ
 
-- Thêm (thêm vào cuối)
+        public Product(int id, string name, double price, string origin)
+        {
+            ID = id; Name = name; Price = price; Origin = origin;
+        }
 
-  - Thêm 1 phần tử, dùng Add
-    var p = new Product(2, "IPhone 7", 200, "Trung Quốc");
-    products.Add(p); // Thêm p vào cuối List
-    products.Add(new Product(3, "IPhone 8", 400, "Trung Quốc")); // thêm đối tượng mới vào cuối List
+        //Triển khai IComparable, cho biết vị trí sắp xếp so với đối tượng khác
+        // trả về 0 - cùng vị trí; trả về > 0 đứng sau other; < 0 đứng trước trong danh sách
+        public int CompareTo(Product other)
+        {
+            // sắp xếp về giá
+            double delta = this.Price - other.Price;
+            if (delta > 0)      // giá lớn hơn xếp trước
+                return -1;
+            else if (delta < 0) // xếp sau, giá nhỏ hơn
+                return 1;
+            return 0;
 
-  - Thêm nhiều phần tử một lúc (mảng các phần tử), dùng AddRange
-    var arrayProducts = new Product[] // Mảng 2 phần tử
-    {
-    new Product(4, "Glaxy 7", 500, "Việt Nam"),
-    new Product(5, "Glaxy 8", 700, "Việt Nam"),
-    };
-    products.AddRange(arrayProducts); // Nối các phần tử của mảng vào danh sách
+        }
 
-- Chèn
+        // Triển khai IFormattable, lấy chuỗi thông tin của đối tượng theo định dạng
+        // format hỗ trợ "O" và "N"
+        public string ToString(string format, IFormatProvider formatProvider)
+        {
+            if (format == null) format = "O";
+            switch (format.ToUpper())
+            {
+                case "O": // Xuất xứ trước
+                    return $"Xuất xứ: {Origin} - Tên: {Name} - Giá: {Price} - ID: {ID}";
+                case "N": // Tên xứ trước
+                    return $"Tên: {Name} - Xuất xứ: {Origin} - Giá: {Price} - ID: {ID}";
+                default: // Quăng lỗi nếu format sai
+                    throw new FormatException("Không hỗ trợ format này");
+            }
+        }
 
-  - Chèn thêm 1 hoặc nhiều phần tử vào vị trí bất kì, dùng Insert(index, object) hoặc InsertRange(index, arrayObject)
-    products.Insert(3, new Product(6, "Macbook Pro", 1000, "Mỹ")); // chèn phần tử vào vị trí index 3, (thứ 4)
+        // Nạp chồng ToString
+        override public string ToString() => $"{Name} - {Price}";
 
-- Đọc
+        // Quá tải thêm ToString - lấy chỗi thông tin sản phẩm theo định dạng
+        public string ToString(string format) => this.ToString(format, null);
+    }
+}
+```
 
-  - Đọc 1 phần tử, dùng indexer
-    var pro = products[2]; // đọc phần tử có index = 2
-    Console.WriteLine(pro.ToString());
+Khởi tạo
 
-  - Đọc nhiều phần tử (duyệt danh sách), dùng for - foreach
-    // products.Count = lấy tổng phần tử trong List
-    for (int i = 1; i < products.Count; i++)
-    {
+- Để khởi tạo một danh sách rỗng, dùng toán tử new
+
+```C#
+var numbers = new List<int>(); // danh sách số nguyên
+var products = new List<Product>(); // danh sách Product
+```
+
+- Khởi tạo danh sách có sẵn một số phần tử, thì các phần tử liệt kê sau {}
+
+```C#
+var numbers = new List<int>() { 1, 2, 3, 4 }; // khởi tạo 4 phần tử
+var products = new List<Product>() // khởi tạo 1 phần tử
+{
+new Product(1, "Iphone 6", 100, "Trung Quốc")
+};
+```
+
+Thêm (thêm vào cuối)
+
+- Thêm 1 phần tử, dùng Add
+
+```C#
+var p = new Product(2, "IPhone 7", 200, "Trung Quốc");
+products.Add(p); // Thêm p vào cuối List
+products.Add(new Product(3, "IPhone 8", 400, "Trung Quốc")); // thêm đối tượng mới vào cuối List
+```
+
+- Thêm nhiều phần tử một lúc (mảng các phần tử), dùng AddRange
+
+```C#
+var arrayProducts = new Product[] // Mảng 2 phần tử
+{
+new Product(4, "Glaxy 7", 500, "Việt Nam"),
+new Product(5, "Glaxy 8", 700, "Việt Nam"),
+};
+products.AddRange(arrayProducts); // Nối các phần tử của mảng vào danh sách
+```
+
+Chèn
+
+- Chèn thêm 1 hoặc nhiều phần tử vào vị trí bất kì, dùng Insert(index, object) hoặc InsertRange(index, arrayObject)
+
+```C#
+products.Insert(3, new Product(6, "Macbook Pro", 1000, "Mỹ")); // chèn phần tử vào vị trí index 3, (thứ 4)
+```
+
+Đọc
+
+- Đọc 1 phần tử, dùng indexer
+
+```C#
+var pro = products[2]; // đọc phần tử có index = 2
+Console.WriteLine(pro.ToString());
+```
+
+- Đọc nhiều phần tử (duyệt danh sách), dùng for - foreach
+
+```C#
+// products.Count = lấy tổng phần tử trong List
+for (int i = 1; i < products.Count; i++)
+{
     var pi = products[i - 1];
     Console.WriteLine(pi.ToString());
-    }
+}
 
-    // Duyệt qua các phần tử bằng foreach
-    foreach (var pi in products)
-    {
+// Duyệt qua các phần tử bằng foreach
+foreach (var pi in products)
+{
     Console.WriteLine(pi.ToString());
-    }
+}
+```
 
-- Xóa
-  | Remove(index) | Xóa 1 phần tử |
-  | RemoveRange(index, count) | Xóa nhiều phần tử |
-  | RemoveAll() hoặc Clear() | Xóa toàn bộ danh sách |
-  | Remove(object) | Xóa 1 phần tử có tham chiếu cụ thể trong danh sách |
+Xóa
 
-- Tìm kiếm
-  | IndexOf(obj) | Tìm index của đối tượng trong List |
-  | LastIndexOf(obj) | Tìm index của phần tử cuối cùng có giá trị bằng obj trong List |
-  | FindIndex | Tìm kiếm trả về Index |
-  | FindLastIndex | Tìm kiếm trả về Index cuối |
-  | Find(Predicate) | Tìm kiếm trả về phần tử |
-  | FindAll(Predicate) | Tìm kiếm trả về danh sách phần tử |
-  | FindLast | Tìm kiếm trả về phần tử cuối tìm thấy |
+| Tên                       | Ý nghĩa                                            |
+| ------------------------- | -------------------------------------------------- |
+| Remove(index)             | Xóa 1 phần tử                                      |
+| RemoveRange(index, count) | Xóa nhiều phần tử                                  |
+| RemoveAll() hoặc Clear()  | Xóa toàn bộ danh sách                              |
+| Remove(object)            | Xóa 1 phần tử có tham chiếu cụ thể trong danh sách |
 
-  - Tham số Predicate truyền vào Find, FindAll là delegate bool Predicate<in T>(T obj) trả về true là phần tử phù hợp trả về
-    // Delegate trả về true khi tên bằng "Glaxy 8"
-    (Product ob) => {
+Tìm kiếm
+
+| Tên                | Ý nghĩa                                                        |
+| ------------------ | -------------------------------------------------------------- |
+| IndexOf(obj)       | Tìm index của đối tượng trong List                             |
+| LastIndexOf(obj)   | Tìm index của phần tử cuối cùng có giá trị bằng obj trong List |
+| FindIndex          | Tìm kiếm trả về Index                                          |
+| FindLastIndex      | Tìm kiếm trả về Index cuối                                     |
+| Find(Predicate)    | Tìm kiếm trả về phần tử                                        |
+| FindAll(Predicate) | Tìm kiếm trả về danh sách phần tử                              |
+| FindLast           | Tìm kiếm trả về phần tử cuối tìm thấy                          |
+
+- Tham số Predicate truyền vào Find, FindAll là delegate bool Predicate<in T>(T obj) trả về true là phần tử phù hợp trả về
+
+```C#
+// Delegate trả về true khi tên bằng "Glaxy 8"
+(Product ob) =>
+{
     return (ob.Name == "Glaxy 8");
-    }
+}
 
-    Product foundpr1 = products.Find(
-    (Product ob) => { return (ob.Name == "Glaxy 8");}
-    );
-    if (foundpr1 != null)
+Product foundpr1 = products.Find(
+(Product ob) => { return (ob.Name == "Glaxy 8"); }
+);
+if (foundpr1 != null)
     Console.WriteLine("(found) " + foundpr1.ToString("O"));
-    // (found) Xuất xứ: Việt Nam - Tên: Glaxy 8 - Giá: 700 - ID: 5
+// (found) Xuất xứ: Việt Nam - Tên: Glaxy 8 - Giá: 700 - ID: 5
 
-    // tìm index của đối tượng có xuất xứ là "Trung Quốc"
-    var ifound = products.FindIndex(x => x.Origin == "Trung Quốc");
+// tìm index của đối tượng có xuất xứ là "Trung Quốc"
+var ifound = products.FindIndex(x => x.Origin == "Trung Quốc");
 
-    // tìm các sản phẩm có giá trên 100
-    List<Product> p_100 = products.FindAll(product => product.Price > 100)
+// tìm các sản phẩm có giá trên 100
+List<Product> p_100 = products.FindAll(product => product.Price > 100)
+```
 
-  - Muốn tùy biến cao hơn Delegate, để tìm kiếm theo tham số tùy chọn, có thể để Delegate trên vào lớp chức năng
-    public class SearchNameProduct {
+- Muốn tùy biến cao hơn Delegate, để tìm kiếm theo tham số tùy chọn, có thể để Delegate trên vào lớp chức năng
+
+```C#
+public class SearchNameProduct
+{
     string namesearch;
-    public SearchNameProduct(string name) {
-    namesearch = name;
+    public SearchNameProduct(string name)
+    {
+        namesearch = name;
     }
     // Hàm gán cho delegage
-    public bool search(Product p) {
-    return p.Name == namesearch;
+    public bool search(Product p)
+    {
+        return p.Name == namesearch;
     }
-    }
+}
+```
 
-    // Sử dụng
-    Product pr1 = products.Find( (new SearchNameProduct("Glaxy 8")).search); // Tìm sản phẩm có tên Glaxy 8
-    Product pr2 = products.Find( (new SearchNameProduct("IPhone 6")).search); // Tìm sản phẩm có tên IPhone 6
+```C#
+// Sử dụng
+Product pr1 = products.Find((new SearchNameProduct("Glaxy 8")).search); // Tìm sản phẩm có tên Glaxy 8
+Product pr2 = products.Find((new SearchNameProduct("IPhone 6")).search); // Tìm sản phẩm có tên IPhone 6
+```
 
-- Sắp xếp
+Sắp xếp
 
-  - Để sắp xếp các phần tử trong danh sách, nếu phần tử đó có triển khai giao diện IComparable thì chỉ việc gọi Sort() để có danh sách theo thứ tự.
-    products.Sort();
+- Để sắp xếp các phần tử trong danh sách, nếu phần tử đó có triển khai giao diện IComparable thì chỉ việc gọi Sort() để có danh sách theo thứ tự.
 
-  - Có thể tùy biến cách thức sắp xếp bằng cách cung cấp hàm callback dạng deleage hai tham số kiểu cùng với kiểu phần tử cho Search
-    products.Sort(
-    (p1, p2) => {
+```C#
+products.Sort();
+```
+
+- Có thể tùy biến cách thức sắp xếp bằng cách cung cấp hàm callback dạng deleage hai tham số kiểu cùng với kiểu phần tử cho Search
+
+```C#
+products.Sort(
+(p1, p2) =>
+{
     if (p1.ID > p2.ID)
-    return 1;
+        return 1;
     else if (p1.ID == p2.ID)
-    return 0;
+        return 0;
     return -1;
-    }
-    );
+}
+);
+```
 
-  !!! Trả về > 0 thì phần tử hiện tại xếp sau phần tử tham số
+_❗Trả về > 0 thì phần tử hiện tại xếp sau phần tử tham số_
 
-- 1 số thuộc tính khác
-  | Contains(obj) | kiểm tra có chứa phần tử obj |
-  | Reverse() | đảo thứ tự danh sách |
-  | ToArray() | copy các phần tử ra mảng |
+1 số thuộc tính khác
+
+| Tên           | Ý nghĩa                      |
+| ------------- | ---------------------------- |
+| Contains(obj) | kiểm tra có chứa phần tử obj |
+| Reverse()     | đảo thứ tự danh sách         |
+| ToArray()     | copy các phần tử ra mảng     |
 
 ## SortedList
 
-- Lớp SortedList<TKey, TValue> sắp xếp dữ liệu dựa trên một key, kiểu đề làm key là bất kỳ.
+Lớp SortedList<TKey, TValue> sắp xếp dữ liệu dựa trên một key, kiểu đề làm key là bất kỳ.
 
-- SortedList được định nghĩa ở namespace: System.Collections. Để sử dụng cần nạp
-  using System.Collections;
-  using System.Collections.Generic;
+SortedList được định nghĩa ở namespace: System.Collections. Để sử dụng cần nạp
 
-- Một đối tượng dữ liệu lưu vào SortedList dưới dạng cặp key/value, truy cập đến phần tử thông qua key hoặc thông qua vị trí (index) của dữ liệu trong danh sách
+```C#
+using System.Collections;
+using System.Collections.Generic;
+```
 
-- Thuộc tính, phương thức
-  | Count | Thuộc tính cho biết số phần tử |
-  | [key] | Indexer truy cập đến phần tử có key |
-  | Keys | Thuộc tính là danh sách các key trong danh sách sắp xếp |
-  | Values | Thuộc tính lấy danh sách các giá trị trong danh sách |
-  | Add(key, value) | Thêm một phần tử vào danh sách |
-  | Remove(key) | Xóa phần tử bằng key của nó |
-  | Clear() | Loại bỏ tất cả các phần tử khỏi danh sách |
-  | ContainKey(key) | Kiểm tra có phần tử nào có khóa là key |
-  | ContainValue(value) | Kiểm tra có phần tử nào có giá trị là value |
-  | IndexOfKey(key) | Lấy chỉ số của phần tử có khóa là key |
-  | IndexOfValue(value) | Lấy chỉ số của phần tử có giá trị là value |
+Một đối tượng dữ liệu lưu vào SortedList dưới dạng cặp key/value, truy cập đến phần tử thông qua key hoặc thông qua vị trí (index) của dữ liệu trong danh sách
 
-  // Khởi tạo SortedList
-  var products = new SortedList<string, string> ();
-  products.Add ("Iphone 6", "P-IPHONE-6"); // Thêm vào phần tử mới (key, value)
-  products.Add ("Laptop Abc", "P-LAP");
-  products["Điện thoại Z"] = "P-DIENTHOAI"; // Thêm vào phần tử bằng Indexer
-  products["Tai nghe XXX"] = "P-TAI"; // Thêm vào phần tử bằng Indexer
+Thuộc tính, phương thức
 
-  // Duyệt qua các phần tử, mỗi phần tử lấy key/value lưu trong biến
-  // kiểu KeyValuePair
-  foreach (KeyValuePair<string, string> p in products) {
-  Console.WriteLine ($" {p.Key} - {p.Value}");
-  }
+| Tên                 | Ý nghĩa                                                 |
+| ------------------- | ------------------------------------------------------- |
+| Count               | Thuộc tính cho biết số phần tử                          |
+| [key]               | Indexer truy cập đến phần tử có key                     |
+| Keys                | Thuộc tính là danh sách các key trong danh sách sắp xếp |
+| Values              | Thuộc tính lấy danh sách các giá trị trong danh sách    |
+| Add(key, value)     | Thêm một phần tử vào danh sách                          |
+| Remove(key)         | Xóa phần tử bằng key của nó                             |
+| Clear()             | Loại bỏ tất cả các phần tử khỏi danh sách               |
+| ContainKey(key)     | Kiểm tra có phần tử nào có khóa là key                  |
+| ContainValue(value) | Kiểm tra có phần tử nào có giá trị là value             |
+| IndexOfKey(key)     | Lấy chỉ số của phần tử có khóa là key                   |
+| IndexOfValue(value) | Lấy chỉ số của phần tử có giá trị là value              |
 
-  // Đọc value khi biết key
-  string productName = "Tai nghe XXX";
-  Console.WriteLine ($"{productName} có mã là {products[productName]}");
+```C#
+// Khởi tạo SortedList
+var products = new SortedList<string, string>();
+products.Add("Iphone 6", "P-IPHONE-6"); // Thêm vào phần tử mới (key, value)
+products.Add("Laptop Abc", "P-LAP");
+products["Điện thoại Z"] = "P-DIENTHOAI"; // Thêm vào phần tử bằng Indexer
+products["Tai nghe XXX"] = "P-TAI"; // Thêm vào phần tử bằng Indexer
 
-  // Cập nhật giá trị vào phần tử theo key
-  products[productName] = "P-TAI-UPDATED";
+// Duyệt qua các phần tử, mỗi phần tử lấy key/value lưu trong biến
+// kiểu KeyValuePair
+foreach (KeyValuePair<string, string> p in products)
+{
+    Console.WriteLine($" {p.Key} - {p.Value}");
+}
 
-  // Duyệt qua các giá trị
-  foreach (var product_code in products.Values) {
-  Console.WriteLine ($"--- {product_code}");
-  }
+// Đọc value khi biết key
+string productName = "Tai nghe XXX";
+Console.WriteLine($"{productName} có mã là {products[productName]}");
 
-  // Duyệt qua các key
-  foreach (var product_name in products.Keys) {
-  Console.WriteLine ($"... {product_name}");
-  }
+// Cập nhật giá trị vào phần tử theo key
+products[productName] = "P-TAI-UPDATED";
+
+// Duyệt qua các giá trị
+foreach (var product_code in products.Values)
+{
+    Console.WriteLine($"--- {product_code}");
+}
+
+// Duyệt qua các key
+foreach (var product_name in products.Keys)
+{
+    Console.WriteLine($"... {product_name}");
+}
+```
 
 ## Queue
 
-- Hàng đợi là mô hình FIFO (first in, first out - vào trước, ra trước hay đến trước được phục vụ trước)
+Hàng đợi là mô hình FIFO (first in, first out - vào trước, ra trước hay đến trước được phục vụ trước)
 
-- .NET cung cấp lớp Queue<T> để giả quyết giải thuật hàng đợi
+.NET cung cấp lớp Queue<T> để giả quyết giải thuật hàng đợi
 
-- Thuộc tính, phương thức
-  | Count | Thuộc tính lấy tổng số phần tử trong hàng |
-  | Enqueue | vào xếp hàng - đưa phần tử vào cuối hàng đợi |
-  | Dequeue | đọc - và loại ngay phần tử ở đầu hàng đợi - lỗi nếu hàng đợi không có phần tử nào |
-  | Peek | đọc phần tử đầu hàng đợi |
+Thuộc tính, phương thức
 
-  Queue<string> hoso_canxuly = new Queue<string> ();
+| Tên     | Ý nghĩa                                                                           |
+| ------- | --------------------------------------------------------------------------------- |
+| Count   | Thuộc tính lấy tổng số phần tử trong hàng                                         |
+| Enqueue | vào xếp hàng - đưa phần tử vào cuối hàng đợi                                      |
+| Dequeue | đọc - và loại ngay phần tử ở đầu hàng đợi - lỗi nếu hàng đợi không có phần tử nào |
+| Peek    | đọc phần tử đầu hàng đợi                                                          |
 
-  hoso_canxuly.Enqueue ("Hồ sơ A"); // Hồ sơ xếp thứ nhất trong hàng đợi
-  hoso_canxuly.Enqueue ("Hồ sơ B"); // Hồ sơ xếp thứ hai
-  hoso_canxuly.Enqueue ("Hồ sơ C");
+```C#
+Queue<string> hoso_canxuly = new Queue<string>();
 
-  // Lấy hồ sơ xếp trước xử lý trước, cho đến hết
-  while (hoso_canxuly.Count > 0) {
-  var hs = hoso_canxuly.Dequeue();
-  Console.WriteLine($"Xử lý {hs}, còn lại {hoso_canxuly.Count}");
-  }
+hoso_canxuly.Enqueue("Hồ sơ A"); // Hồ sơ xếp thứ nhất trong hàng đợi
+hoso_canxuly.Enqueue("Hồ sơ B"); // Hồ sơ xếp thứ hai
+hoso_canxuly.Enqueue("Hồ sơ C");
 
-  // Xử lý Hồ sơ A, còn lại 2
-  // Xử lý Hồ sơ B, còn lại 1
-  // Xử lý Hồ sơ C, còn lại 0
+// Lấy hồ sơ xếp trước xử lý trước, cho đến hết
+while (hoso_canxuly.Count > 0)
+{
+    var hs = hoso_canxuly.Dequeue();
+    Console.WriteLine($"Xử lý {hs}, còn lại {hoso_canxuly.Count}");
+}
+
+// Xử lý Hồ sơ A, còn lại 2
+// Xử lý Hồ sơ B, còn lại 1
+// Xử lý Hồ sơ C, còn lại 0
+```
 
 ## Stack
 
-- Ngăn xếp là mô hình LIFO (last in, first out - vào sau thì ra trước)
+Ngăn xếp là mô hình LIFO (last in, first out - vào sau thì ra trước)
 
-- .NET nó cung cấp lớp Stack<T> để thực hiện giải thuật ngăn xếp
+.NET nó cung cấp lớp Stack<T> để thực hiện giải thuật ngăn xếp
 
-- Thuộc tính, phương thức
-  | Count | Thuộc tính lấy tổng số phần tử trong hàng |
-  | Push | đẩy (thêm) một phần tử vào đỉnh stack |
-  | Pop | đọc - xóa phần tử đỉnh stack |
-  | Peek | đọc phần tử đỉnh stack |
-  | Contains | kiểm tra một phần tử có trong stack hay không |
+Thuộc tính, phương thức
 
-  Queue<string> hoso_canxuly = new Queue<string> ();
+| Tên      | Ý nghĩa                                       |
+| -------- | --------------------------------------------- |
+| Count    | Thuộc tính lấy tổng số phần tử trong hàng     |
+| Push     | đẩy (thêm) một phần tử vào đỉnh stack         |
+| Pop      | đọc - xóa phần tử đỉnh stack                  |
+| Peek     | đọc phần tử đỉnh stack                        |
+| Contains | kiểm tra một phần tử có trong stack hay không |
 
-  hoso_canxuly.Enqueue ("Hồ sơ A"); // Hồ sơ xếp thứ nhất trong hàng đợi
-  hoso_canxuly.Enqueue ("Hồ sơ B"); // Hồ sơ xếp thứ hai
-  hoso_canxuly.Enqueue ("Hồ sơ C");
+```C#
+Queue<string> hoso_canxuly = new Queue<string>();
 
-  // Lấy hồ sơ xếp trước xử lý trước, cho đến hết
-  while (hoso_canxuly.Count > 0) {
-  var hs = hoso_canxuly.Dequeue();
-  Console.WriteLine($"Xử lý {hs}, còn lại {hoso_canxuly.Count}");
-  }
+hoso_canxuly.Enqueue("Hồ sơ A"); // Hồ sơ xếp thứ nhất trong hàng đợi
+hoso_canxuly.Enqueue("Hồ sơ B"); // Hồ sơ xếp thứ hai
+hoso_canxuly.Enqueue("Hồ sơ C");
 
-  // Bốc dỡ Sản phẩm C / còn lại 2
-  // Bốc dỡ Sản phẩm B / còn lại 1
-  // Bốc dỡ Sản phẩm A / còn lại 0
+// Lấy hồ sơ xếp trước xử lý trước, cho đến hết
+while (hoso_canxuly.Count > 0)
+{
+    var hs = hoso_canxuly.Dequeue();
+    Console.WriteLine($"Xử lý {hs}, còn lại {hoso_canxuly.Count}");
+}
+
+// Bốc dỡ Sản phẩm C / còn lại 2
+// Bốc dỡ Sản phẩm B / còn lại 1
+// Bốc dỡ Sản phẩm A / còn lại 0
+```
 
 ## LinkedList
 
-- .NET cung cấp lớp LinkedList<T> là loại danh sách liên kết kép (từ đây gọi tắt là danh sách liên kết)
+.NET cung cấp lớp LinkedList<T> là loại danh sách liên kết kép (từ đây gọi tắt là danh sách liên kết)
 
-- Danh sách liên kết là một danh sách chứa các phần tử, mỗi phần tử trong loại danh sách này được gọi là một nút (Node). Mỗi nút ngoài dữ liệu của nút đó, nó sẽ gồm
-  hai biến - một biến tham chiếu đến Node phía trước, một nút tham chiếu đến nút phía sau.
+Danh sách liên kết là một danh sách chứa các phần tử, mỗi phần tử trong loại danh sách này được gọi là một nút (Node). Mỗi nút ngoài dữ liệu của nút đó, nó sẽ gồm hai biến - một biến tham chiếu đến Node phía trước, một nút tham chiếu đến nút phía sau.
 
-!!! Danh sách liên kết .NET sử dụng là loại danh sách liên kết đôi
+_❗Danh sách liên kết .NET sử dụng là loại danh sách liên kết đôi_
 
-- Thuộc tính, phương thức
-  | List | Thuộc tính - tham chiếu (trỏ) đến LinkedList |
-  | Value | Thuộc tính - là dữ liệu của Node |
-  | Next | Thuộc tính - tham chiếu (trỏ) đến NÚT tiếp theo (phía sau) - null thì nó là nút cuối |
-  | Previous | Thuộc tính - tham chiếu (trỏ) đến NÚT phía trước - null thì nó là nút đầu tiên |
-  | Count | Số nút trong danh sách |
-  | First | Nút đầu tiên của danh sách |
-  | Last | Nút đầu tiên của danh sách |
-  | AddFirst(T) | Chèn một nút có dữ liệu T vào đầu danh sách |
-  | AddLast(T) | Chèn một nút có dữ liệu T vào cuối danh sách |
-  | AddAfter(Node, T) | Chèn nút với dữ liệu T, vào sau nút Node (kiểu LinkedListNode) |
-  | AddBefore(Node, T) | Chèn nút với dữ liệu T, vào trước nút Node (kiểu LinkedListNode) |
-  | Clear() | Xóa toàn bộ danh sách |
-  | Contains(T) | Kiểm tra xem có nút với giá trị dữ liệu bằng T |
-  | Remove(T) | Xóa nút có dữ liệu bằng T |
-  | RemoveFirst() | Xóa nút đầu tiên |
-  | RemoveLast() | Xóa nút cuối cùng |
-  | Find(T) | Tìm một nút |
+Thuộc tính, phương thức
 
-  LinkedList<string> cacbaihoc = new LinkedList<string>();
+| Tên                | Ý nghĩa                                                                              |
+| ------------------ | ------------------------------------------------------------------------------------ |
+| List               | Thuộc tính - tham chiếu (trỏ) đến LinkedList                                         |
+| Value              | Thuộc tính - là dữ liệu của Node                                                     |
+| Next               | Thuộc tính - tham chiếu (trỏ) đến NÚT tiếp theo (phía sau) - null thì nó là nút cuối |
+| Previous           | Thuộc tính - tham chiếu (trỏ) đến NÚT phía trước - null thì nó là nút đầu tiên       |
+| Count              | Số nút trong danh sách                                                               |
+| First              | Nút đầu tiên của danh sách                                                           |
+| Last               | Nút đầu tiên của danh sách                                                           |
+| AddFirst(T)        | Chèn một nút có dữ liệu T vào đầu danh sách                                          |
+| AddLast(T)         | Chèn một nút có dữ liệu T vào cuối danh sách                                         |
+| AddAfter(Node, T)  | Chèn nút với dữ liệu T, vào sau nút Node (kiểu LinkedListNode)                       |
+| AddBefore(Node, T) | Chèn nút với dữ liệu T, vào trước nút Node (kiểu LinkedListNode)                     |
+| Clear()            | Xóa toàn bộ danh sách                                                                |
+| Contains(T)        | Kiểm tra xem có nút với giá trị dữ liệu bằng T                                       |
+| Remove(T)          | Xóa nút có dữ liệu bằng T                                                            |
+| RemoveFirst()      | Xóa nút đầu tiên                                                                     |
+| RemoveLast()       | Xóa nút cuối cùng                                                                    |
+| Find(T)            | Tìm một nút                                                                          |
 
-  cacbaihoc.AddFirst("Bài học 3"); // thêm vào đầu danh sach
-  cacbaihoc.AddLast("Bài học 4"); // thêm vào cuối
-  cacbaihoc.AddFirst("Bài học 2");
-  cacbaihoc.AddFirst("Bài học 1");
+```C#
+LinkedList<string> cacbaihoc = new LinkedList<string>();
 
-  // Lấy phần tử đầu tiên, sau đó duyệt đến cuối
-  LinkedListNode<string> node = cacbaihoc.First;
-  while (node != null) {
-  Console.WriteLine(node.Value);
-  node = node.Next; // node gán bằng nút sau nó
-  }
+cacbaihoc.AddFirst("Bài học 3"); // thêm vào đầu danh sach
+cacbaihoc.AddLast("Bài học 4"); // thêm vào cuối
+cacbaihoc.AddFirst("Bài học 2");
+cacbaihoc.AddFirst("Bài học 1");
 
-  // Lấy phần tử cuối cùng, sau đó duyệt về phần tử đầu tiên
-  node = cacbaihoc.Last;
-  while (node != null) {
-  Console.WriteLine(node.Value);
-  node = node.Previous; // node gán bằng nút phía trước nó
-  }
+// Lấy phần tử đầu tiên, sau đó duyệt đến cuối
+LinkedListNode<string> node = cacbaihoc.First;
+while (node != null)
+{
+    Console.WriteLine(node.Value);
+    node = node.Next; // node gán bằng nút sau nó
+}
+
+// Lấy phần tử cuối cùng, sau đó duyệt về phần tử đầu tiên
+node = cacbaihoc.Last;
+while (node != null)
+{
+    Console.WriteLine(node.Value);
+    node = node.Previous; // node gán bằng nút phía trước nó
+}
+```
 
 ## Dictionary - SortedDictionary
 
-- Lớp Dictionary<Tkey,TValue> khá giống SortedList, Dictionary được thiết kế với mục đích tăng hiệu quả với tập dữ liệu lớn, phức tạp.
+Lớp Dictionary<Tkey,TValue> khá giống SortedList, Dictionary được thiết kế với mục đích tăng hiệu quả với tập dữ liệu lớn, phức tạp.
 
-- Một đối tượng dữ liệu lưu vào Dictionary dưới dạng cặp key/value, truy cập đến phần tử thông qua key hoặc thông qua vị trí (index) của dữ liệu trong danh sách
+Một đối tượng dữ liệu lưu vào Dictionary dưới dạng cặp key/value, truy cập đến phần tử thông qua key hoặc thông qua vị trí (index) của dữ liệu trong danh sách
 
-- Thuộc tính, phương thức
-  | Count | Thuộc tính cho biết số phần tử |
-  | [key] | Indexer truy cập đến phần tử có key |
-  | Keys | Thuộc tính là danh sách các key |
-  | Values | Thuộc tính lấy danh sách các giá trị |
-  | Add(key, value) | Thêm một phần tử vào Dictionary |
-  | Remove(key) | Xóa phần tử bằng key của nó |
-  | Clear() | Loại bỏ tất cả các phần tử |
-  | ContainKey(key) | Kiểm tra có phần tử nào có khóa là key |
-  | ContainValue(value) | Kiểm tra có phần tử nào có giá trị là value |
+Thuộc tính, phương thức
 
-  // Khởi tạo với 2 phần tử
-  Dictionary<string, int> sodem = new Dictionary<string, int>()
-  {
-  ["one"] = 1,
-  ["tow"] = 2,
-  };
-  // Thêm hoặc cập nhật
-  sodem["three"] = 3;
+| Tên                 | Ý nghĩa                                     |
+| ------------------- | ------------------------------------------- |
+| Count               | Thuộc tính cho biết số phần tử              |
+| [key]               | Indexer truy cập đến phần tử có key         |
+| Keys                | Thuộc tính là danh sách các key             |
+| Values              | Thuộc tính lấy danh sách các giá trị        |
+| Add(key, value)     | Thêm một phần tử vào Dictionary             |
+| Remove(key)         | Xóa phần tử bằng key của nó                 |
+| Clear()             | Loại bỏ tất cả các phần tử                  |
+| ContainKey(key)     | Kiểm tra có phần tử nào có khóa là key      |
+| ContainValue(value) | Kiểm tra có phần tử nào có giá trị là value |
 
-  var keys = sodem.Keys;
-  foreach (var k in keys)
-  {
-  var value = sodem[k];
-  Console.WriteLine($"{k} = {value}");
-  }
+```C#
+// Khởi tạo với 2 phần tử
+Dictionary<string, int> sodem = new Dictionary<string, int>()
+{
+    ["one"] = 1,
+    ["tow"] = 2,
+};
+// Thêm hoặc cập nhật
+sodem["three"] = 3;
 
-- SortedDictionary
+var keys = sodem.Keys;
+foreach (var k in keys)
+{
+    var value = sodem[k];
+    Console.WriteLine($"{k} = {value}");
+}
+```
 
-  - Lớp SortedDictionary<Tkey,TValue> sử dụng, khai báo và khởi tạo ... giống như lớp Dictionary<Tkey,TValue>.
+SortedDictionary
 
-  - Nếu dùng SortedDictionary thì các các phần tử được lưu và sắp xếp theo key, thích hợp khi tăng tốc chèn, xóa, tìm kiếm theo key.
+- Lớp SortedDictionary<Tkey,TValue> sử dụng, khai báo và khởi tạo ... giống như lớp Dictionary<Tkey,TValue>.
+
+- Nếu dùng SortedDictionary thì các các phần tử được lưu và sắp xếp theo key, thích hợp khi tăng tốc chèn, xóa, tìm kiếm theo key.
 
 ## HashSet
 
-- HashSet là tập hợp danh sách không cho phép trùng giá trị
+HashSet là tập hợp danh sách không cho phép trùng giá trị
 
-- HashSet<T> khác với các collection khác là nó cung cấp cơ chế đơn giản nhất để lưu các giá trị, nó không chỉ mục thứ tự và các phần tử không sắp xếp theo thứ tự nào
+HashSet<T> khác với các collection khác là nó cung cấp cơ chế đơn giản nhất để lưu các giá trị, nó không chỉ mục thứ tự và các phần tử không sắp xếp theo thứ tự nào
 
-- HashSet<T> cung cấp hiệu năng cao cho các tác vụ tìm kiếm, thêm vào, xóa bỏ ...
+HashSet<T> cung cấp hiệu năng cao cho các tác vụ tìm kiếm, thêm vào, xóa bỏ ...
 
-- Thuộc tính, phương thức
-  | Count | Thuộc tính cho biết số phần tử |
-  | Add(T) | Thêm phần tử vào HashSet |
-  | Remove(T) | Xóa phần tử khỏi HashSet |
-  | Clear() | Xóa tất cả các phần tử |
-  | Contains(T) | Kiểm tra xem có phần tử trong HashSet |
-  | IsSubsetOf(c) | Kiểm tra xem có là tập con của HashSet c |
-  | IsSupersetOf(c) | Kiểm tra xem có chứa tập HashSet c |
-  | UnionWith(c) | Hợp với tập HashSet c |
-  | IntersectWith(c) | Giao với tập HashSet c |
-  | ExceptWith(c) | Loại bỏ hết các phần tử chung với c |
+Thuộc tính, phương thức
 
-  HashSet>int< hashset1 = new HashSet>int<() {5,2,3,4};
+| Tên              | Ý nghĩa                                  |
+| ---------------- | ---------------------------------------- |
+| Count            | Thuộc tính cho biết số phần tử           |
+| Add(T)           | Thêm phần tử vào HashSet                 |
+| Remove(T)        | Xóa phần tử khỏi HashSet                 |
+| Clear()          | Xóa tất cả các phần tử                   |
+| Contains(T)      | Kiểm tra xem có phần tử trong HashSet    |
+| IsSubsetOf(c)    | Kiểm tra xem có là tập con của HashSet c |
+| IsSupersetOf(c)  | Kiểm tra xem có chứa tập HashSet c       |
+| UnionWith(c)     | Hợp với tập HashSet c                    |
+| IntersectWith(c) | Giao với tập HashSet c                   |
+| ExceptWith(c)    | Loại bỏ hết các phần tử chung với c      |
 
-  Console.WriteLine($"Phần tử trong hashset1 {hashset1.Count}");
-  foreach (var v in hashset1)
-  {
-  Console.Write(v + " ");
-  }
+```C#
+HashSet > int < hashset1 = new HashSet> int < () { 5,2,3,4};
 
-  HashSet>int< hashset2 = new HashSet>int<();
-  hashset2.Add(3);
-  hashset2.Add(4);
-  if (hashset1.IsSupersetOf(hashset2))
-  Console.WriteLine($"hashset1 là tập chứa hashset2");
+Console.WriteLine($"Phần tử trong hashset1 {hashset1.Count}");
+foreach (var v in hashset1)
+{
+    Console.Write(v + " ");
+}
+
+HashSet > int < hashset2 = new HashSet> int < ();
+hashset2.Add(3);
+hashset2.Add(4);
+if (hashset1.IsSupersetOf(hashset2))
+    Console.WriteLine($"hashset1 là tập chứa hashset2");
+```
 
 ## ObservableCollection
 
-- Lớp Generic ObservableCollection<T> là một tập hợp tương tự như List<T> ..., tức là nó mô tả một tập hợp dữ liệu có thể thay đổi số lượng bằng các phương thức quen thuộc như
-  Add(), Remove(), Clear() ...
+Lớp Generic ObservableCollection<T> là một tập hợp tương tự như List<T> ..., tức là nó mô tả một tập hợp dữ liệu có thể thay đổi số lượng bằng các phương thức quen thuộc như Add(), Remove(), Clear() ...
 
-- ObservableCollection<T> cung cấp thêm sự kiện thông báo nhi số lượng phần tử thay đổi như thêm, bớt ...(nghĩa là giám sát được biến động phần tử).
+ObservableCollection<T> cung cấp thêm sự kiện thông báo nhi số lượng phần tử thay đổi như thêm, bớt ...(nghĩa là giám sát được biến động phần tử).
 
-- Các sự kiện event này có tên là CollectionChanged, trong tham số mà sự kiện gửi đến, e.Action có cho biết hành động thay đổi trên tập hợp là gì
-  using System;
-  using System.Collections;
-  using System.Collections.Generic;
-  using System.Collections.ObjectModel;
-  using System.Collections.Specialized;
-  namespace CS019_ObserableCollection
-  {
-  class Program
-  {
-  static void Main(string[] args)
-  {
-  //Tạo tập hợp chứa các chuỗis
-  ObservableCollection obs = new ObservableCollection();
+Các sự kiện event này có tên là CollectionChanged, trong tham số mà sự kiện gửi đến, e.Action có cho biết hành động thay đổi trên tập hợp là gì
 
-                // Bắt sự kiện thi thay đổi obs
-                obs.CollectionChanged += change;
+```C#
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Collections.Specialized;
+namespace CS019_ObserableCollection
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            //Tạo tập hợp chứa các chuỗis
+            ObservableCollection obs = new ObservableCollection();
 
-                //Thay các phần tử tập hợp
-                obs.Add("ZTest1");
-                obs.Add("DTest2");
-                obs.Add("ATest3");
-                obs[2] = "AAAAA";
+            // Bắt sự kiện thi thay đổi obs
+            obs.CollectionChanged += change;
 
-                obs.RemoveAt(1);
-                obs.Clear();
+            //Thay các phần tử tập hợp
+            obs.Add("ZTest1");
+            obs.Add("DTest2");
+            obs.Add("ATest3");
+            obs[2] = "AAAAA";
 
-            }
+            obs.RemoveAt(1);
+            obs.Clear();
 
-            // Phương thức nhận sự kiện CollectionChanged
-            private static void change(object sender, NotifyCollectionChangedEventArgs e)
-            {
-                switch (e.Action)
-                {
-                    case NotifyCollectionChangedAction.Add:
-                        foreach (String s in e.NewItems)
-                            Console.WriteLine($"Thêm :  {s}");
-                        break;
-
-                    case NotifyCollectionChangedAction.Reset:
-                        Console.WriteLine("Clear");
-                        break;
-
-                    case NotifyCollectionChangedAction.Remove:
-                        foreach (String s in e.OldItems)
-                            Console.WriteLine($"Remove :  {s}");
-                        break;
-                    case NotifyCollectionChangedAction.Replace:
-                        Console.WriteLine("Repaced - " + e.NewItems[0]);
-                    break;
-                }
-            }
         }
 
-  }
+        // Phương thức nhận sự kiện CollectionChanged
+        private static void change(object sender, NotifyCollectionChangedEventArgs e)
+        {
+            switch (e.Action)
+            {
+                case NotifyCollectionChangedAction.Add:
+                    foreach (String s in e.NewItems)
+                        Console.WriteLine($"Thêm :  {s}");
+                    break;
 
-- Ứng dụng của ObservableCollection trong WPF rất phổ biến khi binding với một controller như TreeView, ListView, DataGrid ... Khi đó việc thay đổi số phần tử trong tập hợp,
-  thì hiện thị trong các controller cũng tự thêm / bớt ... theo
+                case NotifyCollectionChangedAction.Reset:
+                    Console.WriteLine("Clear");
+                    break;
 
-- Khi kết hợp dùng INotifyPropertyChanged để xây dựng phần tử trong tập hợp, thì thay đổi thuộc tính của phần tử cũng tự động cập nhật vào các controller
+                case NotifyCollectionChangedAction.Remove:
+                    foreach (String s in e.OldItems)
+                        Console.WriteLine($"Remove :  {s}");
+                    break;
+                case NotifyCollectionChangedAction.Replace:
+                    Console.WriteLine("Repaced - " + e.NewItems[0]);
+                    break;
+            }
+        }
+    }
+}
+```
 
-!!! Khi dùng ObservableCollection làm ItemSource cho các Controller trong WPF như TreeView, DataGrid ... thì nó đã tự động bắt các sự kiện CollectionChanged, PropertyChanged
+Ứng dụng của ObservableCollection trong WPF rất phổ biến khi binding với một controller như TreeView, ListView, DataGrid ... Khi đó việc thay đổi số phần tử trong tập hợp, thì hiện thị trong các controller cũng tự thêm / bớt ... theo
 
-// WPF sẽ được nói tới sau
+Khi kết hợp dùng INotifyPropertyChanged để xây dựng phần tử trong tập hợp, thì thay đổi thuộc tính của phần tử cũng tự động cập nhật vào các controller
+
+_❗Khi dùng ObservableCollection làm ItemSource cho các Controller trong WPF như TreeView, DataGrid ... thì nó đã tự động bắt các sự kiện CollectionChanged, PropertyChanged_
+
+**_WPF sẽ được nói tới sau_**
 
 ## IDisposable
 
-- Trong thư viện .NET đưa ra một giao diện interface có tên là IDisposable (System.IDisposable). Giao diện này chỉ có định nghĩa một phương thức:
-  public void Dispose ();
+Trong thư viện .NET đưa ra một giao diện interface có tên là IDisposable (System.IDisposable). Giao diện này chỉ có định nghĩa một phương thức:
 
-- Trong .NET hầu hết các loại tài nguyên là được quản lý bởi CLR của hệ thống .NET, nên các tài nguyên, đối tượng không còn tham chiếu đến nó sẽ tự động được CLR thu hồi (GC)
+```C#
+public void Dispose ();
+```
 
-- Vẫn có những loại tài nguyên mà CLR .NET không quản lý được như:
+Trong .NET hầu hết các loại tài nguyên là được quản lý bởi CLR của hệ thống .NET, nên các tài nguyên, đối tượng không còn tham chiếu đến nó sẽ tự động được CLR thu hồi (GC)
 
-  - Mở file - stream
-  - Các kết nối mạng, kết nối đến CSDL ...
-  - Những vùng bộ nhớ không quản lý được, các font chữ ...
+Vẫn có những loại tài nguyên mà CLR .NET không quản lý được như:
 
-- Với những loại tài nguyên này, .NET không biết tự giải phóng nó thế nào, nên phải có một cơ chế chủ động làm việc này khi không còn dùng đến nữa.
+- Mở file - stream
+- Các kết nối mạng, kết nối đến CSDL ...
+- Những vùng bộ nhớ không quản lý được, các font chữ ...
 
-- Mục đich code viết trong phương thức Dispose() là các thao tác để giải phóng các tài nguyên chiếm giữ - khi đối tượng bị hủy (cụ thể là các dữ liệu không được CLT quản lý)
+Với những loại tài nguyên này, .NET không biết tự giải phóng nó thế nào, nên phải có một cơ chế chủ động làm việc này khi không còn dùng đến nữa.
 
-- Khi một lớp nào đó, triển khai giao diện IDisposable thì có thể dùng với using
-  using (obj_1, obj_2 ... obj_n) {
-  //các câu lệnh trong Using
-  }
+Mục đich code viết trong phương thức Dispose() là các thao tác để giải phóng các tài nguyên chiếm giữ - khi đối tượng bị hủy (cụ thể là các dữ liệu không được CLT quản lý)
 
-  - các obj_1, obj_2 ... là các đối tượng của những lớp triển khai giao diện IDisposabe
-    class A : IDisposable {
+Khi một lớp nào đó, triển khai giao diện IDisposable thì có thể dùng với using
+
+```C#
+using (obj_1, obj_2 ... obj_n) {
+//các câu lệnh trong Using
+}
+```
+
+- các obj_1, obj_2 ... là các đối tượng của những lớp triển khai giao diện IDisposabe
+
+```C#
+class A : IDisposable
+{
     bool resource = true;
-    public void Dispose() {
-    Console.WriteLine("Phương thức này gọi tự động khi hết using");
-    resource = false; // giải phóng tài nguyên
+    public void Dispose()
+    {
+        Console.WriteLine("Phương thức này gọi tự động khi hết using");
+        resource = false; // giải phóng tài nguyên
     }
-    }
+}
 
-    // Sử dụng Using với lớp trên
-    using (var a = new A()) {
+// Sử dụng Using với lớp trên
+using (var a = new A())
+{
     Console.WriteLine("Do something ...");
+}
+
+// Kết quả
+// Do something ...
+// Phương thức này gọi tự động khi hết using
+```
+
+_❗phương thức Dispose() sẽ tự động chạy khi hết using_
+
+Khi sử dụng đối tượng triển khai IDisposable mà không dùng using, thì phải chủ động gọi thủ công Dispose khi tài nguyên không dùng đến
+
+Khi một lớp vừa có hàm hủy vừa có Dispose() - tức triển khai IDisposable là: thao tác giải phóng tài nguyên có thể thực hiện hai lần - một lần khi ra khỏi using - một lần đối tượng mất tham chiếu. Hoặc khi đối tượng chủ động gọi Dispose nhiều lần. Điều này có thể dẫn đến lỗi.
+
+Cách giải quyết là cần có biến lưu lại trạng thái cho biết Dispose đã được thi hành hay chưa.
+
+```C#
+public class WriteData : IDisposable
+{
+    // trường lưu trạng thái Dispose
+    private bool m_Disposed = false;
+
+    private StreamWriter stream;
+
+    public WriteData(string filename)
+    {
+        stream = new StreamWriter(filename, true);
     }
 
-    // Kết quả
-    Do something ...
-    Phương thức này gọi tự động khi hết using
+    // Phương thức triển khai từ giao diện
+    public void Dispose()
+    {
+        Dispose(true);
+        GC.SuppressFinalize(this);
+    }
 
-!!! phương thức Dispose() sẽ tự động chạy khi hết using
-
-- Khi sử dụng đối tượng triển khai IDisposable mà không dùng using, thì phải chủ động gọi thủ công Dispose khi tài nguyên không dùng đến
-
-- Khi một lớp vừa có hàm hủy vừa có Dispose() - tức triển khai IDisposable là: thao tác giải phóng tài nguyên có thể thực hiện hai lần - một lần khi ra khỏi
-  using - một lần đối tượng mất tham chiếu. Hoặc khi đối tượng chủ động gọi Dispose nhiều lần. Điều này có thể dẫn đến lỗi.
-
-- Cách giải quyết là cần có biến lưu lại trạng thái cho biết Dispose đã được thi hành hay chưa.
-  public class WriteData : IDisposable {
-  // trường lưu trạng thái Dispose
-  private bool m_Disposed = false;
-
-        private StreamWriter stream;
-
-        public WriteData (string filename) {
-            stream = new StreamWriter (filename, true);
-        }
-
-        // Phương thức triển khai từ giao diện
-        public void Dispose () {
-            Dispose (true);
-            GC.SuppressFinalize (this);
-        }
-
-        // Nếu disposing = true -> Được thi hành do gọi trực tiếp (do Dispose gọi) tài nguyên managed, unmanaged được giải phóng
-        // nếu disposing = fale -> Được thi hành bởi phương thức hủy, chỉ cần giải phóng các tài nguyên unmanaged.
-        protected virtual void Dispose (bool disposing) {
-            if (!m_Disposed) {
-                if (disposing) {
-                    // các đối tượng có Dispose gọi ở đây
-                    stream.Dispose();
-                }
-
-                // giải phóng các tài nguyên không quản lý được cửa lớp (unmanaged)
-                m_Disposed = true;
+    // Nếu disposing = true -> Được thi hành do gọi trực tiếp (do Dispose gọi) tài nguyên managed, unmanaged được giải phóng
+    // nếu disposing = fale -> Được thi hành bởi phương thức hủy, chỉ cần giải phóng các tài nguyên unmanaged.
+    protected virtual void Dispose(bool disposing)
+    {
+        if (!m_Disposed)
+        {
+            if (disposing)
+            {
+                // các đối tượng có Dispose gọi ở đây
+                stream.Dispose();
             }
-        }
 
-        ~WriteData () {
-            Dispose(false);
+            // giải phóng các tài nguyên không quản lý được cửa lớp (unmanaged)
+            m_Disposed = true;
         }
+    }
 
-  }
+    ~WriteData()
+    {
+        Dispose(false);
+    }
+}
+```
 
 ## File
 
-- DriveInfo (đọc thông tin ổ đĩa)
+DriveInfo (đọc thông tin ổ đĩa)
 
-  - Thư viện .NET cung cấp lớp DriveInfo tại namespace System.IO giúp đọc thông tin các ổ đĩa có trong hệ thống
+- Thư viện .NET cung cấp lớp DriveInfo tại namespace System.IO giúp đọc thông tin các ổ đĩa có trong hệ thống
 
-  - Phương thức DriveInfo.GetDrives() trả về mảng gồm các đối tượng DriveInfo, mỗi đối tượng chứa thông tin về một ổ đĩa
+- Phương thức DriveInfo.GetDrives() trả về mảng gồm các đối tượng DriveInfo, mỗi đối tượng chứa thông tin về một ổ đĩa
 
-  - Thuộc tính
-    | IsReady | true ổ đĩa ở trạng thái sẵn sàng (hoạt động) - ví dụ ổ đĩa CD nếu không có đĩa thì không sẵn sàng false |
-    | DriveType | kiểu ổ đĩa (System.IO.DriveType) : CDRom, Fixed, Network, NoRootDirectory, Ram, Removable, Unknown |
-    | VolumeLabel | Nhãn đĩa |
-    | DriveFormat | Chuỗi cho biết định dạng đĩa: NTFS, FAT32, FAT, devfs ... |
-    | AvailableFreeSpace | Số byte có hiệu lực còn trống (theo hạn ngạch người dùng) |
-    | TotalFreeSpace | Số byte còn trống |
-    | TotalSize | Tổng số byte trên đĩa |
+- Thuộc tính
 
-- Path (hỗ trợ làm việc với đường dẫn)
+  | Tên                | Ý nghĩa                                                                                                 |
+  | ------------------ | ------------------------------------------------------------------------------------------------------- |
+  | IsReady            | true ổ đĩa ở trạng thái sẵn sàng (hoạt động) - ví dụ ổ đĩa CD nếu không có đĩa thì không sẵn sàng false |
+  | DriveType          | kiểu ổ đĩa (System.IO.DriveType) : CDRom, Fixed, Network, NoRootDirectory, Ram, Removable, Unknown      |
+  | VolumeLabel        | Nhãn đĩa                                                                                                |
+  | DriveFormat        | Chuỗi cho biết định dạng đĩa: NTFS, FAT32, FAT, devfs ...                                               |
+  | AvailableFreeSpace | Số byte có hiệu lực còn trống (theo hạn ngạch người dùng)                                               |
+  | TotalFreeSpace     | Số byte còn trống                                                                                       |
+  | TotalSize          | Tổng số byte trên đĩa                                                                                   |
 
-  - Hỗ trợ quản lý, tạo các đường dẫn đến file, thư mục - nhất là hỗ trợ cross-platform (đa nền tảng) thì lớp tĩnh System.IO.Path chứa các phương thức (tĩnh) với mục đích đó
+Path (hỗ trợ làm việc với đường dẫn)
 
-  - Thuộc tính, phương thức
-    | Path.DirectorySeparatorChar | Thuộc tính chứa ký tự phân cách đường dẫn thư mục (\ trên Windows, / trên \*nix) |
-    | Path.PathSeparator | Thuộc tính chứa ký tự phân chia thư mục trong biến môi trường |
-    | Combine | Kết hợp các chuỗi thành dường dẫn : var path = Path.Combine("home", "ReadMe.txt"); // "home/ReadMe.txt" |
-    | ChangeExtension | Thay đổi phần mở rộng của đường dẫn : var path = Path.ChangeExtension("/home/abc/ReadMe.txt", "md"); // "/home/abc/ReadMe.md" |
-    | GetDirectoryName | Lấy đường dẫn đến file (thư mục) : var path = Path.GetDirectoryName("/home/abc/zyz/ReadMe.txt"); // "/home/abc/zyz" |
-    | GetExtension | Lấy phần mở rộng : var path = Path.GetExtension("/home/ReadMe.txt"); // ".txt" |
-    | GetFileName | Lấy tên file : var path = Path.GetFileName("/home/abc/ReadMe.txt"); // "ReadMe.txt" |
-    | GetFileNameWithoutExtension | Lấy tên file : var path = Path.GetFileNameWithoutExtension("/home/ReadMe.txt"); // "ReadMe" |
-    | GetFullPath | Lấy đường dẫn đầy đủ - từ đường dẫn tương đối : var path = Path.GetFullPath("ReadMe.txt"); |
-    | GetPathRoot | Lấy gốc của đường dẫn |
-    | GetRandomFileName | Tạo tên file ngẫu nhiên : var path = Path.GetRandomFileName(); |
-    | GetTempFileName | Tạo file duy nhất, rỗng : var path = Path.GetTempFileName(); |
+- Hỗ trợ quản lý, tạo các đường dẫn đến file, thư mục - nhất là hỗ trợ cross-platform (đa nền tảng) thì lớp tĩnh System.IO.Path chứa các phương thức (tĩnh) với mục đích đó
 
-  - Lấy đường dẫn đến một số thư mục đặc biệt của hệ thống dùng Environment.GetFolderPath
-    var path_mydoc = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+- Thuộc tính, phương thức
 
-- File
+  | Tên                         | Ý nghĩa                                                                                                                       |
+  | --------------------------- | ----------------------------------------------------------------------------------------------------------------------------- |
+  | Path.DirectorySeparatorChar | Thuộc tính chứa ký tự phân cách đường dẫn thư mục (\ trên Windows, / trên \*nix)                                              |
+  | Path.PathSeparator          | Thuộc tính chứa ký tự phân chia thư mục trong biến môi trường                                                                 |
+  | Combine                     | Kết hợp các chuỗi thành dường dẫn : var path = Path.Combine("home", "ReadMe.txt"); // "home/ReadMe.txt"                       |
+  | ChangeExtension             | Thay đổi phần mở rộng của đường dẫn : var path = Path.ChangeExtension("/home/abc/ReadMe.txt", "md"); // "/home/abc/ReadMe.md" |
+  | GetDirectoryName            | Lấy đường dẫn đến file (thư mục) : var path = Path.GetDirectoryName("/home/abc/zyz/ReadMe.txt"); // "/home/abc/zyz"           |
+  | GetExtension                | Lấy phần mở rộng : var path = Path.GetExtension("/home/ReadMe.txt"); // ".txt"                                                |
+  | GetFileName                 | Lấy tên file : var path = Path.GetFileName("/home/abc/ReadMe.txt"); // "ReadMe.txt"                                           |
+  | GetFileNameWithoutExtension | Lấy tên file : var path = Path.GetFileNameWithoutExtension("/home/ReadMe.txt"); // "ReadMe"                                   |
+  | GetFullPath                 | Lấy đường dẫn đầy đủ - từ đường dẫn tương đối : var path = Path.GetFullPath("ReadMe.txt");                                    |
+  | GetPathRoot                 | Lấy gốc của đường dẫn                                                                                                         |
+  | GetRandomFileName           | Tạo tên file ngẫu nhiên : var path = Path.GetRandomFileName();                                                                |
+  | GetTempFileName             | Tạo file duy nhất, rỗng : var path = Path.GetTempFileName();                                                                  |
 
-  - Lớp System.IO.File cung cấp cho bạn cách thức đơn giản để làm việc với các tệp
+Lấy đường dẫn đến một số thư mục đặc biệt của hệ thống dùng Environment.GetFolderPath
 
-  - File.WriteAllText
+```C#
+var path_mydoc = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+```
 
-    - Tạo ra file mới (nếu đã có file thì bị ghi đè), ghi vào nó một nội dung text, rồi đóng file luôn
-      static void testWriteAllText () {
-      var filename = "test.txt";
-      string contentfile = "Xin chào! xuanthulab.net";
+File
 
-            // Lấy thư mục Document của User trên hệ thống
-            var directory_mydoc = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
-            var fullpath = Path.Combine(directory_mydoc, filename);
+- Lớp System.IO.File cung cấp cho bạn cách thức đơn giản để làm việc với các tệp
 
-            File.WriteAllText (filename, contentfile);
+- File.WriteAllText
 
-      }
+  - Tạo ra file mới (nếu đã có file thì bị ghi đè), ghi vào nó một nội dung text, rồi đóng file luôn
 
-  - File.AppendAllText
+```C#
+static void testWriteAllText()
+{
+    var filename = "test.txt";
+    string contentfile = "Xin chào! xuanthulab.net";
 
-    - Nối thêm nội dung vào nội dung có sẵn trong file thay vì ghi đè
-      static void testAppendAllText() {
-      var filename = "test.txt";
-      string contentfile = "\nXin chào! xuanthulab.net - " + DateTime.Now.ToString ();
+    // Lấy thư mục Document của User trên hệ thống
+    var directory_mydoc = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+    var fullpath = Path.Combine(directory_mydoc, filename);
 
-            var directory_mydoc = Environment.GetFolderPath (Environment.SpecialFolder.MyDocuments);
-            var fullpath = Path.Combine (directory_mydoc, filename);
+    File.WriteAllText(filename, contentfile);
+}
+```
 
-            if (File.Exists (fullpath)) {
-                // File đã tồn tại - nối thêm nội dung
-                File.AppendAllText (fullpath, contentfile);
-            } else {
-                // tạo mới vì chưa tồn tại file
-                File.WriteAllText (fullpath, contentfile);
-            }
+- File.AppendAllText
 
-      }
+  - Nối thêm nội dung vào nội dung có sẵn trong file thay vì ghi đè
 
-  - File.ReadAllText : Đọc nội dung trong file
-  - File.Create(filename) : tạo file
-  - File.Delete(filename) : xóa file
-  - File.Exists(filename) : kiểm tra file có tồn tại
-  - File.Copy(path_src, path_des) : copy file
-  - File.Move(path_src, path_des) : di chuyển file
+```C#
+static void testAppendAllText()
+{
+    var filename = "test.txt";
+    string contentfile = "\nXin chào! xuanthulab.net - " + DateTime.Now.ToString();
 
-- Directory
+    var directory_mydoc = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+    var fullpath = Path.Combine(directory_mydoc, filename);
 
-  - Lớp System.IO.Directory cung cấp các phương thức chuyên tương tác với các thư mục
-
-  - Phương thức
-    | Exists(path) | Kiểm tra xem thư mục có tồn tại (true) hay không (false) |
-    | CreateDirectory(path) | Tạo thư mục, trả về đối tượng System.IO.DirectoryInfo chứa thông tin thư mục. |
-    | Delete(path) | Xóa thư mục. |
-    | GetFiles(path) | Lấy các file trong thư mục. |
-    | GetDirectories(path) | Lấy các thư mục trong thư mục. |
-    | Move(src, des) | Di chuyển thư mục. |
-
-  - Ví dụ đệ quy liệt kê tất cả các file, thư mục con trong một thư mục
-    static void ListFileDirectory(string path)
+    if (File.Exists(fullpath))
     {
+        // File đã tồn tại - nối thêm nội dung
+        File.AppendAllText(fullpath, contentfile);
+    }
+    else
+    {
+        // tạo mới vì chưa tồn tại file
+        File.WriteAllText(fullpath, contentfile);
+    }
+}
+```
+
+- File.ReadAllText : Đọc nội dung trong file
+- File.Create(filename) : tạo file
+- File.Delete(filename) : xóa file
+- File.Exists(filename) : kiểm tra file có tồn tại
+- File.Copy(path_src, path_des) : copy file
+- File.Move(path_src, path_des) : di chuyển file
+
+Directory
+
+- Lớp System.IO.Directory cung cấp các phương thức chuyên tương tác với các thư mục
+
+- Phương thức
+
+| Tên                   | Ý nghĩa                                                                       |
+| --------------------- | ----------------------------------------------------------------------------- |
+| Exists(path)          | Kiểm tra xem thư mục có tồn tại (true) hay không (false)                      |
+| CreateDirectory(path) | Tạo thư mục, trả về đối tượng System.IO.DirectoryInfo chứa thông tin thư mục. |
+| Delete(path)          | Xóa thư mục.                                                                  |
+| GetFiles(path)        | Lấy các file trong thư mục.                                                   |
+| GetDirectories(path)  | Lấy các thư mục trong thư mục.                                                |
+| Move(src, des)        | Di chuyển thư mục.                                                            |
+
+- Ví dụ đệ quy liệt kê tất cả các file, thư mục con trong một thư mục
+
+```C#
+static void ListFileDirectory(string path)
+{
     String[] directories = System.IO.Directory.GetDirectories(path);
     String[] files = System.IO.Directory.GetFiles(path);
     foreach (var file in files)
     {
-    Console.WriteLine(file);
+        Console.WriteLine(file);
     }
     foreach (var directory in directories)
     {
-    Console.WriteLine(directory);
-    ListFileDirectory(directory); // Đệ quy
+        Console.WriteLine(directory);
+        ListFileDirectory(directory); // Đệ quy
     }
-    }
+}
+```
 
 ## Stream
 
-- Một luồng (stream) là một đối tượng được sử dụng để truyền dữ liệu
+Một luồng (stream) là một đối tượng được sử dụng để truyền dữ liệu
 
-- Khi dữ liệu truyền từ các nguồn bên ngoài vào ứng dụng ta gọi đó là đọc stream
+Khi dữ liệu truyền từ các nguồn bên ngoài vào ứng dụng ta gọi đó là đọc stream
 
-- Khi dữ liệu truyền từ chương trình ra nguồn bên ngoài ta gọi nó là ghi stream
+Khi dữ liệu truyền từ chương trình ra nguồn bên ngoài ta gọi nó là ghi stream
 
-- Nguồn bên ngoài thường là các file, tuy nhiên tổng quát thì nó có thể từ nhiều loại như đọc/ghi dữ liệu thông qua một giao thức mạng để trao đổi dữ liệu với một máy remote khác
+Nguồn bên ngoài thường là các file, tuy nhiên tổng quát thì nó có thể từ nhiều loại như đọc/ghi dữ liệu thông qua một giao thức mạng để trao đổi dữ liệu với một máy remote khác
 
-- Một số stream chỉ cho đọc, một số chỉ cho ghi, một số lại cho phép truy cập nhẫu nhiên chứ không chỉ truy cập tuần tự (cho phép thay đổi vị trí con trỏ đọc dữ liệu trong luồng)
+Một số stream chỉ cho đọc, một số chỉ cho ghi, một số lại cho phép truy cập nhẫu nhiên chứ không chỉ truy cập tuần tự (cho phép thay đổi vị trí con trỏ đọc dữ liệu trong luồng)
 
-- Lấy thông tin về stream - khi có đối tượng lớp System.IO.Stream có một số thuộc tính để tra cứu thông tin về stream
+Lấy thông tin về stream - khi có đối tượng lớp System.IO.Stream có một số thuộc tính để tra cứu thông tin về stream
 
-- Thuộc tính
-  | CanRead | Cho biết stream hỗ trợ việc đọc hay không |
-  | CanWrite | Cho biết stream hỗ trợ việc ghi hay không |
-  | CanSeek | Cho biết stream hỗ trợ dịch chuyển con trỏ hay không |
-  | CanTimeout | Cho biết stream có đặt được time out |
-  | Length | Cho biết kích thước (byte) của stream |
-  | Position | Đọc hoặc thiết lập vị trí đọc (thiết lập thì stream phải hỗ trợ Seek) |
-  | ReadTimeout | Đọc hoặc thiết lập giá trị (mili giây) danh cho tác vụ đọc stream trước khi time out phát sinh |
-  | WriteTimeout | Đọc hoặc thiết lập giá trị (mili giây) danh cho tác vụ ghi stream trước khi time out phát sinh |
+Thuộc tính
 
-- Phương thức
-  | ReadByte | Đọc từng byte, trả về int (cast 1 byte) hoặc -1 nếu cuối file. |
-  | Read | Đọc một số byte, từ vị trí nào đó, kết quả đọc lưu vào mảng byte. Trả về số lượng byte đọc được, 0 nếu cuối stream. |
-  | WriteByte | Lưu 1 byte vào stream |
-  | Write | Lưu mảng bytes vào stream |
-  | Seek | Thiết lập vị trí trong stream |
-  | Flush | Giải phóng các bộ đêm |
+| Tên          | Ý nghĩa                                                                                        |
+| ------------ | ---------------------------------------------------------------------------------------------- |
+| CanRead      | Cho biết stream hỗ trợ việc đọc hay không                                                      |
+| CanWrite     | Cho biết stream hỗ trợ việc ghi hay không                                                      |
+| CanSeek      | Cho biết stream hỗ trợ dịch chuyển con trỏ hay không                                           |
+| CanTimeout   | Cho biết stream có đặt được time out                                                           |
+| Length       | Cho biết kích thước (byte) của stream                                                          |
+| Position     | Đọc hoặc thiết lập vị trí đọc (thiết lập thì stream phải hỗ trợ Seek)                          |
+| ReadTimeout  | Đọc hoặc thiết lập giá trị (mili giây) danh cho tác vụ đọc stream trước khi time out phát sinh |
+| WriteTimeout | Đọc hoặc thiết lập giá trị (mili giây) danh cho tác vụ ghi stream trước khi time out phát sinh |
+
+Phương thức
+
+| Tên       | Ý nghĩa                                                                                                             |
+| --------- | ------------------------------------------------------------------------------------------------------------------- |
+| ReadByte  | Đọc từng byte, trả về int (cast 1 byte) hoặc -1 nếu cuối file.                                                      |
+| Read      | Đọc một số byte, từ vị trí nào đó, kết quả đọc lưu vào mảng byte. Trả về số lượng byte đọc được, 0 nếu cuối stream. |
+| WriteByte | Lưu 1 byte vào stream                                                                                               |
+| Write     | Lưu mảng bytes vào stream                                                                                           |
+| Seek      | Thiết lập vị trí trong stream                                                                                       |
+| Flush     | Giải phóng các bộ đêm                                                                                               |
 
 ## FileStream
 
-- Lớp FileStream tạo ra các đối tượng để đọc và ghi dữ liệu ra file.
+Lớp FileStream tạo ra các đối tượng để đọc và ghi dữ liệu ra file.
 
-- Để tạo ra một stream file, để trao đổi dữ liệu cần 4 thông tin:
+Để tạo ra một stream file, để trao đổi dữ liệu cần 4 thông tin:
 
-  - path đường dẫn đến file
+- path đường dẫn đến file
 
-  - mode kiểu liệt kê FileMode, nó cho biết bạn muốn mở file như thế nào, như:
-    FileMode.CreateNew : tạo file mới
-    FileMode.Create : tạo mới, nếu file đang có bị ghi đè
-    FileMode.Open : mở file đang tồn tại
-    FileMode.OpenOrCreate : mở file đang tồn tại, tạo mới nếu không có
-    FileMode.Truncate : mở file đang tồn tại và làm rỗng file
-    FileMode.Append : mở file đang tồn tại và tới cuối file, hoặc tạo mới
+- mode kiểu liệt kê FileMode, nó cho biết bạn muốn mở file như thế nào, như:
 
-  - access kiểu liệt kê FileAccess, cho biết muốn truy cập file như thế nào
-    FileAccess.Read : chỉ đọc
-    FileAccess.Write : chỉ ghi
-    FileAccess.ReadWrite : đọc và ghi
+  - FileMode.CreateNew : tạo file mới
+  - FileMode.Create : tạo mới, nếu file đang có bị ghi đè
+  - FileMode.Open : mở file đang tồn tại
+  - FileMode.OpenOrCreate : mở file đang tồn tại, tạo mới nếu không có
+  - FileMode.Truncate : mở file đang tồn tại và làm rỗng file
+  - FileMode.Append : mở file đang tồn tại và tới cuối file, hoặc tạo mới
 
-  - share kiểu liệt kê FileShare, cho phép thiết lập chia sẻ truy cập file
-    FileShare.None : không chia sẻ - tiến trình khác truy cập file sẽ lỗi cho đến khi tiến trình mở file đóng nó lại.
-    FileShare.Read : cho tiến trình khác mở đọc file.
-    FileShare.Write : cho tiến trình khác mở ghi file.
-    FileShare.ReadWrite : cho tiến trình khác mở đọc ghi file.
-    FileShare.Delete : cho tiến trình khác xóa file.
+- access kiểu liệt kê FileAccess, cho biết muốn truy cập file như thế nào
 
-- Lớp File hỗ trợ tạo FileStream. File.OpenRead(filename) tạo stream để đọc, File.OpenWrite(filename) tạo stream để ghi.
+  - FileAccess.Read : chỉ đọc
+  - FileAccess.Write : chỉ ghi
+  - FileAccess.ReadWrite : đọc và ghi
 
-- Lấy thông tin về stream
+- share kiểu liệt kê FileShare, cho phép thiết lập chia sẻ truy cập file
+  - FileShare.None : không chia sẻ - tiến trình khác truy cập file sẽ lỗi cho đến khi tiến trình mở file đóng nó lại.
+  - FileShare.Read : cho tiến trình khác mở đọc file.
+  - FileShare.Write : cho tiến trình khác mở ghi file.
+  - FileShare.ReadWrite : cho tiến trình khác mở đọc ghi file.
+  - FileShare.Delete : cho tiến trình khác xóa file.
 
-  - khi có đối tượng lớp System.IO.Stream có một số thuộc tính để tra cứu thông tin về stream
-    | Name | Trả về đường dẫn của stream |
-    | Length | Khi được ghi đè trong lớp dẫn xuất, lấy chiều dài của dòng tính bằng byte |
-    | Position | Khi được ghi đè trong lớp dẫn xuất, lấy hoặc đặt vị trí hiện tại trong dòng |
-    | CanRead | Cho biết liệu dòng có hỗ trợ đọc hay không |
-    | CanWrite | Cho biết liệu dòng có hỗ trợ ghi hay không |
-    | CanSeek | Cho biết liệu dòng có hỗ trợ tìm kiếm (seeking) hay không, tức là liệu có thể đặt vị trí hiện tại trong dòng hay không |
-    | CanTimeout | Cho biết liệu dòng có hỗ trợ timeout khi đọc và ghi hay không |
-    | ReadTimeout | Khi được ghi đè trong lớp dẫn xuất, lấy hoặc đặt khoảng thời gian (tính bằng mili giây) mà dòng sẽ cố gắng đọc trước khi timeout xảy ra |
-    | WriteTimeout | Khi được ghi đè trong lớp dẫn xuất, lấy hoặc đặt khoảng thời gian (tính bằng mili giây) mà dòng sẽ cố gắng ghi trước khi timeout xảy ra |
+Lớp File hỗ trợ tạo FileStream. File.OpenRead(filename) tạo stream để đọc, File.OpenWrite(filename) tạo stream để ghi.
 
-- Encodeing file text (mã hóa file text)
+Lấy thông tin về stream
 
-  - Khi đọc các file text (không phải file nhị phân), đầu tiên cần xác định encoding của nó (UTF8, Unicode, UTF32 ...)
+- khi có đối tượng lớp System.IO.Stream có một số thuộc tính để tra cứu thông tin về stream
 
-  - Thông tin về encoding được lưu ở vài byte đầu tiên của file nó gọi là BOM - Preamble
-    // BOM (byte order mark) sẽ được tìm hiểu trong ExpandedKnowledge.txt
+| Tên          | Ý nghĩa                                                                                                                                 |
+| ------------ | --------------------------------------------------------------------------------------------------------------------------------------- |
+| Name         | Trả về đường dẫn của stream                                                                                                             |
+| Length       | Khi được ghi đè trong lớp dẫn xuất, lấy chiều dài của dòng tính bằng byte                                                               |
+| Position     | Khi được ghi đè trong lớp dẫn xuất, lấy hoặc đặt vị trí hiện tại trong dòng                                                             |
+| CanRead      | Cho biết liệu dòng có hỗ trợ đọc hay không                                                                                              |
+| CanWrite     | Cho biết liệu dòng có hỗ trợ ghi hay không                                                                                              |
+| CanSeek      | Cho biết liệu dòng có hỗ trợ tìm kiếm (seeking) hay không, tức là liệu có thể đặt vị trí hiện tại trong dòng hay không                  |
+| CanTimeout   | Cho biết liệu dòng có hỗ trợ timeout khi đọc và ghi hay không                                                                           |
+| ReadTimeout  | Khi được ghi đè trong lớp dẫn xuất, lấy hoặc đặt khoảng thời gian (tính bằng mili giây) mà dòng sẽ cố gắng đọc trước khi timeout xảy ra |
+| WriteTimeout | Khi được ghi đè trong lớp dẫn xuất, lấy hoặc đặt khoảng thời gian (tính bằng mili giây) mà dòng sẽ cố gắng ghi trước khi timeout xảy ra |
 
-  - Tùy thuộc vào giá trị của khoảng 5 byte đầu tiên này mà xác định được encoding.
-    public static Encoding GetEncoding (Stream stream) {
+Encodeing file text (mã hóa file text)
+
+- Khi đọc các file text (không phải file nhị phân), đầu tiên cần xác định encoding của nó (UTF8, Unicode, UTF32 ...)
+
+- Thông tin về encoding được lưu ở vài byte đầu tiên của file nó gọi là BOM - Preamble
+
+**_BOM (byte order mark) sẽ được tìm hiểu trong ExpandedKnowledge.txt_**
+
+- Tùy thuộc vào giá trị của khoảng 5 byte đầu tiên này mà xác định được encoding.
+
+```C#
+public static Encoding GetEncoding(Stream stream)
+{
     byte[] BOMBytes = new byte[4]; // mảng chứa 4 byte để làm bộ nhớ lưu byte đọc được
     int offset = 0; // vị trí (index) trong buffer - nơi ghi byte đầu tiên đọc được
     int count = 4; // đọc 4 byte
-    int numberbyte = stream.Read (BOMBytes, offset, count); // bắt đầu đọc 4 đầu tiên lưu vào buffer
+    int numberbyte = stream.Read(BOMBytes, offset, count); // bắt đầu đọc 4 đầu tiên lưu vào buffer
 
-          if (BOMBytes[0] == 0xfe && BOMBytes[1] == 0xff) {
-              stream.Seek (2, SeekOrigin.Begin); // Di chuyển về vị trí bắt đầu của dữ liệu (đã trừ BOM)
-              return Encoding.BigEndianUnicode;
-          }
-          if (BOMBytes[0] == 0xff && BOMBytes[1] == 0xfe) {
-              stream.Seek (2, SeekOrigin.Begin); // Di chuyển về vị trí bắt đầu của dữ liệu (đã trừ BOM)
-              return Encoding.Unicode;
-          }
-
-          if (BOMBytes[0] == 0xef && BOMBytes[1] == 0xbb && BOMBytes[2] == 0xbf) {
-              stream.Seek (3, SeekOrigin.Begin);
-              return Encoding.UTF8;
-          }
-          if (BOMBytes[0] == 0x2b && BOMBytes[1] == 0x2f && BOMBytes[2] == 0x76) {
-              stream.Seek (3, SeekOrigin.Begin);
-              return Encoding.UTF7;
-          }
-          if (BOMBytes[0] == 0xff && BOMBytes[1] == 0xfe && BOMBytes[2] == 0 && BOMBytes[3] == 0) {
-              stream.Seek (4, SeekOrigin.Begin);
-              return Encoding.UTF32;
-          }
-          if (BOMBytes[0] == 0 && BOMBytes[1] == 0 && BOMBytes[2] == 0xfe && BOMBytes[3] == 0xff) {
-              stream.Seek (4, SeekOrigin.Begin);
-              return Encoding.GetEncoding (12001);
-          }
-
-          stream.Seek (0, SeekOrigin.Begin);
-          return Encoding.Default;
-
+    if (BOMBytes[0] == 0xfe && BOMBytes[1] == 0xff)
+    {
+        stream.Seek(2, SeekOrigin.Begin); // Di chuyển về vị trí bắt đầu của dữ liệu (đã trừ BOM)
+        return Encoding.BigEndianUnicode;
+    }
+    if (BOMBytes[0] == 0xff && BOMBytes[1] == 0xfe)
+    {
+        stream.Seek(2, SeekOrigin.Begin); // Di chuyển về vị trí bắt đầu của dữ liệu (đã trừ BOM)
+        return Encoding.Unicode;
     }
 
-  - ASCII dùng 7 bit biểu diễn các ký tự - đủ biểu diễn bảng chữ cái tiếng Anh (in hoa, thường, số ký tự đặc biệt) - 1 byte biểu diễn 1 ký tự
-
-  - UTF-16 dùng 2 byte biểu diễn 1 ký tự
-
-  - UTF-32 dùng 4 byte biểu diễn 1 ký tự
-
-  - UTF-8 (dùng nhiều ngày nay) - dùng biến để xác định bao nhiêu byte cho mỗi ký tự cụ thể - mỗi ký tự có thể từ 1 - 6 byte
-
-- Ghi file text
-
-  - Ghi file text (tạo mới, ghi đè) - chọn file có Encoding UTF8
-
-  - Đầu tiên phải ghi các bytes BOM, lấy mảng bytes DOM bằng cách gọi encoding.GetPreamble()
-
-  - Sau đó chuyển chuỗi thành mảng bytes (đã encoding) - rồi lưu ra stream bằng Write
-    using (var stream = new FileStream( path:filepath, mode: FileMode.Create, access: FileAccess.Write, share: FileShare.None))
+    if (BOMBytes[0] == 0xef && BOMBytes[1] == 0xbb && BOMBytes[2] == 0xbf)
     {
+        stream.Seek(3, SeekOrigin.Begin);
+        return Encoding.UTF8;
+    }
+    if (BOMBytes[0] == 0x2b && BOMBytes[1] == 0x2f && BOMBytes[2] == 0x76)
+    {
+        stream.Seek(3, SeekOrigin.Begin);
+        return Encoding.UTF7;
+    }
+    if (BOMBytes[0] == 0xff && BOMBytes[1] == 0xfe && BOMBytes[2] == 0 && BOMBytes[3] == 0)
+    {
+        stream.Seek(4, SeekOrigin.Begin);
+        return Encoding.UTF32;
+    }
+    if (BOMBytes[0] == 0 && BOMBytes[1] == 0 && BOMBytes[2] == 0xfe && BOMBytes[3] == 0xff)
+    {
+        stream.Seek(4, SeekOrigin.Begin);
+        return Encoding.GetEncoding(12001);
+    }
+
+    stream.Seek(0, SeekOrigin.Begin);
+    return Encoding.Default;
+}
+```
+
+- ASCII dùng 7 bit biểu diễn các ký tự - đủ biểu diễn bảng chữ cái tiếng Anh (in hoa, thường, số ký tự đặc biệt) - 1 byte biểu diễn 1 ký tự
+
+- UTF-16 dùng 2 byte biểu diễn 1 ký tự
+
+- UTF-32 dùng 4 byte biểu diễn 1 ký tự
+
+- UTF-8 (dùng nhiều ngày nay) - dùng biến để xác định bao nhiêu byte cho mỗi ký tự cụ thể - mỗi ký tự có thể từ 1 - 6 byte
+
+Ghi file text
+
+- Ghi file text (tạo mới, ghi đè) - chọn file có Encoding UTF8
+
+- Đầu tiên phải ghi các bytes BOM, lấy mảng bytes DOM bằng cách gọi encoding.GetPreamble()
+
+- Sau đó chuyển chuỗi thành mảng bytes (đã encoding) - rồi lưu ra stream bằng Write
+
+```C#
+using (var stream = new FileStream(path: filepath, mode: FileMode.Create, access: FileAccess.Write, share: FileShare.None))
+{
     //Write BOM - UTF8
     Encoding encoding = Encoding.UTF8;
     byte[] bom = encoding.GetPreamble();
     stream.Write(bom, 0, bom.Length);
 
-          string s1 = "Xin chào các bạn! \n";
-          string s2 = "Ví dụ - ghi file text bằng stream";
+    string s1 = "Xin chào các bạn! \n";
+    string s2 = "Ví dụ - ghi file text bằng stream";
 
-          // Encode chuỗi - lưu vào mảng bytes
-          byte[] buffer = encoding.GetBytes(s1);
-          stream.Write(buffer, 0, buffer.Length);  // lưu vào stream
+    // Encode chuỗi - lưu vào mảng bytes
+    byte[] buffer = encoding.GetBytes(s1);
+    stream.Write(buffer, 0, buffer.Length);  // lưu vào stream
 
-          buffer = encoding.GetBytes(s2);
-          stream.Write(buffer, 0, buffer.Length);  // lưu vào stream
+    buffer = encoding.GetBytes(s2);
+    stream.Write(buffer, 0, buffer.Length);  // lưu vào stream
+}
+```
 
-    }
+Đọc file text
 
-- Đọc file text
+- Đầu tiên xác định Encoding của file text
 
-  - Đầu tiên xác định Encoding của file text
+- Sau đó đọc từng khối byte vào buffer (mảng byte), rồi thực hiện Encoding để xác định chuỗi
 
-  - Sau đó đọc từng khối byte vào buffer (mảng byte), rồi thực hiện Encoding để xác định chuỗi
-    int SIZEBUFFER = 256;
-    using (var stream = new FileStream( path:filepath, mode: FileMode.Open, access: FileAccess.ReadWrite, share: FileShare.Read))
-    {
+```C#
+int SIZEBUFFER = 256;
+using (var stream = new FileStream(path: filepath, mode: FileMode.Open, access: FileAccess.ReadWrite, share: FileShare.Read))
+{
     Encoding encoding = GetEncoding(stream);
     Console.WriteLine(encoding.ToString());
     byte[] buffer = new byte[SIZEBUFFER];
     bool endread = false;
     do
     {
-    int numberRead = stream.Read(buffer, 0, SIZEBUFFER);
-    if (numberRead == 0) endread = true;
-    if (numberRead < SIZEBUFFER)
-    {
-    Array.Clear(buffer, numberRead, SIZEBUFFER - numberRead);
-    }
-    string s = encoding.GetString(buffer, 0, numberRead);
-    Console.WriteLine(s);
+        int numberRead = stream.Read(buffer, 0, SIZEBUFFER);
+        if (numberRead == 0) endread = true;
+        if (numberRead < SIZEBUFFER)
+        {
+            Array.Clear(buffer, numberRead, SIZEBUFFER - numberRead);
+        }
+        string s = encoding.GetString(buffer, 0, numberRead);
+        Console.WriteLine(s);
     } while (!endread);
-    }
+}
+```
 
-- Copy file text
-  - Tạo 2 stream, một để đọc - một để lưu
-    int SIZEBUFFER = 5; // tăng lên đọc sẽ nhanh
-    using (var streamwrite = File.OpenWrite(filepath_des))
-    using (var streamread = File.OpenRead(filepath_src))
-    {
+Copy file text
+
+- Tạo 2 stream, một để đọc - một để lưu
+
+```C#
+int SIZEBUFFER = 5; // tăng lên đọc sẽ nhanh
+using (var streamwrite = File.OpenWrite(filepath_des))
+using (var streamread = File.OpenRead(filepath_src))
+{
     byte[] buffer = new byte[SIZEBUFFER];
     bool endread = false;
     do
     {
-    int numberRead = streamread.Read(buffer, 0, SIZEBUFFER);
-    if (numberRead == 0) endread = true;
-    else {
-    streamwrite.Write(buffer, 0, numberRead);
-    }
+        int numberRead = streamread.Read(buffer, 0, SIZEBUFFER);
+        if (numberRead == 0) endread = true;
+        else
+        {
+            streamwrite.Write(buffer, 0, numberRead);
+        }
     } while (!endread);
-    }
+}
+```
 
 ## LINQ (ngôn ngữ truy vấn tích hợp)
 
-- LINQ (Language Integrated Query) - ngôn ngữ truy vấn tích hợp - tích hợp cú pháp truy vấn (gần giống các câu lệnh SQL) vào bên trong ngôn ngữ lập trình C#,
-  cho C# khả năng truy cập các nguồn dữ liệu khác nhau (SQL Db, XML, List ...) với cùng cú pháp.
+LINQ (Language Integrated Query) - ngôn ngữ truy vấn tích hợp - tích hợp cú pháp truy vấn (gần giống các câu lệnh SQL) vào bên trong ngôn ngữ lập trình C#, cho C# khả năng truy cập các nguồn dữ liệu khác nhau (SQL Db, XML, List ...) với cùng cú pháp.
 
-- LINQ hoạt động trên những kiểu tập hợp có khả năng duyệt qua
+LINQ hoạt động trên những kiểu tập hợp có khả năng duyệt qua
 
-- Nguồn dữ liệu phục vụ cho LINQ, phải là các đối tượng lớp triển khai giao diện (interface) IEnumerable và IEnumerable<T> tức là các mảng, danh sách thuộc Collection
+Nguồn dữ liệu phục vụ cho LINQ, phải là các đối tượng lớp triển khai giao diện (interface) IEnumerable và IEnumerable<T> tức là các mảng, danh sách thuộc Collection
 
-- Câu truy vấn LINQ thường bắt đầu bằng mệnh đề from và kết thúc bằng mệnh đề select hoặc group, giữa chúng là những mệnh đề where, orderby, join, let
+Câu truy vấn LINQ thường bắt đầu bằng mệnh đề from và kết thúc bằng mệnh đề select hoặc group, giữa chúng là những mệnh đề where, orderby, join, let
 
-- from in
+from in
 
-  - Mệnh đề from để xác định nguồn dữ liệu mà truy vấn sẽ thực hiện
+- Mệnh đề from để xác định nguồn dữ liệu mà truy vấn sẽ thực hiện
 
-  - Nguồn dữ liệu là tập hợp những phần tử lưu trong đối tượng có kiểu lớp triển khai giao diện IEnumerable như mảng Array, List ...
-    from [biến chứa] in [nguồn dữ liệu]
+- Nguồn dữ liệu là tập hợp những phần tử lưu trong đối tượng có kiểu lớp triển khai giao diện IEnumerable như mảng Array, List ...
 
-- select
+```C#
+from [biến chứa] in [nguồn dữ liệu]
+```
 
-  - Mệnh đề select chỉ ra các dữ liệu được lấy ra (xuất ra) của câu lệnh LINQ
-    var ketqua = from product in products
-    // trả về collection gồm các phần tử Product
-    select product;
+select
 
-    // trả về một collection gồm các phần tử chuỗi
-    select product.Name;
+- Mệnh đề select chỉ ra các dữ liệu được lấy ra (xuất ra) của câu lệnh LINQ
 
-    // trả về những đối tượng phức tạp mà dữ liệu được trích xuất ra from ... in ... hay những dữ liệu do tính toán ...
-    select new {
+```C#
+var ketqua = from product in products
+                 // trả về collection gồm các phần tử Product
+             select product;
+
+// trả về một collection gồm các phần tử chuỗi
+select product.Name;
+
+// trả về những đối tượng phức tạp mà dữ liệu được trích xuất ra from ... in ... hay những dữ liệu do tính toán ...
+select new
+{
     ten = product.Name.ToUpper(),
     mausac = string.Join(',', product.Colors)
-    };
+};
+```
 
-- where
+where
 
-  - Mệnh đề where để lọc dữ liệu, sau từ khóa where là biểu thức logic xác định các phần tử lọc ra
-    where product.Price == 500
+- Mệnh đề where để lọc dữ liệu, sau từ khóa where là biểu thức logic xác định các phần tử lọc ra
 
-    where (product.Price >= 600 && product.Price < 700) || product.Name.StartsWith("Bàn")
+```C#
+where product.Price == 500
 
-  - Trong một truy vấn có thể viết nhiều mệnh đề where
-    var ketqua = from product in products
-    where product.Price >= 500
-    where product.Name.StartsWith("Giường")
-    select product;
+where(product.Price >= 600 && product.Price < 700) || product.Name.StartsWith("Bàn")
+```
 
-- from kết hợp
+- Trong một truy vấn có thể viết nhiều mệnh đề where
 
-  - Để lọc dữ liệu phức tạp hơn, có thể dùng From kết hợp để lọc phức tạp và chi tiết hơn
-    var ketqua = from product in products
-    from color in product.Colors // product.Colors là 1 thuộc tính danh sách các màu sắc của 1 phần tử
-    where product.Price < 500
-    where color == "Vàng"
-    select product;
+```C#
+var ketqua = from product in products
+             where product.Price >= 500
+             where product.Name.StartsWith("Giường")
+             select product;
+```
 
-- orderby
+from kết hợp
 
-  - Mệnh đề orderby viết sau mệnh đề where nếu có, dùng để sắp xếp kết quả
-    orderby thuoctinh // sắp xếp tăng dần
-    orderby thuoctinh descending // sắp xếp giảm dần
+- Để lọc dữ liệu phức tạp hơn, có thể dùng From kết hợp để lọc phức tạp và chi tiết hơn
 
-  - Cũng có thể sắp xếp theo nhiều dữ liệu, viết cách nhau bởi ,
-    orderby thuoctinh1 descending, thuoctinh2, thuoctinh3 descending ...
+```C#
+var ketqua = from product in products
+             from color in product.Colors // product.Colors là 1 thuộc tính danh sách các màu sắc của 1 phần tử
+             where product.Price < 500
+             where color == "Vàng"
+             select product;
+```
 
-- group by
+orderby
 
-  - Mệnh đề group được dngf thay cho mệnh đề select
+- Mệnh đề orderby viết sau mệnh đề where nếu có, dùng để sắp xếp kết quả
 
-  - Trả về theo từng nhóm (nhóm lại theo trường dữ liệu nào đó), mỗi phần tử của cấu truy vấn trả về là kiểu IGrouping<TKey,TElement>, chứa các phần tử thuộc một nhóm
-    var ketqua = from product in products
-    where product.Price >=400 && product.Price <= 500
-    group product by product.Price;
+```C#
+orderby thuoctinh // sắp xếp tăng dần
+orderby thuoctinh descending // sắp xếp giảm dần
+```
 
-    // 400
-    // Bàn trà - 400
-    // Tranh treo - 400
-    // 500
-    // Đèn trùm - 500
-    // Giường ngủ - 500
+- Cũng có thể sắp xếp theo nhiều dữ liệu, viết cách nhau bởi ,
 
-  - Sử dụng into để lưu tạm group trong truy vấn vào một biến, sau đó thi hành các mệnh đề khác trên biến tạm và dùng mệnh đề select để trả về kết quả
-    var ketqua = from product in products
-    where product.Price >=400 && product.Price <= 500
-    group product by product.Price into gr
-    orderby gr.Key descending
-    select gr;
+```C#
+orderby thuoctinh1 descending, thuoctinh2, thuoctinh3 descending ...
+```
 
-- let
+group by
 
-  - let dùng để thêm biến vào LINQ, lưu kết quả của một biểu thức tính toán nào đó
-    let tenvien = biểu_thức
+- Mệnh đề group được dngf thay cho mệnh đề select
 
-    var ketqua = from product in products // các sản phẩm trong products
-    group product by product.Price into gr // nhóm thành gr theo giá
-    let count = gr.Count() // số phần tử trong nhóm
-    select new { // trả về giá và số sản phầm có giá này
-    price = gr.Key,
-    number_product = count
-    };
+- Trả về theo từng nhóm (nhóm lại theo trường dữ liệu nào đó), mỗi phần tử của cấu truy vấn trả về là kiểu IGrouping<TKey,TElement>, chứa các phần tử thuộc một nhóm
 
-- join
+```C#
+var ketqua = from product in products
+             where product.Price >= 400 && product.Price <= 500
+             group product by product.Price;
 
-  - join là thực hiện kết hợp hai nguồn dữ liệu lại với nhau để truy vấn thông tin
+// 400
+// Bàn trà - 400
+// Tranh treo - 400
+// 500
+// Đèn trùm - 500
+// Giường ngủ - 500
+```
 
-  - Để kết nối, dùng mệnh đề join để chỉ ra nguồn (nguồn bên phải join) sẽ kết nối với nguồn của from (nguồn bên trái join), tiếp theo chỉ ra sự dàng buộc các phần tử bằng từ khóa on
-    var ketqua = from product in products
-    join brand in brands on product.Brand equals brand.ID
-    select new {
-    name = product.Name,
-    brand = brand.Name,
-    price = product.Price
-    };
+- Sử dụng into để lưu tạm group trong truy vấn vào một biến, sau đó thi hành các mệnh đề khác trên biến tạm và dùng mệnh đề select để trả về kết quả
 
-  !!! join trong C# là kiểu inner join (tức giá trị liên kết có ở cả 2 nguồn)
-  // Đọc thêm về join trong CTDL-SQL.txt
+```C#
+var ketqua = from product in products
+             where product.Price >= 400 && product.Price <= 500
+             group product by product.Price into gr
+             orderby gr.Key descending
+             select gr;
+```
 
-  - Nếu muốn sử dụng join như kiểu left join có nghĩa nguồn bên trái lấy không phụ thuộc vào bên phải thì lấy thêm DefaultIfEmpty() của nguồn bên trái
-    var ketqua = from product in products
-    join brand in brands on product.Brand equals brand.ID into t
-    from brand in t.DefaultIfEmpty()
-    select new {
-    name = product.Name,
-    brand = (brand == null) ? "NO-BRAND" : brand.Name,
-    price = product.Price
-    };
+let
+
+- let dùng để thêm biến vào LINQ, lưu kết quả của một biểu thức tính toán nào đó
+
+```C#
+let tenvien = biểu_thức
+```
+
+```C#
+var ketqua = from product in products // các sản phẩm trong products
+             group product by product.Price into gr // nhóm thành gr theo giá
+             let count = gr.Count() // số phần tử trong nhóm
+             select new
+             { // trả về giá và số sản phầm có giá này
+                 price = gr.Key,
+                 number_product = count
+             };
+```
+
+join
+
+- join là thực hiện kết hợp hai nguồn dữ liệu lại với nhau để truy vấn thông tin
+
+- Để kết nối, dùng mệnh đề join để chỉ ra nguồn (nguồn bên phải join) sẽ kết nối với nguồn của from (nguồn bên trái join), tiếp theo chỉ ra sự dàng buộc các phần tử bằng từ khóa on
+
+```C#
+var ketqua = from product in products
+             join brand in brands on product.Brand equals brand.ID
+             select new
+             {
+                 name = product.Name,
+                 brand = brand.Name,
+                 price = product.Price
+             };
+```
+
+_❗join trong C# là kiểu inner join (tức giá trị liên kết có ở cả 2 nguồn)_
+
+**_Đọc thêm về join trong CTDL-SQL.txt_**
+
+- Nếu muốn sử dụng join như kiểu left join có nghĩa nguồn bên trái lấy không phụ thuộc vào bên phải thì lấy thêm DefaultIfEmpty() của nguồn bên trái
+
+```C#
+var ketqua = from product in products
+             join brand in brands on product.Brand equals brand.ID into t
+             from brand in t.DefaultIfEmpty()
+             select new
+             {
+                 name = product.Name,
+                 brand = (brand == null) ? "NO-BRAND" : brand.Name,
+                 price = product.Price
+             };
+```
 
 ## Asynchronous
 
-- Lập trình bất đồng bộ (asynchronous) là một cách thức mà khi gọi nó chạy ở chế độ nền (liên quan đến một tiến trình, task), trong khi đó tiến trình gọi nó không bị khóa - block
+Lập trình bất đồng bộ (asynchronous) là một cách thức mà khi gọi nó chạy ở chế độ nền (liên quan đến một tiến trình, task), trong khi đó tiến trình gọi nó không bị khóa - block
 
-- Trong .NET có triển khai một số mô hình lập trình bất đồng bộ như Asynchronous pattern, mẫu bất đồng bộ theo sự kiện và theo tác vụ (TAP - task-based asynchronous pattern)
+Trong .NET có triển khai một số mô hình lập trình bất đồng bộ như Asynchronous pattern, mẫu bất đồng bộ theo sự kiện và theo tác vụ (TAP - task-based asynchronous pattern)
 
-- .NET có thư viện tên Task Parallel Library (TPL) - TPL giúp lập trình chạy song song (đa luồng) dễ dàng hơn. Trong C# đồng thời có thêm vào hai từ khóa là async và await, đây
-  là hai từ khóa chính để sử dụng trong lập trình bất đồng bộ.
+.NET có thư viện tên Task Parallel Library (TPL) - TPL giúp lập trình chạy song song (đa luồng) dễ dàng hơn. Trong C# đồng thời có thêm vào hai từ khóa là async và await, đây là hai từ khóa chính để sử dụng trong lập trình bất đồng bộ.
 
-- synchronous
+synchronous
 
-  - Bình thường, khi lập trình gọi một phương thức nào đó thì phương thức đó chạy và kết thúc thì các dòng code tiếp theo sau lời gọi phương thức đó mới được thực thi, đó là
-    chạy đồng bộ, có nghĩa là thread gọi phương thức bị khóa lại cho đến khi phương thức kết thúc
+- Bình thường, khi lập trình gọi một phương thức nào đó thì phương thức đó chạy và kết thúc thì các dòng code tiếp theo sau lời gọi phương thức đó mới được thực thi, đó là chạy đồng bộ, có nghĩa là thread gọi phương thức bị khóa lại cho đến khi phương thức kết thúc
 
-  - Việc khóa thread thực hiện hàm làm cho các dòng code tiếp theo phải chờ, nếu hàm đó thi hành mất nhiều thời gian (đặc biệt là các thao tác đọc stream - đọc file, kết nối
-    web, kết nối CSDL ...) - trong khi tài nguyên vẫn đủ để làm các việc khác - thì chương trình vẫn cứ phải chờ phương thức trên kết thúc thì mới thi hành được tác vụ khác,
-    đặt biệt là khi gọi phương thức trong các tiến trình UI, giao diện người dùng không tương tác được.
+- Việc khóa thread thực hiện hàm làm cho các dòng code tiếp theo phải chờ, nếu hàm đó thi hành mất nhiều thời gian (đặc biệt là các thao tác đọc stream - đọc file, kết nối web, kết nối CSDL ...) - trong khi tài nguyên vẫn đủ để làm các việc khác - thì chương trình vẫn cứ phải chờ phương thức trên kết thúc thì mới thi hành được tác vụ khác, đặt biệt là khi gọi phương thức trong các tiến trình UI, giao diện người dùng không tương tác được.
 
-  - Để giải quyết vấn đề này, chương trình vẫn thi hành được các tác vụ khác thì cần đến kỹ thuật lập trình bất đồng bộ (trước đây gọi là lập trình đa tiến trình, đa luồng)
+- Để giải quyết vấn đề này, chương trình vẫn thi hành được các tác vụ khác thì cần đến kỹ thuật lập trình bất đồng bộ (trước đây gọi là lập trình đa tiến trình, đa luồng)
 
-- Task
+Task
 
-  - Lớp Task nó biểu thị tác vụ bất đồng bộ, từ đó ta chạy được code bất đồng bộ
+- Lớp Task nó biểu thị tác vụ bất đồng bộ, từ đó ta chạy được code bất đồng bộ
 
-  - Nếu tác vụ bất đồng bộ đó thi hành xong có kiểu trả về thì dùng Task<T> với T là kiểu trả về
-    using System.Threading;
-    using System.Threading.Tasks;
+- Nếu tác vụ bất đồng bộ đó thi hành xong có kiểu trả về thì dùng Task<T> với T là kiểu trả về
 
-  - Để tạo ra một Task cần tham số là một hàm delegate ( Func hoặc Action)
-    // Nếu myfunc trả về kiểu T (tức là một Func)
-    Func<T> myfunc = () => {
+```C#
+using System.Threading;
+using System.Threading.Tasks;
+```
+
+- Để tạo ra một Task cần tham số là một hàm delegate ( Func hoặc Action)
+
+```C#
+// Nếu myfunc trả về kiểu T (tức là một Func)
+Func<T> myfunc = () =>
+{
     // code ...
     return ...;
-    };
-    Task<T> task = new Task<T>(myfunc);
+};
+Task<T> task = new Task<T>(myfunc);
 
-    // object là đối tượng tham số truyền cho myfunc
-    Func<object, T> myfunc = (object thamso) => {
+// object là đối tượng tham số truyền cho myfunc
+Func<object, T> myfunc = (object thamso) =>
+{
     // code ...
     return ...;
-    };
-    Task<T> task = new Task<T>(myfunc, thamso);
+};
+Task<T> task = new Task<T>(myfunc, thamso);
 
-    // Nếu myfunc không trả về giá trị (tức là Action)
-    Action myfunc = () => {
+// Nếu myfunc không trả về giá trị (tức là Action)
+Action myfunc = () =>
+{
     // code ...
-    };
-    Task task = new Task(myfunc);
+};
+Task task = new Task(myfunc);
+```
 
-  - Start() : phương thức để chạy Task của đối tượng
+- Start() : phương thức để chạy Task của đối tượng
 
-  - Result : thuộc tính kết quả trả về
+- Result : thuộc tính kết quả trả về
 
-  - Wait() : chờ cho task hoàn thành
+- Wait() : chờ cho task hoàn thành
 
-- async, await
+async, await
 
-  - Khi muốn lấy kết quả của Task, thì trả về thuộc tính Result. Nhưng điều này làm cho thread chạy Task bị khóa lại vì Result sẽ trả về khi Task hoàn thành.
-    Điều này làm mất đi lợi ích đa luồng và bất đồng bộ
+- Khi muốn lấy kết quả của Task, thì trả về thuộc tính Result. Nhưng điều này làm cho thread chạy Task bị khóa lại vì Result sẽ trả về khi Task hoàn thành. Điều này làm mất đi lợi ích đa luồng và bất đồng bộ
 
-  - Để có thể trả về ngay lập tức mà không khóa thread của Task đó lại thì dùng đến cặp từ khóa async và await
+- Để có thể trả về ngay lập tức mà không khóa thread của Task đó lại thì dùng đến cặp từ khóa async và await
 
-  - Thêm vào khai báo tên hàm từ khóa async, nó cho trình biên dịch biết đây là hàm bất đồng bộ - khi gọi nó - nó trả về ngay lập tức
+- Thêm vào khai báo tên hàm từ khóa async, nó cho trình biên dịch biết đây là hàm bất đồng bộ - khi gọi nó - nó trả về ngay lập tức
 
-  - Trong thân của hàm, phải có đoạn code chờ task hoàn thành
-    public static async Task<T> async (thamso){
+- Trong thân của hàm, phải có đoạn code chờ task hoàn thành
+
+```C#
+public static async Task<T> async(thamso)
+{
     // code ...
     await task;
     // code ...
-    }
+}
+```
 
-  - code phía sau await chỉ được chạy khi Task chạy xong
+- code phía sau await chỉ được chạy khi Task chạy xong
 
-  !!! await phải dùng với Task và chỉ được viết trong hàm có khai báo async
+_❗await phải dùng với Task và chỉ được viết trong hàm có khai báo async_
 
-  !!! Có thể hình dung khi hàm được gọi để thực thi thì nó sẽ tạo ra thread (luồng) để thực thi các Task (hàm, công việc trong hàm), hàm main cũng có thread để chạy
-  và đó là thread chính của chương trình. Trong chương trình đồng bộ thì các hàm cùng chạy trên 1 thread chính của hàm main (nói đúng hơn là thread chính bị chuyển
-  hướng sang chạy thread của hàm được gọi), còn trong chương trình bất đồng bộ thì hàm nào chạy thread hàm đó.
+_❗Có thể hình dung khi hàm được gọi để thực thi thì nó sẽ tạo ra thread (luồng) để thực thi các Task (hàm, công việc trong hàm), hàm main cũng có thread để chạy và đó là thread chính của chương trình. Trong chương trình đồng bộ thì các hàm cùng chạy trên 1 thread chính của hàm main (nói đúng hơn là thread chính bị chuyển hướng sang chạy thread của hàm được gọi), còn trong chương trình bất đồng bộ thì hàm nào chạy thread hàm đó._
 
-  - Khi khai báo hàm với async nến tránh dùng kiểu trả về void (dù được phép, không await được) mà hãy dùng Task nếu không có kiểu trả về hoặc Task<T> khi có kiểu trả về T
+- Khi khai báo hàm với async nến tránh dùng kiểu trả về void (dù được phép, không await được) mà hãy dùng Task nếu không có kiểu trả về hoặc Task<T> khi có kiểu trả về T
 
-  - Do 1 phương thức cũng là 1 task, nên có thể await ở 1 phương thức async khác thì phương thức đó cũng phải là async
+- Do 1 phương thức cũng là 1 task, nên có thể await ở 1 phương thức async khác thì phương thức đó cũng phải là async
 
-- CancellationToken
-  // bổ sung sau
+CancellationToken
+
+> bổ sung sau
 
 ## Multi thread sử dụng Parallel chạy song song
 
-- Parallel
+Parallel
 
-  - Lớp Parallel thuộc namespace System.Threading.Tasks, nó trừu tượng hóa các thread, lớp này có phương thức tĩnh Parallel.For, Parallel.ForEach để thực hiện
-    vòng lặp for và foreach để chạy song song các tác vụ
+- Lớp Parallel thuộc namespace System.Threading.Tasks, nó trừu tượng hóa các thread, lớp này có phương thức tĩnh Parallel.For, Parallel.ForEach để thực hiện vòng lặp for và foreach để chạy song song các tác vụ
 
-  - Parallel.Invoke để thực hiện một Action có khả năng chạy song song
+- Parallel.Invoke để thực hiện một Action có khả năng chạy song song
 
-- Parallel.For
+Parallel.For
 
-  - Parallel.For có nhiều quá tải
-    ParallelLoopResult result = Parallel.For(i1, i2, task);
+- Parallel.For có nhiều quá tải
 
-  - Vòng lặp chạy (biến chạy) từ số nguyên i1 đến i2, mỗi lần lặp nó sẽ thực hiện Action task, task là một delegate, kiểu Action<int> có nghĩa nó làm phương thức
-    trả về void, có một tham số kiểu int, tham số này là biến chạy
-    Action<int> action = (int x) => {
+```C#
+ParallelLoopResult result = Parallel.For(i1, i2, task);
+```
+
+- Vòng lặp chạy (biến chạy) từ số nguyên i1 đến i2, mỗi lần lặp nó sẽ thực hiện Action task, task là một delegate, kiểu Action<int> có nghĩa nó làm phương thức trả về void, có một tham số kiểu int, tham số này là biến chạy
+
+```C#
+Action<int> action = (int x) =>
+{
     // Doing somthing here ...
-    };
+};
+```
 
-  - result đối tượng lớp ParallelLoopResult trả về từ Paralell.For, thuộc tính ParallelLoopResult.IsCompleted cho biết vòng lặp đã được duyệt qua hết, tất cả các task đã khởi chạy.
+- result đối tượng lớp ParallelLoopResult trả về từ Paralell.For, thuộc tính ParallelLoopResult.IsCompleted cho biết vòng lặp đã được duyệt qua hết, tất cả các task đã khởi chạy.
 
-  - Lệnh Parallel.For khởi chạy song song nhiều tác vụ (thời điểm bắt đầu của mỗi tác vụ không giống nhau, có những tác vụ đã kết thúc thì tác vụ sau mới chạy, nó có thể
-    phụ thuộc vào tài nguyên hệ thống RAM, CPU ...)
+- Lệnh Parallel.For khởi chạy song song nhiều tác vụ (thời điểm bắt đầu của mỗi tác vụ không giống nhau, có những tác vụ đã kết thúc thì tác vụ sau mới chạy, nó có thể phụ thuộc vào tài nguyên hệ thống RAM, CPU ...)
 
-  - Một task nó có chạy trên một thread nào đó (chứ không phải mỗi task một thread), một thread có thể sử dụng bởi nhiều task
+- Một task nó có chạy trên một thread nào đó (chứ không phải mỗi task một thread), một thread có thể sử dụng bởi nhiều task
 
-  - Bản thân vòng lặp Parallel.For, khi các Action chạy, mặc dù chúng chạy trên những Task và Thread, nhưng khi tất cả các Action hoàn hành thì vòng lặp mới hoàn thành.
-    Dẫn đến Parallel.For khóa(block) thread gọi nó. Để không bị khóa, có thể chuyển các Action là async
+- Bản thân vòng lặp Parallel.For, khi các Action chạy, mặc dù chúng chạy trên những Task và Thread, nhưng khi tất cả các Action hoàn hành thì vòng lặp mới hoàn thành. Dẫn đến Parallel.For khóa(block) thread gọi nó. Để không bị khóa, có thể chuyển các Action là async
 
-- Parallel.ForEach
+Parallel.ForEach
 
-  - Cũng giống với Parallel.For nhưng duyệt qua các Collection tương tự như vòng lặp foreach
-    ParallelLoopResult result = Parallel.ForEach(source, RunTask);
+- Cũng giống với Parallel.For nhưng duyệt qua các Collection tương tự như vòng lặp foreach
 
-  - Trong đó source là một Collection như mảng, List. RunTask là Action, có 1 tham số có kiểu giống kiểu phần tử trong source, giá trị tham số này là giá trị phần tử
-    trong source trong mỗi vòng lặp
+```C#
+ParallelLoopResult result = Parallel.ForEach(source, RunTask);
+```
 
-- Parallel.Invoke
-  - Với For và ForEach, thì các tác vụ định nghĩa trọng một Action, nhưng nếu muốn chạy song song nhiều loại Action (phương thức) một lúc thì dùng Paralell.Invoke
-    Parallel.Invoke(action1, action2, action3);
+- Trong đó source là một Collection như mảng, List. RunTask là Action, có 1 tham số có kiểu giống kiểu phần tử trong source, giá trị tham số này là giá trị phần tử trong source trong mỗi vòng lặp
 
-!!! Tóm lại Parallel là để chạy đa luồng nhiều action + For là duyệt các kiểu nguyên thủy truyền vào action + ForEach là duyệt các kiểu collection truyền vào action + Invoke là dùng cho danh sách các action khác nhau
+Parallel.Invoke
+
+- Với For và ForEach, thì các tác vụ định nghĩa trọng một Action, nhưng nếu muốn chạy song song nhiều loại Action (phương thức) một lúc thì dùng Paralell.Invoke
+
+```C#
+Parallel.Invoke(action1, action2, action3);
+```
+
+_❗Tóm lại Parallel là để chạy đa luồng nhiều action + For là duyệt các kiểu nguyên thủy truyền vào action + ForEach là duyệt các kiểu collection truyền vào action + Invoke là dùng cho danh sách các action khác nhau_
 
 ## Type
 
-- Lớp Type dùng để biểu thị sự khai báo của: định nghĩa của lớp, mảng, enum, interface ...
-  ob = new ...
-  Type type = ob.GetType();
-  // hoặc
-  Type type = typeof(kiểu dữ liệu);
+Lớp Type dùng để biểu thị sự khai báo của: định nghĩa của lớp, mảng, enum, interface ...
 
-- Lớp Type với các phương thức, thuộc tính của nó, nó trở thành lớp cơ bản của kỹ thuật Reflection trong .Net
+```C#
+ob = new ...
+Type type = ob.GetType();
+// hoặc
+Type type = typeof(kiểu dữ liệu);
+```
 
-- Thuộc tính
-  | Assembly | Lấy đối tượng Assembly chứa khai báo cho kiểu hiện tại. |
-  | BaseType | Lấy đối tượng Type đại diện cho lớp cơ sở trực tiếp của kiểu hiện tại. |
-  | FullName | Lấy tên đầy đủ của kiểu, bao gồm cả không gian tên. |
-  | Namespace | Lấy không gian tên của kiểu hiện tại. |
-  | IsClass | Trả về giá trị boolean cho biết liệu kiểu hiện tại có phải là lớp hay không. |
-  | IsInterface | Trả về giá trị boolean cho biết liệu kiểu hiện tại có phải là interface hay không. |
-  | IsValueType | Trả về giá trị boolean cho biết liệu kiểu hiện tại có phải là kiểu giá trị hay không. |
-  | IsEnum | Trả về giá trị boolean cho biết liệu kiểu hiện tại có phải là kiểu liệt kê (enum) hay không. |
-  | IsAbstract | Trả về giá trị boolean cho biết liệu kiểu hiện tại có phải là lớp trừu tượng hay không. |
-  | IsSealed | Trả về giá trị boolean cho biết liệu kiểu hiện tại có phải là lớp sealed hay không. |
-  | IsGenericType | Trả về giá trị boolean cho biết liệu kiểu hiện tại có phải là kiểu tổng quát (generic) hay không. |
-  | Name | Lấy tên của kiểu. |
+Lớp Type với các phương thức, thuộc tính của nó, nó trở thành lớp cơ bản của kỹ thuật Reflection trong .Net
 
-- Phương thức
-  | GetMethods() | Trả về một mảng các đối tượng MethodInfo đại diện cho tất cả các phương thức công khai của kiểu hiện tại. |
-  | GetMethod(string name) | Trả về một đối tượng MethodInfo đại diện cho phương thức công khai có tên xác định. |
-  | GetProperties() | Trả về một mảng các đối tượng PropertyInfo đại diện cho tất cả các thuộc tính công khai của kiểu hiện tại. |
-  | GetProperty(string name) | Trả về một đối tượng PropertyInfo đại diện cho thuộc tính công khai có tên xác định. |
-  | GetFields() | Trả về một mảng các đối tượng FieldInfo đại diện cho tất cả các trường (field) công khai của kiểu hiện tại. |
-  | GetField(string name) | Trả về một đối tượng FieldInfo đại diện cho trường công khai có tên xác định. |
-  | GetInterfaces() | Trả về một mảng các đối tượng Type đại diện cho tất cả các giao diện được triển khai bởi kiểu hiện tại. |
-  | GetConstructor(Type[] types) | Trả về một đối tượng ConstructorInfo đại diện cho constructor có tham số xác định. |
-  | IsAssignableFrom(Type c) | Xác định xem một phiên bản của kiểu hiện tại có thể được gán cho một biến của kiểu đã xác định. |
+Thuộc tính
 
-- Đối tượng PropertyInfo được trả về từ hàm GetProperty có thể đọc giá trị và thiết lập giá trị các thuộc tính mà đối tượng chứa
-  //Lấy tên và giá trị các thuộc tính có trong a
-  foreach (PropertyInfo property in a.GetType().GetProperties())
-  {
-  string property_name = property.Name; // Lấy tên thuộc tính
-  object property_value = property.GetValue(a); // Đọc giá trị thuộc tính đối tượng a
-  Console.WriteLine($"Thuộc tính {property_name} giá trị là {property_value}");
-  }
+| Tên           | Ý nghĩa                                                                                           |
+| ------------- | ------------------------------------------------------------------------------------------------- |
+| Assembly      | Lấy đối tượng Assembly chứa khai báo cho kiểu hiện tại.                                           |
+| BaseType      | Lấy đối tượng Type đại diện cho lớp cơ sở trực tiếp của kiểu hiện tại.                            |
+| FullName      | Lấy tên đầy đủ của kiểu, bao gồm cả không gian tên.                                               |
+| Namespace     | Lấy không gian tên của kiểu hiện tại.                                                             |
+| IsClass       | Trả về giá trị boolean cho biết liệu kiểu hiện tại có phải là lớp hay không.                      |
+| IsInterface   | Trả về giá trị boolean cho biết liệu kiểu hiện tại có phải là interface hay không.                |
+| IsValueType   | Trả về giá trị boolean cho biết liệu kiểu hiện tại có phải là kiểu giá trị hay không.             |
+| IsEnum        | Trả về giá trị boolean cho biết liệu kiểu hiện tại có phải là kiểu liệt kê (enum) hay không.      |
+| IsAbstract    | Trả về giá trị boolean cho biết liệu kiểu hiện tại có phải là lớp trừu tượng hay không.           |
+| IsSealed      | Trả về giá trị boolean cho biết liệu kiểu hiện tại có phải là lớp sealed hay không.               |
+| IsGenericType | Trả về giá trị boolean cho biết liệu kiểu hiện tại có phải là kiểu tổng quát (generic) hay không. |
+| Name          | Lấy tên của kiểu.                                                                                 |
+
+Phương thức
+
+| Tên                          | Ý nghĩa                                                                                                     |
+| ---------------------------- | ----------------------------------------------------------------------------------------------------------- |
+| GetMethods()                 | Trả về một mảng các đối tượng MethodInfo đại diện cho tất cả các phương thức công khai của kiểu hiện tại.   |
+| GetMethod(string name)       | Trả về một đối tượng MethodInfo đại diện cho phương thức công khai có tên xác định.                         |
+| GetProperties()              | Trả về một mảng các đối tượng PropertyInfo đại diện cho tất cả các thuộc tính công khai của kiểu hiện tại.  |
+| GetProperty(string name)     | Trả về một đối tượng PropertyInfo đại diện cho thuộc tính công khai có tên xác định.                        |
+| GetFields()                  | Trả về một mảng các đối tượng FieldInfo đại diện cho tất cả các trường (field) công khai của kiểu hiện tại. |
+| GetField(string name)        | Trả về một đối tượng FieldInfo đại diện cho trường công khai có tên xác định.                               |
+| GetInterfaces()              | Trả về một mảng các đối tượng Type đại diện cho tất cả các giao diện được triển khai bởi kiểu hiện tại.     |
+| GetConstructor(Type[] types) | Trả về một đối tượng ConstructorInfo đại diện cho constructor có tham số xác định.                          |
+| IsAssignableFrom(Type c)     | Xác định xem một phiên bản của kiểu hiện tại có thể được gán cho một biến của kiểu đã xác định.             |
+
+Đối tượng PropertyInfo được trả về từ hàm GetProperty có thể đọc giá trị và thiết lập giá trị các thuộc tính mà đối tượng chứa
+
+```C#
+//Lấy tên và giá trị các thuộc tính có trong a
+foreach (PropertyInfo property in a.GetType().GetProperties())
+{
+    string property_name = property.Name; // Lấy tên thuộc tính
+    object property_value = property.GetValue(a); // Đọc giá trị thuộc tính đối tượng a
+    Console.WriteLine($"Thuộc tính {property_name} giá trị là {property_value}");
+}
+```
 
 ## Attribute Annotation
 
-- Một thuộc tính chú thích (Annotation / Attribute) tác động vào một thành phần nào đó của chương trình (lớp, phương thức, thuộc tính) - là một phần của siêu dữ liệu
-  (metadata - loại dữ liệu cung cấp thêm thông tin về đối tượng nào đó)
+Một thuộc tính chú thích (Annotation / Attribute) tác động vào một thành phần nào đó của chương trình (lớp, phương thức, thuộc tính) - là một phần của siêu dữ liệu (metadata - loại dữ liệu cung cấp thêm thông tin về đối tượng nào đó)
 
-- Annotation giúp thêm thông tin vào lớp, phương thức, thuộc tính những đoạn code mở rộng
+Annotation giúp thêm thông tin vào lớp, phương thức, thuộc tính những đoạn code mở rộng
 
-!!! Tính năng này trong Java gọi là Annotation, trong C# gọi là Attribute.
+_❗Tính năng này trong Java gọi là Annotation, trong C# gọi là Attribute._
 
-- Các thuộc tính chú thích có thể được truy xuất tra cứu ở thời điểm thực thi bằng kỹ thuật gọi là reflection
+Các thuộc tính chú thích có thể được truy xuất tra cứu ở thời điểm thực thi bằng kỹ thuật gọi là reflection
 
-- Để sử dụng chỉ cần viết tên Attribute trong dấu [] trước đối tượng áp dụng như lớp, phương thức, thuộc tính lớp (có tham số như hàm, nếu Attribute đó yêu cầu).
-  [AttributeName(param1, param2 ...)]
+Để sử dụng chỉ cần viết tên Attribute trong dấu [] trước đối tượng áp dụng như lớp, phương thức, thuộc tính lớp (có tham số như hàm, nếu Attribute đó yêu cầu).
+`[AttributeName(param1, param2 ...)]`
 
-  public class MyClass {
-  [Obsolete ("Phương thức này lỗi thời, hãy dùng phương thức Abc")] // Obsolete đánh dấ 1 thành phần nào đó đã lạc hậu
-  public static void Method1 () {
-  Console.WriteLine ("Phương thức chạy");
-  }
-  }
-  // nếu sử dụng phương thức Method1 thì trình biên dịch sẽ đưa ra cảnh báo do đã Obsolete
+```C#
+public class MyClass
+{
+    [Obsolete("Phương thức này lỗi thời, hãy dùng phương thức Abc")] // Obsolete đánh dấ 1 thành phần nào đó đã lạc hậu
+    public static void Method1()
+    {
+        Console.WriteLine("Phương thức chạy");
+    }
+}
+// nếu sử dụng phương thức Method1 thì trình biên dịch sẽ đưa ra cảnh báo do đã Obsolete
+```
 
-- Để tạo Attribute chỉ cần tạo 1 lớp kế thừa từ System.Attribute
-  [AttributeUsage(AttributeTargets.Class | AttributeTargets.Property | AttributeTargets.Method)] // xác định Attribute sẽ được áp dụng cho thành phần nào
-  public class MotaAttribute : Attribute // có thể đặt tên Mota thay cho MotaAttribute
-  {
-  // Phương thức khởi tạo
-  public MotaAttribute(string v) => Description = v;
+Để tạo Attribute chỉ cần tạo 1 lớp kế thừa từ System.Attribute
 
-        public string Description {set; get;}
+```C#
+[AttributeUsage(AttributeTargets.Class | AttributeTargets.Property | AttributeTargets.Method)] // xác định Attribute sẽ được áp dụng cho thành phần nào
+public class MotaAttribute : Attribute // có thể đặt tên Mota thay cho MotaAttribute
+{
+    // Phương thức khởi tạo
+    public MotaAttribute(string v) => Description = v;
 
-  }
+    public string Description { set; get; }
 
-  // áp dụng
-  [MotaAttribute("Lớp biểu diễn người dùng")] // thêm Attribute cho lớp
-  public class User
-  {
-  [MotaAttribute("Thuộc tính lưu tuổi")] // thêm Attribute cho thuộc tính lớp
-  public int age {set; get;}
+}
+```
 
-        [MotaAttribute("Phương thức này hiện thị age")]          // thêm Attribute cho phương thức
-        public void ShowAge() {}
+```C#
+// áp dụng
+[MotaAttribute("Lớp biểu diễn người dùng")] // thêm Attribute cho lớp
+public class User
+{
+    [MotaAttribute("Thuộc tính lưu tuổi")] // thêm Attribute cho thuộc tính lớp
+    public int age { set; get; }
 
-  }
+    [MotaAttribute("Phương thức này hiện thị age")]          // thêm Attribute cho phương thức
+    public void ShowAge() { }
 
-- Để đọc Attribute sử dụng Type trên đối tượng với phương thức GetCustomAttributes
-  var a = new User ();
+}
+```
 
-  // Đọc các Attribute của lớp
-  foreach (Attribute attr in a.GetType ().GetCustomAttributes (false)) {
-  MotaAttribute mota = attr as MotaAttribute;
-  if (mota != null) {
-  Console.WriteLine ($"{a.GetType().Name,10} : {mota.Description}");
-  }
-  }
+Để đọc Attribute sử dụng Type trên đối tượng với phương thức GetCustomAttributes
 
-  // Đọc Attribute của từng thuộc tính lớp
-  foreach (var thuoctinh in a.GetType ().GetProperties ()) {
-  foreach (Attribute attr in thuoctinh.GetCustomAttributes (false)) {
-  MotaAttribute mota = attr as MotaAttribute;
-  if (mota != null) {
-  Console.WriteLine ($"{thuoctinh.Name,10} : {mota.Description}");
-  }
-  }
-  }
+```C#
+var a = new User();
 
-  // Đọc Attribute của phương thức
-  foreach (var m in a.GetType ().GetMethods ()) {
-  foreach (Attribute attr in m.GetCustomAttributes (false)) {
-  MotaAttribute mota = attr as MotaAttribute;
-  if (mota != null) {
-  Console.WriteLine ($"{m.Name,10} : {mota.Description}");
-  }
-  }
-  }
+// Đọc các Attribute của lớp
+foreach (Attribute attr in a.GetType().GetCustomAttributes(false))
+{
+    MotaAttribute mota = attr as MotaAttribute;
+    if (mota != null)
+    {
+        Console.WriteLine($"{a.GetType().Name,10} : {mota.Description}");
+    }
+}
 
-  !!! Tham số bool truyền vào GetCustomAttributes để xác định có lấy các thuộc tính kế thừa từ lớp cơ sở không
+// Đọc Attribute của từng thuộc tính lớp
+foreach (var thuoctinh in a.GetType().GetProperties())
+{
+    foreach (Attribute attr in thuoctinh.GetCustomAttributes(false))
+    {
+        MotaAttribute mota = attr as MotaAttribute;
+        if (mota != null)
+        {
+            Console.WriteLine($"{thuoctinh.Name,10} : {mota.Description}");
+        }
+    }
+}
 
-- Data Annotation / Attribute
+// Đọc Attribute của phương thức
+foreach (var m in a.GetType().GetMethods())
+{
+    foreach (Attribute attr in m.GetCustomAttributes(false))
+    {
+        MotaAttribute mota = attr as MotaAttribute;
+        if (mota != null)
+        {
+            Console.WriteLine($"{m.Name,10} : {mota.Description}");
+        }
+    }
+}
+```
 
-  - Các Data Annotation/Attribute trong C# định nghĩa trong namespace System.ComponentModel.DataAnnotations
-    - Các Attribute để kiểm tra dữ liệu (Validation Attribute)
-    - Các Attribute hiện thị (Display Attribute), điều khiển dữ liệu trong lớp hiện thị thế nào trong UI
-    - Modelling Attribute
+_❗Tham số bool truyền vào GetCustomAttributes để xác định có lấy các thuộc tính kế thừa từ lớp cơ sở không_
 
-  | Required | Dữ liệu phải được thiết lập (!=null) |
-  | | [Required (ErrorMessage="{0} cần thiết lập")] |
-  | StringLength | Thiết lập độ dài trường dữ liệu |
-  | | [StringLength (20,MinimumLength=3, ErrorMessage="Phải dài 3 đến 20 ký tự")] |
-  | DataType | Chỉ ra dữ liệu phải liên kết phù hợp với một kiểu nào đó |
-  | | [DataType(DataType.Text)] |
-  | | [DataType(DataType.PhoneNumber)] |
-  | | [DataType(DataType.EmailAddress)] |
-  | | /.. Date, DateTime, Html, ImageUrl, MultilineText, Password, Time, Url |
-  | Range | Chỉ ra dữ liệu phải trong khoảng nào đó |
-  | | [Range(18,99, ErrorMessage="Tuổi từ 18 đến 99")] |
-  | | [Range(typeof(DateTime), "1/2/2004", "3/4/2004", ErrorMessage = "Value for {0} must be between {1} and {2}")] |
-  | Phone | [Phone] dữ liệu phải là dạng số điện thoại |
-  | EmailAddress | [EmailAddress] dữ liệu phải là dạng email |
+Data Annotation / Attribute
+
+- Các Data Annotation/Attribute trong C# định nghĩa trong namespace System.ComponentModel.DataAnnotations
+  - Các Attribute để kiểm tra dữ liệu (Validation Attribute)
+  - Các Attribute hiện thị (Display Attribute), điều khiển dữ liệu trong lớp hiện thị thế nào trong UI
+  - Modelling Attribute
+
+| Tên          | Ý nghĩa                                                                                                       |
+| ------------ | ------------------------------------------------------------------------------------------------------------- |
+| Required     | Dữ liệu phải được thiết lập (!=null)                                                                          |
+|              | [Required (ErrorMessage="{0} cần thiết lập")]                                                                 |
+| StringLength | Thiết lập độ dài trường dữ liệu                                                                               |
+|              | [StringLength (20,MinimumLength=3, ErrorMessage="Phải dài 3 đến 20 ký tự")]                                   |
+| DataType     | Chỉ ra dữ liệu phải liên kết phù hợp với một kiểu nào đó                                                      |
+|              | [DataType(DataType.Text)]                                                                                     |
+|              | [DataType(DataType.PhoneNumber)]                                                                              |
+|              | [DataType(DataType.EmailAddress)]                                                                             |
+|              | /.. Date, DateTime, Html, ImageUrl, MultilineText, Password, Time, Url                                        |
+| Range        | Chỉ ra dữ liệu phải trong khoảng nào đó                                                                       |
+|              | [Range(18,99, ErrorMessage="Tuổi từ 18 đến 99")]                                                              |
+|              | [Range(typeof(DateTime), "1/2/2004", "3/4/2004", ErrorMessage = "Value for {0} must be between {1} and {2}")] |
+| Phone        | [Phone] dữ liệu phải là dạng số điện thoại                                                                    |
+| EmailAddress | [EmailAddress] dữ liệu phải là dạng email                                                                     |
 
 - Để kiểm tra các dữ liệu phù hợp thiết lập bởi Attribute, thì dùng lớp ValidationContext
-  ValidationContext context = new ValidationContext(user, null, null);
 
-  // results - lưu danh sách ValidationResult, kết quả kiểm tra
-  List<ValidationResult> results = new List<ValidationResult>();
+```C#
+ValidationContext context = new ValidationContext(user, null, null);
 
-  // thực hiện kiểm tra dữ liệu
-  bool valid = Validator.TryValidateObject(user, context, results, true);
+// results - lưu danh sách ValidationResult, kết quả kiểm tra
+List<ValidationResult> results = new List<ValidationResult>();
+
+// thực hiện kiểm tra dữ liệu
+bool valid = Validator.TryValidateObject(user, context, results, true);
+```
 
 ## Dependency injection (DI)
 
-- Dependency (phụ thuộc)
+### Dependency (phụ thuộc)
 
-  - Lớp classA có sử dụng một chức năng từ đối tượng lớp classB (classA hoạt động dựa vào classB). Lúc đó classB gọi là phụ thuộc (dependency) của classA
+Lớp classA có sử dụng một chức năng từ đối tượng lớp classB (classA hoạt động dựa vào classB). Lúc đó classB gọi là phụ thuộc (dependency) của classA
 
-- Inversion of Control (IoC) / Dependency inversion
+### Inversion of Control (IoC) / Dependency inversion
 
-  - Inversion of Control (IoC - Đảo ngược điều khiển) là một nguyên lý thiết kế trong công nghệ phần mềm trong đó các thành phần nó dựa vào để làm việc bị đảo ngược quyền điều
-    khiển khi so sánh với lập trình hướng thủ thục truyền thống
+Inversion of Control (IoC - Đảo ngược điều khiển) là một nguyên lý thiết kế trong công nghệ phần mềm trong đó các thành phần nó dựa vào để làm việc bị đảo ngược quyền điều khiển khi so sánh với lập trình hướng thủ thục truyền thống
 
-- Hoạt động của IoC
+### Hoạt động của IoC
 
-  - Truyền thống : Có lớp class A có sử dụng một chức năng (gọi hàm ào đó) của class B, lớp class B lại tham chiếu và gọi các chức năng có trong class C. Ta thấy class A dựa vào
-    class B để hoạt động, class B dựa vào class C. Nên class A có tham chiếu trực tiếp (cứng) đến class B và trong class B có tham chiếu đến class C
+Truyền thống : Có lớp class A có sử dụng một chức năng (gọi hàm ào đó) của class B, lớp class B lại tham chiếu và gọi các chức năng có trong class C. Ta thấy class A dựa vào class B để hoạt động, class B dựa vào class C. Nên class A có tham chiếu trực tiếp (cứng) đến class B và trong class B có tham chiếu đến class C
 
-  - IoC : Ở thời điểm thực thi thì class A vẫn gọi được hàm có class B, class B vẫn gọi hàm có class C nghĩa là kết quả không đổi. Tuy nhiên, khi thiết kế ở thời điểm viết code
-    (trong code) class A không tham chiếu trực tiếp đến class B mà nó lại sử dụng interface (hoặc lớp abstruct) mà classB triển khai. Điều này dẫn tới sự phụ thuộc lỏng lẻo giữa
-    classA và classB
+IoC : Ở thời điểm thực thi thì class A vẫn gọi được hàm có class B, class B vẫn gọi hàm có class C nghĩa là kết quả không đổi. Tuy nhiên, khi thiết kế ở thời điểm viết code (trong code) class A không tham chiếu trực tiếp đến class B mà nó lại sử dụng interface (hoặc lớp abstruct) mà classB triển khai. Điều này dẫn tới sự phụ thuộc lỏng lẻo giữa classA và classB
 
-  !!! Hiểu đơn giản cách truyền thống thì lớp phụ thuộc (A) tham chiếu trực tiếp đên lớp bị thuộc (B,C) còn IoC thì lớp phụ thuộc (A) sẽ tham chiếu đến 1 Interface hoặc lớp abstruct
-  nên A sẽ phụ thuộc vào lớp triển khai interface hoặc lớp abstruct chứ không tham chiếu trực tiếp đến 1 đối tượng cự thể. Việc này làm cho code dễ quản lý, sửa đổi
+_❗Hiểu đơn giản cách truyền thống thì lớp phụ thuộc (A) tham chiếu trực tiếp đên lớp bị thuộc (B,C) còn IoC thì lớp phụ thuộc (A) sẽ tham chiếu đến 1 Interface hoặc lớp abstruct nên A sẽ phụ thuộc vào lớp triển khai interface hoặc lớp abstruct chứ không tham chiếu trực tiếp đến 1 đối tượng cự thể. Việc này làm cho code dễ quản lý, sửa đổi_
 
-- Dependency injection (DI) là một kỹ thuật trong lập trình, là một hình thức cụ thể của Inverse of Control (Dependency Inverse)
+### Dependency injection (DI)
 
-- DI thiết kế sao cho các dependency (phụ thuộc) của một đối tượng CÓ THỂ được đưa vào, tiêm vào đối tượng đó (Injection) khi nó cần tới (khi đối tượng khởi tạo)
+DI là một kỹ thuật trong lập trình, là một hình thức cụ thể của Inverse of Control (Dependency Inverse)
 
-  - Xây dựng các lớp (dịch vụ) có sự phụ thuộc nhau một cách lỏng lẻo, và dependency có thể tiêm vào đối tượng (injection) - thường qua phương thức khởi tạo constructor, property, setter
+### DI thiết kế sao cho các dependency (phụ thuộc) của một đối tượng CÓ THỂ được đưa vào, tiêm vào đối tượng đó (Injection) khi nó cần tới (khi đối tượng khởi tạo)
 
-  - Xây dựng được một thư viện có thể tự động tạo ra các đối tượng, các dependency tiêm vào đối tượng đó, thường là áp dụng kỹ thuật Reflection của C#
+Xây dựng các lớp (dịch vụ) có sự phụ thuộc nhau một cách lỏng lẻo, và dependency có thể tiêm vào đối tượng (injection) - thường qua phương thức khởi tạo constructor, property, setter
 
-  !!! Việc tự phát triển thường khá phức tạp nên có thể sử dụng những thư viên có sẵn như: Microsoft.Extensions.DependencyInjection, Windsor, Unity Ninject, ...
+Xây dựng được một thư viện có thể tự động tạo ra các đối tượng, các dependency tiêm vào đối tượng đó, thường là áp dụng kỹ thuật Reflection của C#
 
-- Các kiểu Dependency Injection
+_❗Việc tự phát triển thường khá phức tạp nên có thể sử dụng những thư viên có sẵn như: Microsoft.Extensions.DependencyInjection, Windsor, Unity Ninject, ..._
 
-  - Inject thông qua phương thức khởi tạo: cung cấp các Dependency cho đối tượng thông qua hàm khởi tạo - tập trung vào cách này vì thư viện .NET hỗ trợ sẵn
+### Các kiểu Dependency Injection
 
-  - Inject thông qua setter: tức các Dependency như là thuộc tính của lớp, sau đó inject bằng gán thuộc tính cho Depedency object.denpendency = obj;
+Inject thông qua phương thức khởi tạo: cung cấp các Dependency cho đối tượng thông qua hàm khởi tạo - tập trung vào cách này vì thư viện .NET hỗ trợ sẵn
 
-  - Inject thông qua các Interface - xây dựng Interface có chứa các phương thức Setter để thiết lập dependency, interface này sử dụng bởi các lớp triển khai, lớp triển khai
-    phải định nghĩa các setter quy định trong interface
+Inject thông qua setter: tức các Dependency như là thuộc tính của lớp, sau đó inject bằng gán thuộc tính cho Depedency object.denpendency = obj;
 
-- DI Container
+Inject thông qua các Interface - xây dựng Interface có chứa các phương thức Setter để thiết lập dependency, interface này sử dụng bởi các lớp triển khai, lớp triển khai phải định nghĩa các setter quy định trong interface
 
-  - Mục đích sử dụng DI, để tạo ra các đối tượng dịch vụ kéo theo là các Dependency của đối tượng đó
+### DI Container
 
-  - DependencyInjection là DI Container mặc định của ASP.NET Core
+Mục đích sử dụng DI, để tạo ra các đối tượng dịch vụ kéo theo là các Dependency của đối tượng đó
 
-  - Phải đảm bảo tích hợp Package Microsoft.Extensions.DependencyInjection vào dự án
-    dotnet add package Microsoft.Extensions.DependencyInjection
-    // đọc thêm về file .csproj
+DependencyInjection là DI Container mặc định của ASP.NET Core
 
-  - Sử dụng namespace
-    using Microsoft.Extensions.DependencyInjection;
+Phải đảm bảo tích hợp Package Microsoft.Extensions.DependencyInjection vào dự án
 
-  - Lớp ServiceCollection
+```Batch Script
+dotnet add package Microsoft.Extensions.DependencyInjection
+```
 
-    - ServiceCollection là lớp triển khai giao diện IServiceCollection nó có chức năng quản lý các dịch vụ (đăng ký dịch vụ - tạo dịch vụ - tự động inject - và các
-      dependency của địch vụ ...).
+**_đọc thêm về file .csproj_**
 
-    - ServiceCollection là trung tâm của kỹ thuật DI, nó là thành phần rất quan trọng trong ứng dụng ASP.NET
+Sử dụng namespace
 
-    - Khởi tạo đối tượng ServiceCollection, sau đó đăng ký (lớp) các dịch vụ vào ServiceCollection. Từ ServiceCollection phát sinh ra đối tượng ServiceProvider, từ đối tượng này
-      truy vấn lấy ra các dịch vụ cụ thể khi cần.
+```C#
+using Microsoft.Extensions.DependencyInjection;
+```
 
-    - Phương thức
-      / AddSingleton<ServiceType, ImplementationType>() : Đăng ký dịch vụ kiểu Singleton
-      !!! Nếu ServiceType giống ImplementationType thì ghi AddSingleton<ServiceType>()
+Lớp ServiceCollection
 
-      / AddTransient<ServiceType, ImplementationType>() : Đăng ký dịch vụ thuộc loại Transient, luôn tạo mới mỗi khi có yêu cầu lấy dịch vụ.
-      !!! Hoặc AddTransient<ServiceType>()
+- ServiceCollection là lớp triển khai giao diện IServiceCollection nó có chức năng quản lý các dịch vụ (đăng ký dịch vụ - tạo dịch vụ - tự động inject - và các dependency của địch vụ ...).
 
-      / AddScoped<ServiceType, ImplementationType>() : Đăng ký vào hệ thống dịch vụ kiểu Scoped
+- ServiceCollection là trung tâm của kỹ thuật DI, nó là thành phần rất quan trọng trong ứng dụng ASP.NET
 
-      / BuildServiceProvider() : Tạo ra đối tượng lớp ServiceProvider, đối tượng này dùng để triệu gọi, tạo các dịch vụ thiết lập ở trên.
+- Khởi tạo đối tượng ServiceCollection, sau đó đăng ký (lớp) các dịch vụ vào ServiceCollection. Từ ServiceCollection phát sinh ra đối tượng ServiceProvider, từ đối tượng này truy vấn lấy ra các dịch vụ cụ thể khi cần.
 
-    !!! ServiceType : Kiểu (tên lớp) dịch vụ
+- Phương thức
 
-    !!! ImplementationType : Kiểu (tên lớp) sẽ tạo ra đối tượng dịch vụ theo tên ServiceType, cần đảm bảo ImplementationType là một lớp triển khai / kế thừa từ
-    ServiceType, hoặc chính là ServiceType
+  - AddSingleton<ServiceType, ImplementationType>() : Đăng ký dịch vụ kiểu Singleton
+    _❗Nếu ServiceType giống ImplementationType thì ghi AddSingleton<ServiceType>()_
 
-    !!! Các phương thức AddSingleton, AddTransient, AddScoped còn có bản quá tải mà tham số là một callback delegate tạo đối tượng. Nó là cách triển khai pattern factory
+  - AddTransient<ServiceType, ImplementationType>() : Đăng ký dịch vụ thuộc loại Transient, luôn tạo mới mỗi khi có yêu cầu lấy dịch vụ.
+    _❗Hoặc AddTransient<ServiceType>()_
 
-  - ServiceLifetime
+  - AddScoped<ServiceType, ImplementationType>() : Đăng ký vào hệ thống dịch vụ kiểu Scoped
 
-    - Mỗi dịch vụ (lớp) khi đăng ký vào ServiceCollection thì có một đối tượng ServiceDescriptor chứa thông tin về dịch vụ đó, căn cứ vào ServiceDescriptor để ServiceCollection
-      khởi tạo dịch vụ khi cần
+  - BuildServiceProvider() : Tạo ra đối tượng lớp ServiceProvider, đối tượng này dùng để triệu gọi, tạo các dịch vụ thiết lập ở trên.
 
-    - Trong ServiceDescriptor có thuộc tính Lifetime để xác định dịch vụ tạo ra tồn tại trog bao lâu. Lifetime có kiểu ServiceLifetime (kiểu enum) có các giá trị cụ thể:
-      | Scoped | 1 | Một bản thực thi (instance) của dịch vụ (Class) được tạo ra cho mỗi phạm vi, tức tồn tại cùng với sự tồn tại của một đối tượng kiểu ServiceScope |
-      | | | (đối tượng này tạo bằng cách gọi ServiceProvider.CreateScope, đối tượng này hủy thì dịch vụ cũng bị hủy). |
-      | Singleton | 0 | Duy nhất một phiên bản thực thi (instance of class) (dịch vụ) được tạo ra cho hết vòng đời của ServiceProvider |
-      | Transient | 2 | Một phiên bản của dịch vụ được tạo mỗi khi được yêu cầu |
+_❗ServiceType : Kiểu (tên lớp) dịch vụ_
 
-  - Lớp ServiceProvider
+_❗ImplementationType : Kiểu (tên lớp) sẽ tạo ra đối tượng dịch vụ theo tên ServiceType, cần đảm bảo ImplementationType là một lớp triển khai / kế thừa từ ServiceType, hoặc chính là ServiceType_
 
-    - Lớp ServiceProvider cung cấp cơ chế để lấy ra (tạo và inject nếu cần) các dịch vụ đăng ký trong ServiceCollection.
+_❗Các phương thức AddSingleton, AddTransient, AddScoped còn có bản quá tải mà tham số là một callback delegate tạo đối tượng. Nó là cách triển khai pattern factory_
 
-    - Đối tượng ServiceProvider được tạo ra bằng cách gọi phương thức BuildServiceProvider() của ServiceCollection
-      var serviceprovider = services.BuildServiceProvider();
+ServiceLifetime
 
-    - Phương thức
-      | GetService<ServiceType>() | Lấy dịch vụ có kiểu ServiceType - trả về null nếu dịch vụ không tồn tại |
-      | GetRequiredService(ServiceType) | Lấy dịch vụ có kiểu ServiceType - phát sinh Exception nếu dịch vụ không tồn tại |
-      | CreateScope() | Tạo một phạm vi mới, thường dùng khi sử dụng những dịch vụ có sự ảnh hưởng theo Scoped |
+- Mỗi dịch vụ (lớp) khi đăng ký vào ServiceCollection thì có một đối tượng ServiceDescriptor chứa thông tin về dịch vụ đó, căn cứ vào ServiceDescriptor để ServiceCollection khởi tạo dịch vụ khi cần
 
-    - Ví dụ
-      // ClassA
-      // IClassB -> ClassB, ClassB1
-      // IClassC -> ClassC, ClassC1
+- Trong ServiceDescriptor có thuộc tính Lifetime để xác định dịch vụ tạo ra tồn tại trog bao lâu. Lifetime có kiểu ServiceLifetime (kiểu enum) có các giá trị cụ thể:
 
-      ServiceCollection services = new ServiceCollection();
+| Tên       | Ý nghĩa |
+| --------- | ------- | ------------------------------------------------------------------------------------------------------------------------------------------------ |
+| Scoped    | 1       | Một bản thực thi (instance) của dịch vụ (Class) được tạo ra cho mỗi phạm vi, tức tồn tại cùng với sự tồn tại của một đối tượng kiểu ServiceScope |
+|           |         | (đối tượng này tạo bằng cách gọi ServiceProvider.CreateScope, đối tượng này hủy thì dịch vụ cũng bị hủy).                                        |
+| Singleton | 0       | Duy nhất một phiên bản thực thi (instance of class) (dịch vụ) được tạo ra cho hết vòng đời của ServiceProvider                                   |
+| Transient | 2       | Một phiên bản của dịch vụ được tạo mỗi khi được yêu cầu                                                                                          |
 
-      services.AddSingleton<ClassA, ClassA>();
-      services.AddSingleton<IClassC, ClassC>();
-      services.AddSingleton<IClassB, ClassB>();
+Lớp ServiceProvider
 
-      var provider = services.BuildServiceProvider();
+- Lớp ServiceProvider cung cấp cơ chế để lấy ra (tạo và inject nếu cần) các dịch vụ đăng ký trong ServiceCollection.
 
-      ClassA service_a = provider.GetService<ClassA>();
+- Đối tượng ServiceProvider được tạo ra bằng cách gọi phương thức BuildServiceProvider() của ServiceCollection
 
-      service_a.ActionA();
+```C#
+var serviceprovider = services.BuildServiceProvider();
+```
 
-- Sử dụng delegate / factory
+- Phương thức
 
-  - delegate
+| Tên                             | Ý nghĩa                                                                                |
+| ------------------------------- | -------------------------------------------------------------------------------------- |
+| GetService<ServiceType>()       | Lấy dịch vụ có kiểu ServiceType - trả về null nếu dịch vụ không tồn tại                |
+| GetRequiredService(ServiceType) | Lấy dịch vụ có kiểu ServiceType - phát sinh Exception nếu dịch vụ không tồn tại        |
+| CreateScope()                   | Tạo một phạm vi mới, thường dùng khi sử dụng những dịch vụ có sự ảnh hưởng theo Scoped |
 
-    - Các phương thức để đăng dịch vụ vào ServiceCollection như AddSingleton, AddSingleton, AddTransient còn có phiên bản (nạp chồng) nó nhận tham số là delegate trả về
-      đối tượng dịch vụ có kiểu ImplementationType
-      services.AddSingleton<ServiceType>((IServiceProvider provider) => {
-      // các chỉ thị
-      // ...
-      return (đối tượng kiểu ImplementationType);
-      });
+- Ví dụ
 
-    - Delegate nhận tham số là IServiceProvider (chính là đối tượng được sinh ra bởi ServiceCollection.BuildServiceProvider()), Delegate phải trả về một đối tượng
-      triển khai từ ServiceType
+```C#
+// ClassA
+// IClassB -> ClassB, ClassB1
+// IClassC -> ClassC, ClassC1
 
-    - Ví dụ
-      class ClassB2 : IClassB
-      {
-      IClassC c_dependency;
-      string message;
-      public ClassB2(IClassC classc, string mgs)
-      {
-      c_dependency = classc;
-      message = mgs;
-      Console.WriteLine("ClassB2 is created");
-      }
-      public void ActionB()
-      {
-      Console.WriteLine(message);
-      c_dependency.ActionC();
-      }
-      }
+ServiceCollection services = new ServiceCollection();
 
-      // Lớp trên khi khởi tạo cần có hai tham số. Nhưng tham số khởi tạo IClassC được inject, trong khi đó tham số chuỗi string không đăng ký sẽ dẫn tới lỗi
-      services.AddSingleton<IClassB, ClassB2>(); // lỗi
+services.AddSingleton<ClassA, ClassA>();
+services.AddSingleton<IClassC, ClassC>();
+services.AddSingleton<IClassB, ClassB>();
 
-      // có thể đăng ký với Delegate và truyền chuỗi khởi tạo cụ thể
-      services.AddSingleton<IClassB>((IServiceProvider serviceprovider) => {
-      var service_c = serviceprovider.GetService<IClassC>();
-      var sv = new ClassB2(service_c, "Thực hiện trong ClassB2");
-      return sv;
-      });
+var provider = services.BuildServiceProvider();
 
-      // nếu lấy ra dịch vụ IClassB (hoặc khi nó Inject vào dịch vụ khác) , nếu dịch vụ đó chưa có nó sẽ thi hành Delegate để tạo dịch vụ
+ClassA service_a = provider.GetService<ClassA>();
 
-  - factory
+service_a.ActionA();
+```
 
-    - Delegate có thể khai báo thành một phương thức, một phương thức cung cấp cơ chế để tạo ra đối tượng mong muốn gọi là Factory.
-      // Factory nhận tham số là IServiceProvider và trả về đối tượng địch vụ cần tạo
-      public static ClassB2 CreateB2Factory(IServiceProvider serviceprovider)
-      {
-      var service_c = serviceprovider.GetService<IClassC>();
-      var sv = new ClassB2(service_c, "Thực hiện trong ClassB2");
-      return sv;
-      }
+### Sử dụng delegate / factory
 
-      // có thể sử dụng Factory trên để đăng ký IClassB.
-      services.AddSingleton<IClassB>(CreateB2Factory);
+delegate
 
-- Sử dụng Options
+- Các phương thức để đăng dịch vụ vào ServiceCollection như AddSingleton, AddSingleton, AddTransient còn có phiên bản (nạp chồng) nó nhận tham số là delegate trả về đối tượng dịch vụ có kiểu ImplementationType
 
-  - Để tách bạch giữa các dịch vụ và các thiết lập truyền vào để khởi tạo dịch vụ thì trong ServiceCollection hỗ trợ sử dụng giao diện IOptions
+```C#
+services.AddSingleton<ServiceType>((IServiceProvider provider) =>
+{
+// các chỉ thị
+// ...
+return (đối tượng kiểu ImplementationType);
+});
+```
 
-  - Cần thêm package Microsoft.Extensions.Options
-    dotnet add package Microsoft.Extensions.Options
+- Delegate nhận tham số là IServiceProvider (chính là đối tượng được sinh ra bởi ServiceCollection.BuildServiceProvider()), Delegate phải trả về một đối tượng triển khai từ ServiceType
 
-  - Các thiết lập cho một dịch vụ thường thiết kế là một lớp chứa các thuộc tính
-    public class MyServiceOptions {
+- Ví dụ
+
+```C#
+class ClassB2 : IClassB
+{
+    IClassC c_dependency;
+    string message;
+    public ClassB2(IClassC classc, string mgs)
+    {
+        c_dependency = classc;
+        message = mgs;
+        Console.WriteLine("ClassB2 is created");
+    }
+    public void ActionB()
+    {
+        Console.WriteLine(message);
+        c_dependency.ActionC();
+    }
+}
+
+// Lớp trên khi khởi tạo cần có hai tham số. Nhưng tham số khởi tạo IClassC được inject, trong khi đó tham số chuỗi string không đăng ký sẽ dẫn tới lỗi
+services.AddSingleton<IClassB, ClassB2>(); // lỗi
+
+// có thể đăng ký với Delegate và truyền chuỗi khởi tạo cụ thể
+services.AddSingleton<IClassB>((IServiceProvider serviceprovider) =>
+{
+    var service_c = serviceprovider.GetService<IClassC>();
+    var sv = new ClassB2(service_c, "Thực hiện trong ClassB2");
+    return sv;
+});
+
+// nếu lấy ra dịch vụ IClassB (hoặc khi nó Inject vào dịch vụ khác) , nếu dịch vụ đó chưa có nó sẽ thi hành Delegate để tạo dịch vụ
+```
+
+factory
+
+- Delegate có thể khai báo thành một phương thức, một phương thức cung cấp cơ chế để tạo ra đối tượng mong muốn gọi là Factory.
+
+```C#
+// Factory nhận tham số là IServiceProvider và trả về đối tượng địch vụ cần tạo
+public static ClassB2 CreateB2Factory(IServiceProvider serviceprovider)
+{
+    var service_c = serviceprovider.GetService<IClassC>();
+    var sv = new ClassB2(service_c, "Thực hiện trong ClassB2");
+    return sv;
+}
+
+// có thể sử dụng Factory trên để đăng ký IClassB.
+services.AddSingleton<IClassB>(CreateB2Factory);
+```
+
+### Sử dụng Options
+
+Để tách bạch giữa các dịch vụ và các thiết lập truyền vào để khởi tạo dịch vụ thì trong ServiceCollection hỗ trợ sử dụng giao diện IOptions
+
+Cần thêm package Microsoft.Extensions.Options
+
+```Batch Script
+dotnet add package Microsoft.Extensions.Options
+```
+
+Các thiết lập cho một dịch vụ thường thiết kế là một lớp chứa các thuộc tính
+
+```C#
+public class MyServiceOptions
+{
     public string data1 { get; set; }
     public int data2 { get; set; }
-    }
+}
+```
 
-  - Để có thể Inject MyServiceOptions vào MyService theo nguyên tắc của ServiceCollection thì lớp MyService thiết kế sử dụng IOption làm tham số khởi tạo
-    public class MyService {
+Để có thể Inject MyServiceOptions vào MyService theo nguyên tắc của ServiceCollection thì lớp MyService thiết kế sử dụng IOption làm tham số khởi tạo
+
+```C#
+public class MyService
+{
     public string data1 { get; set; }
-    public int data2 { get; set;}
+    public int data2 { get; set; }
 
-          // Tham số khởi tạo là IOptions, các tham số khởi tạo khác nếu có khai báo như bình thường
-          public MyService(IOptions<MyServiceOptions> options) {
-              // Đọc được MyServiceOptions từ IOptions
-              MyServiceOptions opts = options.Value;
-              data1 = opts.data1;
-              data2 = opts.data2;
-          }
-
-          public void PrintData() => Console.WriteLine($"{data1} / {data2}");
-
+    // Tham số khởi tạo là IOptions, các tham số khởi tạo khác nếu có khai báo như bình thường
+    public MyService(IOptions<MyServiceOptions> options)
+    {
+        // Đọc được MyServiceOptions từ IOptions
+        MyServiceOptions opts = options.Value;
+        data1 = opts.data1;
+        data2 = opts.data2;
     }
 
-  - Khi tham số khởi tạo có kiểu IOptions, thì nó được Inject vào từ một tập hợp các IOptions riêng biệt với các dịch vụ
-    services.Configure<T>(
-    (T options)
-    {
+    public void PrintData() => Console.WriteLine($"{data1} / {data2}");
+}
+```
+
+Khi tham số khởi tạo có kiểu IOptions, thì nó được Inject vào từ một tập hợp các IOptions riêng biệt với các dịch vụ
+
+```C#
+services.Configure<T>(
+(T options)
+{
     // T là tên lớp chứa các thiết lập
     // Hãy thiết lập các giá trị cho options
-    }
-    );
+}
+);
 
-    // ví dụ
-    services.Configure<MyServiceOptions>(
-    options => {
+// ví dụ
+services.Configure<MyServiceOptions>(
+options =>
+{
     options.data1 = "Xin chao cac ban";
     options.data2 = 2021;
-    }
-    );
+}
+);
 
-    // sử dụng
-    services.AddSingleton<MyService>();
-    var provider = services.BuildServiceProvider();
+// sử dụng
+services.AddSingleton<MyService>();
+var provider = services.BuildServiceProvider();
 
-    var myservice = provider.GetService<MyService>();
-    myservice.PrintData();
+var myservice = provider.GetService<MyService>();
+myservice.PrintData();
 
-    // Kết quả:
-    // Xin chao cac ban / 2021
+// Kết quả:
+// Xin chao cac ban / 2021
+```
 
-  !!! nếu muốn lấy đối tượng lớp MyServiceOptions trong DI Container, thì:
-  var config = serviceprovider.GetService<IOptions<MyServiceOptions>>()
-  MyServiceOptions myServiceOptions = config.Value;
+_❗nếu muốn lấy đối tượng lớp MyServiceOptions trong DI Container_
 
-  !!! nếu muốn tạo trực tiếp đối tượng IOptions<MyServiceOptions>, dành cho trường hợp muốn tạo MyService trực tiếp không thông qua DI Container.
-  Thì dùng phương thức Factory Options.Create(obj)
-  var opts = Options.Create(new MyServiceOptions() {
-  data1 = "DATA-DATA-DATA-DATA-DATA",
-  data2 = 12345
-  });
-  MyService myService = new MyService(opts);
-  myService.ShowData();
+```C#
+var config = serviceprovider.GetService<IOptions<MyServiceOptions>>()
+MyServiceOptions myServiceOptions = config.Value;
+```
 
-- Sử dụng cấu hình từ file
+_❗nếu muốn tạo trực tiếp đối tượng IOptions<MyServiceOptions>, dành cho trường hợp muốn tạo MyService trực tiếp không thông qua DI Container. Thì dùng phương thức Factory Options.Create(obj)_
 
-  - Ở trên, các giá trị dữ liệu trong MyServiceOptions (như data1, data2) có thể lưu ở file sau đó nạp vào khi chương trình thực thi
+```C#
+var opts = Options.Create(new MyServiceOptions()
+{
+    data1 = "DATA-DATA-DATA-DATA-DATA",
+    data2 = 12345
+});
+MyService myService = new MyService(opts);
+myService.ShowData();
+```
 
-  - Các file cấu hình này hỗ trợ nhiều định dạng như XML, INI, JSON ... (cần cài đặt gói tương ứng)
-    // gói cần thiết để nạp
-    dotnet add package Microsoft.Extensions.Configuration
-    dotnet add package Microsoft.Extensions.Options.ConfigurationExtensions
+### Sử dụng cấu hình từ file
 
-    // các gói tướng ứng với loại file
-    dotnet add package Microsoft.Extensions.Configuration.Json
-    dotnet add package Microsoft.Extensions.Configuration.Ini
-    dotnet add package Microsoft.Extensions.Configuration.Xml
+Ở trên, các giá trị dữ liệu trong MyServiceOptions (như data1, data2) có thể lưu ở file sau đó nạp vào khi chương trình thực thi
 
-    // ví dụ Sử dụng namespace với kiểu file Json
-    using Microsoft.Extensions.Configuration;
-    using Microsoft.Extensions.Configuration.Json;
+Các file cấu hình này hỗ trợ nhiều định dạng như XML, INI, JSON ... (cần cài đặt gói tương ứng)
 
-    // đọc thêm các file định dạng như XML, INI, JSON trong ExPandendKnowledge.txt
+```Batch Script
+// gói cần thiết để nạp
+dotnet add package Microsoft.Extensions.Configuration
+dotnet add package Microsoft.Extensions.Options.ConfigurationExtensions
 
-  - ConfigurationBuilder
+// các gói tướng ứng với loại file
+dotnet add package Microsoft.Extensions.Configuration.Json
+dotnet add package Microsoft.Extensions.Configuration.Ini
+dotnet add package Microsoft.Extensions.Configuration.Xml
+```
 
-    - Lớp ConfigurationBuilder, giúp nạp các cấu hình lưu trong file config, từ đó build ra đối tượng ConfigurationRoot, đối tượng này truy cập đến các cấu hình
-      bằng chỉ toán tử chỉ số [key]
+```C#
+// ví dụ Sử dụng namespace với kiểu file Json
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Configuration.Json;
 
-    - ví dụ lấy cấu hình lưu tại file appsettings.json, thì nạp cấu hình đó để có được ConfigurationRoot
-      var configBuilder = new ConfigurationBuilder()
-      .SetBasePath(Directory.GetCurrentDirectory()) // file config ở thư mục hiện tại
-      .AddJsonFile("appsettings.json"); // nạp config định dạng JSON
-      var configurationroot = configBuilder.Build(); // Tạo configurationroot
+```
 
-    - lấy một Section nào đó bằng phương thức GetSection(key), nó trả về đối tượng biểu diễn nút cấu hình (JSON), giá trị của nút truy cập bằng thuộc tính Value
-      // file appsettings.json
-      {
-      "MyServiceOptions" : {
-      "data1" : "ABCDE",
-      "data2" : 123456
-      },
+**_đọc thêm các file định dạng như XML, INI, JSON trong ExPandendKnowledge.txt_**
 
-            "Option2" : {
-                "key1" : "Test",
-                "Key2" : 789
-            }
+ConfigurationBuilder
 
-      }
+- Lớp ConfigurationBuilder, giúp nạp các cấu hình lưu trong file config, từ đó build ra đối tượng ConfigurationRoot, đối tượng này truy cập đến các cấu hình bằng chỉ toán tử chỉ số [key]
 
-      // Truy cập config
-      var cf1 = configurationroot.GetSection("Option2").GetSection("key1").Value; // Test
-      var cf2 = configurationroot.GetSection("Option2").GetSection("key2").Value; // 789
-      var cf3 = configurationroot.GetSection("Option2").GetSection("key3").Value; // null, không tồn tại
+- ví dụ lấy cấu hình lưu tại file appsettings.json, thì nạp cấu hình đó để có được ConfigurationRoot
 
-  - nạp config vào IOption
+```C#
+var configBuilder = new ConfigurationBuilder()
+.SetBasePath(Directory.GetCurrentDirectory()) // file config ở thư mục hiện tại
+.AddJsonFile("appsettings.json"); // nạp config định dạng JSON
+var configurationroot = configBuilder.Build(); // Tạo configurationroot
+```
 
-    - Trong file JSON có một Section có tên MyServiceOptions, ta có thể gán các giá trị trong Section đó vào MyServiceOptions trong ServiceCollection
-      // Nạp mở phương thức mở rộng
-      services.AddOptions();
-      services.Configure<MyServiceOptions>(configurationroot.GetSection("MyServiceOptions"));
+- lấy một Section nào đó bằng phương thức GetSection(key), nó trả về đối tượng biểu diễn nút cấu hình (JSON), giá trị của nút truy cập bằng thuộc tính Value
 
-      // Lưu ý: phải cài package ConfigurationExtensions
-      // dotnet add package Microsoft.Extensions.Options.ConfigurationExtensions
+```json
+// file appsettings.json
+{
+  "MyServiceOptions": {
+    "data1": "ABCDE",
+    "data2": 123456
+  },
 
-    - ví dụ hoàn chỉnh
-      var configBuilder = new ConfigurationBuilder()
-      .SetBasePath(Directory.GetCurrentDirectory()) // file config ở thư mục hiện tại
-      .AddJsonFile("appsettings.json"); // nạp config định dạng JSON
-      var configurationroot = configBuilder.Build(); // Tạo configurationroot
+  "Option2": {
+    "key1": "Test",
+    "Key2": 789
+  }
+}
+```
 
-      ServiceCollection services = new ServiceCollection();
+```C#
+// Truy cập config
+var cf1 = configurationroot.GetSection("Option2").GetSection("key1").Value; // Test
+var cf2 = configurationroot.GetSection("Option2").GetSection("key2").Value; // 789
+var cf3 = configurationroot.GetSection("Option2").GetSection("key3").Value; // null, không tồn tại
+```
 
-      services.AddOptions();
-      services.Configure<MyServiceOptions>(configurationroot.GetSection("MyServiceOptions"));
+nạp config vào IOption
 
-      services.AddSingleton<MyService>();
+- Trong file JSON có một Section có tên MyServiceOptions, ta có thể gán các giá trị trong Section đó vào MyServiceOptions trong ServiceCollection
 
-      var provider = services.BuildServiceProvider();
+```C#
+// Nạp mở phương thức mở rộng
+services.AddOptions();
+services.Configure<MyServiceOptions>(configurationroot.GetSection("MyServiceOptions"));
 
-      var myservice = provider.GetService<MyService>();
-      myservice.PrintData();
+// Lưu ý: phải cài package ConfigurationExtensions
+// dotnet add package Microsoft.Extensions.Options.ConfigurationExtensions
+```
 
-      // Kết quả:
-      // ABCDE / 123456
+- ví dụ hoàn chỉnh
 
-!!! Kỹ thuật DI với thư viện DependencyInjection ở trên là kiến thức rất quan trọng cần nắm vững, nó là cơ sở để học các các mô hình lập trình hiện đại, nhất là sau này
-áp dụng với Asp.Net Core
+```C#
+var configBuilder = new ConfigurationBuilder()
+.SetBasePath(Directory.GetCurrentDirectory()) // file config ở thư mục hiện tại
+.AddJsonFile("appsettings.json"); // nạp config định dạng JSON
+var configurationroot = configBuilder.Build(); // Tạo configurationroot
 
-## Nuget (thư viện lớp) // bổ sung sau
+ServiceCollection services = new ServiceCollection();
+
+services.AddOptions();
+services.Configure<MyServiceOptions>(configurationroot.GetSection("MyServiceOptions"));
+
+services.AddSingleton<MyService>();
+
+var provider = services.BuildServiceProvider();
+
+var myservice = provider.GetService<MyService>();
+myservice.PrintData();
+
+// Kết quả:
+// ABCDE / 123456
+```
+
+_❗Kỹ thuật DI với thư viện DependencyInjection ở trên là kiến thức rất quan trọng cần nắm vững, nó là cơ sở để học các các mô hình lập trình hiện đại, nhất là sau này áp dụng với Asp.Net Core_
+
+## Nuget (thư viện lớp)
+
+> bổ sung sau
 
 ## Uri, Dns, Ping
 
-- Lớp Uri
+### Lớp Uri
 
-  - System.Uri là lớp biểu diễn về địa chỉ URI (URL) (xem thêm Tìm hiểu URI, URL), nó giúp cho nhanh chóng lấy thông tin các thành phần của URL như host, path, query ...
+System.Uri là lớp biểu diễn về địa chỉ URI (URL) (xem thêm Tìm hiểu URI, URL), nó giúp cho nhanh chóng lấy thông tin các thành phần của URL như host, path, query ...
 
-  - Đối tượng Uri còn sử dụng trong tham số để thực hiện các truy vấn HTTP Request ở các phần sau.
-    string url = "https://www.youtube.com/watch?v=2w97mmTYR68";
-    var uri = new Uri(url);
-    var uritype = typeof(Uri);
-    uritype.GetProperties().ToList().ForEach(property => {
-    Console.WriteLine($"{property.Name, 15} {property.GetValue(uri)}");
-          });
-          Console.WriteLine($"Segments: {string.Join(",", uri.Segments)}");
+Đối tượng Uri còn sử dụng trong tham số để thực hiện các truy vấn HTTP Request ở các phần sau.
 
-- Lớp Dns và lớp IPHostEntry
+```C#
+string url = "https://www.youtube.com/watch?v=2w97mmTYR68";
+var uri = new Uri(url);
+var uritype = typeof(Uri);
+uritype.GetProperties().ToList().ForEach(property =>
+{
+    Console.WriteLine($"{property.Name,15} {property.GetValue(uri)}");
+});
+Console.WriteLine($"Segments: {string.Join(",", uri.Segments)}");
+```
 
-  - Lớp Dns (System.Net.Dns) cung cấp các phương thức tính để lấy thông tin về host (địa chỉ website, server cung cấp các dịch vụ mạng) từ hệ thống phân giải tên miền (Dns)
+### Lớp Dns và lớp IPHostEntry
 
-  - Các thông tin truy vấn được nó trả về một đối tượng giao diện IPHostEntry
-    string url = "https://www.bootstrapcdn.com/";
-    var uri = new Uri(url);
-    var hostEntry = Dns.GetHostEntry(uri.Host);
-    Console.WriteLine($"Host {uri.Host} có các IP");
-    hostEntry.AddressList.ToList().ForEach(ip => Console.WriteLine(ip));
+Lớp Dns (System.Net.Dns) cung cấp các phương thức tính để lấy thông tin về host (địa chỉ website, server cung cấp các dịch vụ mạng) từ hệ thống phân giải tên miền (Dns)
 
-  - Phương thức lớp Dns
-    | GetHostName() | Lấy hostname của máy local |
-    | GetHostEntry(String) | Phân giải host hoặc IP thành đối tượng IPHostEntry. |
-    | GetHostEntry(IPAddress) | Đối tượng kiểu IPHostEntry nó chứa thông tin địa chỉ về host. | |
+Các thông tin truy vấn được nó trả về một đối tượng giao diện IPHostEntry
 
-  - Thuộc tính IPHostEntry
-    | HostName | Chuỗi chứa hostname của Server |
-    | AddressList | Mảng các phần tử kiểu IPAddress chứa các địa chỉ IP |
+```C#
+string url = "https://www.bootstrapcdn.com/";
+var uri = new Uri(url);
+var hostEntry = Dns.GetHostEntry(uri.Host);
+Console.WriteLine($"Host {uri.Host} có các IP");
+hostEntry.AddressList.ToList().ForEach(ip => Console.WriteLine(ip));
+```
 
-- Lớp Ping
-  - Lớp Ping (System.Net.NetworkInformation.Ping), lớp này cho phép ứng dụng xác định một máy từ xa (như server, máy trong mạng ...) có phản hồi không.
-    var ping = new Ping();
-    var pingReply = ping.Send("google.com.vn");
-    Console.WriteLine(pingReply.Status);
-    if (pingReply.Status == IPStatus.Success)
-    {
+Phương thức lớp Dns
+
+| Tên                     | Ý nghĩa                                                       |
+| ----------------------- | ------------------------------------------------------------- | --- |
+| GetHostName()           | Lấy hostname của máy local                                    |
+| GetHostEntry(String)    | Phân giải host hoặc IP thành đối tượng IPHostEntry.           |
+| GetHostEntry(IPAddress) | Đối tượng kiểu IPHostEntry nó chứa thông tin địa chỉ về host. |     |
+
+Thuộc tính IPHostEntry
+
+| Tên         | Ý nghĩa                                             |
+| ----------- | --------------------------------------------------- |
+| HostName    | Chuỗi chứa hostname của Server                      |
+| AddressList | Mảng các phần tử kiểu IPAddress chứa các địa chỉ IP |
+
+### Lớp Ping
+
+Lớp Ping (System.Net.NetworkInformation.Ping), lớp này cho phép ứng dụng xác định một máy từ xa (như server, máy trong mạng ...) có phản hồi không.
+
+```C#
+var ping = new Ping();
+var pingReply = ping.Send("google.com.vn");
+Console.WriteLine(pingReply.Status);
+if (pingReply.Status == IPStatus.Success)
+{
     Console.WriteLine(pingReply.RoundtripTime);
     Console.WriteLine(pingReply.Address);
-    }
+}
+```
 
 ## HttpClient
 
 ## Tổng kết (ý hiểu cá nhân)
 
-- Các tính chất OOP
+### Các tính chất OOP
 
-  - Inheritance (kế thừa) : Các đọan code trùng lặp về tính năng, chức năng được tái sử lại thông qua việc kế thừa giữa các lớp. Tính kế thừa giúp giảm số lượng code trùng lặp, dễ thực
-    hiện việc quản lý, bảo trì, phát triển và sửa đổi. (Kế thừa giữa các lớp)
+Inheritance (kế thừa) : Các đọan code trùng lặp về tính năng, chức năng được tái sử lại thông qua việc kế thừa giữa các lớp. Tính kế thừa giúp giảm số lượng code trùng lặp, dễ thực hiện việc quản lý, bảo trì, phát triển và sửa đổi. (Kế thừa giữa các lớp)
 
-  - Abstraction (trừu tượng) : Tạo ra những khung code mẫu thể hiện các chức năng của 1 lớp, 1 giao diện, 1 hàm (cần hiện thực cụ thể). Tính trừu tượng giúp dev dễ hình dung, hệ thống
-    các đoạn code; điều chỉnh, hạn chế thiếu sót trong quá trình hiện thực ý tưởng ban đầu. (Lớp/phương thức trừu tượng - abstract, giao diện - interface)
+Abstraction (trừu tượng) : Tạo ra những khung code mẫu thể hiện các chức năng của 1 lớp, 1 giao diện, 1 hàm (cần hiện thực cụ thể). Tính trừu tượng giúp dev dễ hình dung, hệ thống các đoạn code; điều chỉnh, hạn chế thiếu sót trong quá trình hiện thực ý tưởng ban đầu. (Lớp/phương thức trừu tượng - abstract, giao diện - interface)
 
-  - Polymorphism (đa hình) : Thực hiện, tổng quát hóa các tính năng, chức năng để phù hợp với nhiều trường hợp đầu vào khác. Tính đa hình làm giảm số lượng code có cùng chức năng, giúp code dễ
-    quản lý, bảo trì, phát triển và sửa đổi. (Quá tải - overload, ghi đè/nạp chồng - override, generic)
+Polymorphism (đa hình) : Thực hiện, tổng quát hóa các tính năng, chức năng để phù hợp với nhiều trường hợp đầu vào khác. Tính đa hình làm giảm số lượng code có cùng chức năng, giúp code dễ quản lý, bảo trì, phát triển và sửa đổi. (Quá tải - overload, ghi đè/nạp chồng - override, generic)
 
-  - Encapsulation (đóng gói) : Gôm các đoạn code có cùng điểm chung vào 1 khu vực và phân chia các giới hạn truy cập (các namespace, các class). Tính đóng gói hệ thống lại code trong dự án;
-    giúp dễ quản lý, bảo trì, phát triển, sửa đổi; tăng tính bảo mật thông qua phạm vi truy cập. (Xây dựng các namespace, class, phân chia file code)
+Encapsulation (đóng gói) : Gôm các đoạn code có cùng điểm chung vào 1 khu vực và phân chia các giới hạn truy cập (các namespace, các class). Tính đóng gói hệ thống lại code trong dự án; giúp dễ quản lý, bảo trì, phát triển, sửa đổi; tăng tính bảo mật thông qua phạm vi truy cập. (Xây dựng các namespace, class, phân chia file code)
