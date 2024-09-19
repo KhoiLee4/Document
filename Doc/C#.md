@@ -2,7 +2,7 @@
 
 ## 🤔 C# là gì?
 
-C# là một ngôn ngữ lập trình hướng đối tượng rất tường minh, rõ ràng. C# được dùng để phát triển nhiều loại ứng dụng (Ứng dụng Windows, Linux, macOS, Web ...) có hiệu năng cao và bảo mật thi hành trên nền tảng .NET
+**C#** là một ngôn ngữ lập trình hướng đối tượng rất tường minh, rõ ràng. C# được dùng để phát triển nhiều loại ứng dụng (Ứng dụng Windows, Linux, macOS, Web ...) có hiệu năng cao và bảo mật thi hành trên nền tảng .NET
 
 C# được thiết kế cho **Common Language Infrastructure (CLI)**, mà gồm **Executable Code** và **Runtime Environment**, cho phép chúng ta sử dụng các ngôn ngữ high-level đa dạng trên các nền tảng và cấu trúc máy tính khác nhau.
 
@@ -23,15 +23,13 @@ Cấu trúc C# khá gần với các ngôn ngữ high-level truyền thống, C 
 
 ## 🤔 .NET là gì?
 
-.Net Framework là một nền tảng mang tính cách mạng giúp bạn viết các kiểu ứng dụng:
+**.Net Framework** là một nền tảng mang tính cách mạng giúp bạn viết các kiểu ứng dụng:
 
 - Windows application
 - Web application
 - Dịch vụ Web
 
-Các ứng dụng .Net Framework là các ứng dụng đa nền tảng.
-
-.Net Framework gồm một thư viện code khổng lồ được sử dụng bởi các ngôn ngữ client
+Các ứng dụng .Net Framework là các ứng dụng đa nền tảng. .Net Framework gồm một thư viện code khổng lồ được sử dụng bởi các ngôn ngữ client
 
 Một số thành phần của .Net Framework:
 
@@ -48,7 +46,7 @@ Một số thành phần của .Net Framework:
 - Windows Communication Foundation (WCF)
 - LINQ
 
-**_đọc thêm file DOTNET.txt_**
+**_đọc thêm [DOTNET](DOTNET.md)_**
 
 ## Những điều cần lưu ý
 
@@ -3818,7 +3816,7 @@ ServiceLifetime
 
 - Trong ServiceDescriptor có thuộc tính Lifetime để xác định dịch vụ tạo ra tồn tại trog bao lâu. Lifetime có kiểu ServiceLifetime (kiểu enum) có các giá trị cụ thể:
 
-| Tên       | Giá trị | Ý nghĩa                                                                                                                                              |
+| Tên       | Giá trị | Ý nghĩa                                                                                                                                          |
 | --------- | ------- | ------------------------------------------------------------------------------------------------------------------------------------------------ |
 | Scoped    | 1       | Một bản thực thi (instance) của dịch vụ (Class) được tạo ra cho mỗi phạm vi, tức tồn tại cùng với sự tồn tại của một đối tượng kiểu ServiceScope |
 |           |         | (đối tượng này tạo bằng cách gọi ServiceProvider.CreateScope, đối tượng này hủy thì dịch vụ cũng bị hủy).                                        |
@@ -4192,6 +4190,22 @@ if (pingReply.Status == IPStatus.Success)
 ```
 
 ## HttpClient
+
+Lớp **HttpClient** được sử dụng để gửi truy vấn HTTP (**Http Request Message**) và nhận phản hồi Response (**Http Response Message**) từ các truy vấn đó
+
+Lớp này thuộc namespace `System.Net.Http`, namespace này chứa các lớp giúp tạo ra sự liên lạc giữa client và server.
+
+```C#
+using System;
+using System.Linq;
+using System.Net;
+using System.Net.Http;
+using System.Net.Http.Headers;
+using System.Threading;
+using System.Threading.Tasks;
+using System.IO;
+using System.Text;
+```
 
 ## Tổng kết (ý hiểu cá nhân)
 
