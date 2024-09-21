@@ -1,3 +1,9 @@
+---
+title: markmap
+markmap:
+  colorFreezeLevel: 2
+---
+
 # DK
 
 ## Game

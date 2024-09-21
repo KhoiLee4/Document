@@ -1,6 +1,6 @@
 # C#
 
-## 🤔 C# là gì?
+## 🤔C# là gì?
 
 **C#** là một ngôn ngữ lập trình hướng đối tượng rất tường minh, rõ ràng. C# được dùng để phát triển nhiều loại ứng dụng (Ứng dụng Windows, Linux, macOS, Web ...) có hiệu năng cao và bảo mật thi hành trên nền tảng .NET
 
@@ -21,7 +21,7 @@ Cấu trúc C# khá gần với các ngôn ngữ high-level truyền thống, C 
 - LINQ và Lambda Expression
 - Tích hợp với Windows
 
-## 🤔 .NET là gì?
+## 🤔.NET là gì?
 
 **.Net Framework** là một nền tảng mang tính cách mạng giúp bạn viết các kiểu ứng dụng:
 
@@ -48,47 +48,47 @@ Một số thành phần của .Net Framework:
 
 **_đọc thêm [DOTNET](DOTNET.md)_**
 
-## Những điều cần lưu ý
+## 📚Những điều cần lưu ý
 
 ❗C# là phân biệt kiểu chữ (case sensitive).
 
-❗Tất cả lệnh và biểu thức phải kết thúc với một dấu chấm phảy (;).
+❗Tất cả lệnh và biểu thức phải kết thúc với một dấu chấm phảy `;`.
 
-❗Sự thực thi chương trình bắt đầu tại phương thức Main.
+❗Sự thực thi chương trình bắt đầu tại phương thức `Main`.
 
 ❗Không giống Java, tên file chương trình có thể khác tên lớp.
 
-## Assembly
+## 📚Assembly
 
 Trong C#, một **assembly** là một đơn vị logic của ứng dụng .NET và là khối xây dựng cơ bản của ứng dụng .NET
 
-**Assembly** bao gồm các tệp thực thi (EXE) hoặc thư viện (DLL) và chứa mã, tài nguyên, và metadata cần thiết để chạy chương trình
+**Assembly** bao gồm các tệp thực thi (**EXE**) hoặc thư viện (**DLL**) và chứa mã, tài nguyên, và metadata cần thiết để chạy chương trình
 
-Có 2 loại
+📒Có 2 loại
 
 - **Executable Assembly (EXE)**: Đây là các tệp thực thi được sử dụng để chạy các ứng dụng độc lập.
 
 - **Library Assembly (DLL)**: Đây là các thư viện chứa mã dùng chung mà các ứng dụng khác có thể tham chiếu và sử dụng.
 
-Thành phần
+📒Thành phần
 
-- Metadata: Metadata cung cấp thông tin về các kiểu dữ liệu, thành viên, tham số, và các thông tin khác trong assembly. Metadata cho phép kiểm tra kiểu thời gian chạy, ánh xạ, và nhiều tính năng khác.
+- **Metadata**: cung cấp thông tin về các kiểu dữ liệu, thành viên, tham số, và các thông tin khác trong assembly. Metadata cho phép kiểm tra kiểu thời gian chạy, ánh xạ, và nhiều tính năng khác.
 
-- Intermediate Language (IL): IL là mã trung gian mà mã nguồn C# được biên dịch thành. Khi chương trình được thực thi, IL được biên dịch thành mã máy cụ thể của nền tảng.
+- **Intermediate Language (IL)**: là mã trung gian mà mã nguồn C# được biên dịch thành. Khi chương trình được thực thi, IL được biên dịch thành mã máy cụ thể của nền tảng.
 
-- Manifest: Manifest là một phần của metadata chứa thông tin về assembly, như tên, phiên bản, văn hóa (culture), và danh sách các tệp khác (nếu có).
+- **Manifest**: là một phần của metadata chứa thông tin về assembly như tên, phiên bản, văn hóa (culture), và danh sách các tệp khác (nếu có).
 
-- Resources: Các tài nguyên như hình ảnh, chuỗi văn bản, và các tệp khác có thể được đóng gói trong assembly
+- **Resources**: là các tài nguyên như hình ảnh, chuỗi văn bản, và các tệp khác có thể được đóng gói trong assembly.
 
-Tác dụng
+📒Tác dụng
 
-- Isolation and Versioning: Assembly giúp cô lập mã và tài nguyên, giúp quản lý phiên bản dễ dàng hơn.
+- **Isolation** and **Versioning**: Assembly giúp cô lập mã và tài nguyên, giúp quản lý phiên bản dễ dàng hơn.
 
-- Deployment: Assembly giúp đơn giản hóa quá trình triển khai bằng cách đóng gói tất cả các thành phần của ứng dụng vào một đơn vị duy nhất.
+- **Deployment**: Assembly giúp đơn giản hóa quá trình triển khai bằng cách đóng gói tất cả các thành phần của ứng dụng vào một đơn vị duy nhất.
 
-- Security: Assembly có thể được ký số để đảm bảo tính toàn vẹn và tính xác thực của mã.
+- **Security**: Assembly có thể được ký số để đảm bảo tính toàn vẹn và tính xác thực của mã.
 
-- Reusability: Các thư viện trong dạng assembly (DLL) có thể được tái sử dụng bởi các ứng dụng khác, giúp giảm thiểu việc viết lại mã.
+- **Reusability**: Các thư viện trong dạng assembly (DLL) có thể được tái sử dụng bởi các ứng dụng khác, giúp giảm thiểu việc viết lại mã.
 
 _Giả sử chúng ta có một thư viện toán học được biên dịch thành một assembly (MathLibrary.dll)_
 
@@ -131,9 +131,9 @@ class Program
 }
 ```
 
-Phương thức Add của lớp Calculator có thể được truy cập từ bất kỳ ứng dụng nào tham chiếu đến MathLibrary.dll
+Phương thức `Add` của lớp Calculator có thể được truy cập từ bất kỳ ứng dụng nào tham chiếu đến MathLibrary.dll
 
-Phương thức Subtract chỉ có thể được truy cập từ bên trong cùng một assembly (MathLibrary.dll) do nó được khai báo là internal
+Phương thức `Subtract` chỉ có thể được truy cập từ bên trong cùng một assembly (MathLibrary.dll) do nó được khai báo là `internal`
 
 _❗Phạm vi truy cập internal sẽ được nhắc đến sau_
 
@@ -143,9 +143,9 @@ _❗Phạm vi truy cập internal sẽ được nhắc đến sau_
 - Một assembly có thể chứa nhiều namespaces và nhiều file .cs, và mỗi namespace cũng có thể trải dài qua nhiều file .cs và nhiều assembly.
 - Assembly là một đơn vị triển khai, trong khi namespace là một cách tổ chức mã nguồn logic.
 
-## File .csproj (file cấu hình dự án)
+## 📚File .csproj (file cấu hình dự án)
 
-Tệp .csproj của một dự án C# sử dụng định dạng XML để định nghĩa cấu trúc và thiết lập của dự án
+Tệp `.csproj` của một dự án C# sử dụng định dạng **XML** để định nghĩa cấu trúc và thiết lập của dự án
 
 ```XML
 <Project Sdk="Microsoft.NET.Sdk">
@@ -280,9 +280,9 @@ Tệp .csproj của một dự án C# sử dụng định dạng XML để đị
   </PropertyGroup>
   ```
 
-## Namespace
+## 📚Namespace
 
-Namespace là cách tổ chức nhóm code (các lớp, giao diện, cấu trúc ...) thành những nhóm, tạo ra phạm vi hoạt động của các thành phần trong nhóm.
+**Namespace** là cách tổ chức nhóm code (các lớp, giao diện, cấu trúc ...) thành những nhóm, tạo ra phạm vi hoạt động của các thành phần trong nhóm.
 
 ```C#
 namespace mynamespace {
@@ -294,32 +294,32 @@ _💡Hiểu đơn giản namespace giống với 1 thư viện tự định ngh�
 
 Mục đích là tổ chức code khoa học, dễ quản lý và đặc biệt là tránh xung đột về tên. Ta có thể khai báo hai lớp tên giống nhau nhưng nằm ở hai namespace khác nhau.
 
-Các thành phần được khai báo trong một namespace: namespace con, các lớp (class), các giao diện interface c#, các cấu trúc struct C#, các liệt kê enum, các deleage C#
+Các thành phần được khai báo trong một namespace: namespace con, các lớp (class), các giao diện interface C#, các cấu trúc struct C#, các liệt kê enum, các deleage C#.
 
-### Từ khóa `using`
+### 📙Từ khóa `using`
 
-Sử dụng từ khóa using ở đầu file code, để cho biết sẽ sử dụng các lớp thuộc một namespace nào đó.
+Sử dụng từ khóa `using` ở đầu file code, để cho biết sẽ sử dụng các lớp thuộc một `namespace` nào đó.
 
 ```C#
 using System;
 ```
 
-Chỉ thị using cũng giúp bạn đặt tên mới (tên tắt) của namespace, tên này sử dụng trong phạm vi file code
+Chỉ thị `using` cũng giúp bạn đặt tên mới (tên tắt) của namespace, tên này sử dụng trong phạm vi file code
 
 ```C#
 using XYZ = System.Text;
 ```
 
-Sử dụng using chỉ thị truy cập trực tiếp các phương thức tĩnh, mà không cần viết tên lớp cú pháp nạp phương thức tĩnh của lớp
+Sử dụng `using` chỉ thị truy cập trực tiếp các phương thức tĩnh, mà không cần viết tên lớp cú pháp nạp phương thức tĩnh của lớp
 
 ```C#
-using static System.Console;  // cho biết sử dụng trực tiếp các phương thức tĩnh
+using static System.Console;  // Cho biết sử dụng trực tiếp các phương thức tĩnh
 WriteLine("Xin chào C# NET CORE!");
 ```
 
-### Namespace lồng nhau, nhiều cấp
+### 📙Namespace lồng nhau, nhiều cấp
 
-Các namespace cũng có thể khai báo lồng nhau, nhiều cấp sau đó dùng ký hiệu . để truy cập đến namepace mong muốn
+Các `namespace` cũng có thể khai báo **lồng nhau**, **nhiều cấp** sau đó dùng ký hiệu `.` để truy cập đến `namepace` mong muốn
 
 ```C#
 namespace A
@@ -334,7 +334,7 @@ namespace A
 using A.B;
 ```
 
-Tạo ra namespace nhiều cấp còn có thể khai báo một cách riêng rẽ nhưng phải chỉ rõ tên đầy đủ của namespace (tên namespace gốc)
+Tạo ra `namespace` nhiều cấp còn có thể khai báo một cách riêng rẽ nhưng phải chỉ rõ tên đầy đủ của `namespace` (tên namespace gốc)
 
 ```C#
 namespace A
@@ -351,7 +351,7 @@ namespace A.B.C
 }
 ```
 
-## Ghi chú
+## 📚Ghi chú
 
 Ghi chú trên 1 dòng sử dụng
 
@@ -365,7 +365,7 @@ Ghi chú trên nhiều dòng sử dụng
 /* ... */
 ```
 
-C# XML Document : là một loại ghi chú viết theo một cấu trúc quy định - sử nhiều dòng ghi chú 1 dòng với cấu trúc quy định, nhằm hỗ trợ phát sinh Document (hướng dẫn) đến các đối tượng sử dụng (hàm, lớp, tham số ...)
+**C# XML Document**: là một loại ghi chú sử nhiều dòng ghi chú 1 dòng với cấu trúc quy định, nhằm hỗ trợ phát sinh **Document** (hướng dẫn) đến các đối tượng sử dụng (hàm, lớp, tham số ...)
 
 ```C#
 /// <summary>
@@ -376,19 +376,19 @@ C# XML Document : là một loại ghi chú viết theo một cấu trúc quy đ
 /// <returns>giá trị a + b</returns>
 ```
 
-## Top-level statement
+## 📚Top-level statement
 
 > bổ sung sau
 
-## Biến
+## 📚Biến
 
 Quy tắt đặt tên:
 
-- Tên biến có thể chứa chữ, số và ký tự \_
+- Tên biến có thể chứa chữ, số và ký tự `_`
 - Ký tự đầu tiên của tên biến không được dùng số
 - Tên biến trong C# có phân biệt chữ hoa chữ thường
 - Không đặt tên biến trùng với những từ khóa dành riêng cho câu lệnh C#
-- Hãy đặt tên biến sao cho nó ngắn gọn nhưng gọi nhớ đến thông tin dữ liệu biến đó lưu trữ.
+- Hãy đặt tên biến sao cho nó ngắn gọn nhưng gọi nhớ đến thông tin dữ liệu biến đó lưu trữ
 
 Kiểu dữ liệu C# định nghĩa sẵn
 
@@ -407,22 +407,24 @@ Kiểu dữ liệu C# định nghĩa sẵn
 | char         | một ký tự         | dùng 16 bit biểu diễn ký tự Unicode                                                                      |
 | bool         | kiểu logic        | chỉ nhận giá trị false hoặc true                                                                         |
 | string       | chuỗi             | (xâu) ký tự (tập hợp các ký tự theo thứ tự - một văn bản text)                                           |
-| object       | đối tượng         | biểu diễn các đối tượng C#, nó là kiểu cơ sở - mọi đối tượng C# đều kế thừa từ kiểu này.                 |
+| object       | đối tượng         | biểu diễn các đối tượng C#, là kiểu cơ sở, mọi đối tượng C# đều kế thừa từ kiểu này                      |
 
-_❗kí tự thì để trong ' ', chuỗi kí tự thì để trong " "_
+> Cần kiểm tra lại giá trị float
 
-## Xuất dữ liệu
+_❗kí tự thì để trong `' '`, chuỗi kí tự thì để trong `" "`_
 
-Có thể sử dụng 1 số phương thức có sẵn trong lớp Console trong namespace System
+## 📚Xuất dữ liệu
+
+Có thể sử dụng 1 số phương thức có sẵn trong lớp `Console` trong namespace `System`
 
 - `Console.writeline(value);` : in value ra màn hình (có xuống dòng)
 - `Console.write(value);` : in value màn hình (không xuống dòng)
-- `onsole.ForegroundColor = [màu]` : thuộc tính để gán màu chữ xuất ra, nó có thể gán các màu như ConsoleColor.Red, ConsoleColor.Green, ConsoleColor.White ...
+- `onsole.ForegroundColor = [màu]` : thuộc tính để gán màu chữ xuất ra, nó có thể gán các màu như `ConsoleColor.Red`, `ConsoleColor.Green`, `ConsoleColor.White` ...
 - `Console.ResetColor();` : đặt lại màu
 
 _❗value có thể là số có thể là chuỗi_
 
-Có thể dùng format string để tạo ra chuỗi in ra nhằm giảm thiểu dòng code
+Có thể dùng **format string** để tạo ra chuỗi in ra nhằm giảm thiểu dòng code
 
 ```C#
 string.Format("Xin chao {0}", ten) // String
@@ -437,9 +439,9 @@ Dùng `$` ở đầu để chèn biểu thức vào chuỗi in ra (coi thêm ở
 Console.writeline($"Bien A = {a}, bien B = {b}, tong A + B = {a + b}");
 ```
 
-## Nhập dữ liệu
+## 📚Nhập dữ liệu
 
-Có thể sử dụng 1 số phương thức có sẵn trong lớp Console trong namespace System
+Có thể sử dụng 1 số phương thức có sẵn trong lớp `Console` trong namespace `System`
 
 - `Console.ReadLine()` : cho phép nhập dữ liệu cho đến khi nhấn Enter, hàm này trả về chuỗi mà người dùng nhập vào
 - `Console.ReadKey()` : trả về ngay thông tin phím bấm khi người dùng bấm
@@ -451,15 +453,19 @@ Mặc định hàm `Console.ReadLine()` trả về string nếu muốn chuỗi �
 - `Convert.ToDouble(value)` : chuyển value thành kiểu double
 - `Convert.ToBoolean(value)` : chuyển value thành kiểu bool
 
-## Hằng số (const), Kiểu ngầm định (var)
+## 📚Hằng số (const), Kiểu ngầm định (var)
 
-Hằng số lưu trữ các giá trị mà không thay đổi được nữa, dùng từ khóa const để khai báo hằng số
+### 📙`const`
+
+**Hằng số** lưu trữ các giá trị mà không thay đổi được nữa, dùng từ khóa `const` để khai báo hằng số
 
 ```C#
 const string MON = "THỨ HAI";
 ```
 
-Biến var không cần chỉ rõ ngay kiểu dữ liệu của biến mà kiểu của biến được xác định theo kiểu biểu thức gán vào biến ngay sau đó.
+### 📙`var`
+
+Biến `var` không cần chỉ rõ ngay kiểu dữ liệu của biến mà kiểu của biến được xác định theo kiểu biểu thức gán vào biến ngay sau đó.
 
 _❗Biến var phải được khởi tạo ngay khi khai báo_
 
@@ -468,58 +474,64 @@ var a; // lỗi
 var a = 123; // không lỗi
 ```
 
-## Toán tử
+## 📚Toán tử
 
-Toán tử số học
-|Kí tự|Ý nghĩa|
-|---|---|
-| `+` | Phép cộng |
-| `-` | Phép trừ |
-| `*` | Phép nhân |
-| `/` | Phép chia |
-| `%` | Phép chia lấy dư (modules) |
+### 📙Toán tử số học
 
-_❗Độ ưu tiên giống với trong toán học_
+| Kí tự | Ý nghĩa                    |
+| ----- | -------------------------- |
+| `+`   | Phép cộng                  |
+| `-`   | Phép trừ                   |
+| `*`   | Phép nhân                  |
+| `/`   | Phép chia                  |
+| `%`   | Phép chia lấy dư (modules) |
 
-Toán tử gán
-|Kí tự|Ý nghĩa|
-|---|---|
-| `=` | Toán tử gán: Gán biểu thức bên phải của = vào biến bên trái |
-| `+=` | Toán tử công thêm: a += b tương đương a = a + b |
-| `-=` | Toán tử trừ bớt: a -= b tương đương a = a - b |
-| `*=` | Toán tử nhân với: a _= b tương đương a = a _ b |
-| `/=` | Toán tử chia cho: a /= b tương đương a = a / b |
-| `%=` | Toán tử gán module: a %=b tương đương a = a % b |
+_❗Độ ưu tiên giống trong toán học_
 
-Toán tử tăng giảm
+### 📙Toán tử gán
 
-- `++` thêm vào biến 1 đơn vị
-- `--` bớt đi một đơn vị
+| Kí tự | Ý nghĩa                                                     |
+| ----- | ----------------------------------------------------------- |
+| `=`   | Toán tử gán: Gán biểu thức bên phải của = vào biến bên trái |
+| `+=`  | Toán tử công thêm: `a += b` tương đương `a = a + b`         |
+| `-=`  | Toán tử trừ bớt: `a -= b` tương đương `a = a - b`           |
+| `*=`  | Toán tử nhân với: `a *= b` tương đương `a = a * b`          |
+| `/=`  | Toán tử chia cho: `a /= b` tương đương `a = a / b`          |
+| `%=`  | Toán tử gán module: `a %= b` tương đương `a = a % b`        |
+
+### 📙Toán tử tăng giảm
+
+- `++`: thêm vào biến 1 đơn vị
+- `--`: bớt đi một đơn vị
 
 _❗Nếu viết trước `++x` thì toán tử `++` thi hành trước rồi mới áp dụng vào biểu thức, nếu viết sau dạng `x++` thì biểu thức thi hành xong mới đến `++` (tương tự với `--`)_
 
-Toán tử so sánh
-|Kí tự|Ý nghĩa|
-|---|---|
-| `==` | So sánh bằng |
-| `>` | So sánh lớn hơn |
-| `>=` | So sánh lớn hơn hoặc bằng |
-| `<` | So sánh nhỏ hơn |
-| `<=` | So sánh nhỏ hơn hoặc bằng |
-| `!=` | So sánh khác |
+### 📙Toán tử so sánh
 
-Toán tử logic
-|Kí tự|Ý nghĩa|
-|---|---|
-| `&&` | Phép toán VÀ - trả về true nếu cả hai số hạng đều true, còn lại trả về false |
-| `\|\|` | Phép toán HOẶC - trả về true nếu 1 trong hai số hạng là true, còn lại trả về false |
-| `!` | Viết trước số hạng, giá trị trả về true nếu số hạng là false và ngược lại. |
+| Kí tự | Ý nghĩa                   |
+| ----- | ------------------------- |
+| `==`  | So sánh bằng              |
+| `>`   | So sánh lớn hơn           |
+| `>=`  | So sánh lớn hơn hoặc bằng |
+| `<`   | So sánh nhỏ hơn           |
+| `<=`  | So sánh nhỏ hơn hoặc bằng |
+| `!=`  | So sánh khác              |
 
-Toán tử điều kiện (toán tử 3 ngôi) `(điều khiện) ? biểu thức 1 : biểu thức 2 ;` nếu điều kiện đúng thì trả về biểu thức 1, ngược lại trả về biểu thức 2
+### 📙Toán tử logic
 
-## Cấu trúc rẻ nhánh (if else - switch case)
+| Kí tự  | Ý nghĩa                                                                           |
+| ------ | --------------------------------------------------------------------------------- |
+| `&&`   | Phép toán VÀ: trả về true nếu cả hai số hạng đều true, còn lại trả về false       |
+| `\|\|` | Phép toán HOẶC: trả về true nếu 1 trong hai số hạng là true, còn lại trả về false |
+| `!`    | Phép toán PHỦ: trả về true nếu số hạng là false và ngược lại.                     |
 
-### if else
+### 📙Toán tử điều kiện (toán tử 3 ngôi)
+
+`(điều khiện) ? biểu thức 1 : biểu thức 2 ;`: nếu điều kiện đúng thì trả về biểu thức 1, ngược lại trả về biểu thức 2
+
+## 📚Cấu trúc rẻ nhánh
+
+### 📙if else
 
 ```C#
 if (điểu kiện) {
@@ -533,36 +545,38 @@ else {
 }
 ```
 
-_❗điều kiện phải là giá trị boolean_
+_❗điều kiện phải là giá trị `boolean`_
 
 _❗nếu chỉ có 1 câu lệnh thì không cần ngoặc_
 
-### switch case
+### 📙switch case
 
 ```C#
 switch (expr)
 {
     case expr1:
-        //Cách lệnh thi hành nếu expr == expr1
+        // Cách lệnh thi hành nếu expr == expr1
         break;
 
     case expr2:
-        //Cách lệnh thi hành nếu expr == expr2
+        // Cách lệnh thi hành nếu expr == expr2
         break;
 
     // ...
 
     default:
-        //..
+        // ...
         break;
 }
 ```
 
-_❗Sử dụng switch rõ ràng, dễ đọc hơn khi số lượng else if nhiều_
+_❗Sử dụng `switch` rõ ràng, dễ đọc hơn khi số lượng `else if` nhiều_
 
-## Vòng lặp (for - foreach - while - do while)
+## 📚Vòng lặp
 
-### for
+### 📙for
+
+Cách hoạt động
 
 - B1 : khởi tạo biến kiểm tra
 - B2 : kiểm tra điều kiện, nếu true thì thực hiện khối lệnh, nếu false thì thoát khỏi vòng lặp
@@ -571,7 +585,7 @@ _❗Sử dụng switch rõ ràng, dễ đọc hơn khi số lượng else if nhi
 ```C#
 for (khởi_tạo; điều_kiện; cập_nhật)
 {
-    //Các câu lệnh trong khối
+    // Các câu lệnh trong khối
 }
 ```
 
@@ -585,9 +599,9 @@ for (; ; );
 
 _❗Thiếu điều kiện có thể dẫn đến vòng lặp vô tận_
 
-### foreach
+### 📙foreach
 
-foreach duyệt tuần tự qua các phần tử từ đầu cho đến hết, cung cấp cách thức gọn hơn để duyệt qua các phần tử mảng
+`foreach` duyệt tuần tự qua các phần tử từ đầu cho đến hết, cung cấp cách thức gọn hơn để duyệt qua các phần tử mảng.
 
 ```C#
 foreach (var e in vararry)
@@ -596,75 +610,71 @@ foreach (var e in vararry)
 }
 ```
 
-### while
+### 📙while
 
-Cách hoạt động: kiểm tra điều kiện, nếu true thì thực hiện khối lệnh, nếu false thì thoát vòng lặp
+Cách hoạt động: kiểm tra điều kiện, nếu true thì thực hiện khối lệnh, nếu false thì thoát vòng lặp.
 
-Biến kiểm tra được khởi tạo trước đó và cập nhật trong khối lệnh của vòng lặp
+Biến kiểm tra được khởi tạo trước đó và cập nhật trong khối lệnh của vòng lặp.
 
 ```C#
 while (điều_kiện)
 {
-    //Lặp nếu điều_kiện bằng true
+    // Lặp nếu điều_kiện bằng true
 }
 ```
 
-### do while
+### 📙do while
 
-Cách hoạt động: thực hiện khối lệnh 1 lần rồi mới bắt đầu kiểm tra như của vòng lặp while
+Cách hoạt động: thực hiện khối lệnh 1 lần rồi mới bắt đầu kiểm tra như của vòng lặp `while`.
 
 ```C#
 do
 {
-    //Khối lệnh
+    // Khối lệnh
 }
 while (điều_kiện);
 ```
 
 _❗Vòng lặp do ... while khối lệnh lặp bao giờ cũng được thực hiện ít nhất một lần._
 
-### break
+### 📙`break`
 
 Trong vòng lặp, nếu gặp `break` vòng lặp sẽ thoát ngay lập tức và chuyển đến các câu lệnh sau vòng lặp.
 
-### continue
+### 📙`continue`
 
 Trong vòng lặp, nếu gặp `continue` thì tương đương việc đến cuối khối lệnh của lần lặp đó (bắt đầu thực hiện lần lặp mới ngay).
 
-## Mảng (Array)
+## 📚Mảng (Array)
 
-### Khai báo
+### 📙Khai báo, khởi tạo
 
 ```C#
-// kiểu dữ liệu[] tên biến;
+// Kiểu dữ liệu[] tên biến;
 int[] a;
-```
 
-### Khởi tạo
-
-```C#
-// tên biến = new kiểu dữ liệu[số lượng phần tử];
+// Tên biến = new kiểu dữ liệu[số lượng phần tử];
 a = new int[5];
 
-// tên biến = new kiểu dữ liệu[số lượng phần tử] {danh sách các dữ liệu};
+// Tên biến = new kiểu dữ liệu[số lượng phần tử] {danh sách các dữ liệu};
 double[] productPrices = new double[3] {100, 200.5, 10.1};
 
-// hoặc không cần chỉ rõ số lượng phần tử khi khởi tạo với danh sách dữ liệu
+// Hoặc không cần chỉ rõ số lượng phần tử khi khởi tạo với danh sách dữ liệu
 double[] productPrices = new double[] {100, 200.5, 10.1};
 
-// thậm chí có thể bỏ bớt chỉ cần danh sách dữ liệu là được
+// Thậm chí có thể bỏ bớt chỉ cần danh sách dữ liệu là được
 double[] productPrices = {100, 200.5, 10.1};
 ```
 
-### Truy cập phần tử trong mảng
+### 📙Truy cập phần tử trong mảng
 
 tên biến[chỉ số của phần tử muốn truy cập] `a[0]` hoặc `a[1]`, ....
 
 _❗chỉ số phần tử mảng bắt đầu từ 0_
 
-### Thuộc tính và phương thức
+### 📙Thuộc tính và phương thức
 
-Trong thư viện System.Array
+Trong thư viện `System.Array`
 
 | Thuộc tính, phương thức | Ý nghĩa                                         |
 | ----------------------- | ----------------------------------------------- |
@@ -676,7 +686,7 @@ Trong thư viện System.Array
 | Max()                   | Trả về giá trị lớn nhất trong mảng              |
 | Sum()                   | Trả về giá trị tổng cộng các phần tử            |
 
-Trong thư viện System.Linq
+Trong thư viện `System.Linq`
 
 | Phương thức                                   | Ý nghĩa                                                                 |
 | --------------------------------------------- | ----------------------------------------------------------------------- |
@@ -692,25 +702,21 @@ Trong thư viện System.Linq
 | ForEach(array, Action<T> action)              | Thi hành action trên mỗi phần tử                                        |
 | Sort(array)                                   | Sắp xếp                                                                 |
 
-### Mảng nhiều chiều
+### 📙Mảng nhiều chiều
 
-khai báo
+Khai báo, truy cập
 
 ```C#
 // type[, , … ,] varname = new type[size1, size2, …, sizeN];
 int[,] myvar = new int[3, 4];
-```
 
-truy cập
-
-```C#
 myvar[0, 0] = 1;    // hàng 1, cột 1
 myvar[2, 3] = 3;    // hàng 3, cột 4
 ```
 
-### Mảng trong mảng
+### 📙Mảng trong mảng
 
-khai báo dùng thêm [] để cho biết các phần tử trong mảng là những mảng khác
+khai báo dùng thêm `[]` để cho biết các phần tử trong mảng là những mảng khác
 
 ```C#
 int[][] myArray = new int[][] {
@@ -721,11 +727,11 @@ new int[] {2,3,4,5,5}
 };
 ```
 
-## Chuỗi ký tự (string)
+## 📚Chuỗi ký tự (string)
 
-Chuỗi là một tập hợp các ký tự sắp xếp có vị trí, nó chỉnh là một mảng các ký tự, kiểu dữ liệu chuỗi đó là `string`, lớp biểu diễn các chuỗi là `System.String`
+**Chuỗi** là một tập hợp các ký tự sắp xếp có vị trí, nó chỉnh là một mảng các ký tự, kiểu dữ liệu chuỗi đó là `string`, lớp biểu diễn các chuỗi là `System.String`
 
-### khai báo, truy cập
+### 📙Khai báo, truy cập
 
 ```C#
 string sExample = "Xin chào"; // Khai báo và khởi tạo chuỗi
@@ -733,13 +739,13 @@ sExample += " các bạn"; // Nối chuỗi +=, trả về "Xin chào các bạn
 sExample = sExample + "!"; // Nối chuỗi +, trả về "Xin chào các bạn!"
 ```
 
-Chuỗi như là mảng mà phần tử mảng là các ký tự, nên có thể truy cập phần tử mảng bằng indexer để đọc ký tự:
+Chuỗi như là mảng mà phần tử mảng là các ký tự, nên có thể truy cập phần tử mảng bằng `indexer` để đọc ký tự:
 
 ```C#
-char c = sExample[1]; // c= 'i'
+char c = sExample[1]; // c = 'i'
 ```
 
-### Chuỗi nguyên bản (ký hiệu `@`)
+### 📙Chuỗi nguyên bản (ký hiệu `@`)
 
 Khi viết chuỗi trong cặp dấu nháy kép `""`, thì các ký tự đặt biệt được xử lý với ký hiệu `\`
 
@@ -748,7 +754,7 @@ string s = "C:\\Abc\\xyz";
 // Nếu viết string s = "C:\Abc\xyz"; sẽ lỗi
 ```
 
-Nếu muốn viết chuỗi cố định, nội dung nguyên bản - cho biết sẽ không dùng `\` để xử lý ký tự đặc biệt, thì thêm `@` vào đầu chuỗi
+Nếu muốn viết chuỗi cố định, nội dung nguyên bản, cho biết sẽ không dùng `\` để xử lý ký tự đặc biệt, thì thêm `@` vào đầu chuỗi
 
 ```C#
 string s = @"Ký tự \ được dùng để chèn ký tự đặc biệt như \n, \r";
@@ -764,17 +770,17 @@ Tôi đang học C#";
 _❗ngoại trừ hai ký tự `""` chuyển thành một ký tự `""`_
 
 ```C#
-string s = "Anh ấy nói, ""Đây là C#"""; //~ Anh ấy nói "Đây là C#"
+string s = "Anh ấy nói, ""Đây là C#"""; // Anh ấy nói "Đây là C#"
 ```
 
-### Chèn thêm biểu thức vào chuỗi (ký hiệu `$`)
+### 📙Chèn thêm biểu thức vào chuỗi (ký hiệu `$`)
 
-Khi viết chuỗi có ký tự $ phía trước, thì trong chuỗi đó có thể chèn các biểu thức vào chỗ có cặp {} : {biểu-thức}
+Khi viết chuỗi có ký tự `$` phía trước, thì trong chuỗi đó có thể chèn các biểu thức vào chỗ có cặp `{}` như `{biểu-thức}`
 
 ```C#
 int a = 10;
 int b = 2;
-string s = $"Kết quả {a}/{b} là {a / b}"; // "Kết quả 10/2 là 5"
+string s = $"Kết quả {a}/{b} là {a / b}"; // Kết quả 10/2 là 5
 ```
 
 Ngoài ra có thể căn lề, định dạng số, ngày tháng ... tương tự như chuỗi định dạng
@@ -790,31 +796,29 @@ for (int i = 8; i < 15; i++)
 
 _❗số dương là căn lề phải, số âm là căn lề trái_
 
-### Các phương thức cho chuỗi
+### 📙Các phương thức cho chuỗi
 
-| Phương thức | Ý nghĩa                                                                                                                                                       |
-| ----------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Concat      | Phương thức tĩnh, nối các chuỗi liệt kê ở tham số lại với nhau                                                                                                |
-| Format      | Convert các đối tượng thành chuỗi và chèn chúng vào chuỗi định dạng được chỉ ra, cú pháp cơ bản String.Format(stringFormat, arg0, arg1 ...)                   |
-|             | Trong đó stringFormat là chuỗi định dạng, chứa mẫu và và vị trí mà arg0, arg1 ... sẽ chèn vào.                                                                |
-|             | string s = String.Format("Chào {0}, {0} ơi, hôm nay ngày {1} rồi!", "Nam", DateTime.Now.Day);                                                                 |
-| IndexOf     | Tìm vị trí (đầu tiên) của ký tự hoặc chuỗi ký tự trong chuỗi                                                                                                  |
-| LastIndexOf | Tìm vị trí (cuối) của ký tự hoặc chuỗi ký tự trong chuỗi                                                                                                      |
-| Insert      | Tạo chuỗi bằng cách chèn chuỗi này vào trong chuỗi khác, vị trí chèn cần chỉ ra                                                                               |
-| PadLeft     | Tạo chuỗi mới từ chuỗi cũ, độ dài chuỗi mới chỉ ra - nếu độ dài chuỗi mới lớn hơn chuỗi cũ thì các ký tự phía đầu được chèn khoảng trắng hoặc ký tự chỉ định. |
-| PadRight    | Tương tự PadLeft nhưng chèn khoảng trắng bên phải                                                                                                             |
-| Replace     | Tìm và thay thế trong chuỗi                                                                                                                                   |
-| Split       | Trả về mảng các chuỗi con được chia từ chuỗi gốc bởi ký tự chia chỉ định, chuỗi chia chỉ định                                                                 |
-| ToLower     | Sinh chuỗi mới bằng cách chuyển các ký tự thành chữ thường                                                                                                    |
-| ToUpper     | Sinh chuỗi mới bằng cách chuyển các ký tự thành chữ in                                                                                                        |
-| Trim        | Sinh chuỗi mới bằng cách loại bỏ khoảng trắng (hoặc chỉ định) ở đầu và cuối                                                                                   |
-| Substring   | Lấy ra chuỗi con từ chuỗi chính - chuỗi con lấy từ vị trí chỉ ra đến cuối hoặc theo độ dài                                                                    |
+| Phương thức | Ý nghĩa                                                                                                                                                                                                                                                                                                                                        |
+| ----------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Concat      | Phương thức tĩnh, nối các chuỗi liệt kê ở tham số lại với nhau                                                                                                                                                                                                                                                                                 |
+| Format      | Convert các đối tượng thành chuỗi và chèn chúng vào chuỗi định dạng được chỉ ra, cú pháp cơ bản `String.Format(stringFormat, arg0, arg1 ...)`. Trong đó stringFormat là chuỗi định dạng, chứa mẫu và và vị trí mà arg0, arg1 ... sẽ chèn vào. `string s = String.Format("Chào {0}, {0} ơi, hôm nay ngày {1} rồi!", "Nam", DateTime.Now.Day); ` |
+| IndexOf     | Tìm vị trí (đầu tiên) của ký tự hoặc chuỗi ký tự trong chuỗi                                                                                                                                                                                                                                                                                   |
+| LastIndexOf | Tìm vị trí (cuối) của ký tự hoặc chuỗi ký tự trong chuỗi                                                                                                                                                                                                                                                                                       |
+| Insert      | Tạo chuỗi bằng cách chèn chuỗi này vào trong chuỗi khác, vị trí chèn cần chỉ ra                                                                                                                                                                                                                                                                |
+| PadLeft     | Tạo chuỗi mới từ chuỗi cũ, độ dài chuỗi mới chỉ ra - nếu độ dài chuỗi mới lớn hơn chuỗi cũ thì các ký tự phía đầu được chèn khoảng trắng hoặc ký tự chỉ định.                                                                                                                                                                                  |
+| PadRight    | Tương tự PadLeft nhưng chèn khoảng trắng bên phải                                                                                                                                                                                                                                                                                              |
+| Replace     | Tìm và thay thế trong chuỗi                                                                                                                                                                                                                                                                                                                    |
+| Split       | Trả về mảng các chuỗi con được chia từ chuỗi gốc bởi ký tự chia chỉ định, chuỗi chia chỉ định                                                                                                                                                                                                                                                  |
+| ToLower     | Sinh chuỗi mới bằng cách chuyển các ký tự thành chữ thường                                                                                                                                                                                                                                                                                     |
+| ToUpper     | Sinh chuỗi mới bằng cách chuyển các ký tự thành chữ in                                                                                                                                                                                                                                                                                         |
+| Trim        | Sinh chuỗi mới bằng cách loại bỏ khoảng trắng (hoặc chỉ định) ở đầu và cuối                                                                                                                                                                                                                                                                    |
+| Substring   | Lấy ra chuỗi con từ chuỗi chính - chuỗi con lấy từ vị trí chỉ ra đến cuối hoặc theo độ dài                                                                                                                                                                                                                                                     |
 
-### StringBuilder
+### 📙StringBuilder
 
-Để thi hành tối ưu hơn về tốc độ, về sử dụng bộ nhớ có thể dùng tới đối tượng `StringBuilder` ở namespace `System.Text`
+Để thi hành tối ưu hơn về tốc độ, về sử dụng bộ nhớ có thể dùng tới đối tượng `StringBuilder` ở namespace `System.Text`.
 
-Đối với `string` mỗi khi thực hiện 1 thao tác chương trình sẽ thực hiện cấp phát bộ nhớ và tạo ra 1 đối tượng mới
+Đối với `string` mỗi khi thực hiện 1 thao tác chương trình sẽ thực hiện cấp phát bộ nhớ và tạo ra 1 đối tượng mới.
 
 Phương thức cho `StringBuilder`
 
@@ -827,9 +831,11 @@ Phương thức cho `StringBuilder`
 | Replace      | Tìm và thay thế                                        |
 | ToString     | Trả về chuỗi (String)                                  |
 
-## Type casting (ép kiểu)
+> Chưa kĩ cần ghi lại
 
-### Explicit Casting (ép kiểu tường minh)
+## 📚Type casting (ép kiểu)
+
+### 📙Explicit Casting (ép kiểu tường minh)
 
 Được sử dụng khi bạn biết rằng kiểu bạn đang ép kiểu là tương thích. Nếu ép kiểu không thành công, một ngoại lệ sẽ được ném ra.
 
@@ -838,7 +844,7 @@ double d = 123.45;
 int i = (int)d; // i = 123
 ```
 
-### Implicit Casting (ép kiểu ngầm định)
+### 📙Implicit Casting (ép kiểu ngầm định)
 
 Được sử dụng khi không có nguy cơ mất dữ liệu. Chỉ có thể sử dụng với các kiểu tương thích.
 
@@ -847,7 +853,7 @@ int i = 123;
 double d = i; // d = 123.0
 ```
 
-### as
+### 📙`as`
 
 Sử dụng để ép kiểu đối tượng sang một kiểu tham chiếu hoặc kiểu nullable. Nếu ép kiểu không thành công, biến sẽ nhận giá trị null thay vì ném ra ngoại lệ.
 
@@ -856,9 +862,9 @@ object obj = "This is a string";
 string str = obj as string;
 ```
 
-### is
+### 📙`is`
 
-Kiểm tra xem đối tượng có thể được ép kiểu sang kiểu đích hay không. Từ C# 7.0 trở lên, bạn có thể ép kiểu và khai báo biến cùng lúc
+Kiểm tra xem đối tượng có thể được ép kiểu sang kiểu đích hay không. Từ **C# 7.0** trở lên, bạn có thể ép kiểu và khai báo biến cùng lúc.
 
 ```C#
 object obj = "This is a string";
@@ -872,9 +878,9 @@ else
 }
 ```
 
-### convert
+### 📙Convert
 
-Dùng các phương thức trong lớp Convert để chuyển đổi giữa các kiểu cơ bản
+Dùng các phương thức trong lớp `Convert` để chuyển đổi giữa các kiểu cơ bản.
 
 ```C#
 string str = "123";
@@ -884,7 +890,7 @@ string strDouble = "123.45";
 double d = Convert.ToDouble(strDouble); // d = 123.45
 ```
 
-### Custom Casting (ép kiểu tùy chỉnh)
+### 📙Custom Casting (ép kiểu tùy chỉnh)
 
 Có thể tạo các phương thức ép kiểu tùy chỉnh trong các lớp của mình bằng cách sử dụng các toán tử `implicit` và `explicit`.
 
@@ -920,9 +926,11 @@ Celsius c = (Celsius)f; // Explicit cast
 Fahrenheit f2 = c; // Implicit cast
 ```
 
-### Parse - TryParse
+> Cần ggiải thích
 
-Các phương thức Parse và TryParse được sử dụng để chuyển đổi chuỗi sang các kiểu số và kiểu khác
+### 📙Parse - TryParse
+
+Các phương thức `Parse` và `TryParse` được sử dụng để chuyển đổi chuỗi sang các kiểu số và kiểu khác
 
 ```C#
 string str = "123";
@@ -939,9 +947,7 @@ else
 }
 ```
 
-## Phương thức (funtion)
-
-### Cấu trúc
+## 📚Phương thức (funtion)
 
 ```C#
 <Access Modifiers> <return type> <name_method> (<parameters>) {
@@ -949,37 +955,38 @@ else
 }
 ```
 
-### Access Modifiers
+### 📙Access Modifiers
 
-- Cho biết cấp độ được phép truy cập đến hàm này
-- Có các mức độ như public, private, protect, internal ...
-- Mặc định là internal nếu không chỉ rõ phạm vi
+Cho biết cấp độ được phép truy cập đến hàm này. Có các mức độ như `public`, `private`, `protect`, `internal`, ...
 
-### return type
+_❗Mặc định là `internal` nếu không chỉ rõ phạm vi_
 
-- kiểu trả về của hàm : int, double, string, ...
-- nếu hàm chỉ thực hiện mà không trả về 1 giá trị thì để void
+### 📙Return Type
 
-### name_method
+Kiểu trả về của hàm: `int`, `double`, `string`, ...
+
+Nếu hàm chỉ thực hiện mà không trả về 1 giá trị thì để `void`
+
+### 📙name_method
 
 tên của phương thức do bạn đặt.
 
 > Quy tắc đặt tên
 
-### parameters (tham số)
+### 📙Parameters (tham số)
 
-`parameters` là các tham số của hàm nếu có, các tham số khai báo theo mẫu kiểu tên như int thamso1, nhiều tham số thì cách nhau bởi dấu `,`
+`parameters` là các tham số của hàm nếu có, các tham số khai báo theo mẫu kiểu tên như `int thamso1`, nhiều tham số thì cách nhau bởi dấu `,`
 
 Có thể đặt giá trị mặc định ban đầu cho tham số bằng toán tử gán, lúc khởi tạo hàm. Lúc gọi hàm những tham số không được truyền vào thì sẽ sử dụng giá trị mặc định
 
-Có thể chỉ định rõ thàm số muốn truyền là gì mà không cần theo thứ tự bằng cách tên tham số: giá trị muốn truyền vào
+Có thể chỉ định rõ thàm số muốn truyền là gì mà không cần theo thứ tự bằng cách `<tên tham số> : <giá trị muốn truyền vào>`
 
-loại tham số
+📒Loại tham số
 
 - **Tham trị** là cách thức mặc định, ta đã sử dụng ở phần trên. Có nghĩa là gán tham số bằng một biến, thì giá trị của biến được copy và sử dụng trong phương thức như biến cục bộ, còn bản thân biến bên ngoài không hề ảnh hưởng. Những kiểu dữ liệu là tham trị:
 
-  - Các kiểu số nguyên như int, byte, long ...
-  - Các kiểu số thực như float, double, decimal
+  - Các kiểu số nguyên như: int, byte, long, ...
+  - Các kiểu số thực như: float, double, decimal
   - Kiểu bool, kiểu char
   - Kiểu cấu trúc struct
   - Kiểu liệt kê enum
@@ -997,7 +1004,9 @@ _❗Tham số là các đối tượng lớp, mặc định là tham chiếu._
 
 _❗Khai báo `ref` ở tham số phương thức, bắt buộc khi gọi phải sử dụng biến làm tham số chứ không được dùng giá trị._
 
-- **Tham chiếu `out`**, thay vì dùng `ref` để tạo tham chiếu ta cũng có thể dùng `out`. điểm khác biệt là tham chiếu `out` không cần khởi tạo trước (không có giá trị lúc truyền vào)
+> Thêm ví dụ
+
+- **Tham chiếu `out`**, thay vì dùng `ref` để tạo tham chiếu ta cũng có thể dùng `out`. Điểm khác biệt là tham chiếu `out` không cần khởi tạo trước (không có giá trị lúc truyền vào)
 
 ```C#
 public static void OutExample(out int x)
@@ -1011,26 +1020,26 @@ public static void Main(string[] agv)
 }
 ```
 
-### Luồng chạy
+### 📙Luồng chạy
 
 Chương trình sẽ chạy đoạn code trong hàm được gọi tên từ đầu đến cuối hoặc dừng lại và thoát ra khi gặp lệnh `return`
 
-❗khi gọi đến hàm để sử dụng cần chỉ rõ `namespace.class.method`, nếu sử dụng using namespace đó thì có thể bỏ namespace, nếu nằm trong cùng class thì có thể bỏ class và chỉ cần ghi tên phương thức và tham số cần có
+❗Khi gọi đến hàm để sử dụng cần chỉ rõ `namespace.class.method`, nếu sử dụng `using namespace` đó thì có thể bỏ `namespace`, nếu nằm trong cùng `class` thì có thể bỏ `class` và chỉ cần ghi tên phương thức và tham số cần có.
 
-❗Khi biểu thức chỉ thực hiện 1 câu lệnh hay trả về 1 biểu thức thì có thể rút gọn bằng ký hiệu `=>`
+❗Khi biểu thức chỉ thực hiện 1 câu lệnh hay trả về 1 biểu thức thì có thể rút gọn bằng ký hiệu `=>`.
 
 ```C#
 public void Print() => Console.writeline("xin chao");
 public int Tong(int a, int b) => a + b;
 ```
 
-## Lớp (class)
+## 📚Lớp (class)
 
-lớp (class) là một kiểu dữ liệu tham chiếu nó định nghĩa một tập hợp các biến (trường dữ liệu, thuộc tính) và phương thức (gọi chúng là các member - thành viên lớp).
+**Lớp (class)** là một kiểu dữ liệu tham chiếu nó định nghĩa một tập hợp các biến (trường dữ liệu, thuộc tính) và phương thức (gọi chúng là các member - thành viên lớp).
 
-Từ lớp đó sinh ra các đối tượng (object), các đối tượng này còn gọi là bản triển khai của lớp (instance of a class)
+Từ lớp đó sinh ra các đối tượng (**object**), các đối tượng này còn gọi là bản triển khai của lớp (**instance of a class**)
 
-### cú pháp
+### 📙Cú pháp
 
 ```C#
 <Access Modifiers> class Class_Name {
@@ -1039,24 +1048,24 @@ Từ lớp đó sinh ra các đối tượng (object), các đối tượng này
 }
 ```
 
-### Access modifiers
+### 📙Access modifiers
 
-áp dụng khai báo cho lớp:
+Áp dụng khai báo cho lớp:
 
-- public (không giới hạn truy cập)
-- internal (giới hạn truy cập trong cùng assembly - chương trình)
-- private (chỉ truy cập được từ lớp chứa nó) Nếu lớp con khai báo lồng trong một lớp khác
+- `public` : không giới hạn truy cập
+- `internal` : giới hạn truy cập trong cùng assembly
+- `private` : chỉ truy cập được từ lớp chứa nó. Nếu lớp con khai báo lồng trong một lớp khác
 
 _❗mặc định là internal nếu không khai báo_
 
-áp dụng khai báo và khởi tạo thành viên dữ liệu (biến, trường dữ liếu):
+Áp dụng khai báo và khởi tạo thành viên dữ liệu (biến, trường dữ liếu):
 
-- public : không giới hạn phạm vi truy cập
-- protected : chỉ truy cập trong nội bộ lớp hay các lớp kế thừa
-- private : (mặc định) chỉ truy cập được từ các thành viên của lớp chứa nó
-- internal : chỉ truy cập được trong cùng assembly (dll, exe)
-- protected internal: truy cập được khi cùng assembly hoặc lớp kế thừa
-- private protected: truy cập từ lớp chứa nó, lớp kế thừa nhưng phải cùng assembly
+- `public` : không giới hạn phạm vi truy cập
+- `protected` : chỉ truy cập trong nội bộ lớp hay các lớp kế thừa
+- `private` : (mặc định) chỉ truy cập được từ các thành viên của lớp chứa nó
+- `internal` : chỉ truy cập được trong cùng assembly (dll, exe)
+- `protected internal`: truy cập được khi cùng assembly hoặc lớp kế thừa
+- `private protected`: truy cập từ lớp chứa nó, lớp kế thừa nhưng phải cùng assembly
 
 **_Đọc thêm mục assembly_**
 
@@ -1296,13 +1305,13 @@ class IndexerExam
 }
 ```
 
-## Kiểu cấu trúc (Struct)
+## 📚Kiểu cấu trúc (Struct)
 
-struct kiểu dữ liệu cấu trúc (còn gọi là structure) tạo thành khi muốn gộp các dữ liệu có liên quan thành một nhóm (đóng gói dữ liệu)
+`struct` kiểu dữ liệu cấu trúc (còn gọi là `structure`) tạo thành khi muốn gộp các dữ liệu có liên quan thành một nhóm (đóng gói dữ liệu)
 
-Trong struct có thể chứa: trường dữ liệu, thuộc tính, phương thức khởi tạo, hằng số, các phương thức, toán tử, sự kiện.
+Trong `struct` có thể chứa: trường dữ liệu, thuộc tính, phương thức khởi tạo, hằng số, các phương thức, toán tử, sự kiện.
 
-_❗Struct là kiểu dữ liệu tham trị không phải tham chiếu như class_
+_❗`Struct` là kiểu dữ liệu tham trị không phải tham chiếu như `class`_
 
 _❗Phương thức khởi tạo bắt buộc phải khởi tạo toàn bộ thành viên dữ liệu (trường, thuộc tính) có trong struct._
 
@@ -1330,11 +1339,11 @@ public struct Product
 }
 ```
 
-## Kiểu liệt kê (Enum)
+## 📚Kiểu liệt kê (Enum)
 
-Kiểu liệt kê (enum) khai báo một tập hợp các hằng số có tên, mặc định giá trị các hằng số này là kiểu int và bắt đầu từ 0 trở đi trong khai báo kiểu liệt kê.
+Kiểu liệt kê (`enum`) khai báo một tập hợp các hằng số có tên, mặc định giá trị các hằng số này là kiểu `int` và bắt đầu từ `0` trở đi trong khai báo kiểu liệt kê.
 
-_❗Enum là kiểu dữ liệu tham trị_
+_❗`Enum` là kiểu dữ liệu tham trị_
 
 Có thể gán một tên nào đó ứng với giá trị cụ thể
 
@@ -1343,25 +1352,23 @@ enum HocLuc {Kem, TrungBinh = 5, Kha, Gioi};
 // Do TrungBinh bằng 5, nên tên tiếp theo Kha sẽ nhận 6, Giỏi là 7
 ```
 
-`Enum` rất phù hợp khi giá trị của biến nhận một giá trị hằng số trong tập hằng số hữu hạn nào đó
+`Enum` rất phù hợp khi giá trị của biến nhận một giá trị hằng số trong tập hằng số hữu hạn nào đó. Đặc biệt hay dùng `Enum` với câu lệnh `switch`
 
-Đặc biệt hay dùng `Enum` với câu lệnh `switch`
+## 📚Kế thừa
 
-## Kế thừa
+**Kế thừa** cho phép định nghĩa ra một lớp mới dựa trên một lớp khác có sẵn, kế thừa giúp cho việc mở rộng code bảo trì trở nên dễ hơn.
 
-Kế thừa cho phép định nghĩa ra một lớp mới dựa trên một lớp khác có sẵn, kế thừa giúp cho việc mở rộng code bảo trì trở nên dễ hơn.
+**Lớp cơ sở** là lớp mà được lớp khác kế thừa.
 
-Lớp cơ sở là lớp mà được lớp khác kế thừa.
-
-Lớp kế thừa là lớp kế thừa lại các thuộc tính, phương thức từ lớp cơ sở.
+**Lớp kế thừa** là lớp kế thừa lại các thuộc tính, phương thức từ lớp cơ sở.
 
 Nhưng lớp mới kế thừa lại các thông tin của lớp cơ sở và thêm vào những đặc tính riêng của nó.
 
-!!! C# không hỗ trợ đa kế thừa (mỗi lớp kế thừa chỉ có một lớp cơ sở)
+_❗C# không hỗ trợ đa kế thừa (mỗi lớp kế thừa chỉ có một lớp cơ sở)_
 
-Lớp niêm phong (sealed)
+### 📙Lớp niêm phong (sealed)
 
-- Trong kỹ thuật lập trình, bạn có thể đánh dấu một lớp nào đó không bao giờ trở thành lớp cơ sở để phái sinh ra lớp khác- lớp đó gọi là bị niêm phong.
+Trong kỹ thuật lập trình, bạn có thể đánh dấu một lớp nào đó không bao giờ trở thành lớp cơ sở để phái sinh ra lớp khác, lớp đó gọi là bị **niêm phong**.
 
 ```C#
 sealed class A
@@ -1375,15 +1382,15 @@ class B : A
 }
 ```
 
-- Dùng kỹ thuật niêm phong lớp (sealed) để đảm bảo không phái sinh các lớp kế thừa một cách thoải mái, mất kiểm soát, nhất là khi số dự án lớn, nhiều người tham gia.
+Dùng kỹ thuật niêm phong lớp (sealed) để đảm bảo không phái sinh các lớp kế thừa một cách thoải mái, mất kiểm soát, nhất là khi số dự án lớn, nhiều người tham gia.
 
-Phương thức khởi tạo và hủy
+### 📙Phương thức khởi tạo và hủy
 
-- Hàm khởi tạo của lớp cơ sở chạy trước, xong đến hàm khởi tạo của lớp kế thừa.
+Hàm khởi tạo của lớp cơ sở chạy trước, xong đến hàm khởi tạo của lớp kế thừa.
 
-- Đối với các phương thức hủy, khi đối tượng hủy nó sẽ thi hành phương thức hủy của lớp kế thừa trước, rồi mới đến phương thức hủy của lớp cơ sở (ngược với khởi tạo).
+Đối với các phương thức hủy, khi đối tượng hủy nó sẽ thi hành phương thức hủy của lớp kế thừa trước, rồi mới đến phương thức hủy của lớp cơ sở (ngược với khởi tạo).
 
-- Khi phương thức khởi tạo lớp cơ sở có tham số, hoặc ấn định một phương thức khởi tạo của lớp cơ sở (nếu lớp cơ sở có quá tải nhiều phương thức khởi tạo), thì hàm tạo của lớp kế thừa phải chỉ định sẽ khởi chạy phương thức khởi tạo (và truyền tham số) nào của lớp cơ sở.
+Khi phương thức khởi tạo lớp cơ sở có tham số, hoặc ấn định một phương thức khởi tạo của lớp cơ sở (nếu lớp cơ sở có quá tải nhiều phương thức khởi tạo), thì hàm tạo của lớp kế thừa phải chỉ định sẽ khởi chạy phương thức khởi tạo (và truyền tham số) nào của lớp cơ sở.
 
 ```C#
 class A
@@ -1403,18 +1410,19 @@ class B : A
 }
 ```
 
-Chuyển kiểu
+### 📙Chuyển kiểu
 
-- có thể chuyển kiểu một cách tường minh (viết tên kiểu muốn chuyển trong () trước đối tượng), hay ngầm định.
-- không thể chuyển kiểu thuận cây kế thừa - Lớp cha không chuyển thành con được
+Có thể chuyển kiểu một cách tường minh (viết tên kiểu muốn chuyển trong () trước đối tượng), hay ngầm định.
 
-## Partial type và Nested type
+Không thể chuyển kiểu thuận cây kế thừa - Lớp cha không chuyển thành con được
 
-### Partial
+## 📚Partial type và Nested type
 
-Partial là kỹ thuật phân chia code lưu ở nhiều file mã nguồn khác nhau, khi biên dịch thì nó tổng hợp lại thành một.
+### 📙Partial
 
-Để phân chia lớp, khai báo và định nghĩa các thành phần của lớp ở nhiều nơi khác nhau, với yêu cầu trong khai báo lớp cho thêm từ khóa partial
+**Partial** là kỹ thuật phân chia code lưu ở nhiều file mã nguồn khác nhau, khi biên dịch thì nó tổng hợp lại thành một.
+
+Để phân chia lớp, khai báo và định nghĩa các thành phần của lớp ở nhiều nơi khác nhau, với yêu cầu trong khai báo lớp cho thêm từ khóa `partial`
 
 ```C#
 // Product1.cs
@@ -1453,9 +1461,9 @@ namespace CS007B_PARTIAL
 }
 ```
 
-_❗Trong định nghĩa ở tất cả các phần phải có từ khóa partial. Từ khóa partial có thể đặt ngay trước từ khóa class_
+_❗Trong định nghĩa ở tất cả các phần phải có từ khóa `partial`. Từ khóa `partial` có thể đặt ngay trước từ khóa `class`_
 
-Có thể dùng từ khóa partial trong khai báo các phương thức, tuy nhiên mục đích chỉ là chia làm hai nơi, một nơi như là khai báo một nơi là triển khai code, và phương thức phải trả về kiểu void.
+Có thể dùng từ khóa `partial` trong khai báo các phương thức, tuy nhiên mục đích chỉ là chia làm hai nơi, một nơi như là khai báo một nơi là triển khai code, và phương thức phải trả về kiểu `void`.
 
 ```C#
 // file1.cs
@@ -1470,11 +1478,11 @@ partial void myMethod()
 }
 ```
 
-Partial Method thường sinh ra bởi việc sinh mã nguồn tự động khi dùng công cụ IDE
+**Partial Method** thường sinh ra bởi việc sinh mã nguồn tự động khi dùng công cụ IDE
 
-### Nested (Lớp lồng nhau)
+### 📙Nested (Lớp lồng nhau)
 
-kiểu lồng nhau (Nested Type) cho phép bạn khai báo một lớp (class), giao diện (interface), cấu trúc (struct) trong thân một lớp khác
+**Kiểu lồng nhau (Nested Type)** cho phép bạn khai báo một lớp (class), giao diện (interface), cấu trúc (struct) trong thân một lớp khác
 
 ```C#
 class MobileProduct
@@ -1509,16 +1517,15 @@ product.manufactory = new MobileProduct.Manufactory("Abc ...");
 product.ProductInfo();
 ```
 
-## Generic
+## 📚Generic
 
-Generic là kiểu đại diện, nó cho phép tạo mã nguồn code không phụ thuộc vào kiểu dữ liệu cụ thể, chỉ khi code thực thi thì kiểu cụ thể mới xác định.
+**Generic** là kiểu đại diện, nó cho phép tạo mã nguồn code không phụ thuộc vào kiểu dữ liệu cụ thể, chỉ khi code thực thi thì kiểu cụ thể mới xác định.
 
-Những giải thuật giống nhau trên những kiểu dữ liệu khác nhau, để tránh việc viết nhiều lần code lặp lại thì lúc này áp dụng Generic - kiểu đại diện để xây dựng phương thức hoặc lớp.
+Những giải thuật giống nhau trên những kiểu dữ liệu khác nhau, để tránh việc viết nhiều lần code lặp lại thì lúc này áp dụng Generic để xây dựng phương thức hoặc lớp.
 
-Phương thức generic
+### 📙Phương thức generic
 
-- Chỗ nào là kiểu dữ liệu cụ thể thì thay nó bằng tên kiểu Generic, tên này là tự đặt một cách thống nhất tùy chọn như A, B, T, .... Trong đó sau phần tên hàm phải liệt kê ra
-  tên những kiểu Generic mà bạn sẽ sử dụng cho hàm.
+Chỗ nào là kiểu dữ liệu cụ thể thì thay nó bằng tên kiểu Generic, tên này là tự đặt một cách thống nhất tùy chọn như A, B, T, .... Trong đó sau phần tên hàm phải liệt kê ra tên những kiểu Generic mà bạn sẽ sử dụng cho hàm.
 
 ```C#
 X MyFunction<X, Y>(X x, Y y)
@@ -1527,9 +1534,9 @@ X MyFunction<X, Y>(X x, Y y)
 }
 ```
 
-Lớp generic
+### 📙Lớp generic
 
-- Tương tự như phương thức, cũng có thể khai báo lớp với Generic - bằng liệt tên các kiểu đại diện này sau khai báo tên lớp
+Tương tự như phương thức, cũng có thể khai báo lớp với Generic - bằng liệt tên các kiểu đại diện này sau khai báo tên lớp
 
 ```C#
 class MyClass<X, Y>
@@ -1538,11 +1545,11 @@ class MyClass<X, Y>
 }
 ```
 
-- Xây dựng lớp với kiểu Generic phổ biến để triển khai nhiều loại giải thuật
+Xây dựng lớp với kiểu Generic phổ biến để triển khai nhiều loại giải thuật
 
-## Anonymous Type (Kiểu vô danh)
+## 📚Anonymous Type (Kiểu vô danh)
 
-Kiểu vô danh là kiểu không có tên
+**Kiểu vô danh** là kiểu không có tên
 
 ```C#
 var obj = new
@@ -1552,17 +1559,17 @@ var obj = new
 }
 ```
 
-Bằng cú pháp như vậy, tạo ra được đối tượng chứa các thuộc tính, tạo ra đối tượng mà không cần phải khai báo lớp
+Bằng cú pháp như vậy, tạo ra được đối tượng chứa các thuộc tính, tạo ra đối tượng mà không cần phải khai báo lớp.
 
-_❗các thuộc tính được khai báo là thuộc tính chỉ đọc_
+_❗Các thuộc tính được khai báo là thuộc tính chỉ đọc_
 
-Kiểu vô danh Anonymous Type - được dùng phổ biến trong LINQ
+Kiểu vô danh Anonymous Type được dùng phổ biến trong LINQ
 
-Nếu truyền như tham số cho các phương thức - coi nó như các object có thể gây lỗi khi buil ứng dụng - trình biên dịch kiểm tra và báo lỗi. Để giải quyết vấn đề này có thể dùng đến khai báo kiểu dynamic
+Nếu truyền như tham số cho các phương thức, coi nó như các object có thể gây lỗi khi buil ứng dụng, trình biên dịch kiểm tra và báo lỗi. Để giải quyết vấn đề này có thể dùng đến khai báo kiểu **dynamic**.
 
-## Dynamic Type (kiểu động)
+## 📚Dynamic Type (kiểu động)
 
-Biến kiểu động - ngầm định kiểu thực sự của biến đó được xác định bằng đối tượng gán vào ở thời điểm chạy
+**Biến kiểu động** ngầm định kiểu thực sự của biến đó được xác định bằng đối tượng gán vào ở thời điểm chạy.
 
 ```C#
 dynamic myvar;
@@ -1575,17 +1582,17 @@ static void TestFunc(dynamic dvar)
 
 Với phương thức trên, ở thời điểm chạy mà đối tượng ở tham số có thuộc tính age thì sẽ không lỗi, còn nếu không có thuộc tính age sẽ sinh ngoại lệ.
 
-_❗khác với kiểu ngầm định var kiểu xác định ngay thời điểm biên dịch (không cần khởi tạo giá trị từ trước)_
+_❗Khác với kiểu ngầm định var kiểu xác định ngay thời điểm biên dịch (không cần khởi tạo giá trị từ trước)_
 
-## Null - Nullable
+## 📚Null - Nullable
 
-null là một giá trị cố định nó biểu thị không có đối tượng nào cả, có nghĩa là biến có giá trị null không có tham chiếu (trỏ) đến đối tượng nào (không có gì).
+`null` là một giá trị cố định nó biểu thị không có đối tượng nào cả, có nghĩa là biến có giá trị `null` không có tham chiếu (trỏ) đến đối tượng nào (không có gì).
 
-null chỉ có thể gán được cho các biến kiểu tham chiếu (biến có kiểu dữ liệu là các lớp), không thể gán null cho những biến có kiểu dữ liệu dạng tham trị
+`null` chỉ có thể gán được cho các biến kiểu tham chiếu (biến có kiểu dữ liệu là các lớp), không thể gán `null` cho những biến có kiểu dữ liệu dạng tham trị.
 
-Nếu muốn sử dụng các kiểu dữ liệu nguyên tố (kiểu tham trị) như là một kiểu dữ liệu dạng tham chiếu, có thể gán giá trị null cho nó, có thể sử dụng như đối tượng thì khai báo nó có khả năng nullable
+Nếu muốn sử dụng các kiểu dữ liệu nguyên tố (kiểu tham trị) như là một kiểu dữ liệu dạng tham chiếu, có thể gán giá trị `null` cho nó, có thể sử dụng như đối tượng thì khai báo nó có khả năng `nullable`
 
-khi biến nullable có giá trị thì đọc giá trị bằng truy cập thành viên .Value
+khi biến `nullable` có giá trị thì đọc giá trị bằng truy cập thành viên `.Value`
 
 ```C#
 int? bienkieuint; // Hoặc Nullable<int> bienkieuint;
@@ -1599,31 +1606,33 @@ if (bienkieuint != null)
 }
 ```
 
-_❗dạng khai báo đầy đủ của int? là Nullable<int>_
+_❗Dạng khai báo đầy đủ của `int?` là `Nullable<int>`_
 
-Nullable rất tiện dụng khi lập trình các truy vấn cơ sở dữ liệu, lập trình web ...
+`Nullable` rất tiện dụng khi lập trình các truy vấn cơ sở dữ liệu, lập trình web ...
 
-_❗1 số tác dụng của toán tử ? và ?? + sử dụng như một phần của toán tử điều kiện null (null-conditional operator), giúp tránh lỗi NullReferenceException khi truy cập vào thành viên của một đối tượng có thể null_
+_❗1 số tác dụng của toán tử `?` và `??`_
+
+Sử dụng như một phần của **toán tử điều kiện null (null-conditional operator)**, giúp tránh lỗi **NullReferenceException** khi truy cập vào thành viên của một đối tượng có thể `null`
 
 ```C#
 Person person = null;
 int? age = person?.Age; // age sẽ là null nếu person là null
 ```
 
-Toán tử ?? là toán tử gộp null (null-coalescing operator), cho phép bạn cung cấp một giá trị thay thế nếu giá trị hiện tại là null
+Toán tử `??` là **toán tử gộp null (null-coalescing operator)**, cho phép bạn cung cấp một giá trị thay thế nếu giá trị hiện tại là `null`
 
 ```C#
 string name = nullableString ?? "Default Name";
 // sẽ nhận giá trị của nullableString nếu nó không phải là null, ngược lại sẽ nhận giá trị "Default Name"
 ```
 
-## Đa hình
+## 📚Đa hình
 
-Tính đa hình của nghĩa là có nhiều dạng, tính đa hình sẽ thể hiện rõ khi xây dựng các lớp kế thừa. Một phương thức được gọi, nó sẽ là phương thức cụ thể nào tùy thuộc vào đối tượng lúc nó thực thi.
+**Tính đa hình** của nghĩa là có nhiều dạng, tính đa hình sẽ thể hiện rõ khi xây dựng các lớp kế thừa. Một phương thức được gọi, nó sẽ là phương thức cụ thể nào tùy thuộc vào đối tượng lúc nó thực thi.
 
-### Phương thức ảo (virtual funtion)
+### 📙Phương thức ảo (virtual funtion)
 
-Một phương thức ảo trong lớp - là phương thức có thể định nghĩa lại (bị nạp chồng - bị đè) bởi lớp kế thừa
+Một **phương thức ảo** trong lớp - là phương thức có thể định nghĩa lại (bị nạp chồng - bị đè) bởi lớp kế thừa.
 
 ```C#
 class Product
@@ -1643,11 +1652,11 @@ class Product
 }
 ```
 
-Hàm ảo có thể định nghĩa lại - kỹ thuật này gọi là nạp chồng (override)
+Hàm ảo có thể định nghĩa lại - kỹ thuật này gọi là **nạp chồng (override)**
 
-### Nạp chồng phương thức (Override)
+### 📙Nạp chồng phương thức (Override)
 
-Ở lớp kế thừa, có thể định nghĩa lại phương thức ảo của lớp cơ sở, việc này là thực hiện nạp chồng, để nạp chồng chỉ việc khai báo lại phương thức thêm vào từ khóa override
+Ở lớp kế thừa, có thể định nghĩa lại phương thức ảo của lớp cơ sở, việc này là thực hiện nạp chồng, để nạp chồng chỉ việc khai báo lại phương thức thêm vào từ khóa `override`
 
 ```C#
 class Iphone : Product
@@ -1664,15 +1673,15 @@ class Iphone : Product
 }
 ```
 
-Để sử dụng lại hàm của lớp cơ sở dùng từ khóa base để gọi đến lớp cơ sở
+Để sử dụng lại hàm của lớp cơ sở dùng từ khóa `base` để gọi đến lớp cơ sở
 
 Đối tượng được khởi tạo thuộc kiểu nào thì sẽ gọi đến hàm và thuộc tính của kiểu đó
 
-### Lớp / phương thức trừu tượng (abstract)
+### 📙Lớp / phương thức trừu tượng (abstract)
 
-Lớp trừu tượng thì không được dùng để khởi tạo đối tượng trực tiếp mà chỉ làm lớp cơ sở kế thừa bởi lớp khác.
+**Lớp trừu tượng** thì không được dùng để khởi tạo đối tượng trực tiếp mà chỉ làm lớp cơ sở kế thừa bởi lớp khác.
 
-Trong lớp trừu tượng, còn có thể khai báo phương thức trừu tượng với từ khóa abstract, phương thức này không có thân (chỉ có tên - tham số), nó yêu cầu lớp kế thừa bắt buộc phải nạp chồng (override)
+Trong lớp trừu tượng, còn có thể khai báo phương thức trừu tượng với từ khóa `abstract`, phương thức này không có thân (chỉ có tên - tham số), nó yêu cầu lớp kế thừa bắt buộc phải **nạp chồng (override)**
 
 ```C#
 abstract class Product
@@ -1686,13 +1695,13 @@ abstract class Product
 }
 ```
 
-### Giao diện (interface)
+### 📙Giao diện (interface)
 
-Giao diện (interface) nó có ý nghĩa gần giống với lớp abstract
+**Giao diện (interface)** nó có ý nghĩa gần giống với **lớp abstract**
 
 Tất cả các phương thức đều khai báo không có thân (chỉ có tên - nghĩa là phương thức abstract)
 
-Lớp triển khai giao diện (lớp kế thừa) bắt buộc phải định nghĩa lại (không cần từ khóa overrid) tất cả các phương thức này, cũng có một điều khác là lớp kế thừa có thể kế thừa nhiều giao diện.
+**Lớp triển khai giao diện (lớp kế thừa)** bắt buộc phải định nghĩa lại (không cần từ khóa `override`) tất cả các phương thức này, cũng có một điều khác là lớp kế thừa có thể kế thừa nhiều giao diện.
 
 ```C#
 interface IProduct
@@ -1724,21 +1733,21 @@ class Product : IProduct, IOrder
 }
 ```
 
-Giao diện, giống như những mẫu - mà lớp triển khai bắt buộc phải có các phương thức giống nó.
+Giao diện, giống như những mẫu mà lớp triển khai bắt buộc phải có các phương thức giống nó.
 
-## Delegate
+## 📚Delegate
 
-Delegate (hàm ủy quyền) là một kiểu dữ liệu, nó dùng để tham chiếu (trỏ đến) đến các hàm (phương thức) có tham số và kiểu trả về phù hợp với khai báo kiểu.
+**Delegate (hàm ủy quyền)** là một kiểu dữ liệu, nó dùng để tham chiếu (trỏ đến) đến các hàm (phương thức) có tham số và kiểu trả về phù hợp với khai báo kiểu.
 
 Delegate có thể gán vào nó một, nhiều hàm (phương thức) có sự tương thích về tham số, kiểu trả về, sau đó dùng nó để gọi hàm (giống con trỏ trong C++)
 
-Delegate được dùng phổ biến khi gán các biểu thức lambda
+Delegate được dùng phổ biến khi gán các **biểu thức lambda**
 
-Delegate thường được dùng để xây dựng các hàm callback, đặc biệt là các Event
+Delegate thường được dùng để xây dựng các **hàm callback**, đặc biệt là các **Event**
 
 Ví dụ cách sử dụng
 
-- Khai báo một delegate giống như cách khai báo phương thức nhưng có thêm từ khóa delegate và không có thân phương thức.
+- Khai báo một delegate giống như cách khai báo phương thức nhưng có thêm từ khóa `delegate` và không có thân phương thức.
 
 ```C#
 public delegate void ShowLog(string message);
@@ -1750,7 +1759,7 @@ public delegate void ShowLog(string message);
 ShowLog showLog;
 ```
 
-_❗Sau khi biến delegate được gán hàm vào, có thể dùng biến delegate để thi hành bằng cách gọi: varDelegate.Invoke(các-tham-số) hoặc varDelegate(các-tham-số)_
+_❗Sau khi biến delegate được gán hàm vào, có thể dùng biến delegate để thi hành bằng cách gọi: `varDelegate.Invoke(các-tham-số)` hoặc `varDelegate(các-tham-số)`_
 
 - Tạo hai phương thức Info và Warning có tham số giống với ShowLog, nghĩa là có một tham số kiểu string, trả về void:
 
@@ -1779,22 +1788,26 @@ showLog("Thông báo"); // Thi hành delegate chính là thi hành Info
 ```
 
 - Khi chạy thì showLog sẽ thực hiện nội dung các hàm mà nó được gán (cần đảm bảo biến delegate đó đã được gán phương thức - biến khác null)
-  if (showLog != null) showLog("Mgs") hoặc gắn gọn hơn showLog?.Invoke("Mgs");
+
+```C#
+if (showLog != null) showLog("Mgs")
+// hoặc gắn gọn hơn
+showLog?.Invoke("Mgs");
+```
 
 - Một delegate có thể đưa vào nó nhiều phương thức để một lần gọi thi hành tất cả các phương thức nó chứa
 
-  - Toán tử += : Nối thêm một phương thức vào delegate
-    delegatevar += method1
-  - Toán tử -= : Loại bỏ 1 phương ở cuối (nếu phương thức đó có trong delegate, tính từ cuối)
-    delegatevar -= method1
+  - Toán tử `+=` : Nối thêm một phương thức vào delegate `delegatevar += method1`
 
-- Ngoài cách gán cho delegate một hàm có tên cụ thể, cũng có thể gán một phương thức Anonymou
+  - Toán tử `-=` : Loại bỏ 1 phương ở cuối (nếu phương thức đó có trong delegate, tính từ cuối) `delegatevar -= method1`
+
+- Ngoài cách gán cho delegate một hàm có tên cụ thể, cũng có thể gán một **phương thức Anonymou**
 
 ```C#
 showLog += (x) => Console.WriteLine(string.Format("===>{0}<===", x));
 ```
 
-- Các delegate cùng kiểu có thể kết hợp lại với nhau bằng toán tử +
+- Các delegate cùng kiểu có thể kết hợp lại với nhau bằng toán tử `+`
 
 ```C#
 ShowLog showLog1 = (x) => { Console.WriteLine($"-----{x}-----"); };
@@ -1808,7 +1821,7 @@ _❗Hiểu đơn giản có thể hình dung delegate như 1 mảng chứa các 
 
 _❗Các hàm trong 1 delegate phải có cùng kiểu trả về, cùng số lượng và kiểu các tham số truyền vào hàm_
 
-Có thể sử dụng delegate làm tham số của phương thức, nó có vai trò như những hàm callback linh hoạt.
+Có thể sử dụng delegate làm tham số của phương thức, nó có vai trò như những **hàm callback** linh hoạt.
 
 ```C#
 // Sử dụng Delegate làm tham số phương thức, truyền callback
@@ -1826,11 +1839,11 @@ public static void TestTinhTong()
 }
 ```
 
-Func và Action
+### 📙Func và Action
 
-- Func và Action là hai mẫu delegate định nghĩa sẵn, giúp nhanh chóng tạo ra biến kiểu delegate mà không mất công khai báo
+Func và Action là hai mẫu delegate định nghĩa sẵn, giúp nhanh chóng tạo ra biến kiểu delegate mà không mất công khai báo.
 
-- Func là mẫu delegate có kiểu trả về
+`Func` là mẫu delegate có kiểu trả về.
 
 ```C#
 Func<kiểu_tham_số_1, kiểu_tham_số_2, ..., kiểu_trả_về> var_delegate;
@@ -1846,15 +1859,15 @@ DelegateName bien1;
 
 _❗Kiểu cuối cùng trong khai báo Func là kiểu trả về của hàm, có thể thiếu tham số nhưng không được thiếu kiểu trả về_
 
-- Action là mẫu delegate không có kiểu trả về hay biến kiểu Action có thể gán bằng các hàm có kiểu trả về void
+`Action` là mẫu delegate không có kiểu trả về hay biến kiểu Action có thể gán bằng các hàm có kiểu trả về void
 
 ```C#
 Action<kiểu_tham_số_1, kiểu_tham_số_2, ...> var_delegate;
 ```
 
-## Biểu thức lambda (Anonymous)
+## 📚Biểu thức lambda (Anonymous)
 
-Biểu thức lambda còn gọi là biểu thức hàm nặc danh (Anonymous), một biểu thức khai báo giống phương thức (hàm) nhưng thiếu tên
+**Biểu thức lambda** còn gọi là **biểu thức hàm nặc danh (Anonymous)**, một biểu thức khai báo giống phương thức (hàm) nhưng thiếu tên.
 
 ```C#
 (các_tham_số) => biểu_thức;
@@ -1866,7 +1879,7 @@ Biểu thức lambda còn gọi là biểu thức hàm nặc danh (Anonymous), m
 }
 ```
 
-Các biểu thức lambda đều có thể chuyển đổi thành delegate, do vậy nó có thể gán cho các delegate phù hợp
+Các biểu thức lambda đều có thể chuyển đổi thành delegate, do vậy nó có thể gán cho các delegate phù hợp.
 
 ```C#
 public delegate int TinhToan(int a, int b);
@@ -1886,8 +1899,7 @@ static void Main(string[] args)
 
 _❗Thường kết hợp với Func hoặc Action để tạo chuỗi các hành động_
 
-Có thể sử dụng toán tử => sau khai báo tên phương thức (loại phương thức có kiểu trả về khác void), rồi đến ngay một biểu thức (biểu thức lambda) có kết quả trả về (không dùng {}), biểu thức
-này như là định nghĩ thân của phương thức.
+Có thể sử dụng toán tử `=>` sau khai báo tên phương thức (loại phương thức có kiểu trả về khác void), rồi đến ngay một biểu thức (biểu thức lambda) có kết quả trả về (không dùng {}), biểu thức này như là định nghĩ thân của phương thức.
 
 ```C#
 int Tong(int x, int y) => x + y;
@@ -1900,28 +1912,28 @@ int Tong(int x, int y)
 
 _❗Hiểu là dùng để rút gọn phương thức đối với các phương thức thực hiện 1 dòng lệnh, 1 công việc ngắn có kiểu trả về (khác void)_
 
-## Event
+## 📚Event
 
-Các sự kiện (Event) là cơ chế để một đối tượng (đối tượng của lớp) này thông báo đến đối tượng khác có điều gì đó mà lớp khác quan tâm vừa xảy ra.
+Các **sự kiện (Event)** là cơ chế để một đối tượng (đối tượng của lớp) này thông báo đến đối tượng khác có điều gì đó mà lớp khác quan tâm vừa xảy ra.
 
-Lớp mà từ đó gửi đi sự kiện gọi tên nó là publisher và các lớp nhận được sự kiện gọi là là các subsriber.
+Lớp mà từ đó gửi đi sự kiện gọi tên nó là `publisher` và các lớp nhận được sự kiện gọi là là các `subsriber`.
 
-Các Event xây dựng với nền tảng chính là delegate
+Các Event xây dựng với nền tảng chính là delegate.
 
-Giả xử sử dụng delegate để nhận và phát sự kiện từ các lớp publisher và subsriber. Nhưng delegate có thể được gán lại bằng null làm cho các sự kiện đăng ký trước đó bị hủy. Điều này là phá hỏng nguyên tắc hoạt động của mô hình lập trình sự kiện - phá vỡ sự đóng gói
+Giả xử sử dụng delegate để nhận và phát sự kiện từ các lớp `publisher` và `subsriber`. Nhưng delegate có thể được gán lại bằng null làm cho các sự kiện đăng ký trước đó bị hủy. Điều này là phá hỏng nguyên tắc hoạt động của mô hình lập trình sự kiện - phá vỡ sự đóng gói.
 
-Đối với Event thì không thể gán null cho kiểu dữ liệu này, giúp đảm bảo được nguyên tắc hoạt động của mô hình lập trình sự kiện
+Đối với Event thì không thể gán null cho kiểu dữ liệu này, giúp đảm bảo được nguyên tắc hoạt động của mô hình lập trình sự kiện.
 
-_❗Event là Delegate nhưng khi khai báo thêm từ khóa event, dẫn tới chỉ có thể thực hiện toán tử += hoặc -= với Event_
+_❗Event là Delegate nhưng khi khai báo thêm từ khóa event, dẫn tới chỉ có thể thực hiện toán tử `+=` hoặc `-=` với Event_
 
-Event trong thư viện .Net đều xây dựng từ một delegate có tên EventHandler, nó đã định nghĩa sẵn có trong thư viện .NET với dạng:
+Event trong thư viện .Net đều xây dựng từ một delegate có tên `EventHandler`, nó đã định nghĩa sẵn có trong thư viện .NET với dạng:
 
 ```C#
 public delegate void EventHandler(object sender?, EventArgs e);
 public delegate void EventHandler<TEventArgs>(object sender?, TEventArgs e);
 ```
 
-Ta có thể sử dụng luôn delegate EventHandler để xây dựng các Event của riêng mình sử dụng cho các Publisher, chỉ cần xây dựng các lớp phái sinh từ EventArgs với mục đích thêm vào các tham số riêng khi gửi sử kiện.
+Ta có thể sử dụng luôn delegate `EventHandler` để xây dựng các Event của riêng mình sử dụng cho các Publisher, chỉ cần xây dựng các lớp phái sinh từ `EventArgs` với mục đích thêm vào các tham số riêng khi gửi sử kiện.
 
 ```C#
 // Xây dựng lớp MyEventArgs kế thừa từ EventArgs
@@ -1982,9 +1994,9 @@ public class ClassC
 
 _❗Hiểu đơn giản Event là 1 delegate không thể null (không nullable). Event được dùng để nhận và thực hiện 1 chuỗi thao tác thông qua các lớp publisher (lớp phát) thực hiện Event, lớp subsriber (lớp đăng ký) thêm thao tác vào Event._
 
-## Extension Method (Phương thức mở rộng)
+## 📚Extension Method (Phương thức mở rộng)
 
-Các phương thức mở rộng là các phương thức thêm vào lớp, cấu trúc, giao diện có sẵn mà không cần thiết phải kế thừa lớp để tạo ra các lớp mới, không cần biên dịch lại thư viện.
+Các **phương thức mở rộng** là các phương thức thêm vào lớp, cấu trúc, giao diện có sẵn mà không cần thiết phải kế thừa lớp để tạo ra các lớp mới, không cần biên dịch lại thư viện.
 
 Các phương thức mở rộng khai báo là những phương thức tĩnh, nhưng lại được gọi thông qua đối tượng lớp mà phương thức mở rộng đó khai báo.
 
@@ -1995,7 +2007,7 @@ public static [kiểu trả về][tên phương thức] (this[kiểu dũ liệu]
 }
 ```
 
-_❗kiểu dự kiệu của tham số đầu tiên là kiểu dự kiệu được mở rộng (có thêm hàm)_
+_❗Kiểu dự liệu của tham số đầu tiên là kiểu dự liệu được mở rộng (có thêm hàm)_
 
 Ví dụ
 
@@ -2010,27 +2022,31 @@ public static void Print(this string s, ConsoleColor color = ConsoleColor.Yellow
 // các đối tượng string sẽ có thêm phương thức Print
 ```
 
-## Exception (ngoại lệ)
+## 📚Exception (ngoại lệ)
 
-Ngoại lệ (exception) là vấn đề - lỗi phát sinh trong quá trình thực thi chương trình. Thường khi chương trình đang chạy mà phát sinh ngoại lệ (lỗi) thì dẫn đến chương trình kết thúc ngay lập tức.
+**Ngoại lệ (exception)** là vấn đề, lỗi phát sinh trong quá trình thực thi chương trình. Thường khi chương trình đang chạy mà phát sinh ngoại lệ (lỗi) thì dẫn đến chương trình kết thúc ngay lập tức.
 
 Có vô số nguyên nhân để chương trình đang chạy mà phát sinh ngoại lệ:
 
 - Dữ liệu người dùng nhập sai, mà chương trình không kiểm soát được
+
 - Thực hiện các phép toán không được phép (như chia một số cho 0)
+
 - Thao tác với tài nguyên không tồn tại (như mở file không có trên đĩa, kết nối đến CSDL không tồn tại ...)
+
 - Thiếu bộ nhớ
+
 - ...
 
-Khi có một lỗi phát sinh hầu hết các lỗi đều có thể quản lý bởi thư viện C# thì nó sẽ phát sinh ra một đối tượng lớp Exeption (System.System) hoặc đối tượng lớp nào đó kế thừa từ Exception
+Khi có một lỗi phát sinh hầu hết các lỗi đều có thể quản lý bởi thư viện C# thì nó sẽ phát sinh ra một đối tượng lớp `Exeption` (`System.System`) hoặc đối tượng lớp nào đó kế thừa từ Exception
 
 Khi một đối tượng lớp Exception sinh ra - mà chương trình không chủ động xử lý đối tượng này thì chương trình sẽ kết thúc
 
 Đối tượng lớp Exception chứa trong nó các thông tin về lỗi (dòng thông báo, nguyên nhân lỗi, nơi phát sinh lỗi ...)
 
-Xử lý ngoại lệ
+### 📙Xử lý ngoại lệ
 
-- xử lý ngoại lệ thì ta cần bắt lấy nó và điều hướng chương trình một cách thích hợp. Để bắt ngoại lệ ta sử dụng câu lệnh try catch:
+Xử lý ngoại lệ thì ta cần bắt lấy nó và điều hướng chương trình một cách thích hợp. Để bắt ngoại lệ ta sử dụng câu lệnh `try catch`:
 
 ```C#
 try
@@ -2045,11 +2061,11 @@ catch (Exception loi)
 }
 ```
 
-- Đoạn code nào muốn giám sát để bắt ngoại lệ - thì đưa vào khối try
+Đoạn code nào muốn giám sát để bắt ngoại lệ, thì đưa vào khối `try`
 
-- Nếu ngoại lệ xảy ra do code trong khối đó thì sẽ bắt được - chương trình sẽ không kết thúc mà lập tức chuyển sang khối catch
+Nếu ngoại lệ xảy ra do code trong khối đó thì sẽ bắt được, chương trình sẽ không kết thúc mà lập tức chuyển sang khối `catch`
 
-- Tại catch có ngay đối tượng lớp Exception - cần xử lý theo logic ứng dụng điều hướng chương trình một cách thích hợp ở đây
+Tại `catch` có ngay đối tượng lớp Exception, cần xử lý theo logic ứng dụng điều hướng chương trình một cách thích hợp ở đây
 
 ```C#
 static void Main(string[] args)
@@ -2073,11 +2089,11 @@ static void Main(string[] args)
 // Index was outside the bounds of the array.
 ```
 
-- Trong .NET từ lớp cơ sở Exception nó xây dựng nên rất nhiều loại ngoại lệ khác phục vụ chi tiết cho từng loại lỗi phát sinh khác nhau. Có thể bắt nhiều ngoại lệ.
+Trong .NET từ lớp cơ sở Exception nó xây dựng nên rất nhiều loại ngoại lệ khác phục vụ chi tiết cho từng loại lỗi phát sinh khác nhau. Có thể bắt nhiều ngoại lệ.
 
-- Để bắt cụ thể một loại ngoại lệ nào đó chỉ việc thêm một khối catch tương ứng với ngoại lệ đó
+Để bắt cụ thể một loại ngoại lệ nào đó chỉ việc thêm một khối catch tương ứng với ngoại lệ đó.
 
-- Trong lệnh try ... catch, có thể thêm một tùy chọn là khối finally, code trong khối này được thực thi ngay cả khi có phát sinh ngoại lệ hay không.
+Trong lệnh `try catch`, có thể thêm một tùy chọn là khối `finally`, code trong khối này được thực thi ngay cả khi có phát sinh ngoại lệ hay không.
 
 ```C#
 int x = 10;
@@ -2098,18 +2114,17 @@ finally
 }
 ```
 
-_❗Khối finally cơ bản để giải phóng các tài nguyên chiếm giữ._
+_❗Khối `finally` cơ bản để giải phóng các tài nguyên chiếm giữ._
 
 Thuộc tính (hay dùng)
 
-- Message : chuỗi chứa nội dung thông báo lỗi
-- StackTrace : chuỗi chứa các bước thực thi chương trình cho đến khi bị lỗi (có chứa các phương thức, hàm khi thực thi gây lỗi, vị trí file lỗi ...)
-- Source : chứa tên ứng dụng hoặc đối tượng bị lỗi
+- `Message` : chuỗi chứa nội dung thông báo lỗi
+- `StackTrace` : chuỗi chứa các bước thực thi chương trình cho đến khi bị lỗi (có chứa các phương thức, hàm khi thực thi gây lỗi, vị trí file lỗi ...)
+- `Source` : chứa tên ứng dụng hoặc đối tượng bị lỗi
 
-Phát sinh ngoại lệ
+### 📙Phát sinh ngoại lệ
 
-- Nếu muốn phát sinh ngoại lệ cho biết có một lỗi nào đó vừa xảy ra thì cần tạo ra một đối tượng lớp Exception hoặc đối tượng thuộc lớp nào đó kế thừa từ Exception,
-  sau đó phát sinh bằng lệnh throw
+Nếu muốn phát sinh ngoại lệ cho biết có một lỗi nào đó vừa xảy ra thì cần tạo ra một đối tượng lớp Exception hoặc đối tượng thuộc lớp nào đó kế thừa từ Exception, sau đó phát sinh bằng lệnh `throw`
 
 ```C#
 public static double Thuong(double x, double y)
@@ -2137,9 +2152,9 @@ static void Main(string[] args)
 }
 ```
 
-Lớp Exeption riêng
+### 📙Lớp Exeption riêng
 
-- Nếu muốn tạo ra các lớp để quẳng ra các lỗi khi cần thiết, thì chỉ việc kế thừa lớp Exception. Lợi ích việc tạo ra lớp riêng, nó giúp cho việc quản lý lỗi - gỡ rối tốt hơn.
+Nếu muốn tạo ra các lớp để quẳng ra các lỗi khi cần thiết, thì chỉ việc kế thừa lớp Exception. Lợi ích việc tạo ra lớp riêng, nó giúp cho việc quản lý lỗi - gỡ rối tốt hơn.
 
 ```C#
 public class DataTooLongExeption : Exception
@@ -3222,29 +3237,25 @@ using (var streamread = File.OpenRead(filepath_src))
 }
 ```
 
-## LINQ (ngôn ngữ truy vấn tích hợp)
+## 📚LINQ (ngôn ngữ truy vấn tích hợp)
 
-LINQ (Language Integrated Query) - ngôn ngữ truy vấn tích hợp - tích hợp cú pháp truy vấn (gần giống các câu lệnh SQL) vào bên trong ngôn ngữ lập trình C#, cho C# khả năng truy cập các nguồn dữ liệu khác nhau (SQL Db, XML, List ...) với cùng cú pháp.
+**LINQ (Language Integrated Query)** ngôn ngữ truy vấn tích hợp, tích hợp cú pháp truy vấn (gần giống các câu lệnh SQL) vào bên trong ngôn ngữ lập trình C#, cho C# khả năng truy cập các nguồn dữ liệu khác nhau (SQL Db, XML, List ...) với cùng cú pháp. LINQ hoạt động trên những kiểu tập hợp có khả năng duyệt qua.
 
-LINQ hoạt động trên những kiểu tập hợp có khả năng duyệt qua
+Nguồn dữ liệu phục vụ cho LINQ, phải là các đối tượng lớp triển khai giao diện (interface) `IEnumerable` và `IEnumerable<T>` tức là các mảng, danh sách thuộc `Collection`
 
-Nguồn dữ liệu phục vụ cho LINQ, phải là các đối tượng lớp triển khai giao diện (interface) IEnumerable và IEnumerable<T> tức là các mảng, danh sách thuộc Collection
+Câu truy vấn LINQ thường bắt đầu bằng mệnh đề `from` và kết thúc bằng mệnh đề `select` hoặc `group`, giữa chúng là những mệnh đề `where`, `orderby`, `join`, `let`
 
-Câu truy vấn LINQ thường bắt đầu bằng mệnh đề from và kết thúc bằng mệnh đề select hoặc group, giữa chúng là những mệnh đề where, orderby, join, let
+### 📙from in
 
-from in
-
-- Mệnh đề from để xác định nguồn dữ liệu mà truy vấn sẽ thực hiện
-
-- Nguồn dữ liệu là tập hợp những phần tử lưu trong đối tượng có kiểu lớp triển khai giao diện IEnumerable như mảng Array, List ...
+Mệnh đề `from` để xác định nguồn dữ liệu mà truy vấn sẽ thực hiện. Nguồn dữ liệu là tập hợp những phần tử lưu trong đối tượng có kiểu lớp triển khai giao diện `IEnumerable` như mảng Array, List ...
 
 ```C#
 from [biến chứa] in [nguồn dữ liệu]
 ```
 
-select
+### 📙select
 
-- Mệnh đề select chỉ ra các dữ liệu được lấy ra (xuất ra) của câu lệnh LINQ
+Mệnh đề `select` chỉ ra các dữ liệu được lấy ra (xuất ra) của câu lệnh LINQ
 
 ```C#
 var ketqua = from product in products
@@ -3262,9 +3273,9 @@ select new
 };
 ```
 
-where
+### 📙where
 
-- Mệnh đề where để lọc dữ liệu, sau từ khóa where là biểu thức logic xác định các phần tử lọc ra
+Mệnh đề `where` để lọc dữ liệu, sau từ khóa `where` là biểu thức logic xác định các phần tử lọc ra
 
 ```C#
 where product.Price == 500
@@ -3272,7 +3283,7 @@ where product.Price == 500
 where(product.Price >= 600 && product.Price < 700) || product.Name.StartsWith("Bàn")
 ```
 
-- Trong một truy vấn có thể viết nhiều mệnh đề where
+Trong một truy vấn có thể viết nhiều mệnh đề `where`
 
 ```C#
 var ketqua = from product in products
@@ -3281,9 +3292,9 @@ var ketqua = from product in products
              select product;
 ```
 
-from kết hợp
+### 📙from kết hợp
 
-- Để lọc dữ liệu phức tạp hơn, có thể dùng From kết hợp để lọc phức tạp và chi tiết hơn
+Để lọc dữ liệu phức tạp hơn, có thể dùng From kết hợp để lọc phức tạp và chi tiết hơn
 
 ```C#
 var ketqua = from product in products
@@ -3293,26 +3304,24 @@ var ketqua = from product in products
              select product;
 ```
 
-orderby
+### 📙orderby
 
-- Mệnh đề orderby viết sau mệnh đề where nếu có, dùng để sắp xếp kết quả
+Mệnh đề `orderby` viết sau mệnh đề where nếu có, dùng để sắp xếp kết quả.
 
 ```C#
 orderby thuoctinh // sắp xếp tăng dần
 orderby thuoctinh descending // sắp xếp giảm dần
 ```
 
-- Cũng có thể sắp xếp theo nhiều dữ liệu, viết cách nhau bởi ,
+Cũng có thể sắp xếp theo nhiều dữ liệu, viết cách nhau bởi `,`
 
 ```C#
 orderby thuoctinh1 descending, thuoctinh2, thuoctinh3 descending ...
 ```
 
-group by
+### 📙group by
 
-- Mệnh đề group được dngf thay cho mệnh đề select
-
-- Trả về theo từng nhóm (nhóm lại theo trường dữ liệu nào đó), mỗi phần tử của cấu truy vấn trả về là kiểu IGrouping<TKey,TElement>, chứa các phần tử thuộc một nhóm
+Mệnh đề `group` được dùng thay cho mệnh đề `select`. Trả về theo từng nhóm (nhóm lại theo trường dữ liệu nào đó), mỗi phần tử của cấu truy vấn trả về là kiểu `IGrouping<TKey,TElement>`, chứa các phần tử thuộc một nhóm.
 
 ```C#
 var ketqua = from product in products
@@ -3327,7 +3336,7 @@ var ketqua = from product in products
 // Giường ngủ - 500
 ```
 
-- Sử dụng into để lưu tạm group trong truy vấn vào một biến, sau đó thi hành các mệnh đề khác trên biến tạm và dùng mệnh đề select để trả về kết quả
+Sử dụng `into` để lưu tạm `group` trong truy vấn vào một biến, sau đó thi hành các mệnh đề khác trên biến tạm và dùng mệnh đề `select` để trả về kết quả
 
 ```C#
 var ketqua = from product in products
@@ -3337,9 +3346,9 @@ var ketqua = from product in products
              select gr;
 ```
 
-let
+### 📙let
 
-- let dùng để thêm biến vào LINQ, lưu kết quả của một biểu thức tính toán nào đó
+`let` dùng để thêm biến vào LINQ, lưu kết quả của một biểu thức tính toán nào đó
 
 ```C#
 let tenvien = biểu_thức
@@ -3356,11 +3365,9 @@ var ketqua = from product in products // các sản phẩm trong products
              };
 ```
 
-join
+### 📙join
 
-- join là thực hiện kết hợp hai nguồn dữ liệu lại với nhau để truy vấn thông tin
-
-- Để kết nối, dùng mệnh đề join để chỉ ra nguồn (nguồn bên phải join) sẽ kết nối với nguồn của from (nguồn bên trái join), tiếp theo chỉ ra sự dàng buộc các phần tử bằng từ khóa on
+`join` là thực hiện kết hợp hai nguồn dữ liệu lại với nhau để truy vấn thông tin. Để kết nối, dùng mệnh đề `join` để chỉ ra nguồn (nguồn bên phải join) sẽ kết nối với nguồn của `from` (nguồn bên trái join), tiếp theo chỉ ra sự dàng buộc các phần tử bằng từ khóa `on`
 
 ```C#
 var ketqua = from product in products
@@ -3373,11 +3380,11 @@ var ketqua = from product in products
              };
 ```
 
-_❗join trong C# là kiểu inner join (tức giá trị liên kết có ở cả 2 nguồn)_
+_❗`join` trong C# là kiểu `inner join` (tức giá trị liên kết có ở cả 2 nguồn)_
 
-**_Đọc thêm về join trong CTDL-SQL.txt_**
+**_Đọc thêm về [`join`](CSDL-SQL.md)_**
 
-- Nếu muốn sử dụng join như kiểu left join có nghĩa nguồn bên trái lấy không phụ thuộc vào bên phải thì lấy thêm DefaultIfEmpty() của nguồn bên trái
+Nếu muốn sử dụng `join` như kiểu `left join` có nghĩa nguồn bên trái lấy không phụ thuộc vào bên phải thì lấy thêm `DefaultIfEmpty()` của nguồn bên trái
 
 ```C#
 var ketqua = from product in products
