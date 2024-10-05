@@ -2167,34 +2167,34 @@ public class DataTooLongExeption : Exception
 }
 ```
 
-## Collection
+## 📚Collection
 
-Một collection (bộ, tập hợp) là một nhóm các đối tượng có sự liên quan đến nhau. Số đối tượng trong collect có thể thay đổi tăng giảm.
+Một **collection (bộ, tập hợp)** là một nhóm các đối tượng có sự liên quan đến nhau. Số đối tượng trong collect có thể thay đổi tăng giảm.
 
-Có nhiều loại collection, chúng được tập hợp vào namespace System.Collections. Thường thì một lớp collection có các phương thức để thêm, bớt, lấy tổng phần tử.
+Có nhiều loại collection, chúng được tập hợp vào `namespace System.Collections`. Thường thì một lớp collection có các phương thức để thêm, bớt, lấy tổng phần tử.
 
-Các lớp collection kiểu Generic như: List<T>, Dictionary<TKey, TValue>, Stack<T> ... những lớp generic này ở namespace System.Collections.Generic
+Các lớp collection kiểu `Generic` như: `List<T>`, `Dictionary<TKey, TValue>`, `Stack<T>`, ... những lớp generic này ở `namespace System.Collections.Generic`
 
-Các lớp collection mà không sử dụng generic như: ArrayList, Stack, Queue ...
+Các lớp collection mà không sử dụng generic như: `ArrayList`, `Stack`, `Queue`, ...
 
 Interface về collect
 
-| Tên                            | Ý nghĩa                                                                                                                                                                                |
-| ------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| IEnumerable<T>                 | Triển khai nó nếu muốn duyệt phần tử bằng foreach, nó định nghĩa phương thức GetEnumerator trả về một enumerator.                                                                      |
-| ICollection<T>                 | Giao diện này được triển khai bở các generic collection. Với nó lấy tổng phần tử bằng thuộc tính Count, copy các phần tử vào mảng bằng CopyTo, thêm bớt phần tử với Add, Remove, Clear |
-| IList<T>                       | Giao diện này kế thừa ICollection<T> là một danh sách các phần tử truy cập được theo vị trí của nó. Nó có indexer, phương thức để chèn phần tử xóa phần tử Insert RemoveAt.            |
-| ISet<T>                        | Giao diện triển khai bởi các tập hợp                                                                                                                                                   |
-| IDictionary<TKey,TValue>       | Giao diện để triển khai loại dữ liệu lưu trữ theo cặp key, value.                                                                                                                      |
-| ILookup<TKey,TValue>           | Giao diện để triển khai loại dữ liệu lưu trữ theo cặp key, value. Nhưng cho phép một key có nhiều giá trị                                                                              |
-| IComparer<TKey,TValue>         | Giao diện để triển khai cho phép so sánh để sắp xếp Collection                                                                                                                         |
-| IEqualityComparer<TKey,TValue> | Giao diện để triển khai cho phép so sánh bằng                                                                                                                                          |
+| Tên                            | Ý nghĩa                                                                                                                                                                                  |
+| ------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| IEnumerable<T>                 | Triển khai nó nếu muốn duyệt phần tử bằng `foreach`, nó định nghĩa phương thức `GetEnumerator` trả về một `enumerator`.                                                                  |
+| ICollection<T>                 | Giao diện này được triển khai bở các `generic collection`. Với nó lấy tổng phần tử bằng thuộc tính Count, copy các phần tử vào mảng bằng CopyTo, thêm bớt phần tử với Add, Remove, Clear |
+| IList<T>                       | Giao diện này kế thừa `ICollection<T>` là một danh sách các phần tử truy cập được theo vị trí của nó. Nó có indexer, phương thức để chèn phần tử xóa phần tử Insert RemoveAt.            |
+| ISet<T>                        | Giao diện triển khai bởi các tập hợp                                                                                                                                                     |
+| IDictionary<TKey,TValue>       | Giao diện để triển khai loại dữ liệu lưu trữ theo cặp `key`, `value`.                                                                                                                    |
+| ILookup<TKey,TValue>           | Giao diện để triển khai loại dữ liệu lưu trữ theo cặp `key`, `value`. Nhưng cho phép một `key` có nhiều giá trị                                                                          |
+| IComparer<TKey,TValue>         | Giao diện để triển khai cho phép so sánh để sắp xếp Collection                                                                                                                           |
+| IEqualityComparer<TKey,TValue> | Giao diện để triển khai cho phép so sánh bằng                                                                                                                                            |
 
-## List<T>
+## 📚List<T>
 
-Lớp collection List là lớp triển khai các giao diện IList, ICollection, IEnumerable nó quản lý danh sách các đối tượng cùng kiểu.
+Lớp `collection List` là lớp triển khai các giao diện `IList`, `ICollection`, `IEnumerable` nó quản lý danh sách các đối tượng cùng kiểu.
 
-Ví dụ, xây dựng danh sách các sản phẩm, sản phẩm có kiểu Product tự định nghĩa như sau - lớp sản phẩm hỗ trợ so sánh với sản phẩm khác nên triển khai IComparable, cho phép hiện lấy một chuỗi thông tin bằng ToString với định dạng nào đó nên triển khai giao diện IFormattable
+Ví dụ, xây dựng danh sách các sản phẩm, sản phẩm có kiểu Product tự định nghĩa như sau: lớp sản phẩm hỗ trợ so sánh với sản phẩm khác nên triển khai `IComparable`, cho phép hiện lấy một chuỗi thông tin bằng `ToString` với định dạng nào đó nên triển khai giao diện `IFormattable`
 
 ```C#
 using System;
@@ -2251,16 +2251,16 @@ namespace CS017_Generic
 }
 ```
 
-Khởi tạo
+### 📙Khởi tạo
 
-- Để khởi tạo một danh sách rỗng, dùng toán tử new
+Để khởi tạo một danh sách rỗng, dùng toán tử `new`
 
 ```C#
 var numbers = new List<int>(); // danh sách số nguyên
 var products = new List<Product>(); // danh sách Product
 ```
 
-- Khởi tạo danh sách có sẵn một số phần tử, thì các phần tử liệt kê sau {}
+Khởi tạo danh sách có sẵn một số phần tử, thì các phần tử liệt kê sau `{}`
 
 ```C#
 var numbers = new List<int>() { 1, 2, 3, 4 }; // khởi tạo 4 phần tử
@@ -2270,9 +2270,9 @@ new Product(1, "Iphone 6", 100, "Trung Quốc")
 };
 ```
 
-Thêm (thêm vào cuối)
+### 📙Thêm (thêm vào cuối)
 
-- Thêm 1 phần tử, dùng Add
+Thêm 1 phần tử, dùng `Add`
 
 ```C#
 var p = new Product(2, "IPhone 7", 200, "Trung Quốc");
@@ -2280,7 +2280,7 @@ products.Add(p); // Thêm p vào cuối List
 products.Add(new Product(3, "IPhone 8", 400, "Trung Quốc")); // thêm đối tượng mới vào cuối List
 ```
 
-- Thêm nhiều phần tử một lúc (mảng các phần tử), dùng AddRange
+Thêm nhiều phần tử một lúc (mảng các phần tử), dùng `AddRange`
 
 ```C#
 var arrayProducts = new Product[] // Mảng 2 phần tử
@@ -2291,24 +2291,24 @@ new Product(5, "Glaxy 8", 700, "Việt Nam"),
 products.AddRange(arrayProducts); // Nối các phần tử của mảng vào danh sách
 ```
 
-Chèn
+### 📙Chèn
 
-- Chèn thêm 1 hoặc nhiều phần tử vào vị trí bất kì, dùng Insert(index, object) hoặc InsertRange(index, arrayObject)
+Chèn thêm 1 hoặc nhiều phần tử vào vị trí bất kì, dùng `Insert(index, object)` hoặc `InsertRange(index, arrayObject)`
 
 ```C#
 products.Insert(3, new Product(6, "Macbook Pro", 1000, "Mỹ")); // chèn phần tử vào vị trí index 3, (thứ 4)
 ```
 
-Đọc
+### 📙Đọc
 
-- Đọc 1 phần tử, dùng indexer
+Đọc 1 phần tử, dùng indexer
 
 ```C#
 var pro = products[2]; // đọc phần tử có index = 2
 Console.WriteLine(pro.ToString());
 ```
 
-- Đọc nhiều phần tử (duyệt danh sách), dùng for - foreach
+Đọc nhiều phần tử (duyệt danh sách), dùng `for` - `foreach`
 
 ```C#
 // products.Count = lấy tổng phần tử trong List
@@ -2325,7 +2325,7 @@ foreach (var pi in products)
 }
 ```
 
-Xóa
+### 📙Xóa
 
 | Tên                       | Ý nghĩa                                            |
 | ------------------------- | -------------------------------------------------- |
@@ -2334,7 +2334,7 @@ Xóa
 | RemoveAll() hoặc Clear()  | Xóa toàn bộ danh sách                              |
 | Remove(object)            | Xóa 1 phần tử có tham chiếu cụ thể trong danh sách |
 
-Tìm kiếm
+### 📙Tìm kiếm
 
 | Tên                | Ý nghĩa                                                        |
 | ------------------ | -------------------------------------------------------------- |
@@ -2346,7 +2346,7 @@ Tìm kiếm
 | FindAll(Predicate) | Tìm kiếm trả về danh sách phần tử                              |
 | FindLast           | Tìm kiếm trả về phần tử cuối tìm thấy                          |
 
-- Tham số Predicate truyền vào Find, FindAll là delegate bool Predicate<in T>(T obj) trả về true là phần tử phù hợp trả về
+Tham số `Predicate` truyền vào `Find`, `FindAll` là delegate `bool Predicate<in T>(T obj)` trả về true là phần tử phù hợp trả về
 
 ```C#
 // Delegate trả về true khi tên bằng "Glaxy 8"
@@ -2369,7 +2369,7 @@ var ifound = products.FindIndex(x => x.Origin == "Trung Quốc");
 List<Product> p_100 = products.FindAll(product => product.Price > 100)
 ```
 
-- Muốn tùy biến cao hơn Delegate, để tìm kiếm theo tham số tùy chọn, có thể để Delegate trên vào lớp chức năng
+Muốn tùy biến cao hơn Delegate, để tìm kiếm theo tham số tùy chọn, có thể để Delegate trên vào lớp chức năng
 
 ```C#
 public class SearchNameProduct
@@ -2393,15 +2393,15 @@ Product pr1 = products.Find((new SearchNameProduct("Glaxy 8")).search); // Tìm 
 Product pr2 = products.Find((new SearchNameProduct("IPhone 6")).search); // Tìm sản phẩm có tên IPhone 6
 ```
 
-Sắp xếp
+### 📙Sắp xếp
 
-- Để sắp xếp các phần tử trong danh sách, nếu phần tử đó có triển khai giao diện IComparable thì chỉ việc gọi Sort() để có danh sách theo thứ tự.
+Để sắp xếp các phần tử trong danh sách, nếu phần tử đó có triển khai giao diện `IComparable` thì chỉ việc gọi `Sort()` để có danh sách theo thứ tự.
 
 ```C#
 products.Sort();
 ```
 
-- Có thể tùy biến cách thức sắp xếp bằng cách cung cấp hàm callback dạng deleage hai tham số kiểu cùng với kiểu phần tử cho Search
+Có thể tùy biến cách thức sắp xếp bằng cách cung cấp hàm callback dạng deleage hai tham số kiểu cùng với kiểu phần tử cho `Search`
 
 ```C#
 products.Sort(
@@ -2418,7 +2418,7 @@ products.Sort(
 
 _❗Trả về > 0 thì phần tử hiện tại xếp sau phần tử tham số_
 
-1 số thuộc tính khác
+### 📙1 số thuộc tính khác
 
 | Tên           | Ý nghĩa                      |
 | ------------- | ---------------------------- |
@@ -2426,20 +2426,20 @@ _❗Trả về > 0 thì phần tử hiện tại xếp sau phần tử tham số
 | Reverse()     | đảo thứ tự danh sách         |
 | ToArray()     | copy các phần tử ra mảng     |
 
-## SortedList
+## 📚SortedList
 
-Lớp SortedList<TKey, TValue> sắp xếp dữ liệu dựa trên một key, kiểu đề làm key là bất kỳ.
+Lớp `SortedList<TKey, TValue>` sắp xếp dữ liệu dựa trên một `key`, kiểu đề làm `key` là bất kỳ.
 
-SortedList được định nghĩa ở namespace: System.Collections. Để sử dụng cần nạp
+`SortedList` được định nghĩa ở namespace: `System.Collections`. Để sử dụng cần nạp
 
 ```C#
 using System.Collections;
 using System.Collections.Generic;
 ```
 
-Một đối tượng dữ liệu lưu vào SortedList dưới dạng cặp key/value, truy cập đến phần tử thông qua key hoặc thông qua vị trí (index) của dữ liệu trong danh sách
+Một đối tượng dữ liệu lưu vào `SortedList` dưới dạng cặp key/value, truy cập đến phần tử thông qua key hoặc thông qua vị trí (index) của dữ liệu trong danh sách
 
-Thuộc tính, phương thức
+### 📙Thuộc tính, phương thức
 
 | Tên                 | Ý nghĩa                                                 |
 | ------------------- | ------------------------------------------------------- |
@@ -2490,13 +2490,13 @@ foreach (var product_name in products.Keys)
 }
 ```
 
-## Queue
+## 📚Queue
 
-Hàng đợi là mô hình FIFO (first in, first out - vào trước, ra trước hay đến trước được phục vụ trước)
+**Hàng đợi** là mô hình FIFO (first in, first out - vào trước, ra trước hay đến trước được phục vụ trước)
 
-.NET cung cấp lớp Queue<T> để giả quyết giải thuật hàng đợi
+.NET cung cấp lớp `Queue<T>` để giả quyết giải thuật hàng đợi
 
-Thuộc tính, phương thức
+### 📙Thuộc tính, phương thức
 
 | Tên     | Ý nghĩa                                                                           |
 | ------- | --------------------------------------------------------------------------------- |
@@ -2524,13 +2524,13 @@ while (hoso_canxuly.Count > 0)
 // Xử lý Hồ sơ C, còn lại 0
 ```
 
-## Stack
+## 📚Stack
 
-Ngăn xếp là mô hình LIFO (last in, first out - vào sau thì ra trước)
+**Ngăn xếp** là mô hình LIFO (last in, first out - vào sau thì ra trước)
 
 .NET nó cung cấp lớp Stack<T> để thực hiện giải thuật ngăn xếp
 
-Thuộc tính, phương thức
+### 📙Thuộc tính, phương thức
 
 | Tên      | Ý nghĩa                                       |
 | -------- | --------------------------------------------- |
@@ -2559,15 +2559,15 @@ while (hoso_canxuly.Count > 0)
 // Bốc dỡ Sản phẩm A / còn lại 0
 ```
 
-## LinkedList
+## 📚LinkedList
 
-.NET cung cấp lớp LinkedList<T> là loại danh sách liên kết kép (từ đây gọi tắt là danh sách liên kết)
+.NET cung cấp lớp `LinkedList<T>` là loại danh sách liên kết kép (từ đây gọi tắt là danh sách liên kết)
 
 Danh sách liên kết là một danh sách chứa các phần tử, mỗi phần tử trong loại danh sách này được gọi là một nút (Node). Mỗi nút ngoài dữ liệu của nút đó, nó sẽ gồm hai biến - một biến tham chiếu đến Node phía trước, một nút tham chiếu đến nút phía sau.
 
 _❗Danh sách liên kết .NET sử dụng là loại danh sách liên kết đôi_
 
-Thuộc tính, phương thức
+### 📙Thuộc tính, phương thức
 
 | Tên                | Ý nghĩa                                                                              |
 | ------------------ | ------------------------------------------------------------------------------------ |
