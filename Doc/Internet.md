@@ -1322,13 +1322,265 @@ Tăng hiệu suất: Đảm bảo tốc độ truyền phù hợp với khả n�
 
 ## 📚Điều khiển tắc nghẽn (Congestion Control)
 
+**Điều khiển tắc nghẽn (Congestion Control)** là một cơ chế quan trọng trong việc quản lý lưu lượng mạng nhằm tránh hiện tượng **tắc nghẽn (congestion)** khi có quá nhiều dữ liệu lưu thông trong mạng, vượt quá khả năng xử lý của các thiết bị hoặc các liên kết mạng. Nếu không có điều khiển tắc nghẽn, tình trạng tắc nghẽn có thể dẫn đến việc mất gói tin, truyền lại dữ liệu không cần thiết, làm giảm hiệu suất và độ tin cậy của mạng.
+
+### 📙Nguyên nhân gây tắc nghẽn
+
+Quá nhiều thiết bị truyền dữ liệu đồng thời: Khi nhiều thiết bị trong mạng cùng gửi dữ liệu đến một nút mạng, nếu tốc độ truyền dữ liệu vượt quá khả năng xử lý của nút, sẽ xảy ra tắc nghẽn.
+
+Băng thông hạn chế: Băng thông của liên kết giữa các nút mạng không đủ để truyền lượng dữ liệu lớn, gây ra hàng đợi và mất gói tin.
+
+Bộ đệm (Buffer) đầy: Các router và switch sử dụng bộ đệm để lưu trữ tạm thời các gói tin, nhưng khi bộ đệm bị đầy, các gói tin sẽ bị loại bỏ hoặc phải chờ, gây ra độ trễ.
+
+### 📙Congestion Control trong TCP
+
+Slow Start (Khởi đầu chậm)
+
+- Khi một kết nối TCP mới bắt đầu, nó không biết rõ dung lượng của mạng và tốc độ truyền tải tối ưu. Do đó, TCP bắt đầu truyền dữ liệu ở mức rất thấp.
+
+- Kích thước cửa sổ cwnd (Congestion Window) sẽ tăng dần theo thời gian. Cứ sau mỗi lần nhận được ACK, kích thước cửa sổ sẽ tăng gấp đôi. Quá trình này tiếp tục cho đến khi xảy ra mất gói tin hoặc đạt tới một ngưỡng nhất định.
+
+- Mục tiêu của Slow Start là để tránh tình trạng tắc nghẽn từ ban đầu, khi máy gửi chưa biết khả năng của mạng.
+
+Congestion Avoidance (Tránh tắc nghẽn)
+
+- Khi kích thước cửa sổ đạt tới một mức ngưỡng nhất định (threshold), thay vì tiếp tục tăng gấp đôi, TCP sẽ chỉ tăng kích thước cửa sổ một cách tuyến tính. Điều này giúp giảm tốc độ tăng trưởng của lượng dữ liệu được gửi đi, tránh gây tắc nghẽn.
+
+- Khi tắc nghẽn xảy ra, TCP sẽ giảm kích thước cửa sổ để phù hợp với dung lượng thực tế của mạng.
+
+Fast Retransmit (Truyền lại nhanh)
+
+- Nếu máy nhận phát hiện rằng một gói tin đã bị mất (ví dụ không nhận được ACK sau một khoảng thời gian), nó sẽ gửi ngay một yêu cầu truyền lại (Duplicate ACK).
+
+- Thay vì chờ đợi một khoảng thời gian dài để phát hiện mất gói tin (Timeout), Fast Retransmit cho phép truyền lại ngay lập tức khi phát hiện tắc nghẽn.
+
+Fast Recovery (Phục hồi nhanh)
+
+- Sau khi máy gửi nhận được một tín hiệu mất gói tin (Duplicate ACK), thay vì giảm cửa sổ quá mạnh, TCP chỉ giảm một nửa kích thước cửa sổ và tiếp tục truyền dữ liệu.
+
+- Điều này giúp phục hồi nhanh hơn sau tắc nghẽn mà không phải khởi động lại từ đầu (như trong Slow Start).
+
+### 📙RED (Random Early Detection)
+
+**RED** là một kỹ thuật điều khiển tắc nghẽn được sử dụng tại các nút mạng (như router) để phát hiện và xử lý tắc nghẽn sớm trước khi bộ đệm đầy.
+
+- Khi bộ đệm của router bắt đầu đầy, RED sẽ ngẫu nhiên loại bỏ (drop) một số gói tin trước khi tắc nghẽn xảy ra.
+
+- Khi phát hiện có nguy cơ tắc nghẽn, router sẽ gửi tín hiệu cho các thiết bị gửi dữ liệu để yêu cầu chúng giảm tốc độ truyền.
+
+- RED ngăn chặn tình trạng tắc nghẽn xảy ra một cách đột ngột bằng cách giảm tốc độ truyền dữ liệu dần dần.
+
+### 📙Congestion Window (Cwnd) và Receive Window (Rwnd)
+
+Sự kết hợp giữa **Cwnd** và **Rwnd** giúp điều chỉnh lưu lượng dữ liệu, đảm bảo máy gửi và nhận không quá tải mạng hoặc bộ đệm.
+
+- **Cwnd**: Đây là cửa sổ tắc nghẽn, do máy gửi quản lý. Nó xác định số lượng dữ liệu mà máy gửi có thể gửi đi mà không phải chờ xác nhận (ACK) từ máy nhận. Cwnd thay đổi tùy thuộc vào mức độ tắc nghẽn trong mạng.
+
+- **Rwnd**: Cửa sổ nhận, do máy nhận quản lý. Nó thông báo cho máy gửi biết dung lượng bộ đệm hiện tại của nó, để đảm bảo máy gửi không truyền quá nhiều dữ liệu cùng lúc.
+
+### 📙Các giai đoạn của điều khiển tắc nghẽn trong TCP
+
+**Điều khiển tắc nghẽn (Congestion Control)** là một phần quan trọng của các giao thức mạng, đặc biệt là **TCP**, giúp đảm bảo rằng dữ liệu được truyền một cách hiệu quả mà không gây quá tải cho mạng.
+
+- Slow Start: Bắt đầu truyền tải với tốc độ chậm, tăng tốc dần dần.
+
+- Congestion Avoidance: Khi đạt đến một mức ngưỡng, tốc độ truyền tải được tăng một cách tuyến tính để tránh tắc nghẽn.
+
+- Fast Retransmit: Truyền lại nhanh khi phát hiện mất gói tin mà không cần chờ hết thời gian timeout.
+
+- Fast Recovery: Giảm nhẹ tốc độ truyền tải sau khi phát hiện tắc nghẽn, nhưng không giảm quá mạnh như trong Slow Start.
+
 ## 📚Truyền dữ liệu đáng tin cậy
 
-### 📙Giao thức ARQ (Automatic Repeat Request)
+Trong các mạng truyền thông, dữ liệu có thể bị lỗi hoặc mất mát do nhiều nguyên nhân, chẳng hạn như nhiễu trong mạng không dây, độ trễ, hay quá tải tại các nút mạng. Để đảm bảo tính toàn vẹn của dữ liệu, các hệ thống mạng sử dụng các cơ chế để phát hiện lỗi, truyền lại dữ liệu bị mất, và xác nhận dữ liệu đã nhận thành công.
+
+Các yếu tố chính của truyền dữ liệu đáng tin cậy:
+
+- **Xác nhận (Acknowledgment - ACK)**: Máy nhận gửi tín hiệu xác nhận rằng dữ liệu đã được nhận chính xác.
+
+- **Kiểm tra lỗi (Error Detection)**: Sử dụng các phương pháp như **checksum** hoặc **CRC (Cyclic Redundancy Check)** để phát hiện các lỗi xảy ra trong quá trình truyền.
+
+- **Truyền lại (Retransmission)**: Nếu dữ liệu bị mất hoặc có lỗi, máy gửi sẽ truyền lại các gói tin cần thiết.
+
+## 📚Giao thức ARQ (Automatic Repeat Request)
+
+**ARQ (Automatic Repeat Request)** là một loại giao thức kiểm soát lỗi sử dụng cho truyền dữ liệu đáng tin cậy. ARQ kết hợp giữa việc phát hiện lỗi và yêu cầu truyền lại gói tin nếu phát hiện thấy lỗi. Trong giao thức ARQ, nếu máy nhận phát hiện lỗi trong một gói tin hoặc không nhận được gói tin, nó sẽ yêu cầu máy gửi gửi lại gói tin đó.
+
+### 📙Stop-and-Wait ARQ
+
+**Stop-and-Wait ARQ** là phiên bản đơn giản nhất của ARQ. Trong giao thức này, máy gửi sẽ gửi một gói dữ liệu và chờ nhận ACK từ máy nhận trước khi gửi gói tiếp theo.
+
+Cách thức hoạt động:
+- Máy gửi gửi một gói dữ liệu.
+
+- Sau khi gửi, máy gửi dừng lại và chờ nhận tín hiệu ACK từ máy nhận.
+
+- Nếu máy gửi nhận được ACK, nó sẽ tiếp tục gửi gói tin tiếp theo.
+
+- Nếu không nhận được ACK sau một khoảng thời gian xác định (timeout), máy gửi sẽ truyền 
+
+- lại gói dữ liệu đó.
+
+Ưu điểm:
+- Đơn giản: Giao thức này dễ hiểu và dễ triển khai.
+
+Nhược điểm:
+- Hiệu suất thấp: Máy gửi phải chờ ACK sau mỗi gói tin, gây lãng phí thời gian và băng thông.
+
+### 📙Go-Back-N ARQ
+
+**Go-Back-N ARQ** cải tiến hiệu suất của Stop-and-Wait bằng cách cho phép máy gửi truyền nhiều gói tin liên tiếp mà không cần chờ ACK cho mỗi gói tin. Tuy nhiên, nếu một gói tin bị mất hoặc có lỗi, máy gửi sẽ phải truyền lại tất cả các gói tin từ gói tin bị lỗi đó.
+
+Cách thức hoạt động:
+- Máy gửi có thể gửi nhiều gói tin liên tiếp, được xác định bởi một giá trị gọi là cửa sổ (window size).
+
+- Máy gửi không cần chờ ACK cho mỗi gói tin, nhưng nếu một gói tin bị mất, máy nhận sẽ bỏ qua các gói tin sau đó.
+
+- Nếu máy nhận phát hiện một gói tin bị mất hoặc có lỗi, nó sẽ yêu cầu máy gửi truyền lại gói tin đó và các gói tin sau nó (Go-Back-N).
+
+Ưu điểm:
+- Hiệu suất cao hơn Stop-and-Wait: Cho phép gửi nhiều gói tin liên tiếp, không cần chờ ACK sau mỗi gói.
+
+Nhược điểm:
+- Lãng phí tài nguyên: Nếu có lỗi xảy ra ở một gói tin, tất cả các gói tin tiếp theo đều phải truyền lại, ngay cả khi các gói đó đã được gửi đúng.
+
+### 📙Selective Repeat ARQ
+
+**Selective Repeat ARQ** là phiên bản nâng cao của Go-Back-N ARQ, giúp tối ưu hơn bằng cách chỉ truyền lại những gói tin bị mất hoặc có lỗi, thay vì truyền lại tất cả các gói sau gói lỗi.
+
+Cách thức hoạt động:
+- Máy gửi truyền nhiều gói tin liên tiếp.
+
+- Máy nhận sẽ chỉ yêu cầu truyền lại các gói tin bị mất hoặc có lỗi.
+
+- Máy gửi sẽ truyền lại những gói tin cụ thể bị yêu cầu, không phải toàn bộ chuỗi gói tin.
+
+Ưu điểm:
+- Hiệu suất tối ưu: Chỉ những gói tin bị lỗi hoặc mất mới cần truyền lại, giảm lãng phí tài nguyên.
+
+- Tốc độ nhanh hơn Go-Back-N: Không cần truyền lại tất cả các gói sau gói bị mất, giúp tối ưu băng thông.
+
+Nhược điểm:
+- Phức tạp hơn: Cần quản lý và theo dõi nhiều gói tin khác nhau cùng một lúc.
+
+### 📙So sánh các giao thức ARQ
+| Giao thức            | Cách hoạt động                                                | Ưu điểm                          | Nhược điểm                           |
+| -------------------- | ------------------------------------------------------------- | -------------------------------- | ------------------------------------ |
+| Stop-and-Wait ARQ    | Gửi một gói, chờ ACK, rồi gửi tiếp                            | Đơn giản                         | Hiệu suất thấp                       |
+| Go-Back-N ARQ        | Gửi nhiều gói liên tiếp, nếu lỗi thì truyền lại từ gói bị lỗi | Hiệu suất cao hơn Stop-and-Wait  | Truyền lại nhiều gói không cần thiết |
+| Selective Repeat ARQ | Chỉ truyền lại gói tin bị mất hoặc lỗi                        | Tối ưu băng thông, hiệu suất cao | Phức tạp hơn trong việc quản lý      |
 
 ## 📚Giao thức UDP (User Datagram Protocol)
 
+**UDP** là một giao thức **không kết nối** và **không đảm bảo** (unreliable), nghĩa là nó không cung cấp cơ chế xác nhận, điều khiển lưu lượng, hay truyền lại dữ liệu nếu xảy ra mất gói. Do đó, UDP thường được sử dụng cho các ứng dụng yêu cầu tốc độ truyền tải nhanh hơn là độ tin cậy.
+
+### 📙Đặc điểm
+
+Không kết nối (Connectionless):
+- UDP không thiết lập kết nối giữa hai máy trước khi truyền dữ liệu, mỗi gói tin (datagram) được gửi độc lập.
+
+- Điều này có nghĩa là các gói tin có thể đến đích theo thứ tự bất kỳ hoặc thậm chí không đến được đích mà không có cơ chế nào để phát hiện hoặc khắc phục điều đó.
+
+Không đảm bảo tính toàn vẹn dữ liệu (Unreliable):
+- UDP không cung cấp bất kỳ sự đảm bảo nào rằng dữ liệu sẽ được nhận chính xác. Không có cơ chế xác nhận (ACK), kiểm soát lỗi hay truyền lại gói tin bị mất.
+
+- Nếu một gói tin bị mất hoặc bị lỗi trong quá trình truyền, nó sẽ không được truyền lại.
+
+Không phân đoạn và tái lắp ráp (No Segmentation and Reassembly):
+- UDP không phân đoạn các gói tin lớn thành các mảnh nhỏ. Nếu dữ liệu quá lớn để phù hợp với một gói tin, nó sẽ được xử lý bởi tầng dưới hoặc bị loại bỏ.
+
+Tốc độ cao, độ trễ thấp:
+- Vì không có cơ chế kiểm tra và xác nhận gói tin, UDP nhanh hơn TCP. Độ trễ của UDP thường rất thấp, làm cho nó phù hợp với các ứng dụng thời gian thực như truyền phát video, âm thanh, và các ứng dụng game trực tuyến.
+
+### 📙Cấu trúc của gói UDP
+
+Mỗi gói tin UDP có cấu trúc rất đơn giản, với phần tiêu đề (header) chỉ chứa 8 byte. Cấu trúc bao gồm:
+- Source Port (2 byte): Cổng nguồn.
+- Destination Port (2 byte): Cổng đích.
+- Length (2 byte): Độ dài của toàn bộ gói tin (bao gồm cả tiêu đề và dữ liệu).
+- Checksum (2 byte): Kiểm tra lỗi cho gói tin (tùy chọn).
+
+Phần dữ liệu (payload) sẽ theo sau tiêu đề, chứa nội dung cần truyền tải.
+
+### 📙Ứng dụng
+
+Do tính chất không kết nối và không đảm bảo của UDP, nó thường được sử dụng trong các ứng dụng yêu cầu tốc độ truyền nhanh, ít phụ thuộc vào việc gói tin bị mất hoặc thứ tự của các gói tin. Một số ứng dụng phổ biến của UDP bao gồm:
+
+- Truyền phát video và âm thanh trực tuyến (Streaming Media)
+
+- Truyền phát dữ liệu thời gian thực (Real-time data streaming)
+
+- Game trực tuyến (Online Gaming)
+
+- Domain Name System (DNS)
+
+- Truyền phát các file nhỏ hoặc các đoạn dữ liệu đơn giản
+
 ## 📚Giao thức TCP (Transmission Control Protocol)
+
+**TCP** được thiết kế để cung cấp **truyền tải dữ liệu đáng tin cậy**, **tuần tự**, và có cơ chế **điều khiển lưu lượng** và **điều khiển tắc nghẽn**. Giao thức này được sử dụng cho các ứng dụng yêu cầu độ tin cậy cao, như truyền tải tập tin, email, và duyệt web.
+
+### 📙Đặc điểm chính của TCP
+
+Kết nối (Connection-Oriented):
+- TCP yêu cầu thiết lập một kết nối trước khi bắt đầu truyền dữ liệu giữa hai thiết bị. Kết nối này được duy trì trong suốt quá trình truyền và chỉ được giải phóng khi hoàn tất. Điều này đảm bảo rằng hai thiết bị có thể trao đổi dữ liệu một cách có tổ chức và đáng tin cậy.
+
+Truyền dữ liệu đáng tin cậy (Reliable Data Transfer):
+- TCP đảm bảo rằng tất cả các gói dữ liệu được truyền đi đều đến đích, và các gói này đến đúng thứ tự. Nếu có gói tin bị mất, TCP sẽ truyền lại gói tin đó. Điều này được thực hiện thông qua cơ chế **ACK (Acknowledgment)** và **Retransmission (truyền lại)**.
+
+Điều khiển lưu lượng (Flow Control):
+- TCP sử dụng cơ chế điều khiển lưu lượng để đảm bảo rằng máy gửi không gửi quá nhiều dữ liệu cùng một lúc mà máy nhận không thể xử lý kịp. Cơ chế này giúp tránh tình trạng máy nhận bị quá tải, gây mất mát dữ liệu.
+
+Điều khiển tắc nghẽn (Congestion Control):
+- TCP có cơ chế phát hiện và điều chỉnh tốc độ truyền dữ liệu dựa trên điều kiện của mạng (như tắc nghẽn mạng). Khi phát hiện có tắc nghẽn, TCP sẽ giảm tốc độ truyền để tránh gây thêm quá tải cho mạng.
+
+Truyền dữ liệu theo luồng (Stream-Oriented):
+- TCP là một giao thức hướng luồng, nghĩa là dữ liệu được truyền dưới dạng một luồng byte liên tục thay vì các gói dữ liệu rời rạc như UDP. Điều này giúp TCP có thể đảm bảo rằng dữ liệu được gửi và nhận theo đúng thứ tự.
+
+### 📙Cấu trúc của gói TCP
+Mỗi gói TCP có một phần tiêu đề (header) khá phức tạp, bao gồm các trường giúp điều khiển và quản lý truyền dữ liệu:
+
+- Source Port (2 byte): Cổng nguồn.
+- Destination Port (2 byte): Cổng đích.
+- Sequence Number (4 byte): Số thứ tự của byte đầu tiên trong gói tin hiện tại.
+- Acknowledgment Number (4 byte): Số thứ tự của byte tiếp theo mà máy nhận mong đợi.
+- Data Offset (4 bit): Độ dài của phần tiêu đề.
+- Flags (6 bit): Các cờ điều khiển, như SYN (đồng bộ hóa), ACK (xác nhận), FIN (kết thúc).
+- Window Size (2 byte): Kích thước cửa sổ nhận, dùng để điều khiển lưu lượng.
+- Checksum (2 byte): Kiểm tra lỗi.
+- Urgent Pointer (2 byte): Chỉ định dữ liệu khẩn cấp.
+
+### 📙Three-Way Handshake
+
+Để thiết lập một kết nối TCP giữa hai thiết bị, quá trình **Three-Way Handshake (bắt tay ba bước)** được sử dụng. Đây là quá trình mà hai thiết bị (máy gửi và máy nhận) đồng ý về các thông số và đồng bộ hóa các trình tự số trước khi truyền dữ liệu.
+
+Các bước trong Three-Way Handshake:
+- SYN (Synchronize): Máy gửi gửi một gói tin SYN đến máy nhận, đề xuất thiết lập kết nối và cung cấp số thứ tự ban đầu (Initial Sequence Number - ISN).
+
+- SYN-ACK (SYN Acknowledgment): Máy nhận đáp lại bằng cách gửi một gói SYN-ACK, trong đó SYN là đồng bộ hóa từ máy nhận và ACK là sự xác nhận gói SYN từ máy gửi.
+
+- ACK (Acknowledgment): Máy gửi gửi một gói ACK cuối cùng để xác nhận nhận được SYN-ACK từ máy nhận. Kết nối TCP được thiết lập thành công và quá trình truyền dữ liệu có thể bắt đầu.
+
+Quá trình kết thúc kết nối TCP yêu cầu **Four-Way Handshake (bắt tay bốn bước)**, trong đó cả hai bên đồng ý đóng kết nối.
+
+### 📙Ứng dụng sử dụng TCP
+Do tính chất đảm bảo và tin cậy, TCP được sử dụng trong các ứng dụng mà việc truyền tải chính xác và đầy đủ dữ liệu là rất quan trọng. Một số ứng dụng điển hình sử dụng TCP bao gồm:
+
+- HTTP/HTTPS: Giao thức truyền tải web, đảm bảo các trang web và tài nguyên được tải chính xác.
+- FTP (File Transfer Protocol): Truyền tải các tệp lớn qua mạng.
+- SMTP (Simple Mail Transfer Protocol): Giao thức gửi email, đảm bảo email được gửi đi chính xác.
+- POP3 và IMAP: Giao thức nhận email.
+
+## 📚So sánh giữa TCP và UDP
+| Tính chất                                 | TCP (Transmission Control Protocol)      | UDP (User Datagram Protocol)     |
+| ----------------------------------------- | ---------------------------------------- | -------------------------------- |
+| Kết nối (Connection)                      | Có kết nối (Connection-oriented)         | Không kết nối (Connectionless)   |
+| Đảm bảo (Reliability)                     | Đảm bảo (Reliable)                       | Không đảm bảo (Unreliable)       |
+| Thứ tự gói tin (Ordering)                 | Đảm bảo thứ tự gói tin                   | Không đảm bảo thứ tự gói tin     |
+| Truyền lại gói tin                        | Có cơ chế truyền lại gói tin bị mất      | Không có cơ chế truyền lại       |
+| Điều khiển lưu lượng (Flow Control)       | Có                                       | Không có                         |
+| Điều khiển tắc nghẽn (Congestion Control) | Có                                       | Không có                         |
+| Ứng dụng chính                            | Giao dịch dữ liệu quan trọng, email, web | Truyền phát thời gian thực, game |
 
 ---
 ---
