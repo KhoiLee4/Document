@@ -12,7 +12,7 @@
 
 ## Vùng dữ liệu
 
-![alt text](../Image/areas.png)
+![alt text](../Image/GitHub_001.png)
 
 **Working directory**: nơi chứa thư mục để làm việc, chỉnh sửa
 
@@ -22,7 +22,7 @@
 
 ## Các trạng thái hoạt động của file
 
-![alt text](../Image/git002.png)
+![alt text](../Image/GitHub_002.png)
 
 **Untracked**: không được git theo dõi
 

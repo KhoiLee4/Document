@@ -1897,7 +1897,7 @@ Canvas sử dụng lưới tọa độ 2 chiều, với góc trái phía trên l
 - `X` : tọa độ theo phương ngang, tăng từ trái sang phải
 - `Y` : tọa độ theo phương đứng, tăng từ trên xuống dưới
 
-![alt text](../Image/toadocanvas.jpg)
+![alt text](../Image/HTML_001.jpg)
 
 ### Hình chữ nhật
 

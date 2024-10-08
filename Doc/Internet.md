@@ -83,7 +83,7 @@ Chức năng chính:
 
 Trong một mạng lớn (như mạng Internet hoặc mạng của một nhà cung cấp dịch vụ), người dùng cuối kết nối tới mạng thông qua các thiết bị biên. Dữ liệu từ các thiết bị này được mạng biên xử lý sơ bộ và sau đó chuyển tới mạng lõi để định tuyến và xử lý sâu hơn.
 
-![alt text](../Image/core_and_edge_network.jpg)
+![alt text](../Image/Internet_001.jpg)
 
 ### 📙Edge Computing
 

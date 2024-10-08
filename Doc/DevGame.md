@@ -1,3 +1,125 @@
 # Unity
 
+## Unity Hub là gì? 
+
+**Unity Hub** là một ứng dụng độc lập giúp đơn giản hóa cách bạn điều hướng, tải xuống và quản lý các dự án và cài đặt Unity của mình.
+
+## Unity Editor là gì?
+
+Từ Hub, bạn sẽ tải xuống và quản lý nhiều phiên bản khác nhau của Unity Editor. **Unity Editor** là ứng dụng nơi bạn sẽ xây dựng thế giới 3D hoặc 2D và tạo các ứng dụng tương tác của mình.
+
+## Project Window
+
+**Cửa sổ Project** là nơi có thể tìm thấy tất cả các files (assets) có sẵn để sử dụng trong dự án, cho dù có sử dụng chúng hay không. Cửa sổ Project hoạt động giống như trình khám phá tệp, được sắp xếp theo thư mục.
+
+*❗Lưu ý: Nếu bạn không thấy thanh trượt, hãy chọn menu **More (⋮)** của cửa sổ Project và chọn **Two-column layout**.*
+
+## Hierarchy Window
+
+**Cửa sổ Hierarchy** là nơi sắp xếp mọi thứ trong thế giới trò chơi. Những thứ này được gọi là **GameObject**.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
