@@ -2875,44 +2875,44 @@ public class WriteData : IDisposable
 
 ## File
 
-DriveInfo (đọc thông tin ổ đĩa)
+### 📙DriveInfo (đọc thông tin ổ đĩa)
 
-- Thư viện .NET cung cấp lớp DriveInfo tại namespace System.IO giúp đọc thông tin các ổ đĩa có trong hệ thống
+Thư viện .NET cung cấp lớp `DriveInfo` tại namespace `System.IO` giúp đọc thông tin các ổ đĩa có trong hệ thống
 
-- Phương thức DriveInfo.GetDrives() trả về mảng gồm các đối tượng DriveInfo, mỗi đối tượng chứa thông tin về một ổ đĩa
+Phương thức `DriveInfo.GetDrives()` trả về mảng gồm các đối tượng `DriveInfo`, mỗi đối tượng chứa thông tin về một ổ đĩa
 
-- Thuộc tính
+Thuộc tính
 
   | Tên                | Ý nghĩa                                                                                                 |
   | ------------------ | ------------------------------------------------------------------------------------------------------- |
   | IsReady            | true ổ đĩa ở trạng thái sẵn sàng (hoạt động) - ví dụ ổ đĩa CD nếu không có đĩa thì không sẵn sàng false |
-  | DriveType          | kiểu ổ đĩa (System.IO.DriveType) : CDRom, Fixed, Network, NoRootDirectory, Ram, Removable, Unknown      |
+  | DriveType          | kiểu ổ đĩa (`System.IO.DriveType`) : CDRom, Fixed, Network, NoRootDirectory, Ram, Removable, Unknown      |
   | VolumeLabel        | Nhãn đĩa                                                                                                |
   | DriveFormat        | Chuỗi cho biết định dạng đĩa: NTFS, FAT32, FAT, devfs ...                                               |
   | AvailableFreeSpace | Số byte có hiệu lực còn trống (theo hạn ngạch người dùng)                                               |
   | TotalFreeSpace     | Số byte còn trống                                                                                       |
   | TotalSize          | Tổng số byte trên đĩa                                                                                   |
 
-Path (hỗ trợ làm việc với đường dẫn)
+### 📙Path (hỗ trợ làm việc với đường dẫn)
 
-- Hỗ trợ quản lý, tạo các đường dẫn đến file, thư mục - nhất là hỗ trợ cross-platform (đa nền tảng) thì lớp tĩnh System.IO.Path chứa các phương thức (tĩnh) với mục đích đó
+Hỗ trợ quản lý, tạo các đường dẫn đến file, thư mục - nhất là hỗ trợ **cross-platform (đa nền tảng)** thì lớp tĩnh `System.IO.Path` chứa các phương thức (tĩnh) với mục đích đó
 
-- Thuộc tính, phương thức
+Thuộc tính, phương thức
 
   | Tên                         | Ý nghĩa                                                                                                                       |
   | --------------------------- | ----------------------------------------------------------------------------------------------------------------------------- |
   | Path.DirectorySeparatorChar | Thuộc tính chứa ký tự phân cách đường dẫn thư mục (\ trên Windows, / trên \*nix)                                              |
   | Path.PathSeparator          | Thuộc tính chứa ký tự phân chia thư mục trong biến môi trường                                                                 |
-  | Combine                     | Kết hợp các chuỗi thành dường dẫn : var path = Path.Combine("home", "ReadMe.txt"); // "home/ReadMe.txt"                       |
-  | ChangeExtension             | Thay đổi phần mở rộng của đường dẫn : var path = Path.ChangeExtension("/home/abc/ReadMe.txt", "md"); // "/home/abc/ReadMe.md" |
-  | GetDirectoryName            | Lấy đường dẫn đến file (thư mục) : var path = Path.GetDirectoryName("/home/abc/zyz/ReadMe.txt"); // "/home/abc/zyz"           |
-  | GetExtension                | Lấy phần mở rộng : var path = Path.GetExtension("/home/ReadMe.txt"); // ".txt"                                                |
-  | GetFileName                 | Lấy tên file : var path = Path.GetFileName("/home/abc/ReadMe.txt"); // "ReadMe.txt"                                           |
-  | GetFileNameWithoutExtension | Lấy tên file : var path = Path.GetFileNameWithoutExtension("/home/ReadMe.txt"); // "ReadMe"                                   |
-  | GetFullPath                 | Lấy đường dẫn đầy đủ - từ đường dẫn tương đối : var path = Path.GetFullPath("ReadMe.txt");                                    |
+  | Combine                     | Kết hợp các chuỗi thành dường dẫn : `var path = Path.Combine("home", "ReadMe.txt");` // "home/ReadMe.txt"                       |
+  | ChangeExtension             | Thay đổi phần mở rộng của đường dẫn : `var path = Path.ChangeExtension("/home/abc/ReadMe.txt", "md");` // "/home/abc/ReadMe.md" |
+  | GetDirectoryName            | Lấy đường dẫn đến file (thư mục) : `var path = Path.GetDirectoryName("/home/abc/zyz/ReadMe.txt");` // "/home/abc/zyz"           |
+  | GetExtension                | Lấy phần mở rộng : `var path = Path.GetExtension("/home/ReadMe.txt");` // ".txt"                                                |
+  | GetFileName                 | Lấy tên file : `var path = Path.GetFileName("/home/abc/ReadMe.txt");` // "ReadMe.txt"                                           |
+  | GetFileNameWithoutExtension | Lấy tên file : `var path = Path.GetFileNameWithoutExtension("/home/ReadMe.txt");` // "ReadMe"                                   |
+  | GetFullPath                 | Lấy đường dẫn đầy đủ - từ đường dẫn tương đối : `var path = Path.GetFullPath("ReadMe.txt");`                                    |
   | GetPathRoot                 | Lấy gốc của đường dẫn                                                                                                         |
-  | GetRandomFileName           | Tạo tên file ngẫu nhiên : var path = Path.GetRandomFileName();                                                                |
-  | GetTempFileName             | Tạo file duy nhất, rỗng : var path = Path.GetTempFileName();                                                                  |
+  | GetRandomFileName           | Tạo tên file ngẫu nhiên : `var path = Path.GetRandomFileName();`                                                               |
+  | GetTempFileName             | Tạo file duy nhất, rỗng : `var path = Path.GetTempFileName();`                                                                 |
 
 Lấy đường dẫn đến một số thư mục đặc biệt của hệ thống dùng Environment.GetFolderPath
 
@@ -2920,13 +2920,13 @@ Lấy đường dẫn đến một số thư mục đặc biệt của hệ th�
 var path_mydoc = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
 ```
 
-File
+### 📙File
 
-- Lớp System.IO.File cung cấp cho bạn cách thức đơn giản để làm việc với các tệp
+Lớp System.IO.File cung cấp cho bạn cách thức đơn giản để làm việc với các tệp
 
-- File.WriteAllText
+File.WriteAllText
 
-  - Tạo ra file mới (nếu đã có file thì bị ghi đè), ghi vào nó một nội dung text, rồi đóng file luôn
+- Tạo ra file mới (nếu đã có file thì bị ghi đè), ghi vào nó một nội dung text, rồi đóng file luôn
 
 ```C#
 static void testWriteAllText()
@@ -2942,9 +2942,9 @@ static void testWriteAllText()
 }
 ```
 
-- File.AppendAllText
+File.AppendAllText
 
-  - Nối thêm nội dung vào nội dung có sẵn trong file thay vì ghi đè
+- Nối thêm nội dung vào nội dung có sẵn trong file thay vì ghi đè
 
 ```C#
 static void testAppendAllText()
@@ -2968,18 +2968,18 @@ static void testAppendAllText()
 }
 ```
 
-- File.ReadAllText : Đọc nội dung trong file
-- File.Create(filename) : tạo file
-- File.Delete(filename) : xóa file
-- File.Exists(filename) : kiểm tra file có tồn tại
-- File.Copy(path_src, path_des) : copy file
-- File.Move(path_src, path_des) : di chuyển file
+File.ReadAllText : Đọc nội dung trong file
+File.Create(filename) : tạo file
+File.Delete(filename) : xóa file
+File.Exists(filename) : kiểm tra file có tồn tại
+File.Copy(path_src, path_des) : copy file
+File.Move(path_src, path_des) : di chuyển file
 
-Directory
+### 📙Directory
 
-- Lớp System.IO.Directory cung cấp các phương thức chuyên tương tác với các thư mục
+Lớp `System.IO.Directory` cung cấp các phương thức chuyên tương tác với các thư mục
 
-- Phương thức
+Phương thức
 
 | Tên                   | Ý nghĩa                                                                       |
 | --------------------- | ----------------------------------------------------------------------------- |
@@ -2990,7 +2990,7 @@ Directory
 | GetDirectories(path)  | Lấy các thư mục trong thư mục.                                                |
 | Move(src, des)        | Di chuyển thư mục.                                                            |
 
-- Ví dụ đệ quy liệt kê tất cả các file, thư mục con trong một thư mục
+Ví dụ đệ quy liệt kê tất cả các file, thư mục con trong một thư mục
 
 ```C#
 static void ListFileDirectory(string path)
@@ -3398,34 +3398,34 @@ var ketqua = from product in products
              };
 ```
 
-## Asynchronous
+## 📚Asynchronous
 
-Lập trình bất đồng bộ (asynchronous) là một cách thức mà khi gọi nó chạy ở chế độ nền (liên quan đến một tiến trình, task), trong khi đó tiến trình gọi nó không bị khóa - block
+Lập trình **bất đồng bộ (asynchronous)** là một cách thức mà khi gọi nó chạy ở chế độ nền (liên quan đến một tiến trình, task), trong khi đó tiến trình gọi nó không bị khóa - block
 
-Trong .NET có triển khai một số mô hình lập trình bất đồng bộ như Asynchronous pattern, mẫu bất đồng bộ theo sự kiện và theo tác vụ (TAP - task-based asynchronous pattern)
+Trong .NET có triển khai một số mô hình lập trình bất đồng bộ như **Asynchronous pattern**, **mẫu bất đồng bộ theo sự kiện và theo tác vụ (TAP - task-based asynchronous pattern)**
 
-.NET có thư viện tên Task Parallel Library (TPL) - TPL giúp lập trình chạy song song (đa luồng) dễ dàng hơn. Trong C# đồng thời có thêm vào hai từ khóa là async và await, đây là hai từ khóa chính để sử dụng trong lập trình bất đồng bộ.
+.NET có thư viện tên **Task Parallel LibrĐôngboojary (TPL)** - TPL giúp lập trình chạy song song (đa luồng) dễ dàng hơn. Trong C# đồng thời có thêm vào hai từ khóa là `async` và `await`, đây là hai từ khóa chính để sử dụng trong lập trình bất đồng bộ.
 
-synchronous
+### 📙synchronous (đồng bộ)
 
-- Bình thường, khi lập trình gọi một phương thức nào đó thì phương thức đó chạy và kết thúc thì các dòng code tiếp theo sau lời gọi phương thức đó mới được thực thi, đó là chạy đồng bộ, có nghĩa là thread gọi phương thức bị khóa lại cho đến khi phương thức kết thúc
+Bình thường, khi lập trình gọi một phương thức nào đó thì phương thức đó chạy và kết thúc thì các dòng code tiếp theo sau lời gọi phương thức đó mới được thực thi, đó là chạy đồng bộ, có nghĩa là thread gọi phương thức bị khóa lại cho đến khi phương thức kết thúc.
 
-- Việc khóa thread thực hiện hàm làm cho các dòng code tiếp theo phải chờ, nếu hàm đó thi hành mất nhiều thời gian (đặc biệt là các thao tác đọc stream - đọc file, kết nối web, kết nối CSDL ...) - trong khi tài nguyên vẫn đủ để làm các việc khác - thì chương trình vẫn cứ phải chờ phương thức trên kết thúc thì mới thi hành được tác vụ khác, đặt biệt là khi gọi phương thức trong các tiến trình UI, giao diện người dùng không tương tác được.
+Việc khóa thread thực hiện hàm làm cho các dòng code tiếp theo phải chờ, nếu hàm đó thi hành mất nhiều thời gian (đặc biệt là các thao tác đọc stream - đọc file, kết nối web, kết nối CSDL ...) - trong khi tài nguyên vẫn đủ để làm các việc khác - thì chương trình vẫn cứ phải chờ phương thức trên kết thúc thì mới thi hành được tác vụ khác, đặt biệt là khi gọi phương thức trong các tiến trình UI, giao diện người dùng không tương tác được.
 
-- Để giải quyết vấn đề này, chương trình vẫn thi hành được các tác vụ khác thì cần đến kỹ thuật lập trình bất đồng bộ (trước đây gọi là lập trình đa tiến trình, đa luồng)
+Để giải quyết vấn đề này, chương trình vẫn thi hành được các tác vụ khác thì cần đến kỹ thuật lập trình bất đồng bộ (trước đây gọi là lập trình đa tiến trình, đa luồng).
 
-Task
+### 📙Task
 
-- Lớp Task nó biểu thị tác vụ bất đồng bộ, từ đó ta chạy được code bất đồng bộ
+Lớp Task nó biểu thị tác vụ bất đồng bộ, từ đó ta chạy được code bất đồng bộ
 
-- Nếu tác vụ bất đồng bộ đó thi hành xong có kiểu trả về thì dùng Task<T> với T là kiểu trả về
+Nếu tác vụ bất đồng bộ đó thi hành xong có kiểu trả về thì dùng Task<T> với T là kiểu trả về
 
 ```C#
 using System.Threading;
 using System.Threading.Tasks;
 ```
 
-- Để tạo ra một Task cần tham số là một hàm delegate ( Func hoặc Action)
+Để tạo ra một Task cần tham số là một hàm delegate ( Func hoặc Action)
 
 ```C#
 // Nếu myfunc trả về kiểu T (tức là một Func)
@@ -3452,21 +3452,21 @@ Action myfunc = () =>
 Task task = new Task(myfunc);
 ```
 
-- Start() : phương thức để chạy Task của đối tượng
+| Phương thức | Ý nghĩa                                |
+| ----------- | -------------------------------------- |
+| Start()     | phương thức để chạy Task của đối tượng |
+| Wait()      | chờ cho task hoàn thành                |
+| Result      | thuộc tính kết quả trả về              |
 
-- Result : thuộc tính kết quả trả về
+### 📙async, await
 
-- Wait() : chờ cho task hoàn thành
+Khi muốn lấy kết quả của `Task`, thì trả về thuộc tính Result. Nhưng điều này làm cho thread chạy `Task` bị khóa lại vì `Result` sẽ trả về khi `Task` hoàn thành. Điều này làm mất đi lợi ích đa luồng và bất đồng bộ
 
-async, await
+Để có thể trả về ngay lập tức mà không khóa thread của `Task` đó lại thì dùng đến cặp từ khóa `async` và `await`
 
-- Khi muốn lấy kết quả của Task, thì trả về thuộc tính Result. Nhưng điều này làm cho thread chạy Task bị khóa lại vì Result sẽ trả về khi Task hoàn thành. Điều này làm mất đi lợi ích đa luồng và bất đồng bộ
+Thêm vào khai báo tên hàm từ khóa `async`, nó cho trình biên dịch biết đây là hàm bất đồng bộ khi gọi nó nó trả về ngay lập tức
 
-- Để có thể trả về ngay lập tức mà không khóa thread của Task đó lại thì dùng đến cặp từ khóa async và await
-
-- Thêm vào khai báo tên hàm từ khóa async, nó cho trình biên dịch biết đây là hàm bất đồng bộ - khi gọi nó - nó trả về ngay lập tức
-
-- Trong thân của hàm, phải có đoạn code chờ task hoàn thành
+Trong thân của hàm, phải có đoạn code chờ task hoàn thành
 
 ```C#
 public static async Task<T> async(thamso)
@@ -3477,37 +3477,73 @@ public static async Task<T> async(thamso)
 }
 ```
 
-- code phía sau await chỉ được chạy khi Task chạy xong
+Code phía sau `await` chỉ được chạy khi `Task` chạy xong
 
-_❗await phải dùng với Task và chỉ được viết trong hàm có khai báo async_
+_❗`await` phải dùng với Task và chỉ được viết trong hàm có khai báo `async`_
 
 _❗Có thể hình dung khi hàm được gọi để thực thi thì nó sẽ tạo ra thread (luồng) để thực thi các Task (hàm, công việc trong hàm), hàm main cũng có thread để chạy và đó là thread chính của chương trình. Trong chương trình đồng bộ thì các hàm cùng chạy trên 1 thread chính của hàm main (nói đúng hơn là thread chính bị chuyển hướng sang chạy thread của hàm được gọi), còn trong chương trình bất đồng bộ thì hàm nào chạy thread hàm đó._
 
-- Khi khai báo hàm với async nến tránh dùng kiểu trả về void (dù được phép, không await được) mà hãy dùng Task nếu không có kiểu trả về hoặc Task<T> khi có kiểu trả về T
+Khi khai báo hàm với `async` nến tránh dùng kiểu trả về `void` (dù được phép, không await được) mà hãy dùng `Task` nếu không có kiểu trả về hoặc `Task<T>` khi có kiểu trả về `T`
 
-- Do 1 phương thức cũng là 1 task, nên có thể await ở 1 phương thức async khác thì phương thức đó cũng phải là async
+```C#
+public static async Task DownloadFile(string url)
+{
+    Action downloadaction = () =>
+    {
+        using (var client = new WebClient())
+        {
+            Console.Write("Starting download ..." + url);
+            // mảng byte tải về
+            byte[] data = client.DownloadData(new Uri(url));
 
-CancellationToken
+            // Lấy tên file để lưu
+            string filename = System.IO.Path.GetFileName(url);
+            System.IO.File.WriteAllBytes(filename, data);
+        }
+    };
+
+    Task task = new Task(downloadaction);
+    task.Start();
+
+    await task;
+    Console.WriteLine("Đã hoàn thành tải file");
+}
+```
+
+Do 1 phương thức cũng là 1 `task`, nên có thể `await` ở 1 phương thức `async` khác thì phương thức đó cũng phải là `async`
+
+```C#
+static async Task Main(string[] args)
+{
+    string url = "https://github.com/microsoft/vscode/archive/1.48.0.tar.gz";
+    var taskdonload = DownloadAsync.DownloadFile(url);
+    //..
+    Console.WriteLine("Làm gì đó khi file đang tải");
+    //..
+    await taskdonload;
+    Console.WriteLine("Làm gì đó khi file tải xong");
+}
+```
+
+### 📙CancellationToken
 
 > bổ sung sau
 
-## Multi thread sử dụng Parallel chạy song song
+## 📚Multi thread sử dụng Parallel chạy song song
 
-Parallel
+### 📙Parallel
 
-- Lớp Parallel thuộc namespace System.Threading.Tasks, nó trừu tượng hóa các thread, lớp này có phương thức tĩnh Parallel.For, Parallel.ForEach để thực hiện vòng lặp for và foreach để chạy song song các tác vụ
+Lớp Parallel thuộc namespace `System.Threading.Tasks`, nó trừu tượng hóa các thread, lớp này có phương thức tĩnh `Parallel.For`, `Parallel.ForEach` để thực hiện vòng lặp for và foreach để chạy song song các tác vụ, `Parallel.Invoke` để thực hiện một Action có khả năng chạy song song
 
-- Parallel.Invoke để thực hiện một Action có khả năng chạy song song
+### 📙Parallel.For
 
-Parallel.For
-
-- Parallel.For có nhiều quá tải
+`Parallel.For` có nhiều quá tải
 
 ```C#
 ParallelLoopResult result = Parallel.For(i1, i2, task);
 ```
 
-- Vòng lặp chạy (biến chạy) từ số nguyên i1 đến i2, mỗi lần lặp nó sẽ thực hiện Action task, task là một delegate, kiểu Action<int> có nghĩa nó làm phương thức trả về void, có một tham số kiểu int, tham số này là biến chạy
+Vòng lặp chạy (biến chạy) từ số nguyên i1 đến i2, mỗi lần lặp nó sẽ thực hiện Action task, task là một delegate, kiểu Action<int> có nghĩa nó làm phương thức trả về void, có một tham số kiểu int, tham số này là biến chạy
 
 ```C#
 Action<int> action = (int x) =>
@@ -3516,35 +3552,38 @@ Action<int> action = (int x) =>
 };
 ```
 
-- result đối tượng lớp ParallelLoopResult trả về từ Paralell.For, thuộc tính ParallelLoopResult.IsCompleted cho biết vòng lặp đã được duyệt qua hết, tất cả các task đã khởi chạy.
+`result` đối tượng lớp `ParallelLoopResult` trả về từ `Paralell.For`, thuộc tính `ParallelLoopResult.IsCompleted` cho biết vòng lặp đã được duyệt qua hết, tất cả các task đã khởi chạy.
 
-- Lệnh Parallel.For khởi chạy song song nhiều tác vụ (thời điểm bắt đầu của mỗi tác vụ không giống nhau, có những tác vụ đã kết thúc thì tác vụ sau mới chạy, nó có thể phụ thuộc vào tài nguyên hệ thống RAM, CPU ...)
+Lệnh Parallel.For khởi chạy song song nhiều tác vụ (thời điểm bắt đầu của mỗi tác vụ không giống nhau, có những tác vụ đã kết thúc thì tác vụ sau mới chạy, nó có thể phụ thuộc vào tài nguyên hệ thống RAM, CPU ...)
 
-- Một task nó có chạy trên một thread nào đó (chứ không phải mỗi task một thread), một thread có thể sử dụng bởi nhiều task
+Một task nó có thể chạy trên một thread nào đó (chứ không phải mỗi task một thread), một thread có thể sử dụng bởi nhiều task
 
-- Bản thân vòng lặp Parallel.For, khi các Action chạy, mặc dù chúng chạy trên những Task và Thread, nhưng khi tất cả các Action hoàn hành thì vòng lặp mới hoàn thành. Dẫn đến Parallel.For khóa(block) thread gọi nó. Để không bị khóa, có thể chuyển các Action là async
+Bản thân vòng lặp `Parallel.For`, khi các Action chạy, mặc dù chúng chạy trên những Task và Thread, nhưng khi tất cả các Action hoàn hành thì vòng lặp mới hoàn thành. Dẫn đến Parallel.For khóa(block) thread gọi nó. Để không bị khóa, có thể chuyển các Action là async
 
-Parallel.ForEach
+### 📙Parallel.ForEach
 
-- Cũng giống với Parallel.For nhưng duyệt qua các Collection tương tự như vòng lặp foreach
+Cũng giống với `Parallel.For` nhưng duyệt qua các Collection tương tự như vòng lặp foreach
 
 ```C#
 ParallelLoopResult result = Parallel.ForEach(source, RunTask);
 ```
 
-- Trong đó source là một Collection như mảng, List. RunTask là Action, có 1 tham số có kiểu giống kiểu phần tử trong source, giá trị tham số này là giá trị phần tử trong source trong mỗi vòng lặp
+Trong đó `source` là một Collection như mảng, List. `RunTask` là Action, có 1 tham số có kiểu giống kiểu phần tử trong source, giá trị tham số này là giá trị phần tử trong source trong mỗi vòng lặp
 
-Parallel.Invoke
+### 📙Parallel.Invoke
 
-- Với For và ForEach, thì các tác vụ định nghĩa trọng một Action, nhưng nếu muốn chạy song song nhiều loại Action (phương thức) một lúc thì dùng Paralell.Invoke
+Với For và ForEach, thì các tác vụ định nghĩa trọng một Action, nhưng nếu muốn chạy song song nhiều loại Action (phương thức) một lúc thì dùng `Paralell.Invoke`
 
 ```C#
 Parallel.Invoke(action1, action2, action3);
 ```
 
-_❗Tóm lại Parallel là để chạy đa luồng nhiều action + For là duyệt các kiểu nguyên thủy truyền vào action + ForEach là duyệt các kiểu collection truyền vào action + Invoke là dùng cho danh sách các action khác nhau_
+_❗Tóm lại `Parallel` là để chạy đa luồng nhiều action_
+- For là duyệt các kiểu nguyên thủy truyền vào action 
+- ForEach là duyệt các kiểu collection truyền vào action 
+- Invoke là dùng cho danh sách các action khác nhau
 
-## Type
+## 📚Type
 
 Lớp Type dùng để biểu thị sự khai báo của: định nghĩa của lớp, mảng, enum, interface ...
 
@@ -3555,7 +3594,7 @@ Type type = ob.GetType();
 Type type = typeof(kiểu dữ liệu);
 ```
 
-Lớp Type với các phương thức, thuộc tính của nó, nó trở thành lớp cơ bản của kỹ thuật Reflection trong .Net
+Lớp Type với các phương thức, thuộc tính của nó, nó trở thành lớp cơ bản của kỹ thuật **Reflection** trong .Net
 
 Thuộc tính
 
@@ -3588,7 +3627,7 @@ Phương thức
 | GetConstructor(Type[] types) | Trả về một đối tượng ConstructorInfo đại diện cho constructor có tham số xác định.                          |
 | IsAssignableFrom(Type c)     | Xác định xem một phiên bản của kiểu hiện tại có thể được gán cho một biến của kiểu đã xác định.             |
 
-Đối tượng PropertyInfo được trả về từ hàm GetProperty có thể đọc giá trị và thiết lập giá trị các thuộc tính mà đối tượng chứa
+Đối tượng `PropertyInfo` được trả về từ hàm `GetProperty` có thể đọc giá trị và thiết lập giá trị các thuộc tính mà đối tượng chứa
 
 ```C#
 //Lấy tên và giá trị các thuộc tính có trong a
@@ -3600,23 +3639,26 @@ foreach (PropertyInfo property in a.GetType().GetProperties())
 }
 ```
 
-## Attribute Annotation
+## 📚Attribute Annotation
 
-Một thuộc tính chú thích (Annotation / Attribute) tác động vào một thành phần nào đó của chương trình (lớp, phương thức, thuộc tính) - là một phần của siêu dữ liệu (metadata - loại dữ liệu cung cấp thêm thông tin về đối tượng nào đó)
+**Một thuộc tính chú thích (Annotation / Attribute)** tác động vào một thành phần nào đó của chương trình (lớp, phương thức, thuộc tính), là một phần của siêu dữ liệu (metadata - loại dữ liệu cung cấp thêm thông tin về đối tượng nào đó)
 
 Annotation giúp thêm thông tin vào lớp, phương thức, thuộc tính những đoạn code mở rộng
 
 _❗Tính năng này trong Java gọi là Annotation, trong C# gọi là Attribute._
 
-Các thuộc tính chú thích có thể được truy xuất tra cứu ở thời điểm thực thi bằng kỹ thuật gọi là reflection
+Các thuộc tính chú thích có thể được truy xuất tra cứu ở thời điểm thực thi bằng kỹ thuật gọi là **Reflection**
 
-Để sử dụng chỉ cần viết tên Attribute trong dấu [] trước đối tượng áp dụng như lớp, phương thức, thuộc tính lớp (có tham số như hàm, nếu Attribute đó yêu cầu).
-`[AttributeName(param1, param2 ...)]`
+Để sử dụng chỉ cần viết tên Attribute trong dấu `[]` trước đối tượng áp dụng như lớp, phương thức, thuộc tính lớp (có tham số như hàm, nếu Attribute đó yêu cầu).
+
+```C#
+[AttributeName(param1, param2 ...)]
+```
 
 ```C#
 public class MyClass
 {
-    [Obsolete("Phương thức này lỗi thời, hãy dùng phương thức Abc")] // Obsolete đánh dấ 1 thành phần nào đó đã lạc hậu
+    [Obsolete("Phương thức này lỗi thời, hãy dùng phương thức Abc")] // Obsolete đánh dấu 1 thành phần nào đó đã lạc hậu
     public static void Method1()
     {
         Console.WriteLine("Phương thức chạy");
@@ -3695,14 +3737,14 @@ foreach (var m in a.GetType().GetMethods())
 }
 ```
 
-_❗Tham số bool truyền vào GetCustomAttributes để xác định có lấy các thuộc tính kế thừa từ lớp cơ sở không_
+_❗Tham số bool truyền vào `GetCustomAttributes` để xác định có lấy các thuộc tính kế thừa từ lớp cơ sở không_
 
-Data Annotation / Attribute
+### 📙Data Annotation / Attribute
 
-- Các Data Annotation/Attribute trong C# định nghĩa trong namespace System.ComponentModel.DataAnnotations
-  - Các Attribute để kiểm tra dữ liệu (Validation Attribute)
-  - Các Attribute hiện thị (Display Attribute), điều khiển dữ liệu trong lớp hiện thị thế nào trong UI
-  - Modelling Attribute
+Các **Data Annotation/Attribute** trong C# định nghĩa trong namespace `System.ComponentModel.DataAnnotations`
+- Các Attribute để kiểm tra dữ liệu (Validation Attribute)
+- Các Attribute hiện thị (Display Attribute), điều khiển dữ liệu trong lớp hiện thị thế nào trong UI
+- Modelling Attribute
 
 | Tên          | Ý nghĩa                                                                                                       |
 | ------------ | ------------------------------------------------------------------------------------------------------------- |
@@ -3721,7 +3763,7 @@ Data Annotation / Attribute
 | Phone        | [Phone] dữ liệu phải là dạng số điện thoại                                                                    |
 | EmailAddress | [EmailAddress] dữ liệu phải là dạng email                                                                     |
 
-- Để kiểm tra các dữ liệu phù hợp thiết lập bởi Attribute, thì dùng lớp ValidationContext
+Để kiểm tra các dữ liệu phù hợp thiết lập bởi Attribute, thì dùng lớp `ValidationContext`
 
 ```C#
 ValidationContext context = new ValidationContext(user, null, null);
@@ -3733,29 +3775,29 @@ List<ValidationResult> results = new List<ValidationResult>();
 bool valid = Validator.TryValidateObject(user, context, results, true);
 ```
 
-## Dependency injection (DI)
+## 📚Dependency injection (DI)
 
-### Dependency (phụ thuộc)
+### 📙Dependency (phụ thuộc)
 
-Lớp classA có sử dụng một chức năng từ đối tượng lớp classB (classA hoạt động dựa vào classB). Lúc đó classB gọi là phụ thuộc (dependency) của classA
+Lớp classA có sử dụng một chức năng từ đối tượng lớp classB (classA hoạt động dựa vào classB). Lúc đó classB gọi là **phụ thuộc (dependency)** của classA
 
-### Inversion of Control (IoC) / Dependency inversion
+### 📙Inversion of Control (IoC) / Dependency inversion
 
-Inversion of Control (IoC - Đảo ngược điều khiển) là một nguyên lý thiết kế trong công nghệ phần mềm trong đó các thành phần nó dựa vào để làm việc bị đảo ngược quyền điều khiển khi so sánh với lập trình hướng thủ thục truyền thống
+**Inversion of Control (IoC - Đảo ngược điều khiển)** là một nguyên lý thiết kế trong công nghệ phần mềm trong đó các thành phần nó dựa vào để làm việc bị đảo ngược quyền điều khiển khi so sánh với lập trình hướng thủ thục truyền thống
 
-### Hoạt động của IoC
+### 📙Hoạt động của IoC
 
-Truyền thống : Có lớp class A có sử dụng một chức năng (gọi hàm ào đó) của class B, lớp class B lại tham chiếu và gọi các chức năng có trong class C. Ta thấy class A dựa vào class B để hoạt động, class B dựa vào class C. Nên class A có tham chiếu trực tiếp (cứng) đến class B và trong class B có tham chiếu đến class C
+**Truyền thống** : Có lớp class A có sử dụng một chức năng (gọi hàm nào đó) của class B, lớp class B lại tham chiếu và gọi các chức năng có trong class C. Ta thấy class A dựa vào class B để hoạt động, class B dựa vào class C. Nên class A có tham chiếu trực tiếp (cứng) đến class B và trong class B có tham chiếu đến class C
 
-IoC : Ở thời điểm thực thi thì class A vẫn gọi được hàm có class B, class B vẫn gọi hàm có class C nghĩa là kết quả không đổi. Tuy nhiên, khi thiết kế ở thời điểm viết code (trong code) class A không tham chiếu trực tiếp đến class B mà nó lại sử dụng interface (hoặc lớp abstruct) mà classB triển khai. Điều này dẫn tới sự phụ thuộc lỏng lẻo giữa classA và classB
+**IoC** : Ở thời điểm thực thi thì class A vẫn gọi được hàm có class B, class B vẫn gọi hàm có class C nghĩa là kết quả không đổi. Tuy nhiên, khi thiết kế ở thời điểm viết code (trong code) class A không tham chiếu trực tiếp đến class B mà nó lại sử dụng interface (hoặc lớp abstruct) mà classB triển khai. Điều này dẫn tới sự phụ thuộc lỏng lẻo giữa classA và classB
 
 _❗Hiểu đơn giản cách truyền thống thì lớp phụ thuộc (A) tham chiếu trực tiếp đên lớp bị thuộc (B,C) còn IoC thì lớp phụ thuộc (A) sẽ tham chiếu đến 1 Interface hoặc lớp abstruct nên A sẽ phụ thuộc vào lớp triển khai interface hoặc lớp abstruct chứ không tham chiếu trực tiếp đến 1 đối tượng cự thể. Việc này làm cho code dễ quản lý, sửa đổi_
 
-### Dependency injection (DI)
+### 📙Dependency injection (DI)
+****
+**DI** là một kỹ thuật trong lập trình, là một hình thức cụ thể của **Inverse of Control (Dependency Inverse)**
 
-DI là một kỹ thuật trong lập trình, là một hình thức cụ thể của Inverse of Control (Dependency Inverse)
-
-### DI thiết kế sao cho các dependency (phụ thuộc) của một đối tượng CÓ THỂ được đưa vào, tiêm vào đối tượng đó (Injection) khi nó cần tới (khi đối tượng khởi tạo)
+DI thiết kế sao cho các dependency (phụ thuộc) của một đối tượng CÓ THỂ được đưa vào, tiêm vào đối tượng đó (Injection) khi nó cần tới (khi đối tượng khởi tạo)
 
 Xây dựng các lớp (dịch vụ) có sự phụ thuộc nhau một cách lỏng lẻo, và dependency có thể tiêm vào đối tượng (injection) - thường qua phương thức khởi tạo constructor, property, setter
 
@@ -3763,21 +3805,21 @@ Xây dựng được một thư viện có thể tự động tạo ra các đ�
 
 _❗Việc tự phát triển thường khá phức tạp nên có thể sử dụng những thư viên có sẵn như: Microsoft.Extensions.DependencyInjection, Windsor, Unity Ninject, ..._
 
-### Các kiểu Dependency Injection
+### 📙Các kiểu Dependency Injection
 
-Inject thông qua phương thức khởi tạo: cung cấp các Dependency cho đối tượng thông qua hàm khởi tạo - tập trung vào cách này vì thư viện .NET hỗ trợ sẵn
+**Inject thông qua phương thức khởi tạo**: cung cấp các Dependency cho đối tượng thông qua hàm khởi tạo - tập trung vào cách này vì thư viện .NET hỗ trợ sẵn
 
-Inject thông qua setter: tức các Dependency như là thuộc tính của lớp, sau đó inject bằng gán thuộc tính cho Depedency object.denpendency = obj;
+**Inject thông qua setter**: tức các Dependency như là thuộc tính của lớp, sau đó inject bằng gán thuộc tính cho Depedency object.denpendency = obj;
 
-Inject thông qua các Interface - xây dựng Interface có chứa các phương thức Setter để thiết lập dependency, interface này sử dụng bởi các lớp triển khai, lớp triển khai phải định nghĩa các setter quy định trong interface
+**Inject thông qua các Interface**: xây dựng Interface có chứa các phương thức Setter để thiết lập dependency, interface này sử dụng bởi các lớp triển khai, lớp triển khai phải định nghĩa các setter quy định trong interface
 
-### DI Container
+### 📙DI Container
 
 Mục đích sử dụng DI, để tạo ra các đối tượng dịch vụ kéo theo là các Dependency của đối tượng đó
 
-DependencyInjection là DI Container mặc định của ASP.NET Core
+`DependencyInjection` là **DI Container** mặc định của ASP.NET Core
 
-Phải đảm bảo tích hợp Package Microsoft.Extensions.DependencyInjection vào dự án
+Phải đảm bảo tích hợp Package `Microsoft.Extensions.DependencyInjection` vào dự án
 
 ```Batch Script
 dotnet add package Microsoft.Extensions.DependencyInjection
@@ -3791,25 +3833,25 @@ Sử dụng namespace
 using Microsoft.Extensions.DependencyInjection;
 ```
 
-Lớp ServiceCollection
+#### 📘Lớp ServiceCollection
 
-- ServiceCollection là lớp triển khai giao diện IServiceCollection nó có chức năng quản lý các dịch vụ (đăng ký dịch vụ - tạo dịch vụ - tự động inject - và các dependency của địch vụ ...).
+`ServiceCollection` là lớp triển khai giao diện `IServiceCollection` nó có chức năng quản lý các dịch vụ (đăng ký dịch vụ - tạo dịch vụ - tự động inject - và các dependency của địch vụ ...).
 
-- ServiceCollection là trung tâm của kỹ thuật DI, nó là thành phần rất quan trọng trong ứng dụng ASP.NET
+`ServiceCollection` là trung tâm của kỹ thuật DI, nó là thành phần rất quan trọng trong ứng dụng ASP.NET
 
-- Khởi tạo đối tượng ServiceCollection, sau đó đăng ký (lớp) các dịch vụ vào ServiceCollection. Từ ServiceCollection phát sinh ra đối tượng ServiceProvider, từ đối tượng này truy vấn lấy ra các dịch vụ cụ thể khi cần.
+Khởi tạo đối tượng `ServiceCollection`, sau đó đăng ký (lớp) các dịch vụ vào `ServiceCollection`. Từ `ServiceCollection` phát sinh ra đối tượng `ServiceProvider`, từ đối tượng này truy vấn lấy ra các dịch vụ cụ thể khi cần.
 
-- Phương thức
+Phương thức
 
-  - AddSingleton<ServiceType, ImplementationType>() : Đăng ký dịch vụ kiểu Singleton
-    _❗Nếu ServiceType giống ImplementationType thì ghi AddSingleton<ServiceType>()_
+- `AddSingleton<ServiceType, ImplementationType>()` : Đăng ký dịch vụ kiểu Singleton
+  _❗Nếu ServiceType giống ImplementationType thì ghi `AddSingleton<ServiceType>()`_
 
-  - AddTransient<ServiceType, ImplementationType>() : Đăng ký dịch vụ thuộc loại Transient, luôn tạo mới mỗi khi có yêu cầu lấy dịch vụ.
-    _❗Hoặc AddTransient<ServiceType>()_
+- `AddTransient<ServiceType, ImplementationType>()` : Đăng ký dịch vụ thuộc loại Transient, luôn tạo mới mỗi khi có yêu cầu lấy dịch vụ.
+  _❗Hoặc `AddTransient<ServiceType>()`_
 
-  - AddScoped<ServiceType, ImplementationType>() : Đăng ký vào hệ thống dịch vụ kiểu Scoped
+- `AddScoped<ServiceType, ImplementationType>()` : Đăng ký vào hệ thống dịch vụ kiểu Scoped
 
-  - BuildServiceProvider() : Tạo ra đối tượng lớp ServiceProvider, đối tượng này dùng để triệu gọi, tạo các dịch vụ thiết lập ở trên.
+- `BuildServiceProvider()` : Tạo ra đối tượng lớp `ServiceProvider`, đối tượng này dùng để triệu gọi, tạo các dịch vụ thiết lập ở trên.
 
 _❗ServiceType : Kiểu (tên lớp) dịch vụ_
 
@@ -3817,38 +3859,37 @@ _❗ImplementationType : Kiểu (tên lớp) sẽ tạo ra đối tượng dịc
 
 _❗Các phương thức AddSingleton, AddTransient, AddScoped còn có bản quá tải mà tham số là một callback delegate tạo đối tượng. Nó là cách triển khai pattern factory_
 
-ServiceLifetime
+#### 📘ServiceLifetime
 
-- Mỗi dịch vụ (lớp) khi đăng ký vào ServiceCollection thì có một đối tượng ServiceDescriptor chứa thông tin về dịch vụ đó, căn cứ vào ServiceDescriptor để ServiceCollection khởi tạo dịch vụ khi cần
+Mỗi dịch vụ (lớp) khi đăng ký vào `ServiceCollection` thì có một đối tượng `ServiceDescriptor` chứa thông tin về dịch vụ đó, căn cứ vào `ServiceDescriptor` để `ServiceCollection` khởi tạo dịch vụ khi cần
 
-- Trong ServiceDescriptor có thuộc tính Lifetime để xác định dịch vụ tạo ra tồn tại trog bao lâu. Lifetime có kiểu ServiceLifetime (kiểu enum) có các giá trị cụ thể:
+Trong `ServiceDescriptor` có thuộc tính `Lifetime` để xác định dịch vụ tạo ra tồn tại trong bao lâu. `Lifetime` có kiểu `ServiceLifetime` (kiểu enum) có các giá trị cụ thể:
 
-| Tên       | Giá trị | Ý nghĩa                                                                                                                                          |
-| --------- | ------- | ------------------------------------------------------------------------------------------------------------------------------------------------ |
-| Scoped    | 1       | Một bản thực thi (instance) của dịch vụ (Class) được tạo ra cho mỗi phạm vi, tức tồn tại cùng với sự tồn tại của một đối tượng kiểu ServiceScope |
-|           |         | (đối tượng này tạo bằng cách gọi ServiceProvider.CreateScope, đối tượng này hủy thì dịch vụ cũng bị hủy).                                        |
-| Singleton | 0       | Duy nhất một phiên bản thực thi (instance of class) (dịch vụ) được tạo ra cho hết vòng đời của ServiceProvider                                   |
-| Transient | 2       | Một phiên bản của dịch vụ được tạo mỗi khi được yêu cầu                                                                                          |
+| Tên       | Giá trị | Ý nghĩa                                                                                                                                                                                                                                                    |
+| --------- | ------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Singleton | 0       | Duy nhất một phiên bản thực thi (instance of class) (dịch vụ) được tạo ra cho hết vòng đời của `ServiceProvider`                                                                                                                                             |
+| Scoped    | 1       | Một bản thực thi (instance) của dịch vụ (Class) được tạo ra cho mỗi phạm vi, tức tồn tại cùng với sự tồn tại của một đối tượng kiểu `ServiceScope` (đối tượng này tạo bằng cách gọi `ServiceProvider.CreateScope`, đối tượng này hủy thì dịch vụ cũng bị hủy). |
+| Transient | 2       | Một phiên bản của dịch vụ được tạo mỗi khi được yêu cầu                                                                                                                                                                                                    |
 
-Lớp ServiceProvider
+#### 📘Lớp ServiceProvider
 
-- Lớp ServiceProvider cung cấp cơ chế để lấy ra (tạo và inject nếu cần) các dịch vụ đăng ký trong ServiceCollection.
+Lớp `ServiceProvider` cung cấp cơ chế để lấy ra (tạo và inject nếu cần) các dịch vụ đăng ký trong `ServiceCollection`.
 
-- Đối tượng ServiceProvider được tạo ra bằng cách gọi phương thức BuildServiceProvider() của ServiceCollection
+Đối tượng `ServiceProvider` được tạo ra bằng cách gọi phương thức `BuildServiceProvider()` của `ServiceCollection`.
 
 ```C#
 var serviceprovider = services.BuildServiceProvider();
 ```
 
-- Phương thức
+Phương thức
 
 | Tên                             | Ý nghĩa                                                                                |
 | ------------------------------- | -------------------------------------------------------------------------------------- |
-| GetService<ServiceType>()       | Lấy dịch vụ có kiểu ServiceType - trả về null nếu dịch vụ không tồn tại                |
-| GetRequiredService(ServiceType) | Lấy dịch vụ có kiểu ServiceType - phát sinh Exception nếu dịch vụ không tồn tại        |
-| CreateScope()                   | Tạo một phạm vi mới, thường dùng khi sử dụng những dịch vụ có sự ảnh hưởng theo Scoped |
+| `GetService<ServiceType>()`       | Lấy dịch vụ có kiểu ServiceType - trả về null nếu dịch vụ không tồn tại                |
+| `GetRequiredService(ServiceType)` | Lấy dịch vụ có kiểu ServiceType - phát sinh Exception nếu dịch vụ không tồn tại        |
+| `CreateScope()`                   | Tạo một phạm vi mới, thường dùng khi sử dụng những dịch vụ có sự ảnh hưởng theo `Scoped` |
 
-- Ví dụ
+Ví dụ
 
 ```C#
 // ClassA
@@ -3868,11 +3909,11 @@ ClassA service_a = provider.GetService<ClassA>();
 service_a.ActionA();
 ```
 
-### Sử dụng delegate / factory
+### 📙Sử dụng delegate / factory
 
-delegate
+#### 📘delegate
 
-- Các phương thức để đăng dịch vụ vào ServiceCollection như AddSingleton, AddSingleton, AddTransient còn có phiên bản (nạp chồng) nó nhận tham số là delegate trả về đối tượng dịch vụ có kiểu ImplementationType
+Các phương thức để đăng ký dịch vụ vào `ServiceCollection` như `AddSingleton`, `AddSingleton`, `AddTransient` còn có phiên bản (nạp chồng) nó nhận tham số là delegate trả về đối tượng dịch vụ có kiểu `ImplementationType`
 
 ```C#
 services.AddSingleton<ServiceType>((IServiceProvider provider) =>
@@ -3883,9 +3924,9 @@ return (đối tượng kiểu ImplementationType);
 });
 ```
 
-- Delegate nhận tham số là IServiceProvider (chính là đối tượng được sinh ra bởi ServiceCollection.BuildServiceProvider()), Delegate phải trả về một đối tượng triển khai từ ServiceType
+Delegate nhận tham số là `IServiceProvider` (chính là đối tượng được sinh ra bởi `ServiceCollection.BuildServiceProvider()`), Delegate phải trả về một đối tượng triển khai từ `ServiceType`
 
-- Ví dụ
+Ví dụ
 
 ```C#
 class ClassB2 : IClassB
@@ -3919,9 +3960,9 @@ services.AddSingleton<IClassB>((IServiceProvider serviceprovider) =>
 // nếu lấy ra dịch vụ IClassB (hoặc khi nó Inject vào dịch vụ khác) , nếu dịch vụ đó chưa có nó sẽ thi hành Delegate để tạo dịch vụ
 ```
 
-factory
+#### 📘factory
 
-- Delegate có thể khai báo thành một phương thức, một phương thức cung cấp cơ chế để tạo ra đối tượng mong muốn gọi là Factory.
+Delegate có thể khai báo thành một phương thức, một phương thức cung cấp cơ chế để tạo ra đối tượng mong muốn gọi là Factory.
 
 ```C#
 // Factory nhận tham số là IServiceProvider và trả về đối tượng địch vụ cần tạo
@@ -3936,11 +3977,11 @@ public static ClassB2 CreateB2Factory(IServiceProvider serviceprovider)
 services.AddSingleton<IClassB>(CreateB2Factory);
 ```
 
-### Sử dụng Options
+### 📙Sử dụng Options
 
-Để tách bạch giữa các dịch vụ và các thiết lập truyền vào để khởi tạo dịch vụ thì trong ServiceCollection hỗ trợ sử dụng giao diện IOptions
+Để tách bạch giữa các dịch vụ và các thiết lập truyền vào để khởi tạo dịch vụ thì trong `ServiceCollection` hỗ trợ sử dụng giao diện `IOptions`
 
-Cần thêm package Microsoft.Extensions.Options
+Cần thêm package `Microsoft.Extensions.Options`
 
 ```Batch Script
 dotnet add package Microsoft.Extensions.Options
@@ -3956,7 +3997,7 @@ public class MyServiceOptions
 }
 ```
 
-Để có thể Inject MyServiceOptions vào MyService theo nguyên tắc của ServiceCollection thì lớp MyService thiết kế sử dụng IOption làm tham số khởi tạo
+Để có thể Inject MyServiceOptions vào MyService theo nguyên tắc của `ServiceCollection` thì lớp MyService thiết kế sử dụng IOption làm tham số khởi tạo
 
 ```C#
 public class MyService
@@ -3977,11 +4018,11 @@ public class MyService
 }
 ```
 
-Khi tham số khởi tạo có kiểu IOptions, thì nó được Inject vào từ một tập hợp các IOptions riêng biệt với các dịch vụ
+Khi tham số khởi tạo có kiểu `IOptions`, thì nó được Inject vào từ một tập hợp các `IOptions` riêng biệt với các dịch vụ
 
 ```C#
 services.Configure<T>(
-(T options)
+(T options) =>
 {
     // T là tên lớp chứa các thiết lập
     // Hãy thiết lập các giá trị cho options
@@ -4008,14 +4049,14 @@ myservice.PrintData();
 // Xin chao cac ban / 2021
 ```
 
-_❗nếu muốn lấy đối tượng lớp MyServiceOptions trong DI Container_
+_❗Nếu muốn lấy đối tượng lớp MyServiceOptions trong DI Container_
 
 ```C#
 var config = serviceprovider.GetService<IOptions<MyServiceOptions>>()
 MyServiceOptions myServiceOptions = config.Value;
 ```
 
-_❗nếu muốn tạo trực tiếp đối tượng IOptions<MyServiceOptions>, dành cho trường hợp muốn tạo MyService trực tiếp không thông qua DI Container. Thì dùng phương thức Factory Options.Create(obj)_
+_❗Nếu muốn tạo trực tiếp đối tượng `IOptions<MyServiceOptions>`, dành cho trường hợp muốn tạo MyService trực tiếp không thông qua DI Container. Thì dùng phương thức Factory `Options.Create(obj)`_
 
 ```C#
 var opts = Options.Create(new MyServiceOptions()
@@ -4027,7 +4068,7 @@ MyService myService = new MyService(opts);
 myService.ShowData();
 ```
 
-### Sử dụng cấu hình từ file
+### 📙Sử dụng cấu hình từ file
 
 Ở trên, các giá trị dữ liệu trong MyServiceOptions (như data1, data2) có thể lưu ở file sau đó nạp vào khi chương trình thực thi
 
@@ -4053,11 +4094,11 @@ using Microsoft.Extensions.Configuration.Json;
 
 **_đọc thêm các file định dạng như XML, INI, JSON trong ExPandendKnowledge.txt_**
 
-ConfigurationBuilder
+#### 📘ConfigurationBuilder
 
-- Lớp ConfigurationBuilder, giúp nạp các cấu hình lưu trong file config, từ đó build ra đối tượng ConfigurationRoot, đối tượng này truy cập đến các cấu hình bằng chỉ toán tử chỉ số [key]
+Lớp ConfigurationBuilder, giúp nạp các cấu hình lưu trong file config, từ đó build ra đối tượng `ConfigurationRoot`, đối tượng này truy cập đến các cấu hình bằng chỉ toán tử chỉ số `[key]`
 
-- ví dụ lấy cấu hình lưu tại file appsettings.json, thì nạp cấu hình đó để có được ConfigurationRoot
+Ví dụ lấy cấu hình lưu tại file `appsettings.json`, thì nạp cấu hình đó để có được `ConfigurationRoot`
 
 ```C#
 var configBuilder = new ConfigurationBuilder()
@@ -4066,10 +4107,9 @@ var configBuilder = new ConfigurationBuilder()
 var configurationroot = configBuilder.Build(); // Tạo configurationroot
 ```
 
-- lấy một Section nào đó bằng phương thức GetSection(key), nó trả về đối tượng biểu diễn nút cấu hình (JSON), giá trị của nút truy cập bằng thuộc tính Value
+Lấy một `Section` nào đó bằng phương thức `GetSection(key)`, nó trả về đối tượng biểu diễn nút cấu hình (JSON), giá trị của nút truy cập bằng thuộc tính `Value`
 
 ```json
-// file appsettings.json
 {
   "MyServiceOptions": {
     "data1": "ABCDE",
@@ -4090,9 +4130,9 @@ var cf2 = configurationroot.GetSection("Option2").GetSection("key2").Value; // 7
 var cf3 = configurationroot.GetSection("Option2").GetSection("key3").Value; // null, không tồn tại
 ```
 
-nạp config vào IOption
+#### 📘nạp config vào IOption
 
-- Trong file JSON có một Section có tên MyServiceOptions, ta có thể gán các giá trị trong Section đó vào MyServiceOptions trong ServiceCollection
+Trong file JSON có một Section có tên MyServiceOptions, ta có thể gán các giá trị trong Section đó vào MyServiceOptions trong ServiceCollection
 
 ```C#
 // Nạp mở phương thức mở rộng
@@ -4103,7 +4143,7 @@ services.Configure<MyServiceOptions>(configurationroot.GetSection("MyServiceOpti
 // dotnet add package Microsoft.Extensions.Options.ConfigurationExtensions
 ```
 
-- ví dụ hoàn chỉnh
+Ví dụ hoàn chỉnh
 
 ```C#
 var configBuilder = new ConfigurationBuilder()
@@ -4127,7 +4167,7 @@ myservice.PrintData();
 // ABCDE / 123456
 ```
 
-_❗Kỹ thuật DI với thư viện DependencyInjection ở trên là kiến thức rất quan trọng cần nắm vững, nó là cơ sở để học các các mô hình lập trình hiện đại, nhất là sau này áp dụng với Asp.Net Core_
+_❗Kỹ thuật DI với thư viện `DependencyInjection` ở trên là kiến thức rất quan trọng cần nắm vững, nó là cơ sở để học các các mô hình lập trình hiện đại, nhất là sau này áp dụng với Asp.Net Core_
 
 ## Nuget (thư viện lớp)
 

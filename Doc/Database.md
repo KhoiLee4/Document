@@ -1,4 +1,4 @@
-#####-----CƠ SỞ DỮ LIỆU-----#####
+# DATABASE
 
 *** Cơ sở dữ liệu (Database)
     - Một tập hợp có cấu trúc của những dữ liệu có liên quan với nhau được lưu trữ trong máy tính. Một CSDL biểu diễn một phần của thế giới thực. CSDL được thiết kế, xây dựng, và lưu trữ với 

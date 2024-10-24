@@ -6,29 +6,29 @@
 
 # HTML
 
-## HTML là gì?
+## 🤔HTML là gì?
 
-HTML viết tắt của chữ HyperText Markup Language (ngôn ngữ đánh dấu siêu văn bản), nó được dùng để tạo ra các tài liệu hiện thị được trên trình duyệt
+**HTML** viết tắt của chữ **HyperText Markup Language** (ngôn ngữ đánh dấu siêu văn bản), nó được dùng để tạo ra các tài liệu hiện thị được trên trình duyệt
 
 HTML sử dụng cách đánh dấu (markup) để chú thích cho các thành phần (phần tử HTML) như văn bản, hình ảnh ... các phần tử HTML tạo thành trang tài liệu hiện thị được trong các trình duyệt. Có rất nhiều phần tử HTML như: `<p>`, `<a>`, `<img>`, `<title>`, `<body>`, ...
 
 _❗Chỉ nội dung chứ không thi hành tác vụ, không phải là ngôn ngữ lập trình_
 
-## Web tĩnh là gì?
+## 🤔Web tĩnh là gì?
 
 Các tài liệu HTML (trang HTML) có thể là các file (thường có phần mở rộng .html, .htm) được lưu trữ trên hệ thống file của máy chủ web (webserver), từ đó trình duyệt truy cập đọc được và hiện thị.
 
-## Trang web động là gì?
+## 🤔Trang web động là gì?
 
 Các trang HTML mà trình duyệt lấy về từ webserver được phát sinh bởi một ứng dụng chạy trên server (ứng dụng phát triển bằng các ngôn ngữ lập trình như PHP, C# ...).
 
-## Siêu văn bản (HyperText) là gì?
+## 🤔Siêu văn bản (HyperText) là gì?
 
 Ám chỉ sự liên kết giữa các trang, một trang HTML có liên kết tham chiếu đến một trang khác trên cùng một Website hay giữa các website.
 
-## Thẻ (Tag)
+## 📚Thẻ (Tag)
 
-Ngôn ngữ đánh dấu HTML nghĩa là sử dụng các thẻ(tag) để tạo ra các phần tử nhằm hình thành cấu trúc tài liệu HTML
+Ngôn ngữ đánh dấu HTML nghĩa là sử dụng các **thẻ(tag)** để tạo ra các phần tử nhằm hình thành cấu trúc tài liệu HTML
 
 Một thẻ thì có tên thẻ (không phân biệt chữ hoa, thường), sau đó nó sử dụng quy tắc đánh dấu để tạo phần tử
 
@@ -52,23 +52,23 @@ Có hai loại thẻ phân loại theo hình thức sử dụng
 
 - Thẻ HTML rỗng (chỉ mở thẻ, không đóng thẻ, không chứa nội dung, ví dụ như thẻ `<br>`, `<img>`, ... tuy nhiên thẻ vẫn có thuộc tính)
 
-## Thuộc tính
+## 📚Thuộc tính
 
 Các thuộc tính nhằm thiết lập thêm thông tin cho các thẻ (phần tử HTML). Hầu hết thuộc tính phần tử HTML thiết lập bằng tên thuộc tính và giá trị đi cùng với nó
 
-Các thuộc tính của phần tử HTML viết tại tại vị trí mở thẻ, giữa ký hiệu `<tên-thẻ và ký hiệu >`. Thuộc tính viết theo cặp : tên-thuộc-tính="giá trị"
+Các thuộc tính của phần tử HTML viết tại tại vị trí mở thẻ, giữa ký hiệu `<tên-thẻ và ký hiệu >`. Thuộc tính viết theo cặp : *tên-thuộc-tính="giá trị"*
 
 ```html
 <p align="center">Đoạn văn được căn giữa trang.</p>
 ```
 
-## Thuộc tính chung toàn cục
+## 📚Thuộc tính chung toàn cục
 
 **Thuộc tính toàn cục (global attribute)** là các thuộc tính có thể đưa vào cho bất kỳ phần tử HTML nào, kể cả thuộc tính đó không có tác dụng gì với một số phần tử nhất định
 
 Phần tử HTML khác nhau có thể có các thuộc tính khác nhau (thuộc tính này dùng được cho phần tử này nhưng chưa chắc đã dùng được cho phần tử khác). Do vậy, mỗi phần tử cần xem xét các thuộc tính riêng của nó
 
-### class
+### 📙class
 
 Thiết lập một hoặc nhiều tên lớp cho phần tử. Các lớp này được dùng để CSS, Javascript lựa chọn phần tử.
 
@@ -76,7 +76,7 @@ Thiết lập một hoặc nhiều tên lớp cho phần tử. Các lớp này �
 <a href="https://xuanthulab.net" class="link1 link2">HTML</a>
 ```
 
-### style
+### 📙style
 
 Viết mã CSS áp dụng ngay cho phần tử. _Ví dụ phần tử P có cỡ chữ 18px (Đây là cách nhúng mã CSS dạng inline)_
 
@@ -84,7 +84,7 @@ Viết mã CSS áp dụng ngay cho phần tử. _Ví dụ phần tử P có cỡ
 <p style="font-size: 18px">Inline style sheet</p>
 ```
 
-### id
+### 📙id
 
 Thiết lập một định danh duy nhất cho phần tử HTML. Định danh này để tìm kiếm chọn phần tử trong DOM, cũng như để lựa chọn trong CSS.
 
@@ -92,7 +92,7 @@ Thiết lập một định danh duy nhất cho phần tử HTML. Định danh n
 <p id="idphantup">Ví dụ</p>
 ```
 
-### accesskey
+### 📙accesskey
 
 Chỉ ra một phím tắt kích hoạt phần tử.
 
@@ -100,7 +100,7 @@ Chỉ ra một phím tắt kích hoạt phần tử.
 <a href="https://xuanthulab.net" accesskey="x">HTML</a>
 ```
 
-### contenteditable
+### 📙contenteditable
 
 Cho biết nội dung trong phần tử có thể soạn thảo biên tập lại hay không. Nếu true thì sẽ xuất hiện box soạn thảo cho phần tử
 
@@ -108,7 +108,7 @@ Cho biết nội dung trong phần tử có thể soạn thảo biên tập lạ
 <p contenteditable="true">Nội dung này soạn thảo được</p>
 ```
 
-### data-\*
+### 📙data-\*
 
 Thuộc tính thiết lập dữ liệu riêng cho phần tử, ký hiệu _ là một tên tự đặt. data-_ là chuẩn đặt tên thuộc tính dữ liệu dùng cho HTML5
 
@@ -118,7 +118,7 @@ Ví dụ phần tử đó có lưu một dữ liệu tên là abc, thì thuộc 
 <p data-abc="Đây là dữ liệu riêng">Ví dụ</p>
 ```
 
-### raggable
+### 📙draggable
 
 Cho biết phần tử có thể kéo thả không (true, false, auto). Thuộc tính này liên quan đến sử dụng Javascript truy cập API kéo/thả. Xem Kéo / Thả trong HTML5
 
@@ -126,7 +126,7 @@ Cho biết phần tử có thể kéo thả không (true, false, auto). Thuộc 
 <p draggable="true">Ví dụ</p>
 ```
 
-### hidden
+### 📙hidden
 
 Khi có thuộc tính này phần tử sẽ ẩn, có thể gán bằng true/false
 
@@ -134,7 +134,7 @@ Khi có thuộc tính này phần tử sẽ ẩn, có thể gán bằng true/fal
 <p hidden>Ví dụ</p>
 ```
 
-### spellcheck
+### 📙spellcheck
 
 Cho trình duyệt biết có kiểm tra ngữ pháp phần tử này hay không
 
@@ -142,7 +142,7 @@ Cho trình duyệt biết có kiểm tra ngữ pháp phần tử này hay không
 <p spellcheck="true">Có kiểm tra ngữ pháp</p>
 ```
 
-### title
+### 📙title
 
 Thông tin thêm về phần tử, ví dụ để chuột lên phần tử thì hiện thông tin này - nó là tooltip
 
@@ -150,7 +150,7 @@ Thông tin thêm về phần tử, ví dụ để chuột lên phần tử thì 
 <p title="Thông tin thêm">Đây là đoạn văn</p>
 ```
 
-### autofocus
+### 📙autofocus
 
 Thuộc tính autofocus, để kích hoạt phần tử (đang nhận nhập liệu từ bàn phím), thường dùng với các phần tử input, textarea trong FORM. Xem HTML Form
 
@@ -158,11 +158,9 @@ Thuộc tính autofocus, để kích hoạt phần tử (đang nhận nhập li�
 <input name="ip" autofocus />
 ```
 
-## Mã ký tự HTML đặc biệt
+## 📚Mã ký tự HTML đặc biệt
 
-Các ký tự đặc biệt ví dụ như > < " ... thì khi viết HTML hoặc CSS nhiều khi bạn phải sử dụng mã.
-
-Truy cập [Mã ký tự](https://www.w3schools.com/charsets/ref_utf_math.asp)
+Các ký tự đặc biệt ví dụ như > < " ... thì khi viết HTML hoặc CSS nhiều khi bạn phải sử dụng mã. Truy cập [Mã ký tự](https://www.w3schools.com/charsets/ref_utf_math.asp) để xem thêm.
 
 _Ví dụ để viết HTML hiện thị: `<p>HTML</p>`_
 
@@ -176,7 +174,7 @@ _Ví dụ CSS ký tự © có mã CSS là \00A9_
 span { content:"\00A9"; }
 ```
 
-## Chú thích
+## 📚Chú thích
 
 Các chú thích trong HTML (comment) không hiện thị trên trình duyệt (trình duyệt bỏ qua), mục đích của chú thích là để mô tả, ghi chú, nhắc nhở về một đoạn mã nào đó để sau này đọc lại có thể hiểu nhanh chóng
 
@@ -184,7 +182,7 @@ Các chú thích trong HTML (comment) không hiện thị trên trình duyệt (
 <!-- nội dung -->
 ```
 
-## Cấu trúc HTML
+## 📚Cấu trúc HTML
 
 Một tài liệu (trang) HTML hoàn chỉnh có một thẻ gốc là `<html>`, mọi thẻ khác trình bày trong thẻ `<html>` này.
 
@@ -201,13 +199,13 @@ Trước thẻ `<html>` có đoạn text xác định nó là tài liệu HTML v
 </html>
 ```
 
-## Thẻ head
+## 📚Thẻ head
 
 Thẻ `<head>` chứa các thành phần (phần tử HTML) hầu như là không hiện thị tới người dùng, chúng là các điều khiển, thiết lập giúp trang html được hiện thị theo một mục đích cụ thể
 
 _❗Một văn bản HTML chỉ dùng một thẻ `<head>`. Không phải mọi thẻ HTML đều có thể viết trong `<head>`_
 
-## Thẻ title
+## 📚Thẻ title
 
 Thẻ `<title>` cần đặt trong thẻ `<head>`, nó thiết lập tiêu đề trang HTML, tiêu đề này hiện thị trên cửa sổ trình duyệt (tiêu đề tab). Mặc dù không bắt buộc nhưng mọi trang web nên có thẻ này
 
@@ -217,7 +215,7 @@ Thẻ `<title>` cần đặt trong thẻ `<head>`, nó thiết lập tiêu đề
 </head>
 ```
 
-## Thẻ meta
+## 📚Thẻ meta
 
 Một trang HTML có thể đưa vào các thông tin mô tả cho trang, các thông tin này gọi là metadata (siêu dữ liệu)
 
@@ -229,7 +227,7 @@ Các loại metadata
 
 > bổ sung sau
 
-## Thẻ body
+## 📚Thẻ body
 
 Thẻ `<body>` nằm trong thẻ `<html>`, những thành phần hiện thị tới người dùng (đoạn văn, hình ảnh, liên kết ...) phải nằm trong thẻ này
 
@@ -247,7 +245,7 @@ Thẻ `<body>` nằm trong thẻ `<html>`, những thành phần hiện thị t�
 
 _❗Một trang HTML chỉ có 1 thẻ `<body`>_
 
-## Thẻ heading `<h1>` - `<h6>`
+## 📚Thẻ heading `<h1>` - `<h6>`
 
 Trong một trang HTML (tài liệu) có thể phân chia ra thành nhiều đề mục (heading) với cấp độ khác nhau
 
@@ -272,13 +270,13 @@ _❗Chỉ dùng một thẻ h1: H1 được dùng như là tiêu đề của c�
 
 _❗Thẻ H1 - H6 không có thuộc tính đặc trưng riêng, chỉ có các thuộc tính toàn cục_
 
-## Thẻ `<p>` và `<br>`
+## 📚Thẻ `<p>` và `<br>`
 
-### Thẻ `<p>` (yaoj đoạn văn bản)
+### 📙Thẻ `<p>` (tạo đoạn văn bản)
 
-- Với thẻ `<p>`, trình duyệt tạo ra một khối (chữ nhật) để hiện thị nội dung văn bản, khối này phân cách bởi các dòng trống
+Với thẻ `<p>`, trình duyệt tạo ra một khối (chữ nhật) để hiện thị nội dung văn bản, khối này phân cách bởi các dòng trống
 
-- Trong thẻ `<p>` chỉ nên chứa văn bản và các phần tử dạng inline, chủ yếu là các phần tử định dạng như `<i>` `<em>` `<strong>` ...
+Trong thẻ `<p>` chỉ nên chứa văn bản và các phần tử dạng inline, chủ yếu là các phần tử định dạng như `<i>` `<em>` `<strong>` ...
 
 ```html
 <p>Nội dung trong thẻ ...</p>
@@ -286,7 +284,7 @@ _❗Thẻ H1 - H6 không có thuộc tính đặc trưng riêng, chỉ có các 
 
 _❗Thẻ `<p>` là loại thẻ dạng block_
 
-### Thẻ `<br>` (ngắt dòng)
+### 📙Thẻ `<br>` (ngắt dòng)
 
 Thẻ `<br>` dùng để ngắt dòng, thẻ `<br>` là thẻ rỗng, nó không cần đóng. Có thể viết bằng `<br>` hoặc `<br/>`
 
@@ -301,7 +299,7 @@ Thẻ `<br>` dùng để ngắt dòng, thẻ `<br>` là thẻ rỗng, nó không
 </p>
 ```
 
-## Whitespace (khoảng trắng)
+## 📚Whitespace (khoảng trắng)
 
 Khoảng trắng là những ký tự (có thể gõ từ các trình soạn thảo) như: ký tự trắng, ký tự tab, ký tự xuống dòng
 
@@ -309,8 +307,7 @@ Khoảng trắng là những ký tự (có thể gõ từ các trình soạn th�
 
 - Ký tự tab : nhấn phím tab trên bàn phím. Nó là phím tạo bảng, tùy thuộc các trình soạn thảo nó hiện thị với nhiều khoảng trắng.
 
-- Ký tự xuống dòng : trong các trình soạn thảo bạn nhấn Enter. Cũng tùy thuộc trình soạn thảo xuống dòng nó là một ký tự CR (Carriage Return, mã ASCII 13) hoặc
-  là một ký tự LF (Line Feed, mã ASCII 10) hoặc là cả một chuỗi CRLF (Soạn thảo trong Windows như notepad xuống dòng là tạo ra chuỗi CRLF còn gọi là EOL)
+- Ký tự xuống dòng : trong các trình soạn thảo bạn nhấn Enter. Cũng tùy thuộc trình soạn thảo xuống dòng nó là một ký tự CR (Carriage Return, mã ASCII 13) hoặc là một ký tự LF (Line Feed, mã ASCII 10) hoặc là cả một chuỗi CRLF (Soạn thảo trong Windows như notepad xuống dòng là tạo ra chuỗi CRLF còn gọi là EOL)
 
 Trong code HTML giữa các từ có nhiều khoảng trắng, thì trình duyệt render coi như chỉ có một khoảng khắng
 
@@ -355,7 +352,7 @@ Nếu muốn trình duyệt không bỏ qua các khoảng trắng theo quy tắc
 
 **_xem thêm Mã ký tự HTML đặc biệt_**
 
-## Thẻ định dạng
+## 📚Thẻ định dạng
 
 Thẻ `<b>` cho biết nội dung cần nhấn mạnh
 
@@ -395,7 +392,7 @@ Thẻ `<sup>` tạo chỉ số trên
 
 _❗Thẻ `<b>` và thẻ `<strong>` in đậm văn bản như nhau, thẻ `<em>` và thẻ `<i>` in nghiêng văn bản như nhau. Nhưng khi sử dụng chúng mang ý nghĩa khác nhau: với `<em>`, `<strong>` thì mang ý nghĩa quan trọng_
 
-## Thẻ `<hr>`
+## 📚Thẻ `<hr>`
 
 Thẻ `<hr>` được dùng để tạo đường kẻ ngang trong trang HTML, nó thường dùng để phân tách giữa các đoạn văn, các phân đoạn nội dung để dễ đọc, dễ theo dõi
 
@@ -412,25 +409,25 @@ Thuộc tính riêng
 - color : thiết lập màu đường (red, green, blue ...)
 - align : căn lề (left, right, center)
 
-## Thẻ `<img>`
+## 📚Thẻ `<img>`
 
 Thẻ `<img>` được dùng để nhúng một hình ảnh vào trang HTML. Thẻ này có vài thuộc tính và nó không có phần đóng thẻ
 
 Thuộc tính
 
-- src : thiết lập địa chỉ URL của ảnh, nó có thể là địa chỉ tương đối, tuyệt đối, hay đến file ảnh cục bộ trên máy tính
+- `src` : thiết lập địa chỉ URL của ảnh, nó có thể là địa chỉ tương đối, tuyệt đối, hay đến file ảnh cục bộ trên máy tính
 
 ```html
 <img src="image.jpg" />
 ```
 
-- alt : Trong trường hợp ảnh không hiện thị được (ví dụ ảnh bị xóa ...) thì thuộc tính alt là một văn bản thay thế sẽ hiện thị thay cho ảnh
+- `alt` : Trong trường hợp ảnh không hiện thị được (ví dụ ảnh bị xóa ...) thì thuộc tính alt là một văn bản thay thế sẽ hiện thị thay cho ảnh
 
 ```html
 <img src="flower.jpg" alt="" />
 ```
 
-- width - height : Điều chỉnh cỡ ảnh hiện thị, chiều rộng và chiều cao của ảnh. Đơn vị sử dụng là pixel px hoặc phần trăm %
+- `width` - `height` : Điều chỉnh cỡ ảnh hiện thị, chiều rộng và chiều cao của ảnh. Đơn vị sử dụng là pixel px hoặc phần trăm %
 
 ```html
 <img src="flower.jpg" height="150px" width="150px" alt="" />
@@ -450,7 +447,7 @@ _❗Khi sử dụng ảnh trong trang web, sẽ mất thời gian để tải �
 />
 ```
 
-## Thẻ `<a>`
+## 📚Thẻ `<a>`
 
 Thẻ `<a>` (anchor - mỏ neo) được dùng để tạo ra các liên kết
 
@@ -484,7 +481,7 @@ _❗Link đến tài nguyên không phải HTML (như link đến file ,mp3, .do
 <a href="https://badexamples.com/abc/xyz" rel="nofollow">Đây là địa chỉ xấu</a>
 ```
 
-## Danh sách
+## 📚Danh sách
 
 Danh sách là một tập hợp các phần tử. Có hai loại danh sách, danh sách có thứ tự và không có thứ tự.
 
@@ -558,7 +555,7 @@ _❗`li*n + tab` : tạo nhanh n thẻ li (áp dụng tuong tự cho các thẻ 
 
 _❗ul : mặc định là dấu chấm, ol : mặc định là số (bắt đầu từ 1)_
 
-## Bảng biểu
+## 📚Bảng biểu
 
 Bảng biểu (table) trong HTML để trình bày dữ liệu gồm có các dòng (row), các ô bảng (cell), phần tiêu đề bảng (heading)
 
@@ -723,7 +720,7 @@ Nếu muốn nhóm dòng là phần cuối của cột dùng thẻ `<tfoot>`
 </table>
 ```
 
-## Block và Inline
+## 📚Block và Inline
 
 Các phần tử HTML thuần túy được phân loại ra thành 2 cấp độ theo cách thức mà phần tử được trình duyệt render hiện thị cho người dùng đó là những phần tử cấp độ inline (hiện thị trong hàng) và những phần tử cấp độ block (hiện thị theo khối)
 
@@ -752,7 +749,7 @@ _❗Quy tắc mô hình nội dung của HTML: phần tử cấp độ inline kh
 </a>
 ```
 
-## Thẻ `<div>` và `<span>`
+## 📚Thẻ `<div>` và `<span>`
 
 Trong HTML có hai loại phần tử sử dụng với mục đích tổng quát, một phần tử cấp độ block là `<div>` và một phần tử cấp độ inline là `<span>`. Hai loại thẻ này dùng rất nhiều để tạo ra cấu trúc trang HTML hiện đại
 
@@ -801,7 +798,7 @@ Trong HTML có hai loại phần tử sử dụng với mục đích tổng quá
 
 _❗Tóm lại: Thẻ `<div>` dùng để tạo khối block, phân chia nội dung trong HTML. Thẻ `<span>` tạo các phần tử dạng inline, phần văn bản dạng inline không ngắt dòng._
 
-## Màu sắc
+## 📚Màu sắc
 
 Màu sắc sử dụng trong HTML cũng như CSS là màu RGB. Cường độ màu là số nguyên có giá trị từ 0 đến 255.
 
@@ -830,7 +827,7 @@ Thẻ `<font>`
 </html>
 ```
 
-## Biểu mẫu
+## 📚Biểu mẫu
 
 **Biểu mẫu (web form)** được tạo ra trong HTML là khu vực hình thành nên sự tương tác giữa người dùng và ứng dụng web.
 
@@ -878,7 +875,7 @@ _❗Sử dụng method="post" thì khi submit biểu diễn trong nội dung c�
 
 _❗Khi thông tin gửi tới địa chỉ máy chủ (địa chỉ trong thuộc tính action), thì dự liệu nhận được xử lý thế nào là việc của server, bạn sẽ thực hiện việc sử lý này khi lập trình backend với một ngôn ngữ lập trình nào đó như php, c# ..._
 
-## Thẻ `<lable>` và `<input>`
+## 📚Thẻ `<lable>` và `<input>`
 
 ### Thẻ `<lable>`
 
@@ -937,7 +934,7 @@ Thẻ `<input>` trong html là thẻ rỗng (không có đóng thẻ), nó chỉ
 | file        | Chọn file để upload. Để form gửi được file cần cho thêm thuộc tính `enctype="multipart/form-data"`                                                                                                                                                                                  |
 | url         | Hộp nhập địa chỉ URL: Hỗ trợ kiểm tra dữ liệu chính xác khi submit                                                                                                                                                                                                                  |
 
-## Thẻ `<textarea>`
+## 📚Thẻ `<textarea>`
 
 Thẻ `<textarea>` dùng để tạo ra phần tử HTML cho phép nhập nhiều dòng chữ (nhấn Enter xuống dòng). Sử dụng thẻ này, khi cần nhập dữ liệu dài như nhận các phản hồi, viết nội dung ...
 
@@ -963,7 +960,7 @@ Thuộc tính
 
 - `rows` : Thuộc tính thiết lập số dòng của `<textarea>` Mặc định `rows="2"`
 
-## Thẻ `<select>` và `<option>`
+## 📚Thẻ `<select>` và `<option>`
 
 Thẻ `<select>` và `<option>` trong HTML tạo ra một menu để chọn các tùy chọn, nó là một điều khiển control thường dùng như phần tử trong form HTML.
 
@@ -1058,7 +1055,7 @@ Nếu `<optgroup>` có thuộc tính disabled thì nhóm đó không chọn đư
 </select>
 ```
 
-## Thẻ `<header>`
+## 📚Thẻ `<header>`
 
 Trong HTML4 thành phần header của trang được định nghĩa thông qua thẻ div
 
@@ -1083,7 +1080,7 @@ Trong HTML5 có phần tử `<header>` để làm việc này
 
 _❗Lưu ý thẻ `<header>` là khác hoàn toàn với `<head>`_
 
-## Thẻ `<footer>`
+## 📚Thẻ `<footer>`
 
 Thẻ `<footer>` sử dụng khá rộng rãi với nhiều mục đích. Thông thường `<footer>` sử dụng ám chỉ đền phần chân trang
 
@@ -1100,7 +1097,7 @@ Các thông tin đặt trong phần `<footer>` thường là:
 - Thông tin bản quyền
 - Sitemap và các liên quan đến trang
 
-## Thẻ `<nav>`
+## 📚Thẻ `<nav>`
 
 Thẻ này trình bày một phân đoạn của trang nó chứa các liên kết để điều hướng đến các trang của website.
 
@@ -1116,7 +1113,7 @@ Thẻ này trình bày một phân đoạn của trang nó chứa các liên k�
 
 _❗Lưu ý không phải tất cả các link đều nằm trong thẻ `<nav>`, các link trong thẻ `<nav>` là phần điều hướng chính._
 
-## Thẻ `<article>`
+## 📚Thẻ `<article>`
 
 `article` là phần tử để bao bọc nội dung độc lập, nó có thể là một bài post của diễn đàn, một bài viết của trang, một bài báo, một bình luận ... hoặc bất kỳ một nội dung độc lập nào.
 
@@ -1131,7 +1128,7 @@ Thẻ `<article>` trong HTML5 được dùng thay thế cho thẻ `<div>` của 
 
 _❗Phần tử `<article>` có thể chứa các `<article>` khác. Các `<article>` bên trong trình bày các nội dung liên quan đến `<article>` bên ngoài._
 
-## Thẻ `<section>`
+## 📚Thẻ `<section>`
 
 Thẻ `<section>` dùng để phân chia một cách logic một trang, một article. Vậy Thẻ `<section>` dùng để chia nội dung trong một article.
 
@@ -1147,7 +1144,7 @@ Mỗi `<section>` là một khối xác định, thường nó có chứa các t
 </article>
 ```
 
-## Thẻ `<aside>`
+## 📚Thẻ `<aside>`
 
 `<aside>` được hiểu như nội dung thứ cấp của phần nội dung chính của trang. `<aside>` thường dùng để biểu diễn sidebar. Khi một `<aside>` sử dụng trong `<article>` thì nội dung trong `<aside>` liên quan đến `<aside>`
 
@@ -1161,7 +1158,7 @@ Mỗi `<section>` là một khối xác định, thường nó có chứa các t
 </article>
 ```
 
-## Thẻ `<audio>`
+## 📚Thẻ `<audio>`
 
 HTML5 sử dụng thẻ `<audio>` để phát file âm thanh. Có hai cách để sử dụng thẻ `<audio>`:
 
@@ -1201,7 +1198,7 @@ Thuộc tính
 
 _❗Hiện tại có 3 định dạng file âm thanh hỗ trợ trong HTML5: mp3, wav, ogg_
 
-## Thẻ `<video>`
+## 📚Thẻ `<video>`
 
 Thẻ `<video>` để phát các file video, phim. Cách sử dụng `<video>` khá giống với `<audio>`
 
@@ -1215,7 +1212,7 @@ Thẻ `<video>` để phát các file video, phim. Cách sử dụng `<video>` k
 
 _❗Hiện tại có 3 định dạng file video hỗ trợ trong HTML5: mp4, WebM, ogg_
 
-## Thẻ `<progress>`
+## 📚Thẻ `<progress>`
 
 Thẻ `<progress>` cung cấp khả năng tạo ra một thanh biểu diễn tiến trình xử lý (progress bar), nó có thể sử dụng bất kỳ chỗ nào trong `body`
 
@@ -1231,7 +1228,7 @@ Thuộc tính
 
 # HTML5
 
-## HTML5 là gì?
+## 📚HTML5 là gì?
 
 HTML5 là 1 phiên bản của HTML (Hypertext Markup Language) để trình bày trang web. Thực tế nó chứa ba thành phần: HTML cung cấp cấu trúc trang; CSS trình bày trang; JavaScript điều khiển tương tác với trang.
 
@@ -1270,7 +1267,7 @@ HTML5 được thiết kế để cấu trúc HTML mang nhiều ý nghĩa hơn, 
 
 - **Phần đoạn - Section trong HTML5** : Trình bày một phạm vi nội dung heading, điều hướng, chân trang ...: `<article>`, `<aside>`, `<nav>`, `<section>`
 
-## Cấu trúc trang HTML5
+## 📚Cấu trúc trang HTML5
 
 Cấu trúc trang HTML5 thông thường sẽ có dạng được biểu diễn với các thành phần cơ bản `header` `nav` `article` `section` `aside` `footer`
 
@@ -1340,7 +1337,7 @@ _Ví dụ_
 </html>
 ```
 
-## Web Storage
+## 📚Web Storage
 
 Với HTML5 web storage, trang web có thể lưu trữ dữ liệu tại máy khách (trình duyệt máy khách). Trước HTML5, chúng ta phải sử dụng hàm JavaScript về `cookies` để làm điều này.
 
@@ -1385,7 +1382,7 @@ localStorage.removeItem("key1");
 localStorage.clear();
 ```
 
-## Geolocation API - Định vị vị trí
+## 📚Geolocation API - Định vị vị trí
 
 Trong HTML5, các hàm API về `Geolocation` giúp lấy vị trí (địa lý) của người dùng. Tuy nhiên để sử dụng được tính năng này bạn cần sự cho phép của người dùng. Định vị còn hoạt động phụ thuộc vào thiết bị mà người dùng truy cập, cần cung cấp được tọa độ vị trí
 
@@ -1499,7 +1496,7 @@ Ta có thể lấy địa ảnh từ `maps.googleapis.com` bằng URL:
 </script>
 ```
 
-## Kéo và Thả
+## 📚Kéo và Thả
 
 Tính năng **kéo thả** có thể áp dụng cho mọi phần tử HTML, mục đích để dịch chuyển phần tử tử vị trí này sang vị trí khác hay để thu thập dữ liệu.
 
@@ -1619,7 +1616,7 @@ _Áp dụng_
 </div>
 ```
 
-## ẢNh SVG
+## 📚ẢNh SVG
 
 SVG (Scalable Vector Graphics) được vẽ bằng cách sử dụng ngôn ngữ đánh dấu kiểu như HTML. Nó đưa ra một số phương pháp để vẽ như các đường, hình tròn, ảnh, văn bản ...
 
@@ -1872,7 +1869,7 @@ Dùng để định dạng thêm chữ trong `text`
 
 Sử dụng thêm công cụ để vẽ nhanh SVG: [công cụ](https://inkscape.org/en/)
 
-## Thẻ `<canvas>`
+## 📚Thẻ `<canvas>`
 
 Phần tử `<canvas>` sử dụng để vẽ các thành phần đồ họa từ đơn giản như các đường đến các đồ họa phức tạp.
 
