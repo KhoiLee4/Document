@@ -200,6 +200,80 @@ Khi thiết kế hệ thống cần xác định được:
 
 ## 📚Quy trình phát triển hệ thống SDLC (Software Development Life Cycle)
 
+**Software Development Life Cycle (SDLC)**, hay Quy trình phát triển phần mềm, là một quy trình có cấu trúc để phát triển phần mềm, bao gồm nhiều giai đoạn từ việc lập kế hoạch đến triển khai và bảo trì. SDLC giúp đảm bảo rằng phần mềm được phát triển đúng yêu cầu, đạt chất lượng và dễ bảo trì. Quy trình này còn giúp giảm thiểu rủi ro, tiết kiệm chi phí, và cải thiện hiệu suất làm việc của đội ngũ phát triển.
+
+### 📙Các giai đoạn chính của SDLC
+
+#### 📘Lập kế hoạch (Planning)
+
+Mục tiêu: Xác định phạm vi và mục tiêu của dự án, cũng như lên kế hoạch tổng thể về nguồn lực, thời gian và chi phí.
+
+Các hoạt động chính:
+- Xác định các yêu cầu sơ bộ của dự án.
+
+- Đánh giá tính khả thi (feasibility study), bao gồm khả thi kỹ thuật, tài chính, vận hành và thời gian.
+
+- Xây dựng lịch trình dự án và dự toán ngân sách.
+
+- Thiết lập đội ngũ phát triển, quản lý rủi ro và chuẩn bị tài liệu dự án.
+
+#### 📘Phân tích yêu cầu (Requirement Analysis)
+
+Mục tiêu: Hiểu rõ và thu thập tất cả các yêu cầu từ phía khách hàng và các bên liên quan để xác định chức năng mà hệ thống cần phải có.
+
+Các hoạt động chính:
+- Thu thập yêu cầu từ người dùng, khách hàng và các bên liên quan thông qua phỏng vấn, khảo sát, và nghiên cứu tài liệu.
+
+- Phân tích các yêu cầu chức năng (Functional Requirements) và phi chức năng (Non-functional Requirements).
+
+- Tạo tài liệu đặc tả yêu cầu phần mềm (SRS - Software Requirements Specification) để ghi chép chi tiết các yêu cầu.
+
+#### 📘Thiết kế hệ thống (System Design):
+
+Mục tiêu: Chuyển các yêu cầu đã phân tích thành bản thiết kế chi tiết, bao gồm thiết kế kiến trúc hệ thống và thiết kế chi tiết cho các thành phần.
+Các hoạt động chính:
+Thiết kế kiến trúc tổng thể của hệ thống, xác định các thành phần, module, và mối quan hệ giữa chúng.
+Thiết kế cơ sở dữ liệu, giao diện người dùng, quy trình làm việc, và các thuật toán cần thiết.
+Tạo ra các mô hình UML, sơ đồ ERD, và các bản vẽ chi tiết để thể hiện cách hệ thống sẽ hoạt động.
+Đảm bảo tính bảo mật, hiệu suất, và khả năng mở rộng trong thiết kế.
+
+#### 📘Phát triển/triển khai (Development/Implementation):
+
+Mục tiêu: Xây dựng hệ thống dựa trên thiết kế đã được phê duyệt.
+Các hoạt động chính:
+Lập trình các thành phần của hệ thống, bao gồm các module, giao diện người dùng, cơ sở dữ liệu và tích hợp các dịch vụ.
+Sử dụng các công nghệ, ngôn ngữ lập trình, công cụ và frameworks phù hợp.
+Đảm bảo rằng các mã nguồn tuân theo các chuẩn mã hóa và yêu cầu kỹ thuật.
+Đặt nền móng cho việc kiểm thử (testing), như việc viết các trường hợp kiểm thử tự động (unit tests).
+
+#### 📘Kiểm thử (Testing):
+
+Mục tiêu: Đảm bảo rằng phần mềm hoạt động chính xác, không có lỗi và đáp ứng các yêu cầu đề ra.
+Các hoạt động chính:
+Thực hiện các loại kiểm thử khác nhau như kiểm thử đơn vị (unit testing), kiểm thử tích hợp (integration testing), kiểm thử chức năng (functional testing), kiểm thử hệ thống (system testing), và kiểm thử chấp nhận người dùng (user acceptance testing - UAT).
+Kiểm tra hiệu suất, bảo mật và khả năng chịu tải của hệ thống.
+Ghi nhận và sửa các lỗi phát sinh.
+Kiểm thử hồi quy (regression testing) để đảm bảo rằng không có lỗi mới phát sinh sau khi sửa lỗi cũ.
+
+#### 📘Triển khai (Deployment):
+
+Mục tiêu: Đưa phần mềm vào môi trường sản xuất và giao cho người dùng cuối.
+Các hoạt động chính:
+Chuẩn bị môi trường triển khai, có thể là trên máy chủ cục bộ hoặc trên nền tảng đám mây (cloud).
+Cài đặt và cấu hình phần mềm, cơ sở dữ liệu, và các thành phần cần thiết.
+Di chuyển dữ liệu (nếu có) từ hệ thống cũ sang hệ thống mới.
+Đảm bảo rằng phần mềm hoạt động tốt trên môi trường sản xuất.
+Đào tạo người dùng và cung cấp tài liệu hướng dẫn sử dụng.
+
+#### 📘Bảo trì (Maintenance):
+
+Mục tiêu: Duy trì, cải tiến và sửa chữa phần mềm sau khi triển khai.
+Các hoạt động chính:
+Theo dõi hoạt động của phần mềm để phát hiện các lỗi hoặc sự cố.
+Cập nhật, vá lỗi và tối ưu hóa hiệu suất của phần mềm khi cần.
+Phát triển các tính năng mới dựa trên yêu cầu thay đổi của người dùng hoặc nhu cầu kinh doanh.
+Quản lý các bản phát hành, cập nhật và triển khai các thay đổi.
+
 ## Phân tích Yêu cầu Hệ thống
 ### Yêu cầu chức năng và phi chức năng
 ### Use Case Diagrams
