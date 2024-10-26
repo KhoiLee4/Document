@@ -767,3 +767,14 @@ Sử dụng ClickOnce hoặc Windows Installer để tạo các bản phát hàn
 
 Các cách cập nhật phần mềm sau khi triển khai.
 Lập kế hoạch cho việc bảo trì và cập nhật các tính năng mới.
+
+
+## 📚Crytal Report, RDLC Report
+
+
+## 📚Spire office
+
+
+## 📚Excel (NPOI, OpenXML)
+
+## 📚Restsharp

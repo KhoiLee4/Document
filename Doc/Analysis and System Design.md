@@ -228,53 +228,285 @@ Các hoạt động chính:
 
 - Tạo tài liệu đặc tả yêu cầu phần mềm (SRS - Software Requirements Specification) để ghi chép chi tiết các yêu cầu.
 
-#### 📘Thiết kế hệ thống (System Design):
+#### 📘Thiết kế hệ thống (System Design)
 
 Mục tiêu: Chuyển các yêu cầu đã phân tích thành bản thiết kế chi tiết, bao gồm thiết kế kiến trúc hệ thống và thiết kế chi tiết cho các thành phần.
-Các hoạt động chính:
-Thiết kế kiến trúc tổng thể của hệ thống, xác định các thành phần, module, và mối quan hệ giữa chúng.
-Thiết kế cơ sở dữ liệu, giao diện người dùng, quy trình làm việc, và các thuật toán cần thiết.
-Tạo ra các mô hình UML, sơ đồ ERD, và các bản vẽ chi tiết để thể hiện cách hệ thống sẽ hoạt động.
-Đảm bảo tính bảo mật, hiệu suất, và khả năng mở rộng trong thiết kế.
 
-#### 📘Phát triển/triển khai (Development/Implementation):
+Các hoạt động chính:
+- Thiết kế kiến trúc tổng thể của hệ thống, xác định các thành phần, module, và mối quan hệ giữa chúng.
+
+- Thiết kế cơ sở dữ liệu, giao diện người dùng, quy trình làm việc, và các thuật toán cần thiết.
+
+- Tạo ra các mô hình UML, sơ đồ ERD, và các bản vẽ chi tiết để thể hiện cách hệ thống sẽ hoạt động.
+
+- Đảm bảo tính bảo mật, hiệu suất, và khả năng mở rộng trong thiết kế.
+
+#### 📘Phát triển/triển khai (Development/Implementation)
 
 Mục tiêu: Xây dựng hệ thống dựa trên thiết kế đã được phê duyệt.
-Các hoạt động chính:
-Lập trình các thành phần của hệ thống, bao gồm các module, giao diện người dùng, cơ sở dữ liệu và tích hợp các dịch vụ.
-Sử dụng các công nghệ, ngôn ngữ lập trình, công cụ và frameworks phù hợp.
-Đảm bảo rằng các mã nguồn tuân theo các chuẩn mã hóa và yêu cầu kỹ thuật.
-Đặt nền móng cho việc kiểm thử (testing), như việc viết các trường hợp kiểm thử tự động (unit tests).
 
-#### 📘Kiểm thử (Testing):
+Các hoạt động chính:
+- Lập trình các thành phần của hệ thống, bao gồm các module, giao diện người dùng, cơ sở dữ liệu và tích hợp các dịch vụ.
+
+- Sử dụng các công nghệ, ngôn ngữ lập trình, công cụ và frameworks phù hợp.
+
+- Đảm bảo rằng các mã nguồn tuân theo các chuẩn mã hóa và yêu cầu kỹ thuật.
+
+- Đặt nền móng cho việc kiểm thử (testing), như việc viết các trường hợp kiểm thử tự động (unit tests).
+
+#### 📘Kiểm thử (Testing)
 
 Mục tiêu: Đảm bảo rằng phần mềm hoạt động chính xác, không có lỗi và đáp ứng các yêu cầu đề ra.
-Các hoạt động chính:
-Thực hiện các loại kiểm thử khác nhau như kiểm thử đơn vị (unit testing), kiểm thử tích hợp (integration testing), kiểm thử chức năng (functional testing), kiểm thử hệ thống (system testing), và kiểm thử chấp nhận người dùng (user acceptance testing - UAT).
-Kiểm tra hiệu suất, bảo mật và khả năng chịu tải của hệ thống.
-Ghi nhận và sửa các lỗi phát sinh.
-Kiểm thử hồi quy (regression testing) để đảm bảo rằng không có lỗi mới phát sinh sau khi sửa lỗi cũ.
 
-#### 📘Triển khai (Deployment):
+Các hoạt động chính:
+- Thực hiện các loại kiểm thử khác nhau như **kiểm thử đơn vị (unit testing)**, **kiểm thử tích hợp (integration testing)**, **kiểm thử chức năng (functional testing)**, **kiểm thử hệ thống (system testing)**, và **kiểm thử chấp nhận người dùng (user acceptance testing - UAT)**.
+
+- Kiểm tra hiệu suất, bảo mật và khả năng chịu tải của hệ thống.
+
+- Ghi nhận và sửa các lỗi phát sinh.
+
+- Kiểm thử hồi quy (regression testing) để đảm bảo rằng không có lỗi mới phát sinh sau khi sửa lỗi cũ.
+
+#### 📘Triển khai (Deployment)
 
 Mục tiêu: Đưa phần mềm vào môi trường sản xuất và giao cho người dùng cuối.
-Các hoạt động chính:
-Chuẩn bị môi trường triển khai, có thể là trên máy chủ cục bộ hoặc trên nền tảng đám mây (cloud).
-Cài đặt và cấu hình phần mềm, cơ sở dữ liệu, và các thành phần cần thiết.
-Di chuyển dữ liệu (nếu có) từ hệ thống cũ sang hệ thống mới.
-Đảm bảo rằng phần mềm hoạt động tốt trên môi trường sản xuất.
-Đào tạo người dùng và cung cấp tài liệu hướng dẫn sử dụng.
 
-#### 📘Bảo trì (Maintenance):
+Các hoạt động chính:
+- Chuẩn bị môi trường triển khai, có thể là trên máy chủ cục bộ hoặc trên nền tảng đám mây (cloud).
+
+- Cài đặt và cấu hình phần mềm, cơ sở dữ liệu, và các thành phần cần thiết.
+
+- Di chuyển dữ liệu (nếu có) từ hệ thống cũ sang hệ thống mới.
+
+- Đảm bảo rằng phần mềm hoạt động tốt trên môi trường sản xuất.
+
+- Đào tạo người dùng và cung cấp tài liệu hướng dẫn sử dụng.
+
+#### 📘Bảo trì (Maintenance)
 
 Mục tiêu: Duy trì, cải tiến và sửa chữa phần mềm sau khi triển khai.
-Các hoạt động chính:
-Theo dõi hoạt động của phần mềm để phát hiện các lỗi hoặc sự cố.
-Cập nhật, vá lỗi và tối ưu hóa hiệu suất của phần mềm khi cần.
-Phát triển các tính năng mới dựa trên yêu cầu thay đổi của người dùng hoặc nhu cầu kinh doanh.
-Quản lý các bản phát hành, cập nhật và triển khai các thay đổi.
 
-## Phân tích Yêu cầu Hệ thống
+Các hoạt động chính:
+- Theo dõi hoạt động của phần mềm để phát hiện các lỗi hoặc sự cố.
+
+- Cập nhật, vá lỗi và tối ưu hóa hiệu suất của phần mềm khi cần.
+
+- Phát triển các tính năng mới dựa trên yêu cầu thay đổi của người dùng hoặc nhu cầu kinh doanh.
+
+- Quản lý các bản phát hành, cập nhật và triển khai các thay đổi.
+
+### 📙Các mô hình SDLC phổ biến
+
+#### 📘Waterfall Model (Mô hình thác nước)
+
+**Mô hình thác nước (Waterfall Model)** là một trong những mô hình phát triển phần mềm cổ điển, được gọi là "*thác nước*" vì quy trình phát triển chảy xuống theo từng giai đoạn, tương tự như dòng nước chảy qua từng bậc thác mà không quay lại các giai đoạn trước.
+
+![alt text](../Image/ANALYSIS_AND_SYSTEM_DESIGN_001.webp)
+
+##### 📗Đặc điểm của Mô hình thác nước
+**Tuần tự và tuyến tính**: Các giai đoạn trong mô hình thác nước được thực hiện theo trình tự, từng giai đoạn phải được hoàn thành trước khi chuyển sang giai đoạn tiếp theo.
+
+**Không lặp lại**: Sau khi hoàn thành một giai đoạn, nhóm phát triển không quay lại chỉnh sửa các giai đoạn trước đó (trừ khi có lỗi lớn).
+
+**Dễ dàng quản lý**: Mô hình có cấu trúc đơn giản, dễ hiểu, rõ ràng, và dễ kiểm soát do các bước diễn ra theo thứ tự cố định.
+
+##### 📗Các giai đoạn trong Mô hình thác nước
+
+Yêu cầu (Requirement Gathering and Analysis)
+- Mục tiêu của giai đoạn này là thu thập và phân tích tất cả các yêu cầu từ người dùng và các bên liên quan để xác định chính xác các chức năng mà phần mềm cần có.
+
+- Kết quả của giai đoạn này là một tài liệu đặc tả yêu cầu phần mềm (SRS - Software Requirements Specification).
+
+Thiết kế hệ thống (System Design)
+- Dựa trên tài liệu yêu cầu, nhóm phát triển sẽ thiết kế kiến trúc hệ thống và xác định các thành phần chính, giao diện, dữ liệu và quy trình làm việc.
+
+- Tạo ra tài liệu thiết kế hệ thống, bao gồm các mô hình và sơ đồ chi tiết về kiến trúc, cơ sở dữ liệu và giao diện người dùng.
+
+Phát triển (Implementation)
+- Nhóm lập trình sẽ viết mã nguồn dựa trên thiết kế đã được phê duyệt, và các thành phần của hệ thống sẽ được xây dựng và tích hợp lại với nhau.
+
+- Đây là giai đoạn thực thi thực tế, biến các yêu cầu và thiết kế thành mã nguồn.
+
+Kiểm thử (Testing)
+- Kiểm thử để phát hiện và sửa lỗi, đảm bảo phần mềm hoạt động đúng yêu cầu và không có lỗi phát sinh.
+
+- Các loại kiểm thử bao gồm kiểm thử chức năng, kiểm thử hệ thống và kiểm thử chấp nhận người dùng.
+
+Triển khai (Deployment)
+- Sau khi kiểm thử hoàn tất, phần mềm sẽ được triển khai vào môi trường sản xuất để người dùng cuối có thể bắt đầu sử dụng.
+
+- Các bước triển khai có thể bao gồm cài đặt phần mềm, đào tạo người dùng và chuyển giao dữ liệu.
+
+Bảo trì (Maintenance)
+- Đây là giai đoạn phần mềm đã đi vào hoạt động thực tế, và đội ngũ phát triển sẽ duy trì, cập nhật và sửa lỗi để đáp ứng các nhu cầu thay đổi của người dùng.
+
+- Các hoạt động bảo trì bao gồm vá lỗi, cải tiến hiệu năng và nâng cấp tính năng.
+
+##### 📗Khi nào nên sử dụng Mô hình thác nước
+
+**Ưu điểm**: Dễ quản lý, quy trình rõ ràng, phù hợp với các dự án có yêu cầu ổn định.
+
+**Nhược điểm**: Không linh hoạt khi có sự thay đổi yêu cầu trong quá trình phát triển, không phù hợp cho các dự án phức tạp.
+
+Mô hình thác nước phù hợp nhất với các dự án:
+- Có yêu cầu rõ ràng, ít thay đổi trong suốt quá trình phát triển.
+- Quy mô nhỏ và không yêu cầu nhiều tương tác với người dùng trong suốt quá trình phát triển.
+- Có thời gian hoàn thành cụ thể, không yêu cầu phát triển nhanh hoặc liên tục.
+
+#### 📘Agile Model (Mô hình Agile)
+
+Agile là một mô hình lặp lại và linh hoạt, với các chu kỳ phát triển ngắn (iteration hoặc sprint). Phản hồi từ khách hàng được thu thập liên tục để cải thiện sản phẩm.
+
+![alt text](../Image/ANALYSIS_AND_SYSTEM_DESIGN_002.png)
+
+##### 📗Đặc điểm của Mô hình Agile
+**Linh hoạt và phản hồi nhanh**: Agile cho phép thay đổi yêu cầu kể cả khi dự án đang phát triển.
+
+**Chu kỳ phát triển ngắn**: Dự án được phát triển theo từng phần nhỏ và mỗi phần có thể sử dụng ngay sau khi hoàn thành một vòng phát triển (sprint).
+
+**Tương tác thường xuyên**: Sự cộng tác giữa nhóm phát triển và khách hàng diễn ra liên tục qua các cuộc họp và phản hồi thường xuyên.
+
+**Phát triển theo hướng người dùng**: Tập trung vào các yêu cầu và phản hồi của người dùng cuối để đảm bảo sản phẩm thực sự hữu ích và phù hợp.
+
+##### 📗Các giai đoạn của Mô hình Agile
+
+Lập kế hoạch (Planning)
+- Mục tiêu của giai đoạn này là xác định phạm vi và mục tiêu chung của dự án.
+
+- Lên danh sách các yêu cầu ban đầu từ khách hàng và sắp xếp chúng theo thứ tự ưu tiên.
+
+- Đội phát triển và khách hàng thảo luận về lịch trình phát triển và xác định các sprint đầu tiên.
+
+Thiết kế yêu cầu và kế hoạch sprint (Requirements & Sprint Planning)
+- Phân tích và xác định các tính năng cụ thể sẽ được hoàn thành trong sprint đầu tiên.
+
+- Chuyển các yêu cầu của khách hàng thành các user stories (câu chuyện người dùng) và chia nhỏ chúng thành các tác vụ.
+
+- Đội ngũ phát triển lên kế hoạch chi tiết cho sprint, xác định các nhiệm vụ và thời gian hoàn thành.
+
+Phát triển và kiểm thử (Development & Testing)
+- Trong mỗi sprint, đội ngũ phát triển xây dựng, kiểm thử, và tích hợp các tính năng theo từng user story.
+
+- Thực hiện kiểm thử tự động và kiểm thử thủ công để đảm bảo các tính năng hoạt động đúng yêu cầu.
+
+- Mỗi lần hoàn thành sprint, nhóm phát triển sẽ có một sản phẩm hoàn chỉnh, có thể chạy và sử dụng.
+
+Gặp gỡ đánh giá sprint (Sprint Review)
+- Cuối mỗi sprint, nhóm phát triển tổ chức buổi gặp gỡ với khách hàng để trình bày những tính năng đã hoàn thành.
+
+- Khách hàng kiểm tra và đưa ra phản hồi cho nhóm phát triển, từ đó định hướng cho sprint tiếp theo.
+
+Sprint Retrospective (Đánh giá nội bộ)
+- Sau mỗi sprint, đội ngũ phát triển họp nội bộ để đánh giá và rút kinh nghiệm về quy trình, công việc, và hiệu suất làm việc.
+
+- Nhóm xác định các vấn đề đã gặp phải và đề xuất các cải tiến cho các sprint sau.
+
+Triển khai và phát hành (Deployment & Release)
+- Sau một số sprint hoặc khi đạt được một mốc quan trọng, nhóm phát triển sẽ triển khai phiên bản phần mềm cho khách hàng sử dụng rộng rãi.
+
+- Tiến hành triển khai trong môi trường thực tế và tiếp tục duy trì, cập nhật phần mềm dựa trên phản hồi của người dùng.
+
+##### 📗Các nguyên tắc chính của Agile
+
+Agile được xây dựng dựa trên **4 giá trị cốt lõi** và **12 nguyên tắc** từ "Manifesto for Agile Software Development". Các nguyên tắc nổi bật:
+
+- **Ưu tiên cao nhất** là đáp ứng yêu cầu của khách hàng thông qua phần mềm hữu ích, có giá trị.
+
+- **Tiếp nhận sự thay đổi** của yêu cầu dù dự án đã đi vào phát triển.
+
+- **Cung cấp phần mềm khả dụng** qua các chu kỳ ngắn, thường xuyên từ vài tuần đến vài tháng.
+
+- **Sự hợp tác chặt chẽ** giữa khách hàng và đội ngũ phát triển.
+
+- **Động lực của nhóm phát triển** là yếu tố quan trọng, tin tưởng và hỗ trợ lẫn nhau.
+
+- **Giao tiếp trực tiếp** và thường xuyên để giảm bớt hiểu lầm.
+
+- **Phần mềm hoạt động được** là thước đo chính cho sự tiến bộ.
+
+- **Phát triển bền vững**: Đảm bảo nhịp độ phát triển ổn định.
+
+- **Nâng cao kỹ thuật** và thiết kế tốt để tăng tính linh hoạt và duy trì lâu dài.
+
+- **Tự tổ chức**: Đội ngũ phát triển tự chủ và trách nhiệm trong việc đưa ra quyết định.
+
+- **Đánh giá thường xuyên** để điều chỉnh và tối ưu hóa quy trình.
+
+##### 📗Các mô hình và framework Agile
+
+Scrum
+Scrum là một trong những framework phổ biến nhất của Agile, sử dụng các sprint ngắn từ 2-4 tuần để phát triển phần mềm.
+
+Tập trung vào các cuộc họp hàng ngày (Daily Standup), các vai trò rõ ràng (Scrum Master, Product Owner, và Development Team), và các cuộc họp đánh giá sprint và retrospective.
+
+Kanban:
+
+Kanban sử dụng bảng và thẻ để quản lý các tác vụ trong quy trình phát triển, giúp theo dõi tiến độ của các công việc.
+
+Thích hợp cho các dự án cần sự linh hoạt cao, không có chu kỳ cố định.
+
+Extreme Programming (XP):
+
+XP là một phương pháp tập trung mạnh vào các nguyên tắc lập trình như phát triển dựa trên test (TDD), lập trình đôi (pair programming), và tích hợp liên tục (continuous integration).
+
+Thích hợp cho các dự án có nhu cầu cao về chất lượng và độ chính xác.
+
+Lean Software Development:
+
+Lean tập trung vào việc tối ưu hóa quy trình để giảm lãng phí và tăng hiệu quả.
+
+Các nguyên tắc của Lean bao gồm việc giảm thiểu các công việc không cần thiết và chỉ tập trung vào giá trị khách hàng.
+
+##### 📗Khi nào nên sử dụng Mô hình Agile
+
+**Ưu điểm**: Thích ứng nhanh với sự thay đổi, thúc đẩy sự hợp tác liên tục giữa các bên liên quan.
+
+**Nhược điểm**: Khó lập kế hoạch dài hạn và yêu cầu sự cam kết liên tục từ cả đội ngũ phát triển và khách hàng.
+
+Agile là lựa chọn phù hợp cho các dự án:
+- Có yêu cầu và mục tiêu dễ thay đổi, không cố định.
+- Cần sự phản hồi liên tục từ khách hàng và người dùng.
+- Đòi hỏi thời gian hoàn thành ngắn và yêu cầu linh hoạt cao.
+- Đòi hỏi chất lượng sản phẩm cao và dễ dàng cải tiến trong quá trình phát triển.
+
+#### 📘V-Model (Mô hình V):
+
+Mô hình V là một biến thể của mô hình thác nước, trong đó mỗi giai đoạn phát triển tương ứng với một giai đoạn kiểm thử. Việc kiểm thử diễn ra song song với các giai đoạn phát triển.
+Ưu điểm: Tập trung mạnh vào kiểm thử, giúp phát hiện lỗi sớm.
+Nhược điểm: Thiếu tính linh hoạt khi có thay đổi trong yêu cầu.
+
+#### 📘Spiral Model (Mô hình xoắn ốc):
+
+Mô hình này kết hợp các yếu tố của cả mô hình thác nước và mô hình lặp. Nó nhấn mạnh vào việc quản lý rủi ro, với các chu kỳ lặp lại và đánh giá liên tục.
+Ưu điểm: Tập trung vào việc giảm thiểu rủi ro, thích hợp với các dự án lớn, phức tạp.
+Nhược điểm: Tốn kém và đòi hỏi kỹ năng cao từ đội ngũ quản lý rủi ro.
+
+#### 📘Iterative Model (Mô hình lặp):
+
+Mô hình này tập trung vào việc phát triển qua nhiều chu kỳ lặp đi lặp lại, cho phép cải thiện phần mềm qua từng vòng lặp.
+
+
+Ưu điểm: Dễ dàng điều chỉnh và cải tiến sản phẩm.
+Nhược điểm: Yêu cầu sự quản lý tốt và có thể tăng chi phí nếu không kiểm soát tốt.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+## 📚Phân tích Yêu cầu Hệ thống
 ### Yêu cầu chức năng và phi chức năng
 ### Use Case Diagrams
 ### User Stories
