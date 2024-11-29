@@ -2886,7 +2886,7 @@ Thuộc tính
   | Tên                | Ý nghĩa                                                                                                 |
   | ------------------ | ------------------------------------------------------------------------------------------------------- |
   | IsReady            | true ổ đĩa ở trạng thái sẵn sàng (hoạt động) - ví dụ ổ đĩa CD nếu không có đĩa thì không sẵn sàng false |
-  | DriveType          | kiểu ổ đĩa (`System.IO.DriveType`) : CDRom, Fixed, Network, NoRootDirectory, Ram, Removable, Unknown      |
+  | DriveType          | kiểu ổ đĩa (`System.IO.DriveType`) : CDRom, Fixed, Network, NoRootDirectory, Ram, Removable, Unknown    |
   | VolumeLabel        | Nhãn đĩa                                                                                                |
   | DriveFormat        | Chuỗi cho biết định dạng đĩa: NTFS, FAT32, FAT, devfs ...                                               |
   | AvailableFreeSpace | Số byte có hiệu lực còn trống (theo hạn ngạch người dùng)                                               |
@@ -2899,10 +2899,10 @@ Hỗ trợ quản lý, tạo các đường dẫn đến file, thư mục - nh�
 
 Thuộc tính, phương thức
 
-  | Tên                         | Ý nghĩa                                                                                                                       |
-  | --------------------------- | ----------------------------------------------------------------------------------------------------------------------------- |
-  | Path.DirectorySeparatorChar | Thuộc tính chứa ký tự phân cách đường dẫn thư mục (\ trên Windows, / trên \*nix)                                              |
-  | Path.PathSeparator          | Thuộc tính chứa ký tự phân chia thư mục trong biến môi trường                                                                 |
+  | Tên                         | Ý nghĩa                                                                                                                         |
+  | --------------------------- | ------------------------------------------------------------------------------------------------------------------------------- |
+  | Path.DirectorySeparatorChar | Thuộc tính chứa ký tự phân cách đường dẫn thư mục (\ trên Windows, / trên \*nix)                                                |
+  | Path.PathSeparator          | Thuộc tính chứa ký tự phân chia thư mục trong biến môi trường                                                                   |
   | Combine                     | Kết hợp các chuỗi thành dường dẫn : `var path = Path.Combine("home", "ReadMe.txt");` // "home/ReadMe.txt"                       |
   | ChangeExtension             | Thay đổi phần mở rộng của đường dẫn : `var path = Path.ChangeExtension("/home/abc/ReadMe.txt", "md");` // "/home/abc/ReadMe.md" |
   | GetDirectoryName            | Lấy đường dẫn đến file (thư mục) : `var path = Path.GetDirectoryName("/home/abc/zyz/ReadMe.txt");` // "/home/abc/zyz"           |
@@ -2910,9 +2910,9 @@ Thuộc tính, phương thức
   | GetFileName                 | Lấy tên file : `var path = Path.GetFileName("/home/abc/ReadMe.txt");` // "ReadMe.txt"                                           |
   | GetFileNameWithoutExtension | Lấy tên file : `var path = Path.GetFileNameWithoutExtension("/home/ReadMe.txt");` // "ReadMe"                                   |
   | GetFullPath                 | Lấy đường dẫn đầy đủ - từ đường dẫn tương đối : `var path = Path.GetFullPath("ReadMe.txt");`                                    |
-  | GetPathRoot                 | Lấy gốc của đường dẫn                                                                                                         |
-  | GetRandomFileName           | Tạo tên file ngẫu nhiên : `var path = Path.GetRandomFileName();`                                                               |
-  | GetTempFileName             | Tạo file duy nhất, rỗng : `var path = Path.GetTempFileName();`                                                                 |
+  | GetPathRoot                 | Lấy gốc của đường dẫn                                                                                                           |
+  | GetRandomFileName           | Tạo tên file ngẫu nhiên : `var path = Path.GetRandomFileName();`                                                                |
+  | GetTempFileName             | Tạo file duy nhất, rỗng : `var path = Path.GetTempFileName();`                                                                  |
 
 Lấy đường dẫn đến một số thư mục đặc biệt của hệ thống dùng Environment.GetFolderPath
 
@@ -3865,11 +3865,11 @@ Mỗi dịch vụ (lớp) khi đăng ký vào `ServiceCollection` thì có một
 
 Trong `ServiceDescriptor` có thuộc tính `Lifetime` để xác định dịch vụ tạo ra tồn tại trong bao lâu. `Lifetime` có kiểu `ServiceLifetime` (kiểu enum) có các giá trị cụ thể:
 
-| Tên       | Giá trị | Ý nghĩa                                                                                                                                                                                                                                                    |
-| --------- | ------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Singleton | 0       | Duy nhất một phiên bản thực thi (instance of class) (dịch vụ) được tạo ra cho hết vòng đời của `ServiceProvider`                                                                                                                                             |
+| Tên       | Giá trị | Ý nghĩa                                                                                                                                                                                                                                                        |
+| --------- | ------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Singleton | 0       | Duy nhất một phiên bản thực thi (instance of class) (dịch vụ) được tạo ra cho hết vòng đời của `ServiceProvider`                                                                                                                                               |
 | Scoped    | 1       | Một bản thực thi (instance) của dịch vụ (Class) được tạo ra cho mỗi phạm vi, tức tồn tại cùng với sự tồn tại của một đối tượng kiểu `ServiceScope` (đối tượng này tạo bằng cách gọi `ServiceProvider.CreateScope`, đối tượng này hủy thì dịch vụ cũng bị hủy). |
-| Transient | 2       | Một phiên bản của dịch vụ được tạo mỗi khi được yêu cầu                                                                                                                                                                                                    |
+| Transient | 2       | Một phiên bản của dịch vụ được tạo mỗi khi được yêu cầu                                                                                                                                                                                                        |
 
 #### 📘Lớp ServiceProvider
 
@@ -3883,10 +3883,10 @@ var serviceprovider = services.BuildServiceProvider();
 
 Phương thức
 
-| Tên                             | Ý nghĩa                                                                                |
-| ------------------------------- | -------------------------------------------------------------------------------------- |
-| `GetService<ServiceType>()`       | Lấy dịch vụ có kiểu ServiceType - trả về null nếu dịch vụ không tồn tại                |
-| `GetRequiredService(ServiceType)` | Lấy dịch vụ có kiểu ServiceType - phát sinh Exception nếu dịch vụ không tồn tại        |
+| Tên                               | Ý nghĩa                                                                                  |
+| --------------------------------- | ---------------------------------------------------------------------------------------- |
+| `GetService<ServiceType>()`       | Lấy dịch vụ có kiểu ServiceType - trả về null nếu dịch vụ không tồn tại                  |
+| `GetRequiredService(ServiceType)` | Lấy dịch vụ có kiểu ServiceType - phát sinh Exception nếu dịch vụ không tồn tại          |
 | `CreateScope()`                   | Tạo một phạm vi mới, thường dùng khi sử dụng những dịch vụ có sự ảnh hưởng theo `Scoped` |
 
 Ví dụ
@@ -4173,11 +4173,13 @@ _❗Kỹ thuật DI với thư viện `DependencyInjection` ở trên là kiến
 
 > bổ sung sau
 
-## Uri, Dns, Ping
+## 📚Uri, Dns, Ping
 
-### Lớp Uri
+### 📙Lớp Uri
 
-System.Uri là lớp biểu diễn về địa chỉ URI (URL) (xem thêm Tìm hiểu URI, URL), nó giúp cho nhanh chóng lấy thông tin các thành phần của URL như host, path, query ...
+`System.Uri` là lớp biểu diễn về địa chỉ URI (URL), nó giúp cho nhanh chóng lấy thông tin các thành phần của URL như host, path, query ...
+
+*❗Xem thêm [URI](<Expanded Knowledge.md#uri-urn-url>)*
 
 Đối tượng Uri còn sử dụng trong tham số để thực hiện các truy vấn HTTP Request ở các phần sau.
 
@@ -4192,11 +4194,11 @@ uritype.GetProperties().ToList().ForEach(property =>
 Console.WriteLine($"Segments: {string.Join(",", uri.Segments)}");
 ```
 
-### Lớp Dns và lớp IPHostEntry
+### 📙Lớp Dns và IPHostEntry
 
-Lớp Dns (System.Net.Dns) cung cấp các phương thức tính để lấy thông tin về host (địa chỉ website, server cung cấp các dịch vụ mạng) từ hệ thống phân giải tên miền (Dns)
+Lớp Dns (`System.Net.Dns`) cung cấp các phương thức tính để lấy thông tin về host (địa chỉ website, server cung cấp các dịch vụ mạng) từ hệ thống phân giải tên miền (Dns)
 
-Các thông tin truy vấn được nó trả về một đối tượng giao diện IPHostEntry
+Các thông tin truy vấn được nó trả về một đối tượng giao diện `IPHostEntry`
 
 ```C#
 string url = "https://www.bootstrapcdn.com/";
@@ -4221,9 +4223,9 @@ Thuộc tính IPHostEntry
 | HostName    | Chuỗi chứa hostname của Server                      |
 | AddressList | Mảng các phần tử kiểu IPAddress chứa các địa chỉ IP |
 
-### Lớp Ping
+### 📙Lớp Ping
 
-Lớp Ping (System.Net.NetworkInformation.Ping), lớp này cho phép ứng dụng xác định một máy từ xa (như server, máy trong mạng ...) có phản hồi không.
+Lớp Ping (`System.Net.NetworkInformation.Ping`), lớp này cho phép ứng dụng xác định một máy từ xa (như server, máy trong mạng ...) có phản hồi không.
 
 ```C#
 var ping = new Ping();
@@ -4236,9 +4238,9 @@ if (pingReply.Status == IPStatus.Success)
 }
 ```
 
-## HttpClient
+## 📚HttpClient
 
-Lớp **HttpClient** được sử dụng để gửi truy vấn HTTP (**Http Request Message**) và nhận phản hồi Response (**Http Response Message**) từ các truy vấn đó
+Lớp `HttpClient` được sử dụng để gửi truy vấn HTTP (**Http Request Message**) và nhận phản hồi Response (**Http Response Message**) từ các truy vấn đó
 
 Lớp này thuộc namespace `System.Net.Http`, namespace này chứa các lớp giúp tạo ra sự liên lạc giữa client và server.
 
@@ -4253,6 +4255,496 @@ using System.Threading.Tasks;
 using System.IO;
 using System.Text;
 ```
+
+### 📙GetAsync
+
+Để tạo ra truy vấn GET tới một địa chỉ URL, thực hiện phương thức `GetAsync(url)`, đây là phương thức async khi kết thúc nó trả về đối tượng `HttpResponseMessage`
+
+```C#
+// Khởi tạo http client
+using var httpClient = new HttpClient();
+
+// Thiết lập các Header nếu cần
+httpClient.DefaultRequestHeaders.Add("Accept", "text/html,application/xhtml+xml+json");
+
+// Thực hiện truy vấn GET
+HttpResponseMessage response = await httpClient.GetAsync(url);
+```
+
+Khi có đối tượng lớp `HttpResponseMessage` có thể thực hiện các tác vụ đọc dữ liệu
+
+| Phương thức                                                                                                                                                                                                                                                                                               | Ý nghĩa                                                                                                                                                                                                                                                        |
+| --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| EnsureSuccessStatusCode()                                                                                                                                                                                                                                                                                 | Phát sinh Exception nếu truy vấn có mã trả về không thành công (khi thuộc tính `IsSuccessStatusCode` là false)                                                                                                                                                 |
+| IsSuccessStatusCode                                                                                                                                                                                                                                                                                       | Nhận true khi mã trả về thành công, ví dụ mã trạng thái `StatusCode` nhận giá trị 200                                                                                                                                                                          |
+| StatusCode                                                                                                                                                                                                                                                                                                | Thuộc tính có kiểu enum `HttpStatusCode` cho biết mã trạng thái của kết quả (Như 301 - MovedPermanently, 200 - OK, 404 - NotFound ...), để chuyển sang số nguyên `(int)HttpStatusCode`                                                                         |
+| ReasonPhrase                                                                                                                                                                                                                                                                                              | Đoạn text, mô tả thông tin cho mã trạng thái như `OK`, `MovedPermanently` ...                                                                                                                                                                                  |
+| Headers                                                                                                                                                                                                                                                                                                   |
+| Thuộc tính kiểu `HttpResponseHeaders` chứa tập hợp các header của Response. `HttpResponseHeaders` kế thừa từ `HttpHeaders` là tập hợp mà mỗi phần tử có kiểu `KeyValuePair<String,IEnumerable<String>>` (biểu diễn một header httpd - key là tên header và value là tập hợp các chuỗi giá trị của header) |
+| Content                                                                                                                                                                                                                                                                                                   | Thuộc tính kiểu `HttpContent`, trong đó chứa nội dung (content) và các header liên quan đến content nếu có (Headers như Content-Type, Content-Length ...), một số phương thức để lấy content: `ReadAsStringAsync`, `ReadAsStreamAsync`, `ReadAsByteArrayAsync` |
+
+```C#
+/// In ra thông tin các Header của HTTP Response
+public static void ShowHeaders(HttpHeaders headers)
+{
+    Console.WriteLine("CÁC HEADER:");
+    foreach (var header in headers)
+    {
+        foreach (var value in header.Value)
+        {
+            Console.WriteLine($"{header.Key,25} : {value}");
+
+        }
+     }
+    Console.WriteLine();
+ }
+
+// Tải về trang web và trả về chuỗi nội dung
+public static async Task<string> GetWebContent(string url)
+{
+    // Khởi tạo http client
+    using var httpClient = new HttpClient();
+
+    // Thiết lập các Header nếu cần
+    httpClient.DefaultRequestHeaders.Add("Accept", "text/html,application/xhtml+xml+json");
+    try {
+        // Thực hiện truy vấn GET
+        HttpResponseMessage response = await httpClient.GetAsync(url);
+
+        // Hiện thị thông tin header trả về
+        ShowHeaders(response.Headers);
+
+        // Phát sinh Exception nếu mã trạng thái trả về là lỗi
+        response.EnsureSuccessStatusCode();
+
+        Console.WriteLine($"Tải thành công - statusCode {(int)response.StatusCode} {response.ReasonPhrase}");
+
+        Console.WriteLine("Starting read data");
+
+        // Đọc nội dung content trả về - ĐỌC CHUỖI NỘI DUNG
+        string htmltext = await response.Content.ReadAsStringAsync();
+        Console.WriteLine($"Nhận được {htmltext.Length} ký tự");
+        Console.WriteLine();
+        return htmltext;
+    }
+    catch (Exception ex)
+    {
+        Console.WriteLine(ex.Message);
+        return null;
+    }
+}
+
+static async Task Main(string[] args)
+{
+    var c = await GetWebContent("https://www.google.com/search?q=utc2");
+    Console.WriteLine(c);
+}
+```
+
+### 📙Đọc nội dung
+
+`ReadAsStringAsync` để đọc content convert thành chuỗi (string)
+
+`ReadAsStreamAsync` để tạo stream để đọc kết quả
+
+`ReadAsByteArrayAsync` để đọc hết các byte (mảng các byte) trong content.
+
+`DownloadDataStream` trả về một Stream để đọc Content
+
+```C#
+// Tải từ url, trả về stream để đọc dữ liệu
+public static async Task DownloadDataStream (string url, string filename) {
+    var httpClient = new HttpClient();
+    Console.WriteLine ($"Starting connect {url}");
+    try {
+        HttpResponseMessage response = await httpClient.GetAsync(url);
+        response.EnsureSuccessStatusCode();
+
+        // Lấy Stream để đọc content
+        using var stream =  await response.Content.ReadAsStreamAsync();
+
+        // THỰC HIỆN ĐỌC Content
+        int SIZEBUFFER = 500;
+        using var streamwrite = File.OpenWrite (filename);  // Mở stream để lưu file
+        byte[] buffer = new byte[SIZEBUFFER];               // tạo bộ nhớ đệm lưu dữ liệu khi đọc stream
+
+        bool endread = false;
+        do                                                  // thực hiện đọc các byte từ stream và lưu ra streamwrite
+        {
+            int numberRead = await stream.ReadAsync(buffer, 0, SIZEBUFFER);
+            Console.WriteLine(numberRead);
+            if (numberRead == 0)
+            {
+                endread = true;
+            }
+            else
+            {
+                await streamwrite.WriteAsync(buffer, 0, numberRead);
+            }
+
+        } while (!endread);
+        Console.WriteLine ("Download success");
+
+    }
+    catch (Exception e) {
+        Console.WriteLine (e.Message);
+        throw e;
+    }
+}
+
+static async Task Main(string[] args)
+{
+    var url = "https://raw.githubusercontent.com/xuanthulabnet/linux-centos/master/docs/samba1.png";
+    await DownloadDataStream(url, "anh2.png");
+}
+```
+
+### 📙SendAsync
+
+Phương thức `SendAsync` (hoặc `Send` nếu sử dụng code đồng bộ synchronous) có tham số kiểu `HttpRequestMessage` chứa các thông tin về một HTTP Request sẽ gửi đi, giúp tùy biến, thêm được nhiều thông tin khi gửi request hơn.
+
+Sau khi tạo được `HttpRequestMessage` có thể thiết lập nhiều thông tin như, thiết lập method với thuộc tính `Method` (giá trị GET, POST, DELETE ...), thiết lập địa chỉ truy vấn với thuộc tính `RequestUri`, thiết lập Content của truy vấn với `Content` ...
+
+```C#
+var httpRequestMessage = new HttpRequestMessage();
+httpRequestMessage.Method = HttpMethod.Post;
+httpRequestMessage.RequestUri = new Uri("https://xuanthulab.net");
+
+var response = await httpClient.SendAsync(request);
+```
+
+Để thiết lập `Content` trong `HttpRequestMessage` để gửi đến server thì thiết lập thuộc tính `Content` bằng các đối tượng thuộc các lớp như: `FormUrlEncodedContent`, `StringContent`,
+
+### 📙FormUrlEncodedContent
+
+`FormUrlEncodedContent` có thể tạo Content tương ứng như một Form HTML, nó chứa các giá trị (key/value) sẽ Post đến Server.
+
+```C#
+static async Task Main(string[] args)
+{
+        var httpClient = new HttpClient();
+
+        var httpRequestMessage = new HttpRequestMessage();
+        httpRequestMessage.Method = HttpMethod.Post;
+        httpRequestMessage.RequestUri = new Uri("https://postman-echo.com/post");
+
+        var parameters = new List<KeyValuePair<string,string>>();
+        parameters.Add(new KeyValuePair<string,string>("key1","value1"));
+
+        parameters.Add(new KeyValuePair<string,string>("key2","value2-1"));
+        parameters.Add(new KeyValuePair<string,string>("key2","value2-2"));
+
+        // Thiết lập Content
+        var content =  new FormUrlEncodedContent(parameters);
+        httpRequestMessage.Content = content;
+
+        // Thực hiện Post
+        var response = await httpClient.SendAsync(httpRequestMessage);
+
+        var responseContent = await response.Content.ReadAsStringAsync();
+        Console.WriteLine(responseContent);
+// Khi chạy kết quả trả về cho biết Server đã nhận được dữ liệu Post đến
+}
+```
+
+### 📙StringContent
+
+Có thể gán Content bằng đối tượng kiểu `StringContent` chứa chuỗi nội dung (sử dụng cách này để tạo truy vấn **Webservice API** với Content là JSON)
+
+```C#
+static async Task Main(string[] args)
+{
+    var httpClient = new HttpClient();
+
+    var httpRequestMessage = new HttpRequestMessage();
+    httpRequestMessage.Method = HttpMethod.Post;
+    httpRequestMessage.RequestUri = new Uri("https://postman-echo.com/post");
+
+    // Tạo StringContent
+    string jsoncontent = "{\"value1\": \"giatri1\", \"value2\": \"giatri2\"}";
+    var httpContent = new StringContent(jsoncontent, Encoding.UTF8, "application/json");
+    httpRequestMessage.Content = httpContent;
+
+    var response = await httpClient.SendAsync(httpRequestMessage);
+    var responseContent = await response.Content.ReadAsStringAsync();
+
+    Console.WriteLine(responseContent);
+}
+```
+
+### 📙MultipartFormDataContent
+
+Có thể gán Content bằng đối tượng kiểu `MultipartFormDataContent`, để post dữ liệu nhiều thành phần (multipart/form-data), vừa có dữ liệu như các phần tử của HTML Form vừa có thể kèm file.
+
+```C#
+var httpClient = new HttpClient();
+
+var httpRequestMessage = new HttpRequestMessage();
+httpRequestMessage.Method = HttpMethod.Post;
+httpRequestMessage.RequestUri = new Uri("https://postman-echo.com/post");
+
+
+// Tạo đối tượng MultipartFormDataContent
+var content = new MultipartFormDataContent();
+
+// Tạo StreamContent chứa nội dung file upload, sau đó đưa vào content
+Stream fileStream = System.IO.File.OpenRead("Program.cs");
+content.Add(new StreamContent(fileStream), "fileupload", "abc.xyz");
+
+// Thêm vào MultipartFormDataContent một StringContent
+content.Add(new StringContent("value1"), "key1");
+// Thêm phần tử chứa mạng giá trị (HTML Multi Select)
+content.Add(new StringContent("value2-1"), "key2[]");
+content.Add(new StringContent("value2-2"), "key2[]");
+
+
+httpRequestMessage.Content = content;
+var response = await httpClient.SendAsync(httpRequestMessage);
+var responseContent = await response.Content.ReadAsStringAsync();
+Console.WriteLine(responseContent);
+```
+
+## 📚HttpMessageHandler
+
+### 📙Lớp HttpMessageHandler
+
+Lớp `HttpMessageHandler` là lớp trừu tượng, nó là lớp cơ sở được thư viện .NET Core triển khai ra các lớp như `DelegatingHandler`, `HttpMessageHandler`, `HttpClientHandler` ... các lớp triển khai này (hoặc nếu tự xây dựng lớp triển khai `HttpMessageHandler`) thì phải nạp chồng phương thức SendAsync:
+
+```C#
+protected Task<HttpResponseMessage> SendAsync (HttpRequestMessage request, CancellationToken cancellationToken);
+```
+
+Các lớp triển khai `HttpMessageHandler` dùng để khởi tạo `HttpClient`, lúc này `HttpCliet` thực hiện gửi truy vấn (`SendAsync`) thì `SendAsync` của handler sẽ thực thi.
+
+### 📙HttpClientHandler
+
+`HttpClientHandler` là một lớp triển khai từ `HttpMessageHandler`, nó thực hiện cuối cùng trong chuỗi các handler nếu có để thực sự gửi truy vấn HTTP
+
+*❗Chú ý, từ .NET Core 2.1 khuyến khích sử dụng `SocketsHttpHandler` thay cho `HttpClientHandler`*
+
+
+| Thuộc tính             | Mô tả                                                                                                                                                                                                                                                                                |
+| ---------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| AllowAutoRedirect      | Thuộc tính, mặc định là true, để thiết lập tự động chuyển hướng. Ví dụ truy vấn đến URI có chuyển hướng đến đích mới (301) thì - HttpClient sẽ tự động chuyển hướng truy vấn đến đó.                                                                                                 |
+| AutomaticDecompression | Thuộc tính thuộc tính để handler tự động giải nén / nén nội dung HTTP, nó thuộc kiểu enum `DecompressionMethods` gồm có: `DecompressionMethods.None` không sử dụng nén, `DecompressionMethods.GZip` dùng thuật toán gZip, `DecompressionMethods.Deflate` dùng thuật toán nén deflate |
+| UseCookies             | Mặc định là true: cho phép sử dụng thuộc tính CookieContainer để lưu các Cookie của server khi respone trả về, cũng như tự động gửi Cookie khi gửi truy vấn                                                                                                                          |
+| CookieContainer        | Thuộc tính thuộc lớp `CookieContainer`, nó lưu các cookie.                                                                                                                                                                                                                             |
+
+```C#
+static async Task Main(string[] args)
+{
+    var url = "https://postman-echo.com/post";
+    // Tạo handler
+    using HttpClientHandler handler = new HttpClientHandler();
+
+    // Tạo bộ chứa cookie và sử dụng bởi handler
+    CookieContainer cookies = new CookieContainer();
+    // Thêm các cookie nêu muốn
+    cookies.Add(new Uri(url), new Cookie("name", "value"));
+
+    handler.CookieContainer = cookies;
+
+    // Tạo HttpClient - thiết lập handler cho nó
+    using var httpClient = new HttpClient(handler);
+
+
+    // Tạo HttpRequestMessage
+    using var httpRequestMessage = new HttpRequestMessage();
+    httpRequestMessage.Method = HttpMethod.Post;
+    httpRequestMessage.RequestUri = new Uri(url);
+    httpRequestMessage.Headers.Add("User-Agent", "Mozilla/5.0");
+    var parameters = new List<KeyValuePair<string,string>>()
+    {
+        new KeyValuePair<string, string>("key1", "value1"),
+        new KeyValuePair<string, string>("key2", "value2")
+
+    };
+    httpRequestMessage.Content = new FormUrlEncodedContent(parameters);
+
+    // Thực hiện truy vấn
+    var response = await httpClient.SendAsync(httpRequestMessage);
+
+    // Hiện thị các cookie (các cookie trả về có thể sử dụng cho truy vấn tiếp theo)
+    cookies.GetCookies(new Uri(url)).ToList().ForEach(cookie => {
+        Console.WriteLine($"{cookie.Name} = {cookie.Value}");
+    });
+
+    // Đọc chuỗi nội dung trả về (HTML)
+    var result =  await response.Content.ReadAsStringAsync();
+    Console.WriteLine(result);
+}
+```
+
+### 📙SocketsHttpHandler
+
+Lớp handler `SocketsHttpHandler` sử dụng giống hệt `HttpClientHandler` nó được thiết kế để sử dụng tốt hơn - nhanh hơn trên .NET Core, nó độc lập thiết bị tốt hơn (chạy tốt trên macOS, Linux).
+
+```C#
+static async Task Main(string[] args)
+{
+    var url = "https://postman-echo.com/post";
+    // Tạo bộ chứa cookie và sử dụng bởi handler
+    CookieContainer cookies = new CookieContainer();
+    // Thêm các cookie nêu muốn
+    // cookies.Add(new Uri(url), new Cookie("name", "value"));
+
+    // Tạo handler
+    using SocketsHttpHandler handler = new SocketsHttpHandler();
+    handler.CookieContainer         = cookies;     // Thay thế CookieContainer mặc định
+    handler.AllowAutoRedirect       = false;                // không cho tự động Redirect
+    handler.AutomaticDecompression  = DecompressionMethods.Deflate | DecompressionMethods.GZip;
+    handler.UseCookies              = true;
+
+    // Tạo HttpClient - thiết lập handler cho nó
+    using var httpClient = new HttpClient(handler);
+
+
+    // Tạo HttpRequestMessage
+    using var httpRequestMessage = new HttpRequestMessage();
+    httpRequestMessage.Method = HttpMethod.Post;
+    httpRequestMessage.RequestUri = new Uri(url);
+    httpRequestMessage.Headers.Add("User-Agent", "Mozilla/5.0");
+    httpRequestMessage.Headers.Add("Accept", "text/html,application/xhtml+xml+json");
+
+    var parameters = new List<KeyValuePair<string,string>>()
+    {
+        new KeyValuePair<string, string>("key1", "value1"),
+        new KeyValuePair<string, string>("key2", "value2")
+
+    };
+    httpRequestMessage.Content = new FormUrlEncodedContent(parameters);
+
+    // Thực hiện truy vấn
+    var response = await httpClient.SendAsync(httpRequestMessage);
+
+    // Hiện thị các cookie (các cookie trả về có thể sử dụng cho truy vấn tiếp theo)
+    cookies.GetCookies(new Uri(url)).ToList().ForEach(cookie => {
+        Console.WriteLine($"{cookie.Name} = {cookie.Value}");
+    });
+
+    // Đọc chuỗi nội dung trả về (HTML)
+    var result =  await response.Content.ReadAsStringAsync();
+    Console.WriteLine(result);
+}
+```
+
+### 📙DelegatingHandler
+
+`DelegatingHandler` (cũng triển khải từ `HttpMessageHandler`) là một handler đặc biệt, nó như một MiddleWare để tạo ra một pipeline (chuỗi các handler). Mỗi đối tượng `DelegatingHandler` có một thuộc tính `InnerHandler` (kiểu `HttpMessageHandler`), phải được gán bằng một đối tượng `SocketsHttpHandler`, `HttpClientHandler` hoặc `DelegatingHandler`... 
+
+Thiết lập `InnerHandler` qua phương thức khởi tạo lớp `DelegatingHandler`. Khi thực hiện truy vấn `SendAsync` thì nó tiếp tục gọi `SendAsync` trong `InnerHandler`, cứ như vậy nó sẽ tạo thành chuỗi.
+
+Nếu `InnerHandler` không phải là một `DelegatingHandler` khác thì `InnerHandler` đó là handler dưới cùng của chuỗi handler. Request - respone sẽ đi qua chuỗi handler từ trên cùng xuống dưới khi truy vấn và ngược lại khi trả về.
+
+![alt text](../Image/CSharp_001.png)
+
+Ví dụ tạo ra các handler, gồm có:
+
+`MyHttpClientHandler` là một handler kế thừa `HttpClientHandler`, khi thực hiện truy vấn nó thực trực tiếp liên lạc với server
+
+`ChangeUri` là một `DelegatingHandler`, khi `SendAsync` của nó thi hành nó kiểm tra nếu Uri là đến `google.com` thì tự động đổi thành `github.com`, rồi chuyển cho `InnerHander` của nó thực hiện tiếp `SendAsync`
+
+`DenyAccessFacebook` là một `DelegatingHandler`, khi `SendAsync` nó thực hiện kiểm tra nếu Uri truy vấn đến Facebook thì bị cấm (trả về response ngay), nếu khác thì chuyển để `InnerHander` thực hiện tiếp `SendAsync`
+
+```C#
+public class MyHttpClientHandler : HttpClientHandler {
+    public MyHttpClientHandler(CookieContainer  cookie_container) {
+
+        CookieContainer         = cookie_container;     // Thay thế CookieContainer mặc định
+        AllowAutoRedirect       = false;                // không cho tự động Redirect
+        AutomaticDecompression  = DecompressionMethods.Deflate | DecompressionMethods.GZip;
+        UseCookies              = true;
+    }
+    protected override async Task<HttpResponseMessage> SendAsync(HttpRequestMessage request,
+                                                                 CancellationToken cancellationToken)
+    {
+        Console.WriteLine("Bất đầu kết nối " + request.RequestUri.ToString());
+        // Thực hiện truy vấn đến Server
+        var response  = await base.SendAsync(request, cancellationToken);
+        Console.WriteLine("Hoàn thành tải dữ liệu");
+        return response;
+    }
+}
+
+public class ChangeUri : DelegatingHandler
+{
+    public ChangeUri(HttpMessageHandler innerHandler) : base(innerHandler) {}
+
+    protected override Task<HttpResponseMessage> SendAsync(HttpRequestMessage request,
+                                                           CancellationToken cancellationToken)
+    {
+        var host = request.RequestUri.Host.ToLower();
+        Console.WriteLine($"Check in  ChangeUri - {host}");
+        if (host.Contains("google.com"))
+        {
+            // Đổi địa chỉ truy cập từ google.com sang github
+            request.RequestUri = new Uri("https://github.com/");
+        }
+        // Chuyển truy vấn cho base (thi hành InnerHandler)
+        return base.SendAsync(request, cancellationToken);
+    }
+}
+
+
+public class DenyAccessFacebook : DelegatingHandler
+{
+    public DenyAccessFacebook(HttpMessageHandler innerHandler) : base(innerHandler) { }
+
+    protected override async Task<HttpResponseMessage> SendAsync(HttpRequestMessage request,
+                                                                 CancellationToken cancellationToken)
+    {
+
+        var host = request.RequestUri.Host.ToLower();
+        Console.WriteLine($"Check in DenyAccessFacebook - {host}");
+        if (host.Contains("facebook.com"))
+        {
+            var response = new HttpResponseMessage(HttpStatusCode.OK);
+            response.Content  = new ByteArrayContent(Encoding.UTF8.GetBytes("Không được truy cập"));
+            return await Task.FromResult<HttpResponseMessage>(response);
+        }
+        // Chuyển truy vấn cho base (thi hành InnerHandler)
+        return await base.SendAsync(request, cancellationToken);
+    }
+}
+
+static async Task Main(string[] args)
+{
+    string url = "https://www.facebook.com/xuanthulab";
+
+    CookieContainer cookies = new CookieContainer();
+
+    // TẠO CHUỖI HANDLER
+    var bottomHandler = new MyHttpClientHandler(cookies);              // handler đáy (cuối)
+    var changeUriHandler = new ChangeUri(bottomHandler);
+    var denyAccessFacebook = new DenyAccessFacebook(changeUriHandler); // handler đỉnh
+
+    // Khởi tạo HttpCliet với hander đỉnh chuỗi hander
+    var httpClient = new HttpClient(denyAccessFacebook);
+
+    // Thực hiện truy vấn
+    httpClient.DefaultRequestHeaders.Add("Accept", "text/html,application/xhtml+xml+json");
+    httpClient.DefaultRequestHeaders.Add("User-Agent", "Mozilla/5.0");
+    HttpResponseMessage response = await httpClient.GetAsync(url);
+    response.EnsureSuccessStatusCode();
+    string htmltext = await response.Content.ReadAsStringAsync();
+
+    Console.WriteLine(htmltext);
+}
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 ## Tổng kết (ý hiểu cá nhân)
 

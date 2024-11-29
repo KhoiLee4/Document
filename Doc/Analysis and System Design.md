@@ -65,8 +65,6 @@ Mục tiêu: Ghi chép toàn bộ các yêu cầu đã thu thập và phân tíc
 
 **Tài liệu yêu cầu hệ thống (System Requirements Specification - SRS)**: Đây là một tài liệu chi tiết về mọi yêu cầu chức năng và phi chức năng, bao gồm tất cả các ràng buộc kỹ thuật, khả thi và phương pháp để đạt được mục tiêu.
 
-> bổ sung SRS
-
 #### 📘Xác nhận yêu cầu (Requirements Validation)
 
 Mục tiêu: Đảm bảo rằng tất cả các yêu cầu đã được ghi nhận chính xác và phù hợp với nhu cầu của các bên liên quan. Đây là quá trình lặp lại, đòi hỏi sự đồng thuận từ khách hàng và người dùng trước khi bước sang giai đoạn thiết kế.
@@ -295,7 +293,7 @@ Các hoạt động chính:
 
 - Quản lý các bản phát hành, cập nhật và triển khai các thay đổi.
 
-### 📙Các mô hình SDLC phổ biến
+### 📙Các mô hình SDLC phổ biếnK
 
 #### 📘Waterfall Model (Mô hình thác nước)
 
@@ -504,6 +502,93 @@ Nhược điểm: Yêu cầu sự quản lý tốt và có thể tăng chi phí 
 
 
 
+
+
+## 📚System Requirements Specification - SRS
+
+**SRS** là viết tắt của Software Requirements Specification, có nghĩa là Tài liệu Yêu cầu Phần mềm. Đây là một tài liệu quan trọng trong quá trình phát triển phần mềm, mô tả các yêu cầu chức năng và phi chức năng của phần mềm cần được phát triển.
+
+### 📙Thành phần trong SRS
+
+Giới thiệu
+- Mục tiêu hệ thống: Giải thích mục đích tổng thể của hệ thống và lý do tại sao hệ thống được xây dựng.
+- Phạm vi: Định nghĩa các giới hạn của hệ thống, những gì sẽ và sẽ không được thực hiện.
+- Tài liệu tham khảo: Các tài liệu, tiêu chuẩn, và quy định cần tuân theo trong quá trình phát triển.
+
+Yêu cầu chức năng
+- Liệt kê các tính năng mà hệ thống phải có để đáp ứng nhu cầu người dùng. Mỗi yêu cầu chức năng được mô tả chi tiết cùng với các kịch bản, trường hợp sử dụng (use case), và cách người dùng sẽ tương tác với hệ thống.
+
+Yêu cầu phi chức năng
+- Hiệu suất: Thời gian phản hồi, tốc độ xử lý.
+- Bảo mật: Cách hệ thống bảo vệ dữ liệu và truy cập.
+- Khả năng bảo trì: Yêu cầu liên quan đến bảo trì và nâng cấp hệ thống.
+- Khả năng mở rộng: Cách hệ thống dễ dàng thích ứng với sự gia tăng người dùng hoặc dữ liệu.
+
+Yêu cầu giao diện người dùng
+- Cung cấp các bản phác thảo giao diện, nguyên tắc thiết kế giao diện và mô tả cách người dùng sẽ tương tác với hệ thống.
+
+Các yêu cầu về phần cứng/phần mềm và môi trường hệ thống
+- Các yêu cầu về phần cứng, hệ điều hành, và các thành phần phần mềm liên quan cần thiết để chạy hệ thống.
+
+Các quy định và chính sách
+- Các yêu cầu pháp lý, bảo mật và các quy định khác mà hệ thống cần tuân thủ.
+
+*❗Tùy theo trường hợp và hệ thống cụ thể mà các thành phần có thể thay đổi*
+
+Ví dụ: SRS khi xây dựng game có thể có
+
+Giới thiệu
+- Tầm nhìn và mục tiêu: Xác định rõ loại game (game hành động, phiêu lưu, nhập vai, v.v.), mục tiêu phát triển, và tầm nhìn tổng thể cho game.
+- Đối tượng người chơi: Đặc tả nhóm người chơi mục tiêu (độ tuổi, sở thích, kinh nghiệm chơi game) để đảm bảo thiết kế game phù hợp với người chơi.
+- Phạm vi: Giới hạn của dự án và các tính năng sẽ phát triển cho phiên bản này, giúp xác định rõ các tính năng cần có và các tính năng sẽ được triển khai ở phiên bản sau (nếu có).
+
+Yêu cầu chức năng
+- Cơ chế gameplay: Đặc tả các cơ chế chính như di chuyển, chiến đấu, thu thập vật phẩm, xây dựng, hoặc các hoạt động người chơi sẽ thực hiện.
+Cốt truyện và bối cảnh: Mô tả chi tiết về cốt truyện, thế giới game, các chương hồi, và bối cảnh của từng màn chơi.
+- Nhân vật và AI:
+    - Nhân vật chính: Thông tin về nhân vật chính bao gồm khả năng, kỹ năng, trang bị, và quá trình phát triển của nhân vật.
+    - Đối thủ và NPC: Các mô tả về đối thủ, AI của nhân vật phụ (NPC), hành vi, cách phản ứng, và vai trò trong game.
+- Hệ thống nhiệm vụ và tiến trình: Hệ thống nhiệm vụ, các mục tiêu của từng màn chơi, phần thưởng khi hoàn thành, và các yếu tố kích thích người chơi tiến xa hơn.
+- Giao diện người dùng (UI): Thiết kế các màn hình và yếu tố giao diện như thanh máu, bản đồ nhỏ, điểm số, và menu điều khiển.
+
+Yêu cầu phi chức năng
+- Hiệu suất: Mức yêu cầu về tốc độ khung hình (FPS), độ trễ tối đa, và yêu cầu để game có trải nghiệm mượt mà.
+- Khả năng tương thích: Đảm bảo game chạy tốt trên các thiết bị mục tiêu (PC, console, điện thoại di động, v.v.).
+- Khả năng mở rộng và bảo trì: Cấu trúc code dễ dàng nâng cấp, khả năng thêm tính năng mới trong tương lai mà không gây ảnh hưởng đến hiệu suất.
+
+Thiết kế đồ họa và âm thanh
+- Đồ họa: Mô tả phong cách nghệ thuật, độ phân giải, yêu cầu về mô hình 3D hoặc 2D, ánh sáng, và các hiệu ứng hình ảnh.
+- Âm thanh: Yêu cầu về âm nhạc, hiệu ứng âm thanh, giọng nói nhân vật và cách thức âm thanh hòa hợp với cốt truyện và bối cảnh game.
+
+Yêu cầu về cốt truyện và nội dung
+- Cốt truyện chi tiết: Bao gồm mô tả chi tiết về bối cảnh, sự phát triển của cốt truyện, các sự kiện chính, và mục tiêu của người chơi.
+- Thiết kế thế giới game: Bản đồ của các khu vực, môi trường và cách bố trí từng khu vực (rừng, sa mạc, thành phố v.v.), bao gồm các yếu tố ảnh hưởng đến gameplay như địa hình và khí hậu.
+- Mức độ và tiến trình: Chi tiết các cấp độ (level), cách người chơi tiến bộ, và điều kiện để người chơi chuyển qua các cấp độ hoặc vùng chơi khác.
+
+Quy trình kiểm thử
+- Kế hoạch kiểm thử: Cách thức kiểm tra các tính năng và cơ chế game, bao gồm kiểm thử chức năng, hiệu suất và khả năng tương thích.
+- Kịch bản kiểm thử: Các tình huống kiểm thử để đảm bảo các tính năng hoạt động đúng như mô tả.
+- Thử nghiệm người chơi: Kế hoạch thu thập phản hồi từ nhóm người chơi thử nghiệm để tối ưu hóa trải nghiệm chơi.
+
+Yêu cầu hệ thống
+- Yêu cầu phần cứng: Đặc tả yêu cầu phần cứng tối thiểu và đề xuất để game hoạt động tốt.
+- Yêu cầu phần mềm và công nghệ: Các công nghệ sử dụng để phát triển game, như công cụ game engine (Unity, Unreal Engine), ngôn ngữ lập trình, phần mềm mô hình hóa đồ họa, và hệ thống quản lý phiên bản.
+
+An ninh và bảo mật
+- Bảo vệ dữ liệu người chơi: Đặc tả phương pháp bảo vệ dữ liệu cá nhân và thông tin người chơi, nhất là đối với game online.
+- Ngăn chặn gian lận: Yêu cầu các biện pháp ngăn chặn gian lận hoặc hack trong game.
+
+Phụ lục
+- Biểu đồ UML và sơ đồ hệ thống: Biểu đồ lớp, sơ đồ hoạt động, hoặc sơ đồ trình tự để làm rõ cấu trúc và logic của game.
+- Tài liệu tham khảo và từ điển thuật ngữ: Giải thích các thuật ngữ chuyên ngành, ký hiệu và các tài liệu tham khảo khác giúp hiểu rõ hơn về hệ thống.
+
+### 📙Phân biệt tài liệu SRS với BRD, FRS
+
+| Loại tài liệu                           | Giải thích                                                                                                                                                                                                                                                                                                                 |
+| --------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| SRS (System Requirements Specification) | Mô tả chi tiết yêu cầu cho phần mềm, tập trung vào các yêu cầu chức năng và phi chức năng của hệ thống, bao gồm cả các yêu cầu về dữ liệu, giao diện và hành vi của phần mềm. Tài liệu SRS thường được sử dụng bởi các nhà phát triển phần mềm để hiểu và triển khai yêu cầu của dự án.                                    |
+| BRD (Business Requirement Document)     | Mô tả các yêu cầu kinh doanh và mục tiêu của doanh nghiệp, ttập trung vào các yêu cầu cấp cao hơn, bao gồm cả các yêu cầu về chiến lược, tầm nhìn, mục tiêu kinh doanh và yêu cầu của người dùng cuối. Tài liệu BRD thường được sử dụng để phân tích và thiết kế các giải pháp phần mềm để đáp ứng các yêu cầu kinh doanh. |
+| FSD (Functional Specification Document) | Mô tả chi tiết các yêu cầu chức năng của hệ thống, tập trung vào các yêu cầu cụ thể về chức năng của phần mềm, bao gồm cả các yêu cầu về luồng công việc, quy trình và tương tác giữa các thành phần của hệ thống. Tài liệu FRS thường được sử dụng để triển khai và kiểm tra các chức năng của phần mềm.                  |
 
 
 ## 📚Phân tích Yêu cầu Hệ thống

@@ -1582,8 +1582,47 @@ Do tính chất đảm bảo và tin cậy, TCP được sử dụng trong các 
 | Điều khiển tắc nghẽn (Congestion Control) | Có                                       | Không có                         |
 | Ứng dụng chính                            | Giao dịch dữ liệu quan trọng, email, web | Truyền phát thời gian thực, game |
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ---
 ---
+
+
+
+
+
+
+
+
+
+
+
 
 
 
