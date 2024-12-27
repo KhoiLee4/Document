@@ -1582,26 +1582,1156 @@ Do tính chất đảm bảo và tin cậy, TCP được sử dụng trong các 
 | Điều khiển tắc nghẽn (Congestion Control) | Có                                       | Không có                         |
 | Ứng dụng chính                            | Giao dịch dữ liệu quan trọng, email, web | Truyền phát thời gian thực, game |
 
+## 📚Tầng mạng (Network Layer)
 
+**Tầng mạng (Network Layer)** chịu trách nhiệm chính cho việc định tuyến (routing) và chuyển tiếp gói tin (packet forwarding) từ thiết bị gửi đến thiết bị nhận qua một hoặc nhiều mạng trung gian.
 
+### 📙Chức năng chính
 
+**Định tuyến (Routing)**: Tầng mạng chịu trách nhiệm tìm đường (route) tốt nhất cho dữ liệu đi từ nguồn đến đích. Việc này rất quan trọng khi gói tin phải đi qua nhiều mạng trung gian, chẳng hạn từ một máy tính ở Việt Nam đến một máy chủ ở Mỹ.
 
+**Địa chỉ hóa (Addressing)**: Tầng mạng sử dụng **địa chỉ logic (logical addressing)**, chẳng hạn **địa chỉ IP (Internet Protocol)**, để định danh các thiết bị trong mạng. Mỗi thiết bị phải có một địa chỉ duy nhất trong mạng.
 
+**Phân đoạn và hợp nhất dữ liệu (Fragmentation and Reassembly)**: Nếu gói tin lớn hơn kích thước tối đa mà mạng hỗ trợ, tầng mạng sẽ chia gói tin thành các phân đoạn nhỏ hơn (fragmentation) và hợp nhất chúng lại ở phía nhận (reassembly).
 
+**Chuyển tiếp gói tin (Packet Forwarding)**: Khi gói tin đi qua một router trung gian, tầng mạng xác định bước tiếp theo (next hop) để tiếp tục gửi gói tin đến đích.
 
+### 📙Quá trình hoạt động của tầng mạng
 
+- Gắn địa chỉ IP nguồn và đích vào gói tin.
+- Kiểm tra bảng định tuyến trên router để tìm đường đi đến đích.
+- Nếu cần, chia nhỏ gói tin và gửi qua mạng trung gian.
 
+## 📚Packet (Gói tin)
 
+**Packet (Gói tin)** là đơn vị dữ liệu cơ bản được sử dụng trong quá trình truyền thông qua mạng. Nó là "mảnh" của dữ liệu được tầng mạng (Network Layer) tạo ra bằng cách đóng gói các **phân đoạn (segments)** từ tầng giao vận.
 
+## 📚TTL (Time-to-Live)
 
+**TTL (Time-to-Live)** là một giá trị trong phần header của gói tin IP, được sử dụng để giới hạn thời gian sống hoặc số bước (hops) mà một gói tin có thể tồn tại trên mạng.
 
+### 📙Chức năng của TTL
 
+TTL đảm bảo rằng gói tin không bị kẹt trong mạng vô thời hạn nếu gặp phải vòng lặp định tuyến (routing loop). Mỗi lần gói tin đi qua một router, giá trị TTL giảm đi 1. Khi TTL giảm về 0, router sẽ loại bỏ gói tin và gửi một thông báo lỗi ICMP (Internet Control Message Protocol) về nguồn, thường là một thông điệp "Time Exceeded".
 
+Thông điệp ICMP "Time Exceeded" bao gồm:
+- Địa chỉ IP của router: Giúp xác định router đã loại bỏ gói tin.
+- Thông tin về gói tin bị loại: Một phần của gói tin bị loại bỏ được gửi kèm thông báo.
 
+### 📙Cách hoạt động của TTL
+Tại điểm gửi (Source): Khi gói tin được tạo tại nguồn, giá trị TTL ban đầu được đặt (ví dụ: 64, 128 hoặc 255 tùy theo hệ điều hành hoặc thiết bị).
 
+Trong mạng: Mỗi khi gói tin đi qua một router, router sẽ giảm TTL đi 1.
+Router kiểm tra giá trị TTL sau khi giảm. Nếu TTL = 0, gói tin sẽ bị hủy bỏ và thông báo lỗi được gửi về nguồn.
 
+Tại đích (Destination): Nếu gói tin đến được đích trước khi TTL = 0, dữ liệu sẽ được xử lý bình thường.
 
+TTL ban đầu mặc định của các hệ điều hành phổ biến
+- Linux/Unix: 64
+- Windows: 128
+- Cisco Routers: 255
+- macOS: 64
 
+### 📙Ý nghĩa của TTL trong mạng
+**Tránh vòng lặp định tuyến (Routing Loop)**: Khi mạng xảy ra lỗi định tuyến, các gói tin có thể chạy vòng lặp vô hạn giữa các router. TTL ngăn chặn điều này.
+
+**Kiểm soát thời gian tồn tại của gói tin**: TTL đảm bảo rằng gói tin không đi quá xa hoặc tồn tại lâu hơn dự kiến.
+
+**Công cụ đo khoảng cách mạng**: TTL được sử dụng trong các công cụ như traceroute để xác định đường đi của gói tin qua các router.
+
+### 📙TTL và công cụ Traceroute
+
+Traceroute là một công cụ mạng sử dụng TTL để phát hiện đường đi của gói tin qua mạng:
+- Gói tin đầu tiên được gửi với TTL = 1. Router đầu tiên giảm TTL thành 0 và gửi thông báo "Time Exceeded" về nguồn.
+- Gói tin tiếp theo được gửi với TTL = 2, và router thứ hai trả về thông báo.
+- Quá trình này lặp lại cho đến khi gói tin đến đích.
+- Dựa trên các thông báo trả về, Traceroute xây dựng danh sách các router mà gói tin đi qua.
+
+## 📚Chuyển tiếp và định tuyến (Forwarding vs Routing)
+
+### 📙Chuyển tiếp (Forwarding)
+
+**Chuyển tiếp** là quá trình chuyển một gói tin từ một giao diện đầu vào (input interface) của router đến một giao diện đầu ra (output interface) phù hợp để gói tin tiếp tục hành trình đến đích.
+
+Mục tiêu: Di chuyển gói tin từ điểm này sang điểm khác trong mạng một cách nhanh chóng.
+
+Thời gian: Xử lý ở mức micro-giây đến mili-giây, vì đây là quá trình xảy ra tại từng router.
+
+Cách thức:
+- Router nhận một gói tin từ giao diện đầu vào.
+- Dựa trên bảng chuyển tiếp (forwarding table), router tra cứu để xác định giao diện đầu ra tương ứng với địa chỉ IP đích.
+- Gói tin được gửi qua giao diện đầu ra phù hợp.
+
+Lưu ý: Chuyển tiếp chỉ tập trung vào xử lý gói tin hiện tại, không đưa ra quyết định dài hạn về đường đi của gói tin.
+
+### 📙Định tuyến (Routing)
+
+**Định tuyến** là quá trình xác định đường đi tốt nhất (optimal path) mà gói tin nên đi qua để đến được đích.
+
+Mục tiêu: Xây dựng và duy trì bảng định tuyến (routing table), từ đó hỗ trợ quá trình chuyển tiếp.
+
+Thời gian: Xử lý ở mức giây đến phút, vì đây là quá trình liên quan đến việc cập nhật thông tin mạng và điều chỉnh đường đi.
+
+Cách thức:
+- Router giao tiếp với các router khác trong mạng để chia sẻ thông tin định tuyến.
+- Thuật toán định tuyến (routing algorithms) được sử dụng để tính toán đường đi tốt nhất dựa trên các yếu tố như khoảng cách, thời gian trễ, hoặc chi phí.
+- Cập nhật bảng định tuyến định kỳ hoặc khi có thay đổi trong mạng.
+
+### 📙So sánh giữa Chuyển tiếp và Định tuyến
+
+| Đặc điểm          | Chuyển tiếp (Forwarding)                                  | Định tuyến (Routing)                                           |
+| ----------------- | --------------------------------------------------------- | -------------------------------------------------------------- |
+| Định nghĩa        | Xử lý và chuyển gói tin từ giao diện đầu vào sang đầu ra. | Tìm đường đi tối ưu cho gói tin trong mạng.                    |
+| Mục tiêu          | Xử lý nhanh gói tin hiện tại.                             | Xây dựng và duy trì bảng định tuyến.                           |
+| Thời gian xử lý   | Micro-giây đến mili-giây.                                 | Giây đến phút.                                                 |
+| Đối tượng xử lý   | Gói tin hiện tại.                                         | Toàn bộ đường đi trong mạng.                                   |
+| Thuật toán        | Không sử dụng thuật toán phức tạp.                        | Sử dụng thuật toán định tuyến (ví dụ: Dijkstra, Bellman-Ford). |
+| Công cụ liên quan | Bảng chuyển tiếp (Forwarding Table).                      | Bảng định tuyến (Routing Table).                               |
+| Tính động         | Tĩnh hơn, phụ thuộc vào bảng chuyển tiếp hiện có.         | Động hơn, cập nhật liên tục khi mạng thay đổi.                 |
+
+### 📙Cách hoạt động phối hợp
+
+Định tuyến:
+- Định tuyến tính toán các đường đi khả thi và xây dựng **bảng định tuyến**.
+- **Bảng định tuyến** cung cấp thông tin để xây dựng **bảng chuyển tiếp**.
+
+Chuyển tiếp:
+- Khi một gói tin đến router, **bảng chuyển tiếp** được sử dụng để xác định giao diện đầu ra.
+- Gói tin được chuyển tiếp mà không cần thực hiện lại quá trình định tuyến.
+
+Tóm lại:
+- Định tuyến là chiến lược: Nó quyết định "làm thế nào để đi đến đích."
+- Chuyển tiếp là hành động: Nó thực hiện việc "gửi gói tin đến đích."
+
+## 📚Mô hình dịch vụ của tầng mạng
+
+Mô hình dịch vụ của tầng mạng mô tả các chức năng mà tầng mạng cung cấp cho tầng transport để đảm bảo dữ liệu được truyền qua mạng một cách hiệu quả.
+
+### 📙Dịch vụ Không Kết Nối (Connectionless Service)
+
+Đặc điểm:
+- Dữ liệu được gửi dưới dạng các gói tin độc lập, không có bất kỳ mối liên hệ nào giữa các gói tin.
+- Mỗi gói tin được định tuyến một cách độc lập qua mạng, có thể đi qua các đường khác nhau để đến đích.
+- Không có bước thiết lập trước (no setup) giữa nguồn và đích trước khi gửi dữ liệu.
+- Tầng mạng không đảm bảo gói tin sẽ đến đích đúng thứ tự hoặc thậm chí có thể bị mất.
+
+Ưu điểm:
+- Đơn giản, không cần duy trì trạng thái kết nối.
+- Phù hợp với các hệ thống mạng có độ phức tạp cao như Internet.
+
+Nhược điểm:
+- Tầng transport hoặc ứng dụng phải tự xử lý các vấn đề như mất gói tin, trễ hoặc gói tin đến sai thứ tự.
+
+### 📙Dịch vụ Kết Nối (Connection-Oriented Service)
+
+Đặc điểm:
+- Yêu cầu thiết lập một kết nối logic giữa nguồn và đích trước khi dữ liệu được gửi.
+- Dữ liệu được truyền qua mạng theo một đường đi cố định (circuit).
+- Đảm bảo dữ liệu đến đúng thứ tự, không bị mất và không bị trùng lặp.
+
+Ưu điểm:
+- Cung cấp độ tin cậy cao hơn do có sự quản lý kết nối.
+- Phù hợp với các ứng dụng yêu cầu dữ liệu được truyền ổn định, liên tục, và theo thứ tự.
+
+Nhược điểm:
+- Yêu cầu thêm tài nguyên để duy trì trạng thái kết nối.
+- Quá trình thiết lập kết nối có thể gây trễ.
+
+### 📙Dịch vụ Đảm Bảo (Guaranteed Service)
+
+Đặc điểm: Đảm bảo các yếu tố về chất lượng dịch vụ (QoS) như:
+- Tốc độ truyền (Throughput): Đảm bảo một lượng băng thông tối thiểu.
+- Độ trễ (Latency): Đảm bảo dữ liệu được truyền với độ trễ nhỏ nhất.
+- Độ tin cậy (Reliability): Đảm bảo không mất gói tin trong quá trình truyền.
+
+Ưu điểm:
+- Phù hợp cho các ứng dụng thời gian thực như video streaming, VoIP, hoặc hội nghị trực tuyến.
+
+Nhược điểm:
+- Cần sử dụng thêm tài nguyên mạng để đảm bảo QoS, do đó có thể không hiệu quả trên các mạng quy mô lớn.
+
+### 📙Dịch vụ Không Đảm Bảo (Best-Effort Service)
+
+Đặc điểm:
+- Không cung cấp bất kỳ đảm bảo nào về việc dữ liệu sẽ đến đích, thời gian đến đích, hoặc dữ liệu đến đúng thứ tự.
+- Gói tin được xử lý với mức độ nỗ lực cao nhất của mạng, nhưng không có cam kết nào từ tầng mạng.
+
+Ưu điểm:
+- Dễ triển khai, không cần tài nguyên mạng phức tạp.
+- Phù hợp với các ứng dụng không yêu cầu cao về chất lượng truyền tải, như email hoặc duyệt web.
+
+Nhược điểm:
+- Không đảm bảo được các tiêu chí quan trọng như tốc độ, độ tin cậy.
+
+### 📙So sánh Các Mô Hình Dịch Vụ
+
+| Dịch vụ       | Kết nối       | Đảm bảo QoS | Ứng dụng phổ biến                           |
+| ------------- | ------------- | ----------- | ------------------------------------------- |
+| Không kết nối | Không         | Không       | Internet (IP), truyền dữ liệu thông thường. |
+| Kết nối       | Có            | Có thể      | Mạng ATM, MPLS, hội nghị truyền hình.       |
+| Đảm bảo       | Không/Kết nối | Có          | Video streaming, VoIP, IoT.                 |
+| Không đảm bảo | Không         | Không       | Email, duyệt web, gửi file thông thường.    |
+
+Internet hiện đại:
+- Dịch vụ tầng mạng thường sử dụng mô hình không kết nối và không đảm bảo, vì Internet dựa trên giao thức IP.
+- Độ tin cậy và đảm bảo thứ tự dữ liệu được tầng transport (TCP) hoặc ứng dụng xử lý.
+
+Mạng doanh nghiệp hoặc chuyên dụng:
+- Sử dụng dịch vụ kết nối và đảm bảo để đáp ứng yêu cầu cao về chất lượng và độ tin cậy.
+
+## 📚Giao thức IP (Internet Protocol)
+
+Giao thức IP là một giao thức không kết nối (connectionless) và không đảm bảo (best-effort) trong bộ giao thức TCP/IP, được sử dụng để định địa chỉ và chuyển tiếp các gói tin qua mạng.
+
+### 📙Vai trò 
+
+Định địa chỉ (Addressing):
+- Gắn địa chỉ IP nguồn và địa chỉ IP đích vào mỗi gói tin.
+- Đảm bảo rằng dữ liệu được chuyển đúng đến thiết bị đích trong mạng.
+
+Chuyển tiếp gói tin (Packet Forwarding):
+- Xác định đường đi của gói tin qua các mạng trung gian dựa trên bảng định tuyến (routing table).
+
+Phân mảnh và hợp nhất (Fragmentation and Reassembly):
+- Chia nhỏ gói tin nếu kích thước của nó lớn hơn khả năng xử lý của mạng trung gian.
+- Thiết bị đích hợp lại các mảnh gói tin thành dữ liệu hoàn chỉnh.
+
+IP là nền tảng của Internet, chịu trách nhiệm chính trong việc định tuyến và chuyển tiếp gói tin qua các mạng khác nhau.
+
+IPv4 vẫn được sử dụng rộng rãi, nhưng IPv6 đang dần thay thế để đáp ứng nhu cầu về địa chỉ IP và các cải tiến hiện đại.
+
+### 📙Đặc điểm
+
+Không kết nối (Connectionless):
+- Không thiết lập kết nối trước khi truyền dữ liệu.
+- Mỗi gói tin được xử lý độc lập và có thể đi qua các đường khác nhau để đến đích.
+
+Không đảm bảo (Best-Effort Delivery):
+- Không cam kết rằng gói tin sẽ đến đích.
+- Gói tin có thể bị mất, đến sai thứ tự, hoặc bị trùng lặp.
+
+Phụ thuộc vào tầng transport:
+- Độ tin cậy được đảm bảo bởi các giao thức tầng transport, như TCP.
+
+### 📙Cấu trúc gói tin IP
+
+| Trường                 | Kích thước (bit) | Chức năng                                                         |
+| ---------------------- | ---------------- | ----------------------------------------------------------------- |
+| Version                | 4                | Xác định phiên bản IP (IPv4 hoặc IPv6).                           |
+| Header Length          | 4                | Độ dài phần tiêu đề.                                              |
+| Type of Service (TOS)  | 8                | Định nghĩa cách gói tin được xử lý (ưu tiên hoặc QoS).            |
+| Total Length           | 16               | Độ dài toàn bộ gói tin (header + payload).                        |
+| Identification         | 16               | Dùng để nhận diện các mảnh của gói tin trong quá trình phân mảnh. |
+| Flags                  | 3                | Cờ kiểm soát (phân mảnh hoặc không phân mảnh).                    |
+| Fragment Offset        | 13               | Vị trí của mảnh trong gói tin ban đầu.                            |
+| TTL (Time-to-Live)     | 8                | Giới hạn số lần gói tin được chuyển tiếp qua các router.          |
+| Protocol               | 8                | Xác định giao thức tầng trên (ví dụ: TCP, UDP).                   |
+| Header Checksum        | 16               |                                                                   | Giá trị kiểm tra lỗi của phần tiêu đề. |
+| Source IP Address      | 32               | Địa chỉ IP nguồn.                                                 |
+| Destination IP Address | 32               | Địa chỉ IP đích.                                                  |
+| Options (tùy chọn)     | Biến             | Các tùy chọn bổ sung (không bắt buộc).                            |
+| Payload (Dữ liệu)      | Biến             | Dữ liệu được gửi từ tầng trên (tầng transport).                   |
+
+### 📙Các phiên bản
+
+IPv4 (Internet Protocol Version 4):
+- Địa chỉ dài 32 bit (2³² = ~4,3 tỷ địa chỉ).
+- Dùng rộng rãi nhưng đang dần hết địa chỉ.
+
+IPv6 (Internet Protocol Version 6):
+- Địa chỉ dài 128 bit (2¹²⁸ địa chỉ, rất lớn).
+- Hỗ trợ nhiều tính năng mới, cải thiện hiệu suất và bảo mật.
+
+### 📙Quá trình xử lý của giao thức IP
+
+Thiết bị nguồn:
+- Tầng transport tạo dữ liệu và chuyển cho tầng mạng.
+- Giao thức IP đóng gói dữ liệu vào gói tin IP (IP packet).
+- Thêm địa chỉ IP nguồn và đích, sau đó gửi gói tin.
+
+Router trung gian:
+- Nhận gói tin IP, kiểm tra địa chỉ IP đích.
+- Tìm đường đi đến thiết bị đích dựa vào bảng định tuyến.
+- Chuyển tiếp gói tin tới mạng kế tiếp.
+
+Thiết bị đích:
+- Nhận gói tin IP.
+- Kiểm tra địa chỉ IP đích để đảm bảo gói tin đúng nơi.
+- Loại bỏ tiêu đề IP, chuyển dữ liệu lên tầng transport.
+
+### 📙Ưu và nhược điểm của giao thức IP
+Ưu điểm:
+- Đơn giản, dễ triển khai trên mạng toàn cầu.
+- Linh hoạt, hỗ trợ nhiều giao thức tầng trên như TCP, UDP.
+- Cho phép truyền dữ liệu qua các mạng khác nhau (inter-networking).
+
+Nhược điểm:
+- Không đảm bảo dữ liệu đến đích.
+- Không có tính năng bảo mật (dữ liệu có thể bị chặn hoặc thay đổi).
+- Không hỗ trợ QoS tốt trong môi trường truyền dữ liệu thời gian thực.
+
+## 📚Checksum
+
+**Checksum** là một giá trị được tính toán từ dữ liệu gói tin để kiểm tra xem gói tin có bị lỗi trong quá trình truyền qua mạng hay không. Đây là cơ chế đơn giản và hiệu quả để phát hiện lỗi dữ liệu trong các giao thức như IP, TCP, và UDP.
+
+### 📙Vai trò của Checksum
+
+Phát hiện lỗi:
+- Kiểm tra xem dữ liệu có bị thay đổi trong quá trình truyền dẫn hay không.
+- Nếu giá trị checksum không khớp tại đầu nhận, gói tin hoặc đoạn dữ liệu sẽ bị từ chối hoặc yêu cầu gửi lại (nếu giao thức hỗ trợ).
+
+Hiệu quả:
+- Phát hiện lỗi nhanh chóng mà không cần phân tích toàn bộ dữ liệu.
+
+### 📙Cách tính toán Checksum
+
+Chia dữ liệu thành các khối nhỏ:
+- Mỗi khối thường có kích thước 16 bit.
+
+Cộng các khối dữ liệu:
+- Cộng dồn giá trị nhị phân của từng khối dữ liệu lại với nhau.
+- Nếu phép cộng vượt quá 16 bit (có "carry"), cộng phần dư này quay lại vào tổng.
+
+Bù hai (One's Complement):
+- Lấy phần bù hai của kết quả tổng.
+- Phần bù hai được tạo bằng cách đảo ngược tất cả các bit.
+
+Checksum:
+- Kết quả cuối cùng là giá trị checksum.
+- Giá trị này được chèn vào tiêu đề gói tin trước khi gửi.
+
+### 📙Hoạt động của Checksum trong giao thức IP
+
+Tại thiết bị gửi:
+- Giao thức IP tạo tiêu đề gói tin.
+- Tính toán giá trị checksum dựa trên tiêu đề.
+- Chèn giá trị checksum vào trường Header Checksum trong tiêu đề.
+
+Tại mỗi router trung gian:
+- Router kiểm tra giá trị checksum của tiêu đề gói tin.
+- Nếu checksum không khớp, gói tin bị loại bỏ.
+
+Tại thiết bị nhận:
+- Checksum được tính toán lại và so sánh với giá trị trong tiêu đề.
+- Nếu khớp, gói tin được xử lý tiếp. Nếu không, gói tin bị bỏ
+
+### 📙Giới hạn của Checksum
+
+Không phát hiện được tất cả các lỗi: Nếu dữ liệu bị thay đổi theo cách mà tổng các giá trị không đổi (ví dụ: hoán đổi các bit), checksum có thể không phát hiện lỗi.
+
+Không đảm bảo an ninh: Checksum chỉ phát hiện lỗi ngẫu nhiên, không phải lỗi cố ý (ví dụ: tấn công làm thay đổi gói tin).
+
+IP:
+- Chỉ kiểm tra lỗi trong phần tiêu đề gói tin.
+- Dữ liệu không được kiểm tra bằng checksum ở tầng IP.
+
+TCP/UDP:
+- Sử dụng checksum để kiểm tra cả tiêu đề và dữ liệu.
+- Đảm bảo dữ liệu nhận được chính xác.
+
+### 📙Khác biệt giữa Checksum và CRC (Cyclic Redundancy Check)
+
+| Tiêu chí      | Checksum                      | CRC                                        |
+| ------------- | ----------------------------- | ------------------------------------------ |
+| Độ phức tạp   | Đơn giản                      | Phức tạp hơn                               |
+| Phát hiện lỗi | Tốt với lỗi ngẫu nhiên nhỏ    | Tốt hơn với lỗi phức tạp và liên tiếp      |
+| Ứng dụng      | Giao thức mạng (IP, TCP, UDP) | Hệ thống lưu trữ, truyền dữ liệu, Ethernet |
+
+## 📚DHCP (Dynamic Host Configuration Protocol)
+
+**DHCP** là một giao thức trong mạng máy tính, giúp tự động cấp phát địa chỉ IP cho các thiết bị (host) khi chúng kết nối vào mạng. Điều này giúp giảm bớt sự cần thiết phải cấu hình thủ công địa chỉ IP cho từng thiết bị trong mạng.
+
+### 📙Vai trò của DHCP
+
+**Cấp phát địa chỉ IP tự động**: DHCP cho phép máy tính và thiết bị khác nhận được địa chỉ IP một cách tự động từ máy chủ DHCP.
+
+**Cấu hình thông tin mạng**: Bên cạnh địa chỉ IP, DHCP còn cấp phát các thông tin như subnet mask, gateway, và DNS server.
+
+**Quản lý tập trung**: Việc cấp phát và quản lý địa chỉ IP được thực hiện ở máy chủ DHCP, giúp đơn giản hóa quản lý mạng.
+
+### 📙Cách thức hoạt động của DHCP
+
+Quá trình cấp phát địa chỉ IP diễn ra qua 4 bước chính:
+
+- DHCP Discover: Khi một thiết bị (client) mới kết nối vào mạng và không có địa chỉ IP, nó sẽ phát ra một gói tin DHCP Discover trên mạng để tìm máy chủ DHCP.
+
+- DHCP Offer: Các máy chủ DHCP lắng nghe gói tin Discover và gửi lại gói tin DHCP Offer cho client, chứa một địa chỉ IP mà máy chủ DHCP dự định cấp phát cho client.
+
+- DHCP Request: Client nhận được nhiều gói DHCP Offer từ các máy chủ DHCP (nếu có nhiều máy chủ DHCP trên mạng). Client sẽ chọn một trong số chúng và gửi gói DHCP Request để yêu cầu cấp phát địa chỉ IP từ một máy chủ DHCP cụ thể.
+
+- DHCP Acknowledgement (ACK): Máy chủ DHCP nhận được yêu cầu từ client và gửi lại một gói tin DHCP ACK, xác nhận rằng địa chỉ IP đã được cấp phát cho client và cung cấp thêm thông tin cấu hình như gateway và DNS server.
+
+### 📙Các thành phần của DHCP
+
+DHCP Server: Máy chủ này có nhiệm vụ cấp phát địa chỉ IP và cấu hình cho các thiết bị trong mạng.
+
+DHCP Client: Các thiết bị yêu cầu địa chỉ IP từ máy chủ DHCP.
+
+DHCP Lease: Thời gian mà một địa chỉ IP được cấp cho một thiết bị. Sau khi thời gian này hết, địa chỉ IP có thể được tái sử dụng cho thiết bị khác.
+
+### 📙Các thông tin được cấp phát bởi DHCP
+
+Ngoài địa chỉ IP, máy chủ DHCP còn cấp phát các thông tin khác cho client:
+- Subnet Mask: Để xác định phạm vi mạng.
+- Default Gateway: Để định tuyến đến mạng ngoài.
+- DNS Server: Để giải quyết tên miền thành địa chỉ IP.
+
+### 📙Quản lý địa chỉ IP với DHCP
+
+DHCP Lease Time: Thời gian mà một thiết bị có thể sử dụng địa chỉ IP được cấp phát. Sau khi hết thời gian lease, thiết bị phải yêu cầu cấp phát lại.
+
+Reservation: Máy chủ DHCP có thể được cấu hình để dành một địa chỉ IP cố định cho một thiết bị cụ thể dựa trên địa chỉ MAC của thiết bị đó. Điều này giúp đảm bảo rằng thiết bị luôn nhận được cùng một địa chỉ IP mỗi khi kết nối vào mạng.
+
+### 📙Lợi ích của DHCP
+
+Tiết kiệm thời gian: Quá trình cấp phát địa chỉ IP tự động giúp giảm bớt công việc cấu hình thủ công.
+
+Dễ dàng quản lý: DHCP giúp dễ dàng quản lý địa chỉ IP trong mạng mà không cần phải kiểm tra và cập nhật thủ công.
+
+Hỗ trợ mở rộng mạng: Khi thêm nhiều thiết bị vào mạng, DHCP sẽ tự động cấp phát địa chỉ IP mà không cần thay đổi cấu hình thủ công.
+
+### 📙Các loại DHCP
+
+DHCP truyền thống (Dynamic DHCP): Cấp phát địa chỉ IP tự động và không cố định.
+
+DHCP với đối tượng (DHCP Reservation): Cấp phát địa chỉ IP cố định cho các thiết bị dựa trên địa chỉ MAC.
+
+DHCP Relay: Khi client và server DHCP không cùng một mạng con, router hoặc thiết bị trung gian sẽ đóng vai trò là DHCP Relay để chuyển tiếp các gói tin DHCP giữa client và server.
+
+### 📙Sự cố phổ biến với DHCP
+
+Hết dải IP: Nếu số lượng địa chỉ IP trong dải cấp phát DHCP không đủ, các thiết bị mới sẽ không nhận được địa chỉ IP.
+
+Cấu hình sai: Nếu máy chủ DHCP bị cấu hình sai, client có thể không nhận được địa chỉ IP đúng hoặc bị cấp phát sai thông tin (ví dụ: DNS, gateway).
+
+Mất kết nối với DHCP Server: Nếu máy chủ DHCP bị lỗi hoặc không thể truy cập, các thiết bị sẽ không thể nhận địa chỉ IP tự động.
+
+## 📚Giao thức IPv4 (Internet Protocol version 4)
+
+**IPv4 (Internet Protocol version 4)** là phiên bản đầu tiên của giao thức IP được triển khai rộng rãi. Đây là một trong những giao thức lõi của Internet, chịu trách nhiệm định tuyến và chuyển tiếp gói tin từ thiết bị nguồn đến thiết bị đích qua mạng.
+
+### 📙Đặc điểm chính của IPv4
+
+**Địa chỉ IP 32-bit**: Mỗi địa chỉ IPv4 có 32 bit, thường được biểu diễn dưới dạng 4 số thập phân, cách nhau bằng dấu chấm (dot-decimal notation), ví dụ: `192.168.0.1`.
+
+**Không kết nối (Connectionless)**: IPv4 không thiết lập kết nối trước khi gửi gói tin. Mỗi gói tin được xử lý độc lập.
+
+**Tốt nhất có thể (Best-effort Delivery)**: IPv4 không đảm bảo rằng gói tin sẽ đến được đích, không đảm bảo thứ tự gói tin, và không cung cấp cơ chế khôi phục lỗi.
+
+**Hỗ trợ phân mảnh**: Nếu gói tin lớn hơn khả năng truyền tải của một mạng trung gian, nó sẽ được phân mảnh thành các phần nhỏ hơn.
+
+### 📙Phân mảnh và tái lắp ghép (Fragmentation & Reassembly)
+
+Khi gói tin lớn hơn MTU (Maximum Transmission Unit) của mạng, IPv4 sẽ chia gói tin thành các phân mảnh.
+
+Các phân mảnh có các trường đặc biệt:
+- Identification: Để nhận biết các phân mảnh thuộc cùng một gói tin.
+- Fragment Offset: Đánh dấu vị trí của phân mảnh trong gói tin ban đầu.
+- MF (More Fragments): Cờ báo hiệu phân mảnh tiếp theo (MF = 1 nếu còn, MF = 0 nếu là phân mảnh cuối cùng).
+
+Router không tái lắp ghép phân mảnh. Việc tái lắp ghép được thực hiện ở thiết bị đích.
+
+### 📙Định tuyến trong IPv4
+
+IPv4 sử dụng các thuật toán định tuyến để chọn đường đi cho gói tin:
+- Forwarding: Router kiểm tra địa chỉ đích và chuyển gói tin đến bước tiếp theo.
+- Routing: Xây dựng bảng định tuyến dựa trên các giao thức định tuyến như RIP, OSPF, BGP.
+
+### 📙Hạn chế của IPv4
+
+Không đủ địa chỉ: IPv4 chỉ cung cấp khoảng 4.3 tỷ địa chỉ (2³²), không đủ cho số lượng thiết bị ngày càng tăng.
+
+Thiếu bảo mật: Không có cơ chế bảo mật tích hợp (như mã hóa hoặc xác thực).
+
+Phân mảnh tốn kém: Phân mảnh và tái lắp ghép tiêu tốn nhiều tài nguyên tính toán.
+
+Không hỗ trợ QoS (Quality of Service) đầy đủ: Khả năng ưu tiên lưu lượng mạng rất hạn chế.
+
+## 📚Giao thức IPv6 (Internet Protocol version 6)
+
+**IPv6** là phiên bản tiếp theo của **giao thức IP** được phát triển để khắc phục những hạn chế của **IPv4**, đặc biệt là vấn đề thiếu hụt địa chỉ. Nó mang đến nhiều cải tiến về khả năng mở rộng, hiệu năng, và bảo mật.
+
+### 📙Đặc điểm chính của IPv6
+
+**Địa chỉ IP 128-bit**:
+- IPv6 sử dụng địa chỉ dài 128 bit, cung cấp số lượng địa chỉ gần như không giới hạn (2¹²⁸ địa chỉ). 
+- Được viết dưới dạng 8 nhóm số thập lục phân, cách nhau bằng dấu hai chấm (`:`), ví dụ: `2001:0db8:85a3:0000:0000:8a2e:0370:7334`.
+
+**Cấu trúc tiêu đề đơn giản**: Tiêu đề IPv6 được thiết kế đơn giản hơn IPv4 để cải thiện hiệu năng xử lý.
+
+**Không phân mảnh tại router**: Chỉ thiết bị gửi mới có thể phân mảnh, giúp giảm gánh nặng cho các router.
+
+**Hỗ trợ bảo mật tích hợp**: IPv6 tích hợp sẵn IPsec, một giao thức đảm bảo bảo mật cho các gói tin.
+
+**Tích hợp QoS tốt hơn**: IPv6 hỗ trợ các trường như Flow Label để cung cấp chất lượng dịch vụ (QoS) tốt hơn.
+
+**Không cần NAT (Network Address Translation)**: Với số lượng địa chỉ khổng lồ, mỗi thiết bị có thể có địa chỉ IP công khai riêng.
+
+### 📙Địa chỉ IPv6
+Địa chỉ IPv6 được phân thành các loại chính sau:
+- **Unicast**: Gửi dữ liệu từ một nguồn đến một đích duy nhất.
+- **Multicast**: Gửi dữ liệu từ một nguồn đến nhiều đích.
+- **Anycast**: Gửi dữ liệu từ một nguồn đến đích gần nhất (trong số nhiều đích).
+
+Viết gọn địa chỉ IPv6:
+- Loại bỏ các số 0 liên tiếp: `2001:0db8:0000:0000:0000:ff00:0042:8329 → 2001:db8::ff00:42:8329`.
+- Một nhóm `::` chỉ xuất hiện một lần trong địa chỉ.
+
+### 📙Định tuyến trong IPv6
+
+Không phân mảnh tại router: Các router chỉ chuyển tiếp gói tin mà không thực hiện phân mảnh. Thiết bị nguồn phải đảm bảo gói tin phù hợp với MTU (Maximum Transmission Unit).
+
+Cải thiện hiệu năng xử lý: Tiêu đề đơn giản giúp router xử lý nhanh hơn.
+
+Sử dụng giao thức định tuyến hiện đại: IPv6 hỗ trợ các giao thức định tuyến tiên tiến như OSPFv3, IS-IS, và BGP.
+
+### 📙Chuyển đổi từ IPv4 sang IPv6
+
+Do sự phổ biến của IPv4, quá trình chuyển đổi sang IPv6 diễn ra dần dần. Một số kỹ thuật được sử dụng:
+- Dual-Stack: Các thiết bị và mạng hỗ trợ cả IPv4 và IPv6.
+- Tunneling: Gói tin IPv6 được đóng gói trong gói IPv4 để truyền qua mạng chỉ hỗ trợ IPv4.
+- Translation: Dịch địa chỉ IPv6 sang IPv4 và ngược lại (ví dụ: NAT64).
+
+### 📙So sánh IPv4 và IPv6
+
+| Đặc điểm                 | IPv4                       | IPv6                                 |
+| ------------------------ | -------------------------- | ------------------------------------ |
+| Địa chỉ                  | 32-bit (~4.3 tỷ địa chỉ)   | 128-bit (số địa chỉ rất lớn)         |
+| Phân mảnh                | Tại router và thiết bị gửi | Chỉ tại thiết bị gửi                 |
+| Bảo mật tích hợp         | Không                      | Tích hợp IPsec                       |
+| Chất lượng dịch vụ (QoS) | Hạn chế                    | Hỗ trợ tốt hơn với trường Flow Label |
+| Cấu trúc tiêu đề         | Phức tạp hơn               | Đơn giản, hiệu quả hơn               |
+
+## 📚Giao thức ARP (Address Resolution Protocol)
+
+**ARP** là một giao thức thuộc tầng mạng (Network Layer) trong mô hình TCP/IP. Nó chịu trách nhiệm tìm kiếm và **ánh xạ địa chỉ IP (logical address) thành địa chỉ MAC (physical address)** trong một mạng LAN.
+
+### 📙Chức năng của ARP
+
+Giải quyết địa chỉ: ARP được sử dụng khi một thiết bị muốn gửi dữ liệu đến một thiết bị khác trong cùng mạng LAN nhưng chỉ biết địa chỉ IP của thiết bị đó. ARP sẽ ánh xạ địa chỉ IP này sang địa chỉ MAC để truyền dữ liệu.
+
+### 📙Cách thức hoạt động của ARP
+
+ARP Request (Yêu cầu ARP):
+- Thiết bị gửi một gói tin phát quảng bá (broadcast) trên mạng LAN để hỏi: "Ai là chủ của địa chỉ IP này?".
+- Gói ARP Request bao gồm: Địa chỉ MAC và IP của thiết bị gửi cùng với địa chỉ IP của thiết bị cần tìm.
+
+ARP Reply (Phản hồi ARP):
+- Thiết bị đích nhận được ARP Request sẽ phản hồi bằng cách gửi gói ARP Reply trở lại, trong đó có địa chỉ MAC của nó.
+- Gói ARP Reply được gửi theo **phương thức unicast** trực tiếp đến thiết bị yêu cầu.
+
+### 📙Bảng ARP (ARP Cache)
+
+Sau khi ánh xạ địa chỉ IP thành địa chỉ MAC, thiết bị sẽ lưu thông tin này vào bảng ARP (ARP Cache) để tái sử dụng trong tương lai, giảm thiểu số lần gửi yêu cầu ARP.
+
+Bảng ARP có thời gian tồn tại nhất định (thường vài phút đến vài giờ) trước khi các bản ghi bị xóa.
+
+### 📙Cấu trúc gói tin ARP
+
+| Trường                  | Mô tả                                                       |
+| ----------------------- | ----------------------------------------------------------- |
+| Hardware Type           | Loại phần cứng (Ethernet = 1).                              |
+| Protocol Type           | Loại giao thức (IPv4 = 0x0800).                             |
+| Hardware Address Length | Độ dài địa chỉ MAC (thường là 6 byte).                      |
+| Protocol Address Length | Độ dài địa chỉ IP (thường là 4 byte).                       |
+| Operation               | Loại gói tin (ARP Request = 1, ARP Reply = 2).              |
+| Sender MAC Address      | Địa chỉ MAC của thiết bị gửi.                               |
+| Sender IP Address       | Địa chỉ IP của thiết bị gửi.                                |
+| Target MAC Address      | Địa chỉ MAC của thiết bị đích (để trống trong ARP Request). |
+| Target IP Address       | Địa chỉ IP của thiết bị đích.                               |
+
+### 📙Một số vấn đề liên quan đến ARP
+
+**ARP Spoofing**: Đây là một cuộc tấn công bảo mật, trong đó kẻ tấn công gửi các gói ARP giả mạo để ánh xạ địa chỉ IP của thiết bị hợp pháp với địa chỉ MAC của nó. Điều này cho phép kẻ tấn công nghe lén hoặc chặn dữ liệu.
+
+**Broadcast Overhead**: Nếu mạng có nhiều thiết bị, việc phát quảng bá ARP liên tục có thể làm tăng tải trên mạng.
+
+**Proxy ARP**: Một router có thể sử dụng Proxy ARP để phản hồi các yêu cầu ARP thay mặt cho thiết bị khác, giúp kết nối giữa các mạng khác nhau.
+
+## 📚Giao thức RARP (Reverse Address Resolution Protocol)
+
+**RARP (Reverse Address Resolution Protocol)** là một giao thức thuộc tầng mạng, được thiết kế để **ánh xạ ngược từ địa chỉ MAC (Media Access Control) sang địa chỉ IP**. Nó thường được sử dụng trong các thiết bị không có khả năng lưu trữ địa chỉ IP, như các thiết bị đầu cuối hoặc máy trạm không ổ cứng.
+
+### 📙Mục đích của RARP
+
+Trong mạng, một thiết bị biết địa chỉ MAC của chính mình nhưng không biết địa chỉ IP. RARP giúp thiết bị yêu cầu máy chủ RARP cung cấp địa chỉ IP tương ứng với địa chỉ MAC của nó.
+
+RARP thường được sử dụng trong các hệ thống không ổ cứng (diskless systems), ví dụ: các máy trạm trong mạng LAN.
+
+### 📙Cách thức hoạt động của RARP
+
+RARP Request (Yêu cầu RARP):
+- Thiết bị gửi một gói tin phát quảng bá (broadcast) RARP Request lên mạng LAN, trong đó chứa địa chỉ MAC của chính nó.
+- Yêu cầu: "Tôi là thiết bị có địa chỉ MAC XYZ. Xin cung cấp địa chỉ IP tương ứng cho tôi."
+
+RARP Reply (Phản hồi RARP):
+- Máy chủ RARP trên mạng (thường là một server có bảng ánh xạ MAC → IP) nhận được yêu cầu, tra cứu trong bảng ánh xạ, và gửi lại gói RARP Reply đến thiết bị yêu cầu.
+- Gói phản hồi chứa địa chỉ IP tương ứng với địa chỉ MAC được cung cấp.
+
+### 📙Yêu cầu cần thiết để RARP hoạt động
+
+Máy chủ RARP: Phải tồn tại một máy chủ RARP trong mạng, được cấu hình sẵn với bảng ánh xạ giữa địa chỉ MAC và địa chỉ IP.
+
+Bảng ánh xạ MAC → IP: Máy chủ cần lưu trữ thông tin ánh xạ của các thiết bị trong mạng để trả lời các yêu cầu RARP.
+
+### 📙Cấu trúc gói tin RARP
+
+| Trường                  | Mô tả                                                       |
+| ----------------------- | ----------------------------------------------------------- |
+| Hardware Type           | Loại phần cứng (Ethernet = 1).                              |
+| Protocol Type           | Loại giao thức (IPv4 = 0x0800).                             |
+| Hardware Address Length | Độ dài địa chỉ MAC (thường là 6 byte).                      |
+| Protocol Address Length | Độ dài địa chỉ IP (thường là 4 byte).                       |
+| Operation               | Loại gói tin (RARP Request = 3, RARP Reply = 4).            |
+| Sender MAC Address      | Địa chỉ MAC của thiết bị gửi.                               |
+| Sender IP Address       | Địa chỉ IP của thiết bị gửi (trống trong RARP Request).     |
+| Target MAC Address      | Địa chỉ MAC của thiết bị yêu cầu ánh xạ.                    |
+| Target IP Address       | Địa chỉ IP của thiết bị yêu cầu (trống trong RARP Request). |
+
+### 📙Ưu và nhược điểm của RARP
+
+Ưu điểm:
+- Cung cấp địa chỉ IP động cho các thiết bị không lưu trữ được địa chỉ IP.
+- Hoạt động đơn giản, dựa trên phát quảng bá trong mạng LAN.
+
+Nhược điểm:
+- Khả năng mở rộng thấp: RARP chỉ hoạt động trong mạng LAN cục bộ và không hỗ trợ cấu hình qua mạng rộng (WAN).
+- Phụ thuộc vào máy chủ RARP: Nếu không có máy chủ RARP hoặc máy chủ bị lỗi, giao thức sẽ không hoạt động.
+- Khả năng ánh xạ hạn chế: RARP chỉ ánh xạ địa chỉ MAC → IP, không hỗ trợ các cấu hình mạng phức tạp (như subnet mask, default gateway).
+
+### 📙Tổng kết
+
+RARP là một giao thức đơn giản và hữu ích trong các mạng LAN nhỏ, nhưng ngày nay nó đã không còn được sử dụng phổ biến do sự ra đời của các giao thức linh hoạt và mạnh mẽ hơn như DHCP.
+
+Do các hạn chế của RARP, các giao thức mới đã được phát triển và thay thế nó:
+- BOOTP: Hỗ trợ cấu hình đầy đủ hơn, bao gồm địa chỉ IP, subnet mask, gateway, và tên máy chủ.
+- DHCP: Tiến hóa từ BOOTP, cung cấp cấu hình địa chỉ IP động và khả năng mở rộng cao hơn.
+
+## 📚Giao thức NAT (Network Address Translation)
+
+**NAT (Network Address Translation)** là một kỹ thuật được sử dụng trong các bộ định tuyến (router) hoặc tường lửa để thay đổi địa chỉ IP trong các gói tin khi chúng di chuyển qua mạng. NAT đóng vai trò quan trọng trong việc quản lý địa chỉ IP và bảo mật mạng.
+
+### 📙Mục đích của NAT
+
+**Tiết kiệm địa chỉ IPv4**: Do địa chỉ IPv4 đang thiếu hụt, NAT cho phép nhiều thiết bị trong mạng nội bộ sử dụng một địa chỉ IP công cộng duy nhất để giao tiếp với Internet.
+
+**Bảo mật mạng**: NAT ẩn địa chỉ IP nội bộ, giúp các thiết bị trong mạng nội bộ không bị truy cập trực tiếp từ bên ngoài.
+
+**Kết nối mạng nội bộ với Internet**: NAT cho phép mạng nội bộ sử dụng các địa chỉ IP riêng (private IP) và vẫn có thể giao tiếp với mạng Internet.
+
+### 📙Cách thức hoạt động của NAT
+
+NAT thực hiện **ánh xạ giữa địa chỉ IP nội bộ (private IP) và địa chỉ IP công cộng (public IP)**. Khi một thiết bị trong mạng nội bộ gửi dữ liệu ra Internet, NAT thay đổi địa chỉ IP nguồn trong gói tin từ IP nội bộ thành IP công cộng của router.
+
+Thiết bị nội bộ gửi gói tin:
+- Thiết bị nội bộ (với IP riêng) gửi gói tin đến router NAT.
+- Địa chỉ IP nguồn ban đầu là địa chỉ IP riêng của thiết bị.
+
+Router NAT thay đổi địa chỉ IP:
+- Router NAT thay thế địa chỉ IP nguồn bằng địa chỉ IP công cộng của nó.
+- Nếu cần, NAT cũng thay đổi số cổng (port) nguồn để phân biệt các kết nối.
+
+Router gửi gói tin ra Internet:
+- Gói tin với địa chỉ IP công cộng được gửi đến đích qua Internet.
+
+Phản hồi từ máy chủ:
+- Khi máy chủ đích phản hồi, gói tin sẽ quay về địa chỉ IP công cộng của router NAT.
+
+Router NAT chuyển gói tin về thiết bị nội bộ:
+- Router NAT kiểm tra bảng ánh xạ địa chỉ (NAT table) để xác định thiết bị nội bộ ban đầu và gửi gói tin phản hồi đến nó.
+
+### 📙Các loại NAT
+Static NAT (NAT tĩnh):
+- Ánh xạ một địa chỉ IP nội bộ cố định sang một địa chỉ IP công cộng cố định.
+- Sử dụng khi cần truy cập thiết bị nội bộ từ bên ngoài Internet.
+
+Dynamic NAT (NAT động):
+- Ánh xạ các địa chỉ IP nội bộ với một nhóm địa chỉ IP công cộng (pool of public IP addresses).
+- Địa chỉ IP công cộng được gán động từ nhóm này.
+
+PAT (Port Address Translation) - NAT Nạp Cổng:
+- Là một loại NAT động phổ biến.
+- Cho phép nhiều thiết bị nội bộ sử dụng chung một địa chỉ IP công cộng bằng cách phân biệt các kết nối qua số cổng (port).
+- Đây là loại NAT thường được sử dụng trong mạng gia đình hoặc mạng doanh nghiệp nhỏ.
+
+### 📙Bảng ánh xạ NAT (NAT Table)
+
+NAT sử dụng một bảng ánh xạ để theo dõi các kết nối đang hoạt động. Mỗi mục trong bảng bao gồm:
+- IP nội bộ và cổng nguồn.
+- IP công cộng và cổng nguồn đã thay đổi.
+- IP đích và cổng đích.
+
+### 📙Ưu điểm và nhược điểm
+
+Ưu điểm:
+- Tiết kiệm địa chỉ IPv4 công cộng.
+- Tăng cường bảo mật bằng cách ẩn địa chỉ IP nội bộ.
+- Hỗ trợ nhiều thiết bị trong mạng nội bộ truy cập Internet qua một địa chỉ IP duy nhất.
+
+Nhược điểm:
+- Làm tăng độ trễ vì router phải xử lý thêm bước ánh xạ địa chỉ.
+- Không hỗ trợ tốt các giao thức yêu cầu địa chỉ IP nguồn cố định (ví dụ: IPsec).
+- Giới hạn kết nối đồng thời trong mạng lớn khi sử dụng PAT.
+
+## 📚Định địa chỉ IP
+
+Định địa chỉ IP (IP Addressing) là quá trình gán một địa chỉ IP duy nhất cho mỗi thiết bị trong mạng để xác định và giao tiếp với nhau. Địa chỉ IP là một dãy số được sử dụng trong giao thức Internet để xác định vị trí của một thiết bị trong mạng.
+
+### 📙Địa chỉ IP là gì?
+IP (Internet Protocol): Giao thức Internet, cho phép các thiết bị giao tiếp qua mạng.
+
+Địa chỉ IP: Một chuỗi số duy nhất được gán cho mỗi thiết bị để định danh trong mạng.
+
+Cấu trúc: Địa chỉ IP gồm 2 phần:
+- Network ID: Xác định mạng mà thiết bị thuộc về.
+- Host ID: Xác định thiết bị cụ thể trong mạng đó.
+
+### 📙Vai trò của định địa chỉ IP
+
+Định danh thiết bị: Mỗi thiết bị có một địa chỉ IP duy nhất để phân biệt.
+
+Định tuyến: Địa chỉ IP nguồn và đích trong gói tin giúp xác định đường đi qua mạng.
+
+Giao tiếp: Địa chỉ IP cho phép các thiết bị giao tiếp với nhau trong mạng LAN hoặc qua Internet.
+
+### 📙Phân loại địa chỉ IP
+
+Địa chỉ IPv4
+
+- IPv4 được chia thành 5 lớp: A, B, C, D, và E. Trong đó:
+    - Lớp A, B, C: Sử dụng cho mục đích thương mại.
+    - Lớp D: Sử dụng cho multicast (truyền tin nhóm).
+    - Lớp E: Dành riêng cho mục đích nghiên cứu.
+
+| Lớp | Dải địa chỉ                 | Network ID | Host ID | Số mạng con | Thiết bị/ mạng |
+| --- | --------------------------- | ---------- | ------- | ----------- | -------------- |
+| A   | 0.0.0.0 - 127.255.255.255   | 8 bit      | 24 bit  | 2⁷          | 16 triệu       |
+| B   | 128.0.0.0 - 191.255.255.255 | 16 bit     | 16 bit  | 2¹⁴         | 65 nghìn       |
+| C   | 192.0.0.0 - 223.255.255.255 | 24 bit     | 8 bit   | 2²¹         | 256            |
+| D   | 224.0.0.0 - 239.255.255.255 | N/A        | N/A     | N/A         | Multicast      |
+| E   | 240.0.0.0 - 255.255.255.255 | N/A        | N/A     | N/A         | Nghiên cứu     |
+
+Địa chỉ Private và Public
+
+- Private IP: Sử dụng trong mạng nội bộ, không truy cập trực tiếp được từ Internet.
+    - Lớp A: `10.0.0.0 - 10.255.255.255`
+    - Lớp B: `172.16.0.0 - 172.31.255.255`
+    - Lớp C: `192.168.0.0 - 192.168.255.255`
+
+- Public IP: Sử dụng để truy cập Internet. Do tổ chức IANA quản lý và phân phối.
+
+Địa chỉ đặc biệt
+
+- Loopback address: `127.0.0.1` dùng để kiểm tra thiết bị nội bộ.
+- Broadcast address: Dùng để gửi dữ liệu đến tất cả thiết bị trong mạng (ví dụ: `192.168.1.255`).
+- APIPA (Automatic Private IP Addressing): `169.254.0.0 - 169.254.255.255` tự động gán khi không tìm được DHCP.
+
+### 📙Gán địa chỉ IP
+
+Tĩnh (Static):
+- Địa chỉ IP được gán cố định bởi quản trị viên.
+- Phù hợp cho các máy chủ, router hoặc thiết bị yêu cầu địa chỉ cố định.
+
+Động (Dynamic):
+- Địa chỉ IP được gán tự động bởi DHCP (Dynamic Host Configuration Protocol).
+- Phù hợp cho các thiết bị thông thường trong mạng.
+
+### 📙Subnet Mask, Subnetting
+
+#### 📘Subnet Mask là gì?
+
+**Subnet Mask (Mặt nạ mạng con)** là một giá trị được dùng để phân chia địa chỉ IP thành **phần mạng (Network)** và **phần host (Host)**.
+
+Một Subnet Mask thường đi kèm với địa chỉ IP và giúp xác định:
+- Phần mạng: Các thiết bị cùng nằm trong mạng này.
+- Phần host: Các thiết bị cụ thể trong mạng đó.
+
+#### 📘Vai trò của Subnet Mask
+
+**Xác định phần mạng**: Giúp phân biệt thiết bị nào cùng nằm trong một mạng.
+
+**Chia nhỏ mạng**: Subnet Mask được sử dụng để chia một mạng lớn thành các mạng con (subnet).
+
+**Định tuyến**: Router dựa vào Subnet Mask để quyết định cách chuyển tiếp gói tin đến đúng mạng.
+
+#### 📘Subnetting là gì?
+
+Subnetting (Chia nhỏ mạng) là quá trình chia một mạng lớn thành nhiều mạng con nhỏ hơn để:
+- Sử dụng tài nguyên địa chỉ IP hiệu quả hơn.
+- Tăng cường bảo mật và phân đoạn mạng.
+- Giảm lưu lượng trong mỗi mạng con, cải thiện hiệu suất.
+
+#### 📘Cách hoạt động của Subnetting
+
+Subnetting sử dụng Subnet Mask để chia địa chỉ IP thành:
+- Phần mạng: Giữ nguyên.
+- Phần subnet: Dùng để tạo các mạng con.
+- Phần host: Dùng để xác định thiết bị trong mạng con.
+
+Ví dụ cơ bản
+- Địa chỉ IP: `192.168.1.0/24`
+- Subnet Mask ban đầu: `255.255.255.0`
+- `/24` nghĩa là 24 bit đầu là phần mạng, còn 8 bit là phần host.
+- Có thể chứa: $2^8 − 2 = 254$ thiết bị (trừ 2 địa chỉ đặc biệt: broadcast và network ID).
+
+Subnetting chia mạng
+- Giả sử chia mạng thành 4 mạng con.
+- Số bit cần mượn từ phần host để tạo subnet: $2^n ≥ 4 ⇒ n = 2$.
+- Subnet Mask mới: `255.255.255.192` hoặc `/26` (24 + 2 bit).
+
+| Subnet | Địa chỉ IP Subnet | Phạm vi địa chỉ               | Broadcast Address |
+| ------ | ----------------- | ----------------------------- | ----------------- |
+| 1      | 192.168.1.0/26    | 192.168.1.1 - 192.168.1.62    | 192.168.1.63      |
+| 2      | 192.168.1.64/26   | 192.168.1.65 - 192.168.1.126  | 192.168.1.127     |
+| 3      | 192.168.1.128/26  | 192.168.1.129 - 192.168.1.190 | 192.168.1.191     |
+| 4      | 192.168.1.192/26  | 192.168.1.193 - 192.168.1.254 | 192.168.1.255     |
+
+#### 📘Công thức tính Subnetting
+
+Tính số subnet
+- Công thức: $𝑆=2^n$
+- n: Số bit mượn từ phần host.
+- S: Số subnet tạo ra.
+
+Tính số host trong mỗi subnet
+- Công thức: $𝐻 = 2^ℎ − 2$
+- ℎ: Số bit còn lại dành cho phần host.
+- 𝐻: Số host khả dụng trong mỗi subnet.
+
+Tính Subnet Mask
+- Công thức: $𝑆𝑢𝑏𝑛𝑒𝑡𝑀𝑎𝑠𝑘 = 32 − (số bit phần hót mới)$
+
+#### 📘Ưu và nhược điểm của Subnetting
+
+Ưu điểm:
+- Tối ưu hóa tài nguyên: Sử dụng không gian địa chỉ IP hiệu quả.
+- Cải thiện bảo mật: Tách biệt các mạng con, giảm rủi ro lan truyền tấn công.
+- Giảm tắc nghẽn mạng: Hạn chế lưu lượng trong từng mạng con.
+
+Nhược điểmđiểm:
+- Tăng phức tạp: Quản lý các subnet đòi hỏi kỹ năng cao.
+- Tốn tài nguyên: Số lượng subnet tăng có thể làm giảm hiệu quả nếu không được quản lý đúng.
+
+### 📙CIDR (Classless Inter-Domain Routing)
+
+CIDR là một cách biểu diễn địa chỉ IP linh hoạt, không giới hạn bởi lớp (classless). CIDR sử dụng một hậu tố `/` để chỉ số bit mạng.
+
+Ví dụ: `192.168.1.0/24` thay vì `192.168.1.0 255.255.255.0`
+- Địa chỉ CIDR: `192.168.1.0/24`
+- `/24` chỉ rằng 24 bit đầu là phần mạng, 8 bit còn lại là phần host.
+
+## 📚Giao thức ICMP (Internet Control Message Protocol)
+
+ICMP (Internet Control Message Protocol) là một giao thức thuộc tầng mạng trong bộ giao thức TCP/IP, được sử dụng để gửi các thông báo lỗi, trạng thái hoặc thông tin giữa các thiết bị mạng (như router, host).
+
+ICMP không dùng để truyền dữ liệu ứng dụng mà hỗ trợ vận hành mạng bằng cách cung cấp phản hồi về các vấn đề trong giao tiếp mạng.
+
+### 📙Chức năng của ICMP
+
+Chẩn đoán lỗi:
+- Báo lỗi khi gói tin không thể được truyền đến đích (ví dụ: không tìm thấy đích, TTL hết hạn).
+- Thông báo cho nguồn về lý do gói tin không thể được xử lý.
+
+Cung cấp thông tin:
+- Thông tin trạng thái về hoạt động mạng (như báo hiệu mạng quá tải hoặc không khả dụng).
+- Dùng trong các công cụ chẩn đoán như `ping` và `traceroute`.
+
+### 📙Cấu trúc gói tin ICMP
+
+Một gói tin ICMP có cấu trúc đơn giản, thường gồm các phần:
+- Type (Loại thông điệp): Xác định loại thông điệp ICMP (ví dụ: báo lỗi, yêu cầu echo).
+- Code (Mã): Cung cấp thêm chi tiết cho loại thông điệp.
+- Checksum (Kiểm tra lỗi): Dùng để kiểm tra tính toàn vẹn của gói tin ICMP.
+- Thông tin bổ sung: Phụ thuộc vào loại thông điệp (ví dụ: địa chỉ IP lỗi, TTL)
+
+Các loại thông điệp ICMP phổ biến
+| Type | Code | Chức năng                                          |
+| ---- | ---- | -------------------------------------------------- |
+| 0    | 0    | Echo Reply (Phản hồi từ lệnh ping).                |
+| 3    | 0-15 | Destination Unreachable (Đích không thể truy cập). |
+| 8    | 0    | Echo Request (Yêu cầu từ lệnh ping).               |
+| 11   | 0-1  | Time Exceeded (TTL hết hạn).                       |
+| 5    | 0-3  | Redirect (Chuyển hướng gói tin đến router khác).   |
+
+### 📙Ứng dụng thực tế của ICMP
+
+Công cụ Ping:
+- Gửi gói tin ICMP Echo Request đến một thiết bị và nhận Echo Reply.
+- Kiểm tra kết nối mạng và thời gian phản hồi (round-trip time).
+
+Công cụ Traceroute:
+- Sử dụng ICMP Time Exceeded để xác định đường đi của gói tin qua các router.
+
+Chẩn đoán và xử lý lỗi mạng:
+- Phát hiện và khắc phục các vấn đề như mạng bị quá tải, router không khả dụng, hoặc TTL hết hạn.
+
+### 📙ICMP trong IPv4 và IPv6
+
+ICMPv4: Được dùng trong IPv4 với các thông báo truyền thống.
+
+ICMPv6: Được dùng trong IPv6, ngoài các chức năng cơ bản, nó còn hỗ trợ các tính năng mới như:
+- Neighbor Discovery Protocol (NDP).
+- Thông báo Multicast Listener Discovery (MLD).
+
+## 📚Routing Algorithms (Thuật toán định tuyến)
+
+**Thuật toán định tuyến** là các phương pháp được sử dụng để tìm đường đi tốt nhất (hoặc hiệu quả nhất) giữa các thiết bị trong mạng từ nguồn đến đích. Chúng là thành phần cốt lõi của các **giao thức định tuyến** và quyết định cách các gói tin được chuyển tiếp qua mạng.
+
+### 📙Mục tiêu của thuật toán định tuyến
+
+**Tối ưu hóa đường đi**: Tìm đường dẫn nhanh nhất, ngắn nhất hoặc hiệu quả nhất.
+
+**Đảm bảo độ tin cậy**: Đảm bảo gói tin luôn đến đích ngay cả khi có sự cố trên đường.
+
+**Hiệu quả tài nguyên**: Giảm thiểu việc sử dụng băng thông và tài nguyên mạng.
+
+**Thích nghi**: Phản ứng nhanh với các thay đổi trong cấu trúc mạng hoặc trạng thái mạng.
+
+### 📙Phân loại thuật toán định tuyến
+
+#### 📘Theo cấu trúc
+
+Thuật toán tĩnh (Static Routing):
+- Đường đi được cấu hình trước, cố định và không thay đổi theo thời gian.
+- Thường dùng trong các mạng nhỏ hoặc đơn giản.
+- Ưu điểm: Dễ cấu hình, không tốn nhiều tài nguyên.
+- Nhược điểm: Không linh hoạt khi mạng thay đổi.
+- Ví dụ: Static Routes trong router.
+
+Thuật toán động (Dynamic Routing):
+- Tự động thay đổi đường đi dựa trên trạng thái hiện tại của mạng.
+- Sử dụng các giao thức định tuyến động như OSPF, RIP, hoặc BGP.
+- Ưu điểm: Linh hoạt, phản ứng nhanh với sự thay đổi.
+- Nhược điểm: Phức tạp hơn, tốn tài nguyên hơn.
+
+#### 📘Theo phạm vi hoạt động
+
+Thuật toán tập trung (Centralized Routing):
+- Một thiết bị trung tâm có thông tin toàn bộ mạng và quyết định đường đi.
+- Nhược điểm: Điểm lỗi duy nhất (single point of failure).
+
+Thuật toán phân tán (Distributed Routing):
+- Mỗi nút trong mạng tự ra quyết định dựa trên thông tin cục bộ và thông điệp từ các nút lân cận.
+- Tính mở rộng cao và không có điểm lỗi duy nhất.
+
+#### 📘Theo phương pháp tối ưu hóa
+
+Thuật toán khoảng cách (Distance Vector):
+- Mỗi router duy trì một bảng định tuyến, chỉ chứa thông tin về khoảng cách và hướng đến các đích.
+- Router chia sẻ thông tin định tuyến với các router lân cận định kỳ.
+- Ưu điểm: Dễ triển khai.
+- Nhược điểm: Hội tụ chậm, dễ gặp vấn đề vòng lặp định tuyến (routing loop).
+- Ví dụ: RIP (Routing Information Protocol).
+
+Thuật toán trạng thái liên kết (Link State):
+- Mỗi router có thông tin đầy đủ về toàn bộ mạng (dựa trên trạng thái của các liên kết).
+- Dựa vào thuật toán Dijkstra để tìm đường đi ngắn nhất.
+- Ưu điểm: Hội tụ nhanh, hiệu quả hơn.
+- Nhược điểm: Yêu cầu nhiều tài nguyên tính toán.
+- Ví dụ: OSPF (Open Shortest Path First).
+
+Thuật toán lai (Hybrid):
+-  Kết hợp các đặc điểm của Distance Vector và Link State.
+-  Ví dụ: EIGRP (Enhanced Interior Gateway Routing Protocol).
+
+### 📙Các thuật toán định tuyến phổ biến
+
+| Thuật toán     | Đặc điểm                                                                                        |
+| -------------- | ----------------------------------------------------------------------------------------------- |
+| Dijkstra       | Tìm đường đi ngắn nhất từ một nút đến tất cả các nút khác trong mạng (sử dụng trong OSPF).      |
+| Bellman-Ford   | Sử dụng trong thuật toán Distance Vector (như RIP), cho phép xử lý chi phí âm.                  |
+| Floyd-Warshall | Tìm đường đi ngắn nhất giữa mọi cặp nút (ít dùng cho mạng động vì tính toán nặng).              |
+| Path Vector    | Được sử dụng trong BGP (Border Gateway Protocol) để xác định đường đi giữa các hệ thống tự trị. |
+
+### 📙So sánh Distance Vector và Link State
+
+| Tiêu chí                   | Distance Vector                         | Link State                            |
+| -------------------------- | --------------------------------------- | ------------------------------------- |
+| Kiến thức mạng             | Chỉ biết khoảng cách và hướng đến đích. | Biết trạng thái đầy đủ của toàn mạng. |
+| Chia sẻ thông tin          | Định kỳ chia sẻ với router lân cận.     | Phát sóng thông tin đến toàn mạng.    |
+| Hội tụ (Convergence)       | Chậm.                                   | Nhanh hơn.                            |
+| Tài nguyên yêu cầu         | Ít (tính toán và bộ nhớ thấp).          | Cao (nhiều tài nguyên hơn).           |
+| Vấn đề vòng lặp định tuyến | Dễ xảy ra.                              | Ít xảy ra.                            |
+
+### 📙Giao thức định tuyến phổ biến
+
+RIP (Routing Information Protocol):
+- Sử dụng thuật toán Distance Vector.
+- Phù hợp với mạng nhỏ, hội tụ chậm.
+- Hạn chế: Giới hạn 15 hops.
+
+OSPF (Open Shortest Path First):
+- Sử dụng thuật toán Link State.
+- Tính mở rộng cao, hội tụ nhanh.
+- Thường dùng trong các mạng lớn.
+
+BGP (Border Gateway Protocol):
+- Sử dụng thuật toán Path Vector.
+- Được sử dụng để định tuyến giữa các hệ thống tự trị (Autonomous Systems).
+
+EIGRP (Enhanced Interior Gateway Routing Protocol):
+- Giao thức định tuyến lai, nhanh và hiệu quả hơn RIP.
+
+## 📚Routing in the Internet (Định tuyến trên Internet)
+
+## 📚Multicast Routing (Định tuyến đa hướng)
+
+## 📚Tầng liên kết (Link Layer)
+
+Tầng liên kết (Link Layer) chịu trách nhiệm về việc truyền dữ liệu qua một liên kết vật lý giữa hai thiết bị trong cùng một mạng cục bộ (Local Area Network - LAN).
+
+### 📙Vai trò của tầng liên kết
+
+Cung cấp các cơ chế truyền dữ liệu tin cậy giữa các thiết bị trong cùng một mạng.
+
+Đóng gói dữ liệu từ tầng trên (tầng mạng) vào frame (khung dữ liệu).
+
+Điều khiển truy cập phương tiện (Medium Access Control - MAC) để đảm bảo rằng nhiều thiết bị có thể chia sẻ môi trường truyền dẫn (như cáp hoặc sóng radio) một cách hiệu quả.
+
+Phát hiện và sửa lỗi trong quá trình truyền dữ liệu.
+
+### 📙Thành phần chính của tầng liên kết
+
+LLC (Logical Link Control):
+- Điều khiển luồng dữ liệu giữa các thiết bị.
+- Cung cấp giao diện với tầng mạng và quản lý các giao thức liên quan.
+
+MAC (Media Access Control):
+- Quản lý việc truy cập môi trường truyền dẫn.
+- Gán địa chỉ MAC cho các thiết bị để định danh chúng trong mạng.
+
+### 📙Hoạt động của tầng liên kết
+
+Đóng gói dữ liệu:
+- Dữ liệu từ tầng mạng (gói tin IP) được đóng gói vào khung dữ liệu (frame).
+- Thêm địa chỉ MAC nguồn và đích vào header của frame.
+
+Truyền dữ liệu:
+- Dữ liệu được gửi qua môi trường vật lý (cáp mạng, sóng không dây).
+- Tầng MAC đảm bảo rằng chỉ một thiết bị truyền dữ liệu tại một thời điểm (giải quyết xung đột truyền).
+
+Phát hiện và sửa lỗi:
+- Sử dụng các phương pháp kiểm tra lỗi như CRC để đảm bảo dữ liệu không bị hỏng trong quá trình truyền.
+- Nếu phát hiện lỗi, tầng liên kết có thể yêu cầu truyền lại dữ liệu (nếu giao thức cho phép).
+
+Nhận dữ liệu:
+- Thiết bị nhận kiểm tra địa chỉ MAC đích của frame.
+- Nếu địa chỉ MAC trùng khớp, frame sẽ được chuyển lên tầng mạng.
+
+### 📙Giao thức tầng liên kết
+
+Một số giao thức phổ biến ở tầng liên kết bao gồm:
+- Ethernet: Giao thức mạng LAN phổ biến nhất.
+- Wi-Fi (802.11): Giao thức mạng không dây.
+- PPP (Point-to-Point Protocol): Được sử dụng trong kết nối điểm-điểm (ví dụ: kết nối Internet qua modem).
+- Frame Relay: Sử dụng trong mạng diện rộng (WAN).
+- ATM (Asynchronous Transfer Mode): Một công nghệ mạng tốc độ cao.
+
+### 📙Các vấn đề phổ biến ở tầng liên kết
+
+Xung đột truy cập: Khi nhiều thiết bị cố gắng truyền dữ liệu cùng lúc (đặc biệt trong Ethernet hoặc Wi-Fi).
+
+Lỗi trong truyền dữ liệu: Dữ liệu có thể bị hỏng do nhiễu hoặc lỗi phần cứng.
+
+Tắc nghẽn mạng cục bộ: Khi có quá nhiều thiết bị trong cùng một mạng LAN, hiệu năng có thể giảm.
+
+## 📚Frame (khung dữ liệu)
+
+**Frame** là đơn vị dữ liệu cơ bản được sử dụng ở tầng liên kết (Link Layer) trong mô hình OSI và TCP/IP. Nó bao gồm thông tin điều khiển cần thiết để truyền dữ liệu qua một liên kết vật lý từ thiết bị nguồn đến thiết bị đích trong mạng.
+
+Một frame bao gồm:
+- Header: Chứa thông tin điều khiển, địa chỉ MAC nguồn và đích.
+- Payload: Dữ liệu từ tầng mạng (thường là một gói tin IP).
+- Trailer: Thường chứa thông tin kiểm tra lỗi (CRC - Cyclic Redundancy Check).
+
+## 📚Địa chỉ MAC
+
+**Địa chỉ MAC** là một địa chỉ vật lý duy nhất được gán cho mỗi **card mạng (Network Interface Card - NIC)** khi thiết bị được sản xuất. Đây là địa chỉ ở tầng liên kết dữ liệu (Link Layer) trong mô hình OSI, được sử dụng để nhận diện các thiết bị trong mạng cục bộ (LAN hoặc WAN).
+
+### 📙Cấu trúc của Địa chỉ MAC
+
+Địa chỉ MAC có độ dài 48-bit (6 byte), thường được biểu diễn dưới dạng 12 ký tự hexadecimal và được chia thành hai phần:
+
+- OUI (Organizationally Unique Identifier): 24-bit đầu tiên (3 byte): Xác định nhà sản xuất thiết bị. VD: `00:1A:2B`: Dell, `68:5B:35`: Cisco
+
+- NIC Specific: 24-bit cuối (3 byte): Là số duy nhất do nhà sản xuất gán cho từng thiết bị.
+
+- Cách biểu diễn: Địa chỉ MAC thường được viết theo các định dạng sau:
+    - Hexadecimal với dấu hai chấm (:): `00:1A:2B:3C:4D:5E`
+    - Hexadecimal với dấu gạch ngang (-): `00-1A-2B-3C-4D-5E`
+
+### 📙Đặc điểm của Địa chỉ MAC
+
+**Duy nhất**: Mỗi thiết bị mạng đều có một địa chỉ MAC duy nhất.
+
+**Cố định**: Địa chỉ MAC được gán trong quá trình sản xuất và thường không thay đổi. Tuy nhiên, một số thiết bị cho phép "thay đổi" địa chỉ MAC (MAC Spoofing).
+
+**Tầm cục bộ**: Chỉ được sử dụng trong mạng cục bộ (LAN) để truyền dữ liệu giữa các thiết bị.
+
+### 📙Vai trò của Địa chỉ MAC
+
+**Xác định thiết bị**: Địa chỉ MAC giúp nhận diện thiết bị khi gửi và nhận dữ liệu trong mạng LAN.
+
+**Truyền dữ liệu**: Tầng liên kết sử dụng địa chỉ MAC để truyền các khung dữ liệu (frames) giữa các thiết bị trong mạng cục bộ.
+
+**Kiểm soát truy cập**: Địa chỉ MAC thường được sử dụng trong các hệ thống kiểm soát truy cập (ví dụ: lọc MAC trong router).
+
+### 📙Quá trình sử dụng Địa chỉ MAC
+
+Gửi dữ liệu:
+- Thiết bị nguồn gắn địa chỉ MAC của mình (MAC nguồn) và địa chỉ MAC của thiết bị nhận (MAC đích) vào frame.
+
+Chuyển dữ liệu qua switch:
+- Switch trong mạng LAN sử dụng địa chỉ MAC để chuyển frame đến thiết bị nhận dựa trên bảng địa chỉ MAC (MAC Address Table).
+
+Nhận dữ liệu:
+- Thiết bị đích kiểm tra MAC đích trong frame.
+- Nếu địa chỉ MAC trùng khớp, thiết bị sẽ xử lý dữ liệu.
+
+### 📙So sánh Địa chỉ MAC và Địa chỉ IP
+| Đặc điểm       | Địa chỉ MAC                         | Địa chỉ IP                                  |
+| -------------- | ----------------------------------- | ------------------------------------------- |
+| Tầng hoạt động | Tầng liên kết (Link Layer)          | Tầng mạng (Network Layer)                   |
+| Độ dài         | 48-bit (6 byte)                     | IPv4: 32-bit; IPv6: 128-bit                 |
+| Mục đích       | Xác định thiết bị trong mạng cục bộ | Xác định vị trí thiết bị trên mạng toàn cầu |
+| Tĩnh/Dynamic   | Thường cố định (hardware address)   | Có thể thay đổi (dynamic address)           |
+| Phạm vi        | Mạng cục bộ (LAN)                   | Mạng toàn cầu (WAN)                         |
+
+### 📙Ứng dụng của Địa chỉ MAC
+
+**Lọc MAC**: Nhiều router hoặc switch cho phép cấu hình lọc MAC để giới hạn quyền truy cập mạng.
+
+**Theo dõi thiết bị**: Địa chỉ MAC có thể được sử dụng để theo dõi hoặc nhận diện thiết bị trong mạng.
+
+**Chẩn đoán mạng**: Sử dụng địa chỉ MAC để xác định lỗi trong mạng LAN.
+
+### 📙Lưu ý
+
+**MAC Spoofing**: Kỹ thuật thay đổi địa chỉ MAC để giả mạo thiết bị khác.
+
+**Sử dụng trong ARP**: Địa chỉ MAC được sử dụng trong giao thức ARP để ánh xạ địa chỉ IP sang địa chỉ MAC trong mạng.
+
+## 📚Chức năng và dịch vụ của tầng liên kết
+
+## 📚Các giao thức tầng liên kết
+
+## 📚Phát hiện lỗi và sửa lỗi
+
+## 📚Multiple Access Protocols (Các giao thức truy cập nhiều nút)
+
+## 📚Mạng LAN và Ethernet
+
+## 📚Switching và Frame Forwarding
+
+## 📚Virtual LANs (VLANs)
+
+## 📚Spanning Tree Protocol (STP)
+
+## 📚Mạng không dây (Wireless Networks)
+
+## 📚PPP (Point-to-Point Protocol)
+
+## 📚ATM (Asynchronous Transfer Mode)
 
 
 
@@ -1613,15 +2743,79 @@ Do tính chất đảm bảo và tin cậy, TCP được sử dụng trong các 
 ---
 ---
 
+## 💡Tổng quan quy trình hoạt động trong mạng máy tính
 
+Khi dữ liệu được truyền từ máy nguồn đến máy đích qua một mạng máy tính, dữ liệu này sẽ đi qua các tầng khác nhau của mô hình **OSI (Open Systems Interconnection)** hoặc mô hình **TCP/IP**. Quá trình này được gọi là **encapsulation** và **decapsulation**, và tại mỗi tầng sẽ có những chức năng riêng để xử lý dữ liệu.
 
+### 📙Máy nguồn (Sender)
+Tầng 7: Application Layer (Tầng Ứng dụng)
+    
+- Tại tầng ứng dụng, dữ liệu bắt nguồn từ các ứng dụng mà người dùng sử dụng (ví dụ: trình duyệt web, email client, hoặc ứng dụng truyền file). 
+- Ví dụ, khi bạn gửi một email, nội dung của email sẽ được chuẩn bị tại tầng ứng dụng. 
+- Các giao thức phổ biến ở tầng này bao gồm HTTP, SMTP, FTP, DNS, v.v.
 
+Tầng 6: Presentation Layer (Tầng Trình bày)
 
+- Tầng này chịu trách nhiệm chuyển đổi định dạng dữ liệu (nếu cần), chẳng hạn như mã hóa, nén hoặc giải mã dữ liệu. 
+- Ví dụ, nếu dữ liệu cần được mã hóa trước khi truyền, tầng này sẽ thực hiện việc đó. 
+- Nó đảm bảo rằng dữ liệu từ máy nguồn có thể được trình bày chính xác tại máy đích.
 
+Tầng 5: Session Layer (Tầng Phiên)
+    
+- Tầng này thiết lập, quản lý và kết thúc các phiên kết nối giữa hai máy. Nó giúp duy trì trạng thái của phiên kết nối, đảm bảo rằng hai ứng dụng có thể giao tiếp mà không bị gián đoạn.
+- Tầng phiên cũng chịu trách nhiệm xử lý việc đồng bộ hóa và phục hồi nếu kết nối bị gián đoạn.
 
+Tầng 4: Transport Layer (Tầng Giao vận/ Tầng Vận chuyển)
+    
+- Tầng giao vận chia nhỏ dữ liệu lớn thành các phân đoạn nhỏ hơn để dễ dàng truyền qua mạng. Hai giao thức phổ biến nhất ở tầng này là **TCP** (giao thức tin cậy, đảm bảo dữ liệu được nhận đầy đủ và đúng thứ tự) và **UDP** (giao thức không tin cậy, không có kiểm soát lỗi và không đảm bảo dữ liệu được nhận đầy đủ). 
+- Nếu sử dụng TCP, tầng này sẽ đánh số các phân đoạn và đảm bảo mỗi phân đoạn được nhận đúng tại máy đích. Nó cũng xử lý việc điều khiển lưu lượng và kiểm soát lỗi.
 
+Tầng 3: Network Layer (Tầng Mạng)
 
+- Tầng mạng xử lý việc định tuyến dữ liệu từ máy nguồn đến máy đích qua các mạng trung gian. Tại tầng này, các phân đoạn từ tầng giao vận sẽ được gắn thêm một **địa chỉ IP (Internet Protocol)** để đảm bảo rằng dữ liệu được gửi đúng đến đích.
+- Các thiết bị như router hoạt động tại tầng này để chuyển tiếp các gói dữ liệu dựa trên địa chỉ IP đích.
 
+Tầng 2: Data Link Layer (Tầng Liên kết Dữ liệu)
+    
+- Tại tầng liên kết dữ liệu, các gói dữ liệu từ tầng mạng sẽ được đóng gói thành các frame và gắn thêm **địa chỉ MAC (Media Access Control)** để truyền qua liên kết vật lý (như cáp Ethernet hoặc Wi-Fi).
+- Tầng này đảm bảo rằng dữ liệu có thể được truyền từ thiết bị nguồn đến thiết bị gần nhất trong mạng (ví dụ: từ máy tính đến switch hoặc router).
+
+Tầng 1: Physical Layer (Tầng Vật lý)
+    
+- Đây là tầng thấp nhất, chịu trách nhiệm truyền tải dữ liệu thực tế dưới dạng các tín hiệu điện tử, quang học, hoặc sóng vô tuyến qua các phương tiện vật lý như cáp đồng, cáp quang, hoặc không dây. 
+- Dữ liệu được chuyển đổi thành các tín hiệu tín hiệu bit 0 và 1 để truyền qua dây hoặc qua không gian không dây.
+
+### 📙Trên đường truyền qua các thiết bị mạng
+
+Khi dữ liệu di chuyển qua mạng, nó sẽ đi qua nhiều thiết bị trung gian như switch, router. Các switch hoạt động ở tầng liên kết dữ liệu (tầng 2), còn router hoạt động ở tầng mạng (tầng 3). Mỗi thiết bị sẽ xử lý dữ liệu và chuyển tiếp nó dựa trên các thông tin ở các tầng tương ứng.
+
+### 📙Máy đích (Receiver)
+
+Tầng 1: Physical Layer (Tầng Vật lý)
+
+- Máy đích sẽ nhận các tín hiệu từ liên kết vật lý và chuyển đổi chúng trở lại thành các bit nhị phân.
+
+Tầng 2: Data Link Layer (Tầng Liên kết Dữ liệu)
+
+- Các frame từ tầng liên kết dữ liệu sẽ được xử lý, loại bỏ địa chỉ MAC, và chuyển tiếp dữ liệu lên tầng mạng nếu địa chỉ MAC trùng khớp với máy đích.
+
+Tầng 3: Network Layer (Tầng Mạng)
+
+- Tầng này sẽ kiểm tra địa chỉ IP của gói dữ liệu để xác nhận rằng nó được gửi đến đúng địa chỉ IP của máy đích. Sau đó, nó sẽ loại bỏ địa chỉ IP và chuyển tiếp dữ liệu lên tầng giao vận.
+
+Tầng 4: Transport Layer (Tầng Giao vận)
+
+- Nếu sử dụng giao thức TCP, tầng giao vận sẽ kiểm tra số thứ tự của các phân đoạn và đảm bảo rằng tất cả các phân đoạn được nhận đúng thứ tự. Nếu thiếu một phân đoạn, tầng này sẽ yêu cầu gửi lại. Sau khi hoàn thành, nó sẽ ghép các phân đoạn lại thành một dữ liệu hoàn chỉnh và chuyển lên tầng phiên.
+
+Tầng 5-7: Session, Presentation, and Application Layers
+
+- Dữ liệu sẽ tiếp tục được xử lý qua các tầng phiên và trình bày, như giải mã hoặc giải nén (nếu cần). Cuối cùng, dữ liệu sẽ đến tầng ứng dụng, nơi ứng dụng như trình duyệt web hoặc email client sẽ hiển thị nội dung cho người dùng.
+
+### 📙Lưu ý
+
+| Tầng    | Application Layer                        | Tầng giao vận (Transport Layer)                                                         | Tầng mạng (Network Layer)                            | Tầng liên kết dữ liệu (Data Link Layer)                     | Tầng vật lý (Physical Layer) |
+| ------- | ---------------------------------------- | --------------------------------------------------------------------------------------- | ---------------------------------------------------- | ----------------------------------------------------------- | ---------------------------- |
+| Dữ liệu | Dữ liệu tầng ứng dụng (Application Data) | Các phân đoạn (segments) hoặc gói (datagrams) với thông tin về cổng (Port) và giao thức | Gói tin (packet) chứa dữ liệu, địa chỉ IP nguồn/đích | Các khung (frames) chứa địa chỉ MAC, địa chỉ IP, và dữ liệu | Tín hiệu vật lý              |
 
 
 

@@ -4745,7 +4745,6 @@ static async Task Main(string[] args)
 
 
 
-
 ## Tổng kết (ý hiểu cá nhân)
 
 ### Các tính chất OOP
