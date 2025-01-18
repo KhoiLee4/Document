@@ -129,8 +129,8 @@
     - Toán tử  một ngôi
         | +  |  Cộng một ngôi (toán tử này là không cần thiết vì kể cả khi không sử dụng toán tử này, các số vẫn luôn dương) | 
         | –  |  Trừ một ngôi; đảo dấu của một biểu thức                                                                      | 
-        | ++ |  Toán tử gia tăng; tăng giá trị lên 1                                                                         | 
-        | -- |  Toán tử giảm; giảm giá trị đi 1                                                                              | 
+        | ++  | Toán tử gia tăng; tăng giá trị lên 1 |
+        | --- |Toán tử giảm; giảm giá trị đi 1                                                                              | 
         | !  |  Toán tử bổ sung logic, đảo ngược giá trị boolean                                                             |    
 
     - Toán tử quan hệ và toán tử bằng

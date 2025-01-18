@@ -4528,7 +4528,7 @@ Các lớp triển khai `HttpMessageHandler` dùng để khởi tạo `HttpClien
 | AllowAutoRedirect      | Thuộc tính, mặc định là true, để thiết lập tự động chuyển hướng. Ví dụ truy vấn đến URI có chuyển hướng đến đích mới (301) thì - HttpClient sẽ tự động chuyển hướng truy vấn đến đó.                                                                                                 |
 | AutomaticDecompression | Thuộc tính thuộc tính để handler tự động giải nén / nén nội dung HTTP, nó thuộc kiểu enum `DecompressionMethods` gồm có: `DecompressionMethods.None` không sử dụng nén, `DecompressionMethods.GZip` dùng thuật toán gZip, `DecompressionMethods.Deflate` dùng thuật toán nén deflate |
 | UseCookies             | Mặc định là true: cho phép sử dụng thuộc tính CookieContainer để lưu các Cookie của server khi respone trả về, cũng như tự động gửi Cookie khi gửi truy vấn                                                                                                                          |
-| CookieContainer        | Thuộc tính thuộc lớp `CookieContainer`, nó lưu các cookie.                                                                                                                                                                                                                             |
+| CookieContainer        | Thuộc tính thuộc lớp `CookieContainer`, nó lưu các cookie.                                                                                                                                                                                                                           |
 
 ```C#
 static async Task Main(string[] args)
