@@ -293,7 +293,7 @@ Các hoạt động chính:
 
 - Quản lý các bản phát hành, cập nhật và triển khai các thay đổi.
 
-### 📙Các mô hình SDLC phổ biếnK
+### 📙Các mô hình SDLC phổ biến
 
 #### 📘Waterfall Model (Mô hình thác nước)
 

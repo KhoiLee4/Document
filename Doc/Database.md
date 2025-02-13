@@ -1,25 +1,120 @@
 # DATABASE
 
-*** Cơ sở dữ liệu (Database)
-    - Một tập hợp có cấu trúc của những dữ liệu có liên quan với nhau được lưu trữ trong máy tính. Một CSDL biểu diễn một phần của thế giới thực. CSDL được thiết kế, xây dựng, và lưu trữ với 
-    một mục đích xác định, phục vụ cho một số ứng dụng và người dùng. Tập ngẫu nhiên của các dữ liệu không thể xem là một CSDL
+## 🤔Cơ sở dữ liệu (Database) là gì?
 
-*** Hệ quản trị CSDL (Database Management System)
-    - Tập hợp các chương trình cho phép người sử dụng tạo ra và duy trì CSDL. Một phần mềm hệ thống cho phép định nghĩa, xây dựng và xử lý dữ liệu
+Một tập hợp có cấu trúc của những dữ liệu có liên quan với nhau được lưu trữ trong máy tính. Một CSDL biểu diễn một phần của thế giới thực. CSDL được thiết kế, xây dựng, và lưu trữ với một mục đích xác định, phục vụ cho một số ứng dụng và người dùng.
 
-*** Kiến trúc của HQT CSDL
-    - Mức trong (lược đồ trong)
-        + Mô tả cấu trúc lưu trữ vật lý CSDL
+*❗Tập ngẫu nhiên của các dữ liệu không thể xem là một CSDL*
+
+Đặc điểm của cơ sở dữ liệu:
+
+- Tổ chức có cấu trúc: Dữ liệu thường được lưu trữ theo dạng bảng, bản ghi (record), và trường (field) trong các **hệ quản trị cơ sở dữ liệu quan hệ (RDBMS)**.
+
+- Tính toàn vẹn và nhất quán: Đảm bảo dữ liệu không bị sai lệch hoặc xung đột.
+
+- Tính bảo mật: Hạn chế quyền truy cập để bảo vệ dữ liệu khỏi các truy cập trái phép.
+
+- Khả năng truy vấn và tìm kiếm: Cho phép tìm kiếm và lọc dữ liệu nhanh chóng bằng các ngôn ngữ như SQL.
+
+- Tính độc lập dữ liệu: Thay đổi cấu trúc dữ liệu không ảnh hưởng đến chương trình sử dụng dữ liệu.
+
+Phân loại cơ sở dữ liệu:
+
+- Cơ sở dữ liệu quan hệ (Relational Database - RDBMS): Sử dụng bảng (table) để lưu trữ dữ liệu. *Ví dụ: MySQL, PostgreSQL, SQL Server, Oracle.*
+
+- Cơ sở dữ liệu phi quan hệ (NoSQL Database): Không sử dụng bảng mà dùng document, key-value, graph, hoặc column-family. *Ví dụ: MongoDB, Firebase, Cassandra, Redis.*
+
+- Cơ sở dữ liệu phân tán (Distributed Database): Dữ liệu được lưu trữ trên nhiều máy chủ để đảm bảo hiệu suất và dự phòng lỗi. *Ví dụ: Apache Cassandra, Google Spanner.*
+
+## 🤔Hệ quản trị CSDL (Database Management System) là gì?
+
+Hệ quản trị cơ sở dữ liệu (DBMS) là phần mềm giúp tạo, quản lý và tương tác với cơ sở dữ liệu một cách hiệu quả. Nó cho phép người dùng lưu trữ, truy vấn, cập nhật và bảo vệ dữ liệu mà không cần thao tác trực tiếp với file dữ liệu thô.
+
+Chức năng của DBMS:
+
+- Quản lý dữ liệu: Lưu trữ, tổ chức và duy trì dữ liệu một cách có cấu trúc.
+
+- Truy vấn và xử lý dữ liệu: Cho phép tìm kiếm, lọc dữ liệu bằng SQL hoặc các công cụ khác.
+
+- Kiểm soát truy cập: Quản lý quyền của người dùng, bảo vệ dữ liệu khỏi truy cập trái phép.
+
+- Đảm bảo tính toàn vẹn dữ liệu: Giữ cho dữ liệu không bị trùng lặp hoặc sai lệch.
+
+- Hỗ trợ giao dịch (Transaction Management): Đảm bảo tính nhất quán khi nhiều người cùng thao tác trên dữ liệu.
+
+- Sao lưu và khôi phục dữ liệu: Giúp phục hồi dữ liệu trong trường hợp lỗi hoặc mất dữ liệu.
+
+Các loại hệ quản trị CSDL phổ biến:
+
+- Hệ quản trị CSDL quan hệ (Relational DBMS - RDBMS): Lưu trữ dữ liệu dưới dạng bảng có hàng (record) và cột (field). Dữ liệu có thể liên kết với nhau thông qua khóa. *Ví dụ: MySQL, PostgreSQL, SQL Server, Oracle, MariaDB*
+
+- Hệ quản trị CSDL phi quan hệ (NoSQL DBMS): Lưu trữ dữ liệu dưới dạng key-value, document, graph hoặc column-family, phù hợp với dữ liệu phi cấu trúc. *Ví dụ: MongoDB (document), Redis (key-value), Neo4j (graph), Cassandra (column-family)*
+
+- Hệ quản trị CSDL hướng đối tượng (Object-Oriented DBMS - OODBMS): Dữ liệu được lưu dưới dạng đối tượng giống như trong lập trình hướng đối tượng (OOP). *Ví dụ: ObjectDB, db4o*
+
+- Hệ quản trị CSDL phân tán (Distributed DBMS - DDBMS): Dữ liệu được lưu trữ trên nhiều máy chủ khác nhau, giúp tăng tốc độ truy xuất và khả năng chịu lỗi. *Ví dụ: Google Spanner, Apache Cassandra*
+
+| DBMS       | Loại              | Ứng dụng thực tế                                     |
+| ---------- | ----------------- | ---------------------------------------------------- |
+| MySQL      | RDBMS             | Website, ứng dụng doanh nghiệp (WordPress, Facebook) |
+| PostgreSQL | RDBMS             | Hệ thống phân tích dữ liệu, ứng dụng tài chính       |
+| SQL Server | RDBMS             | Doanh nghiệp, quản lý dữ liệu trong tổ chức          |
+| MongoDB    | NoSQL             | Ứng dụng web động, lưu trữ JSON                      |
+| Redis      | NoSQL (Key-Value) | Cache dữ liệu, xử lý real-time                       |
+| Firebase   | NoSQL             | Ứng dụng mobile, realtime database                   |
+| Oracle     | RDBMS             | Hệ thống doanh nghiệp lớn, ngân hàng                 |
+
+## 🤔Kiến trúc của DBMS
     
-    - Mức quan niệm (lược đồ quan niệm)
-        + Mô tả cấu trúc của toàn thể CSDL cho 1 cộng đồng người sử dụng, gồm thực thể, kiểu dữ liệu, mối liên hệ và ràng buộc
-        + Che bớt các chi tiết của cấu trúc lưu trữ vật lý
+Mức trong (lược đồ trong): Mô tả cấu trúc lưu trữ vật lý CSDL
     
-    - Mức ngoài (lược đồ ngoài)
-        + Còn gọi là mức khung nhìn (view)
-        + Mô tả một phần của CSDL mà 1 nhóm người dùng quan tâm đến và che dấu phần còn lại của CSDL đối với nhóm người dùng đó
+Mức quan niệm (lược đồ quan niệm): Mô tả cấu trúc của toàn thể CSDL cho 1 cộng đồng người sử dụng, gồm thực thể, kiểu dữ liệu, mối liên hệ và ràng buộc. Che bớt các chi tiết của cấu trúc lưu trữ vật lý.
+    
+Mức ngoài (lược đồ ngoài): Còn gọi là mức khung nhìn (view). Mô tả một phần của CSDL mà 1 nhóm người dùng quan tâm đến và che dấu phần còn lại của CSDL đối với nhóm người dùng đó
 
-### Các mô hình dữ liệu
+Kiến trúc 1 tầng (1-Tier Architecture)
+Người dùng thao tác trực tiếp với cơ sở dữ liệu mà không qua trung gian.
+Phù hợp với các hệ thống nhỏ, single-user như Microsoft Access.
+👉 Ưu điểm: Đơn giản, dễ triển khai.
+👉 Nhược điểm: Không bảo mật, không hỗ trợ nhiều người dùng.
+
+2.2. Kiến trúc 2 tầng (2-Tier Architecture)
+Gồm Client và Database Server.
+Ứng dụng (Client) gửi truy vấn SQL đến Server, Server xử lý và trả kết quả.
+Thường sử dụng trong ứng dụng doanh nghiệp nhỏ.
+👉 Ưu điểm: Nhanh hơn so với 1 tầng, có sự tách biệt giữa giao diện và dữ liệu.
+👉 Nhược điểm: Chưa tối ưu khi có nhiều người dùng.
+
+📌 Ví dụ: Ứng dụng WinForms kết nối trực tiếp SQL Server.
+
+2.3. Kiến trúc 3 tầng (3-Tier Architecture)
+Bao gồm Client (Giao diện) - Application Server (Logic) - Database Server (Dữ liệu).
+Ứng dụng client không kết nối trực tiếp với DB mà thông qua Server trung gian (API, Web Services).
+Dùng trong hệ thống lớn như Web, Mobile Apps.
+👉 Ưu điểm: Bảo mật tốt, hiệu suất cao.
+👉 Nhược điểm: Phức tạp hơn, cần cấu hình máy chủ trung gian.
+
+📌 Ví dụ:
+
+Web app: ReactJS (Client) ↔ .NET API (Server) ↔ SQL Server (DB).
+Ứng dụng WinForms: WinForms ↔ Web API ↔ MongoDB.
+2.4. Kiến trúc N-Tier (Multi-Tier Architecture)
+Mở rộng kiến trúc 3 tầng, thêm các tầng như Load Balancer, Cache, Data Warehouse.
+Được sử dụng trong các hệ thống lớn như ngân hàng, thương mại điện tử.
+👉 Ưu điểm: Chia tải tốt, mở rộng dễ dàng.
+👉 Nhược điểm: Cần hệ thống mạnh, chi phí cao.
+
+📌 Ví dụ: Amazon, Google, Facebook sử dụng kiến trúc này để xử lý hàng triệu request mỗi giây.
+
+3. So sánh các mô hình kiến trúc DBMS
+Kiến trúc	Cấu trúc	Ứng dụng	Ưu điểm	Nhược điểm
+1-Tier	Client ↔ DB	Hệ thống nhỏ	Đơn giản, nhanh	Bảo mật kém
+2-Tier	Client ↔ DB Server	Ứng dụng doanh nghiệp nhỏ	Nhanh hơn 1-Tier	Chưa tối ưu khi mở rộng
+3-Tier	Client ↔ App Server ↔ DB Server	Web App, Mobile App	Bảo mật tốt, dễ mở rộng	Cấu hình phức tạp hơn
+N-Tier	Client ↔ Load Balancer ↔ App Server ↔ Cache ↔ DB	Hệ thống lớn như ngân hàng	Hiệu suất cao, chịu tải lớn	Chi phí cao
+
+## 📚Các mô hình dữ liệu
+
     - Mô hình dữ liệu (Data Modling) là một quy trình được sử dụng với mục đích xác định và phân tích các yêu cầu dữ liệu cần thiết
     
     - Mô hình dữ liệu đóng vai trò quan trọng giúp tạo ra một mô hình chứa các dữ liệu cho hệ thống bằng cách áp dụng các kỹ thuật chuyên nghiệp. 
@@ -71,7 +166,7 @@
         Bước 3: Xác định kỹ thuật lập mô hình dữ liệu
         Bước 4: Tối ưu hóa và lặp đi lặp lại
 
-### Mô hình mạng (Network Data Model)
+## 📚 Mô hình mạng (Network Data Model)
     - Là mô hình được biểu diễn bởi một đồ thị có hướng
     
     - Loại mẫu tin (Recorde Type) là mẫu đặc trưng cho 1 loại đối tượng riêng biệt
@@ -91,7 +186,7 @@
         + Với những lập trình viên, việc thiết kế CSDL khó.
         + Dễ tạo thành chu trình
 
-### Mô hình phân cấp (Hierachical Data Model)
+## 📚 Mô hình phân cấp (Hierachical Data Model)
     - Có cấu trúc cây (Tree), trong đó mỗi nút của cây biểu diễn một thực thể, giữa nút con và nút cha được liên kết với nhau theo một mối quan hệ xác định.
     
     - Loại mẫu tin: giống khái niệm mẫu tin trong mô hình dữ liệu mạng.
@@ -110,10 +205,10 @@
         + Không thể hiện được mối quan hệ M-N
         + Trong một hệ thống phân cấp, dữ liệu được tổ chức như trên dẫn đến khó sửa đổi dữ liệu.
 
-### Mô hình hướng đối tượng (Object Oriented Data Model)
+## 📚 Mô hình hướng đối tượng (Object Oriented Data Model)
 \\ bổ sung OODM
 
-### Mô hình thực thể - liên kết ER (Entity - Relationship Model)
+## 📚 Mô hình thực thể - liên kết ER (Entity - Relationship Model)
     - Mục đích : Được dùng để thiết kế CSDL ở mức quan niệm. Biểu diễn trừu tượng cấu trúc của CSDL
     
     - Một thực thể là một đối tượng của thế giới thực  
@@ -175,7 +270,7 @@
         
         + Thuộc tính của Liên kết/quan hệ: Mỗi mối liên kêt cũng có thể có những thuộc tính riêng của chúng.
 
-### Mô hình quan hệ (Relational Data Model)
+## 📚 Mô hình quan hệ (Relational Data Model)
     - Các thông tin lưu trữ trong CSDL được tổ chức thành bảng (table) 2 chiều gọi là quan hệ
     
     - Quan hệ gồm:
@@ -262,7 +357,7 @@
     - Khóa ngoại (Foreign key)
         + Tập thuộc tính K là khoá ngoại của một quan hệ R nếu K không là khóa chính của quan hệ R nhưng lại là khóa chính của một quan hệ khác.
 
-### Chuyển đổi mô hình ER -> mô hình quan hệ 
+## 📚 Chuyển đổi mô hình ER -> mô hình quan hệ 
     - Tập thực thể
         + Các tập thực thể (trừ tập thực thể yếu) chuyển thành các quan hệ có cùng tên và tập thuộc tính/cột
 
@@ -294,7 +389,7 @@
             * Chứa thuộc tính đa trị và thuộc tính khóa của quan hệ liên quan
             * Khóa chính của quan hệ mới là tổ hợp thuộc tính đa trị và thuộc tính khóa của quan hệ ban đầu
 
-### Các phép toán cập nhật trên quan hệ
+## 📚 Các phép toán cập nhật trên quan hệ
     - Phép thêm (INSERT)
         + Thêm 1 bộ giá trị mới t vào quan hệ R (A1, A2, ... An)
         + Làm cho thể hiện TR của nó tăng thêm 1 phần tử mới
@@ -318,7 +413,7 @@
             Aij= cj (j = 1, 2, ..., m) là điều kiện tìm kiếm bộ giá trị để sửa
             Aij= vj (j = 1, 2, ..., m) là giá trị mới của bộ.
 
-### Đại số quan hệ 
+## 📚 Đại số quan hệ 
     - Các phép toán trên đại số tập hợp
         + Tính khả hợp (Union Compatibility)
             * Hai lược đồ quan hệ R(A1, A2, ..., An) và S(B1, B2, ..., Bn) là khả hợp nếu:
@@ -377,7 +472,7 @@
                 \ Kết nối bằng (equi join) khi C là điều kiện so sánh bằng
                 \ Kết nối tự nhiên (natural join) kết quả của phép kết nối bằng bỏ bớt đi 1 cột giống nhau
 
-### Ràng buộc toàn vẹn
+## 📚 Ràng buộc toàn vẹn
     - Khái niệm
         + RBTV (Integrety Constraints) xuất phát từ những qui định hay điều kiện: Trong thực tế, Trong mô hình dữ liệu. Các thao tác làm thay đổi dữ liệu không nên được thực hiện một cách tùy tiện vì 
         có thể đưa CSDL đến một tình trạng ‘xấu’
@@ -469,7 +564,7 @@
             + Là ràng buộc xảy ra giữa các bộ trên nhiều quan hệ khác nhau
             + Là ràng buộc xảy ra giữa các thuộc tính trên nhiều quan hệ khác nhau
 
-### Phụ thuộc hàm (Funtional Dependency)
+## 📚 Phụ thuộc hàm (Funtional Dependency)
     - Khái niệm
         + Là sự biểu diễn RBTV dưới hình thức toán học
         + Bảo đảm thông tin không bị tổn thất khi phân rã hoặc kết nối giữa các quan hệ.
@@ -577,7 +672,7 @@
 
             * Tìm phủ tối thiểu: làm tuần tự các điều kiện
 
-### Khóa
+## 📚 Khóa
     - Khái niệm
         + R là lược đồ quan hệ định nghĩa trên tập các thuộc tính U = { A1, A2, ... , An}
         + Tập các Phụ thuộc hàm F = { f1, f2, ..., fm } xác định trên R.
@@ -639,7 +734,7 @@
 
             Vậy quan hệ trên có hai khoá là : [A] và [B]
 
-### Dạng chuẩn
+## 📚 Dạng chuẩn
     - Thuộc tính khóa
         + Thuộc tính tham gia vào bất kỳ khoá nào đó của quan hệ chứa nó.
         + Ngược lại gọi là thuộc tính không khoá.
@@ -669,7 +764,7 @@
     - Dạng chuẩn Boyce–codd (BCNF)
 // bổ sung dạng chuẩn
 
-### Ngôn ngữ dữ liệu SQL (truy vấn dữ liệu)
+## 📚 Ngôn ngữ dữ liệu SQL (truy vấn dữ liệu)
     - Bảng ~ quan hệ
     
     - Cột ~ thuộc tính
